@@ -120,15 +120,6 @@
   <data name="billion" xml:space="preserve">
     <value> milliarden</value>
   </data>
-  <data name="eding0" xml:space="preserve">
-    <value />
-  </data>
-  <data name="eding1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="eding2" xml:space="preserve">
-    <value />
-  </data>
   <data name="eight" xml:space="preserve">
     <value> acht</value>
   </data>
@@ -136,7 +127,7 @@
     <value> achtzehn</value>
   </data>
   <data name="eighty" xml:space="preserve">
-    <value> achtzig</value>
+    <value>achtzig</value>
   </data>
   <data name="eleven" xml:space="preserve">
     <value> elf</value>
@@ -148,7 +139,7 @@
     <value> fünf</value>
   </data>
   <data name="fifty" xml:space="preserve">
-    <value> fünfzig</value>
+    <value>fünfzig</value>
   </data>
   <data name="first" xml:space="preserve">
     <value> ein</value>
@@ -157,7 +148,7 @@
     <value> fünf</value>
   </data>
   <data name="forty" xml:space="preserve">
-    <value> vierzig</value>
+    <value>vierzig</value>
   </data>
   <data name="four" xml:space="preserve">
     <value> vier</value>
@@ -193,7 +184,7 @@
     <value> neunzehn</value>
   </data>
   <data name="ninety" xml:space="preserve">
-    <value> neunzig</value>
+    <value>neunzig</value>
   </data>
   <data name="one" xml:space="preserve">
     <value> ein</value>
@@ -208,7 +199,7 @@
     <value> siebzehn</value>
   </data>
   <data name="seventy" xml:space="preserve">
-    <value> siebzig</value>
+    <value>siebzig</value>
   </data>
   <data name="six" xml:space="preserve">
     <value> sechs</value>
@@ -217,7 +208,7 @@
     <value> sechszehn</value>
   </data>
   <data name="sixty" xml:space="preserve">
-    <value> sechzig</value>
+    <value>sechzig</value>
   </data>
   <data name="ten" xml:space="preserve">
     <value> zehn</value>
@@ -229,7 +220,7 @@
     <value> dreizehn</value>
   </data>
   <data name="thirty" xml:space="preserve">
-    <value> dreißig</value>
+    <value>dreißig</value>
   </data>
   <data name="thousand" xml:space="preserve">
     <value> tausend</value>
@@ -244,7 +235,7 @@
     <value> zwölf</value>
   </data>
   <data name="twenty" xml:space="preserve">
-    <value> zwanzig</value>
+    <value>zwanzig</value>
   </data>
   <data name="two" xml:space="preserve">
     <value> zwei</value>

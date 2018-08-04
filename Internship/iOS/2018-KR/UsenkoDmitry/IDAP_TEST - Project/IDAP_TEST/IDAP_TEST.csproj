@@ -75,6 +75,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>LanguageSettings.resx</DependentUpon>
     </Compile>
+    <Compile Include="LongToOrdinalDe.cs" />
     <Compile Include="LongToOrdinalEng.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
