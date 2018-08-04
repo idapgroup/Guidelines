@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IDAP_TEST
 {
-    public class LongToOrdinal
+    public class LongToOrdinalEng
     {
 
         private static string[] tensMap = {

@@ -23,10 +23,13 @@ namespace IDAP_TEST
             {
                 if (System.Threading.Thread.CurrentThread.CurrentUICulture.Name == "uk-UA")
                 {
-                    textField.Text = NumberToOrdinalUkr.convert(Int64.Parse(textBoxTransform.Text));
+                    textField.Text = LongToOrdinalUkr.convert(Int64.Parse(textBoxTransform.Text));
                 }
-                else
-                    textField.Text = NumberToOrdinal.convert(Int64.Parse(textBoxTransform.Text));
+                else if (System.Threading.Thread.CurrentThread.CurrentUICulture.Name == "de-DE")
+                {
+                    textField.Text = LongToOrdinalDe.convert(Int64.Parse(textBoxTransform.Text));
+                }
+                else textField.Text = LongToOrdinalEng.convert(Int64.Parse(textBoxTransform.Text));
             }
             else MessageBox.Show(LanguageSettings.messageBoxErrText, LanguageSettings.messageBoxErrTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
