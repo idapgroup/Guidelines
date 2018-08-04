@@ -1,0 +1,17 @@
+﻿  Convert.cpp
+c:\users\horssik\source\repos\convert\convert\ukr.cpp(32): warning C4244: инициализация: преобразование "__int64" в "int", возможна потеря данных
+c:\users\horssik\source\repos\convert\convert\ukr.cpp(64): warning C4244: инициализация: преобразование "__int64" в "int", возможна потеря данных
+c:\users\horssik\source\repos\convert\convert\ukr.cpp(93): warning C4244: инициализация: преобразование "__int64" в "int", возможна потеря данных
+c:\users\horssik\source\repos\convert\convert\ukr.cpp(142): warning C4244: инициализация: преобразование "__int64" в "int", возможна потеря данных
+c:\users\horssik\source\repos\convert\convert\ukr.cpp(174): warning C4244: инициализация: преобразование "__int64" в "int", возможна потеря данных
+c:\users\horssik\source\repos\convert\convert\ukr.cpp(203): warning C4244: инициализация: преобразование "__int64" в "int", возможна потеря данных
+c:\users\horssik\source\repos\convert\convert\ukr.cpp(247): warning C4244: инициализация: преобразование "__int64" в "int", возможна потеря данных
+c:\users\horssik\source\repos\convert\convert\ukr.cpp(252): warning C4244: инициализация: преобразование "__int64" в "int", возможна потеря данных
+c:\users\horssik\source\repos\convert\convert\ukr.cpp(284): warning C4244: инициализация: преобразование "__int64" в "int", возможна потеря данных
+c:\users\horssik\source\repos\convert\convert\ukr.cpp(357): warning C4244: инициализация: преобразование "__int64" в "int", возможна потеря данных
+c:\users\horssik\source\repos\convert\convert\ukr.cpp(362): warning C4244: инициализация: преобразование "__int64" в "int", возможна потеря данных
+c:\users\horssik\source\repos\convert\convert\ukr.cpp(394): warning C4244: инициализация: преобразование "__int64" в "int", возможна потеря данных
+c:\users\horssik\source\repos\convert\convert\ukr.cpp(466): warning C4244: инициализация: преобразование "__int64" в "int", возможна потеря данных
+c:\users\horssik\source\repos\convert\convert\ukr.cpp(482): warning C4244: инициализация: преобразование "__int64" в "int", возможна потеря данных
+c:\users\horssik\source\repos\convert\convert\ger.cpp(106): warning C4244: инициализация: преобразование "__int64" в "int", возможна потеря данных
+  Convert.vcxproj -> C:\Users\HorSSik\source\repos\Convert\Debug\Convert.exe
