@@ -1,0 +1,16 @@
+D:\Win7\VisualProject\TestNumConvertor\TestNumConvertor\obj\Debug\TestNumConvertor.csprojAssemblyReference.cache
+D:\Win7\VisualProject\TestNumConvertor\TestNumConvertor\obj\Debug\MainWindow.g.cs
+D:\Win7\VisualProject\TestNumConvertor\TestNumConvertor\obj\Debug\App.g.cs
+D:\Win7\VisualProject\TestNumConvertor\TestNumConvertor\obj\Debug\TestNumConvertor_MarkupCompile.cache
+D:\Win7\VisualProject\TestNumConvertor\TestNumConvertor\obj\Debug\TestNumConvertor_MarkupCompile.lref
+D:\Win7\VisualProject\TestNumConvertor\TestNumConvertor\bin\Debug\TestNumConvertor.exe.config
+D:\Win7\VisualProject\TestNumConvertor\TestNumConvertor\bin\Debug\TestNumConvertor.exe
+D:\Win7\VisualProject\TestNumConvertor\TestNumConvertor\bin\Debug\TestNumConvertor.pdb
+D:\Win7\VisualProject\TestNumConvertor\TestNumConvertor\obj\Debug\MainWindow.baml
+D:\Win7\VisualProject\TestNumConvertor\TestNumConvertor\obj\Debug\TestNumConvertor.g.resources
+D:\Win7\VisualProject\TestNumConvertor\TestNumConvertor\obj\Debug\TestNumConvertor.Properties.Resources.resources
+D:\Win7\VisualProject\TestNumConvertor\TestNumConvertor\obj\Debug\TestNumConvertor.csproj.GenerateResource.cache
+D:\Win7\VisualProject\TestNumConvertor\TestNumConvertor\obj\Debug\TestNumConvertor.csproj.CoreCompileInputs.cache
+D:\Win7\VisualProject\TestNumConvertor\TestNumConvertor\obj\Debug\TestNumConvertor.exe
+D:\Win7\VisualProject\TestNumConvertor\TestNumConvertor\obj\Debug\TestNumConvertor.pdb
+D:\Win7\VisualProject\TestNumConvertor\TestNumConvertor\obj\Debug\GeneratedInternalTypeHelper.g.cs
