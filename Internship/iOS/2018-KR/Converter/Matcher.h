@@ -6,11 +6,6 @@
 //  Copyright © 2018 Yevhen Triukhan. All rights reserved.
 //
 
-//  Matcher просто сопостовляет цифры с ключами словаря
-//  выбор словаря зависит от текущей локали.
-//  формиратирование слова (установка порядка, вставка пробелов, дефисов, союзов)
-//  выполняет Formatter.
-
 #import <Foundation/Foundation.h>
 
 @class NumeralsFormatter;
@@ -23,7 +18,7 @@
 + (instancetype)defaultMatcher;
 
 - (void)addFormatter:(NumeralsFormatter *)formatter;
-- (BOOL)removeFormatterWithLocale:(NSString *)localeID;
+- (void)removeFormatterWithLocale:(NSString *)localeID;
 
 - (NSArray<NSString *> *)availableLocaleID;
 

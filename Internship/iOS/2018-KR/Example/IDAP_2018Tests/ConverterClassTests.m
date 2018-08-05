@@ -44,15 +44,16 @@
 }
 
 - (void)testInit {
+    Converter *defaultConverter = [Converter new];
+    defaultConverter.ordinal = NO;
     
-    
-    XCTAssertEqualObjects([self.converter stringFromNumber:55], @"fifty-five");
-    XCTAssertEqualObjects([self.converter stringFromNumber:TRILLION], @"one trillion");
+    XCTAssertEqualObjects([defaultConverter stringFromNumber:55], @"fifty-five");
+    XCTAssertEqualObjects([defaultConverter stringFromNumber:TRILLION], @"one trillion");
 
-    self.self.converter.localeID = @"de";
-    XCTAssertEqualObjects([self.converter stringFromNumber:11], @"elf");
-    self.self.converter.localeID = @"uk";
-    XCTAssertEqualObjects([self.converter stringFromNumber:33], @"тридцять три");
+    defaultConverter.localeID = kDE;
+    XCTAssertEqualObjects([defaultConverter stringFromNumber:11], @"elf");
+    defaultConverter.localeID = kUA;
+    XCTAssertEqualObjects([defaultConverter stringFromNumber:33], @"тридцять три");
 }
 
 - (void)testInitWithFormatter {
@@ -61,13 +62,27 @@
     UkrainianFormatter *formatter = [[UkrainianFormatter alloc] initWithFile:path];
     
     Converter *converter = [[Converter alloc] initWithFormatter:formatter];
-
+    converter.ordinal = NO;
+    
     XCTAssertEqualObjects(converter.localeID, formatter.localeID);
     XCTAssertEqual(1, converter.availableLocaleID.count);
     XCTAssertEqualObjects([converter stringFromNumber:33], @"тридцять три");
     
     XCTAssertNoThrow([[Converter alloc] initWithFormatter:nil]);
     XCTAssertNil([[Converter alloc] initWithFormatter:nil]);
+}
+
+- (void)testProperties {
+    //  localeID, shortScale, availableLocaleID is @dynamic
+    Converter * defaultConverter = [Converter new];
+    
+    //  check default values
+    XCTAssertEqualObjects(defaultConverter.localeID, kEN);
+    XCTAssertEqual(defaultConverter.ordinal, YES);
+    XCTAssertEqual(defaultConverter.shortScale, YES);
+    XCTAssertEqual(defaultConverter.availableLocaleID.count, 3);  //  en, de, ua
+
+    
 }
 
 - (void)testAddAndRemoveFormatters {
@@ -109,4 +124,6 @@
     
     
 }
+
+
 @end

@@ -22,20 +22,23 @@
 
 @end
 
+static NSString * kMAX_LIMIT_MESSAGE = @"number larger than limit";
+static NSString * kMIN_LIMIT_MESSAGE = @"converter doesn't support negative numbers";
+
 @implementation Converter
+
+@dynamic availableLocaleID, shortScale, localeID;
 
 #pragma mark -
 #pragma mark Initialization
 - (instancetype)init {
     self = [super init];
     if (self) {
-        _ordinal = NO;
-        _localeID = kEN;
-        _shortScale = YES;
+        _ordinal = YES;
         
         _matcher = [Matcher defaultMatcher];
-        _matcher.localeID = _localeID;
-        _matcher.shortScale = _shortScale;
+        _matcher.localeID = kEN;
+        _matcher.shortScale = YES;
     }
     
     return self;
@@ -46,9 +49,7 @@
         self = [super init];
         
         if (self) {
-            _ordinal = NO;
-            _localeID = formatter.localeID;
-            _shortScale = formatter.numerals.shortScale;
+            _ordinal = YES;
             
             _matcher = [Matcher new];  //  empty
             [_matcher addFormatter:formatter];
@@ -60,25 +61,29 @@
     return self;
 }
 
-- (NSArray<NSString *> *)availableLocaleID {
-    return self.matcher.availableLocaleID;
-}
 
 #pragma mark -
 #pragma mark Accessors
 - (void)setLocaleID:(NSString *)localeID {
-    if(_localeID != localeID) {
-        
-        _matcher.localeID = _localeID = localeID;
-    }
+    self.matcher.localeID = localeID;
+}
+
+- (NSString *)localeID {
+    return self.matcher.localeID;
 }
 
 - (void)setShortScale:(BOOL)shortScale {
-    if (_shortScale != shortScale) {
-        _shortScale = shortScale;
-        _matcher.shortScale = _shortScale = shortScale;
-    }
+    self.matcher.shortScale = shortScale;
 }
+
+- (BOOL)isShortScale {
+    return self.matcher.isShortScale;
+}
+
+- (NSArray<NSString *> *)availableLocaleID {
+    return self.matcher.availableLocaleID;
+}
+
 #pragma mark -
 #pragma mark Public API
 
@@ -87,21 +92,16 @@
     if (formatter) {
         [self.matcher addFormatter:formatter];
     }
-    self.localeID = self.matcher.localeID;
 }
 
 - (void)removeFormatterWithLocale:(NSString *)localeID {
-    BOOL success = [self.matcher removeFormatterWithLocale:localeID];
-    
-    if (success) {
-        self.localeID = self.matcher.localeID;
-    }
+    [self.matcher removeFormatterWithLocale:localeID];
 }
 
 - (NSString *)stringFromNumber:(long long)number {
     
-    if (number > QUADRILLION)  return @"number larger than limit";
-    if (number < 0)            return @"converter doesn't support negative numbers";
+    if (number > QUADRILLION)  return kMAX_LIMIT_MESSAGE;
+    if (number < 0)            return kMIN_LIMIT_MESSAGE;
     
     NSString *result = [self convertNumber:number];
     

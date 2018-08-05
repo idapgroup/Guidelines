@@ -83,15 +83,12 @@
     }
 }
 
-- (BOOL)removeFormatterWithLocale:(NSString *)localeID {
-    BOOL success = NO;
-    
+- (void)removeFormatterWithLocale:(NSString *)localeID {
     NSArray *keys = [self availableLocaleID];
     
     for (NSString *key in keys) {
         
         if ([localeID hasPrefix:key]) {  //  only language designator
-            success = YES;
 
             [self.formatters removeObjectForKey:key];
             
@@ -105,7 +102,6 @@
         }
     }
     
-    return success;
 }
 
 - (NSArray<NSString *> *)availableLocaleID {
@@ -178,6 +174,5 @@
 - (NSString *) finishingFormatter:(NSInteger)number withString:(NSString *)string{
     return [self.localeFormatter finishingFormatter:number withString:(NSString *)string];
 }
-
 
 @end

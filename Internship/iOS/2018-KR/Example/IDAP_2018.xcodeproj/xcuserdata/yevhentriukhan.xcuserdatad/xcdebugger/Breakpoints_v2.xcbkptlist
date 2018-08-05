@@ -443,5 +443,303 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IDAP_2018Tests/ConverterClassTests.m"
+            timestampString = "555193947.674233"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "-testInitWithFormatter"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[ConverterClassTests testInitWithFormatter]"
+                  moduleName = "IDAP_2018Tests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yevhentriukhan/Guidelines/Internship/iOS/2018-KR/Example/IDAP_2018Tests/ConverterClassTests.m"
+                  timestampString = "555192434.091934"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "65"
+                  endingLineNumber = "65"
+                  offsetFromSymbolStart = "229">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[ConverterClassTests testInitWithFormatter]"
+                  moduleName = "IDAP_2018Tests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yevhentriukhan/Guidelines/Internship/iOS/2018-KR/Example/IDAP_2018Tests/ConverterClassTests.m"
+                  timestampString = "555192434.099394"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "65"
+                  endingLineNumber = "65"
+                  offsetFromSymbolStart = "794">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[ConverterClassTests testInitWithFormatter]"
+                  moduleName = "IDAP_2018Tests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yevhentriukhan/Guidelines/Internship/iOS/2018-KR/Example/IDAP_2018Tests/ConverterClassTests.m"
+                  timestampString = "555192434.1057611"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "65"
+                  endingLineNumber = "65"
+                  offsetFromSymbolStart = "1643">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[ConverterClassTests testInitWithFormatter]"
+                  moduleName = "IDAP_2018Tests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yevhentriukhan/Guidelines/Internship/iOS/2018-KR/Example/IDAP_2018Tests/ConverterClassTests.m"
+                  timestampString = "555192434.117622"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "65"
+                  endingLineNumber = "65"
+                  offsetFromSymbolStart = "1765">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IDAP_2018Tests/ConverterClassTests.m"
+            timestampString = "555193170.781118"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "-testInit"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Converter/Converter.m"
+            timestampString = "555193223.000252"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "-setLocaleID:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Converter/Matcher.m"
+            timestampString = "555193351.022761"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "-localeFormatter"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IDAP_2018Tests/ConverterClassTests.m"
+            timestampString = "555193947.674233"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "-testInit"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[ConverterClassTests testInit]"
+                  moduleName = "IDAP_2018Tests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yevhentriukhan/Guidelines/Internship/iOS/2018-KR/Example/IDAP_2018Tests/ConverterClassTests.m"
+                  timestampString = "555193484.4683549"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "53"
+                  endingLineNumber = "53"
+                  offsetFromSymbolStart = "2179">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[ConverterClassTests testInit]"
+                  moduleName = "IDAP_2018Tests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yevhentriukhan/Guidelines/Internship/iOS/2018-KR/Example/IDAP_2018Tests/ConverterClassTests.m"
+                  timestampString = "555193484.472964"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "53"
+                  endingLineNumber = "53"
+                  offsetFromSymbolStart = "3806">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[ConverterClassTests testInit]"
+                  moduleName = "IDAP_2018Tests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yevhentriukhan/Guidelines/Internship/iOS/2018-KR/Example/IDAP_2018Tests/ConverterClassTests.m"
+                  timestampString = "555193484.476125"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "53"
+                  endingLineNumber = "53"
+                  offsetFromSymbolStart = "4477">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[ConverterClassTests testInit]"
+                  moduleName = "IDAP_2018Tests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yevhentriukhan/Guidelines/Internship/iOS/2018-KR/Example/IDAP_2018Tests/ConverterClassTests.m"
+                  timestampString = "555193484.479084"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "53"
+                  endingLineNumber = "53"
+                  offsetFromSymbolStart = "4605">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IDAP_2018Tests/ConverterClassTests.m"
+            timestampString = "555193947.674233"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "-testInit"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IDAP_2018Tests/ConverterClassTests.m"
+            timestampString = "555193947.674233"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "-testProperties"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[ConverterClassTests testProperties]"
+                  moduleName = "IDAP_2018Tests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yevhentriukhan/Guidelines/Internship/iOS/2018-KR/Example/IDAP_2018Tests/ConverterClassTests.m"
+                  timestampString = "555193860.762922"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "78"
+                  endingLineNumber = "78"
+                  offsetFromSymbolStart = "56">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[ConverterClassTests testProperties]"
+                  moduleName = "IDAP_2018Tests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yevhentriukhan/Guidelines/Internship/iOS/2018-KR/Example/IDAP_2018Tests/ConverterClassTests.m"
+                  timestampString = "555193860.767882"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "78"
+                  endingLineNumber = "78"
+                  offsetFromSymbolStart = "592">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[ConverterClassTests testProperties]"
+                  moduleName = "IDAP_2018Tests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yevhentriukhan/Guidelines/Internship/iOS/2018-KR/Example/IDAP_2018Tests/ConverterClassTests.m"
+                  timestampString = "555193860.787025"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "78"
+                  endingLineNumber = "78"
+                  offsetFromSymbolStart = "1352">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[ConverterClassTests testProperties]"
+                  moduleName = "IDAP_2018Tests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yevhentriukhan/Guidelines/Internship/iOS/2018-KR/Example/IDAP_2018Tests/ConverterClassTests.m"
+                  timestampString = "555193860.792581"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "78"
+                  endingLineNumber = "78"
+                  offsetFromSymbolStart = "1474">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
