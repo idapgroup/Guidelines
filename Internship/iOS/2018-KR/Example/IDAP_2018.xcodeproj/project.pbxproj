@@ -1,0 +1,630 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		62000E2C210C5B7300AE9F0D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 62000E2B210C5B7300AE9F0D /* main.m */; };
+		62000E2F210C5B7300AE9F0D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 62000E2E210C5B7300AE9F0D /* AppDelegate.m */; };
+		62000E37210C5B7300AE9F0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62000E36210C5B7300AE9F0D /* Assets.xcassets */; };
+		62000E3A210C5B7300AE9F0D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62000E38210C5B7300AE9F0D /* LaunchScreen.storyboard */; };
+		62000E52210C5BF300AE9F0D /* ConverterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62000E48210C5BF300AE9F0D /* ConverterViewController.m */; };
+		62000E58210C61E800AE9F0D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62000E57210C61E800AE9F0D /* Main.storyboard */; };
+		625AC5742116C8A300926196 /* uk.plist in Resources */ = {isa = PBXBuildFile; fileRef = 625AC5732116C8A300926196 /* uk.plist */; };
+		625AC5902116CE9B00926196 /* NSString+Formatting.m in Sources */ = {isa = PBXBuildFile; fileRef = 625AC5782116CE9B00926196 /* NSString+Formatting.m */; };
+		625AC5912116CE9B00926196 /* NumeralsFormatter+Search.m in Sources */ = {isa = PBXBuildFile; fileRef = 625AC57A2116CE9B00926196 /* NumeralsFormatter+Search.m */; };
+		625AC5922116CE9B00926196 /* Converter.m in Sources */ = {isa = PBXBuildFile; fileRef = 625AC57C2116CE9B00926196 /* Converter.m */; };
+		625AC5932116CE9B00926196 /* NumeralsFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 625AC5802116CE9B00926196 /* NumeralsFormatter.m */; };
+		625AC5942116CE9B00926196 /* DeutschFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 625AC5832116CE9B00926196 /* DeutschFormatter.m */; };
+		625AC5952116CE9B00926196 /* EnglishFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 625AC5852116CE9B00926196 /* EnglishFormatter.m */; };
+		625AC5962116CE9B00926196 /* UkrainianFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 625AC5872116CE9B00926196 /* UkrainianFormatter.m */; };
+		625AC5972116CE9B00926196 /* Matcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 625AC5892116CE9B00926196 /* Matcher.m */; };
+		625AC5982116CE9B00926196 /* Numerals+Deutsch.m in Sources */ = {isa = PBXBuildFile; fileRef = 625AC58B2116CE9B00926196 /* Numerals+Deutsch.m */; };
+		625AC5992116CE9B00926196 /* Numerals+English.m in Sources */ = {isa = PBXBuildFile; fileRef = 625AC58C2116CE9B00926196 /* Numerals+English.m */; };
+		625AC59A2116CE9B00926196 /* Numerals+Ukrainian.m in Sources */ = {isa = PBXBuildFile; fileRef = 625AC58D2116CE9B00926196 /* Numerals+Ukrainian.m */; };
+		625AC59B2116CE9B00926196 /* Numerals.m in Sources */ = {isa = PBXBuildFile; fileRef = 625AC58F2116CE9B00926196 /* Numerals.m */; };
+		629473B92113673600E5284B /* UkrainianOrdinalTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 629473B82113673600E5284B /* UkrainianOrdinalTests.m */; };
+		629473BF21144AC200E5284B /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 629473BE21144AC200E5284B /* RootViewController.m */; };
+		629473C72114A44400E5284B /* ConverterClassTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 629473C62114A44400E5284B /* ConverterClassTests.m */; };
+		629F252E2110E3B200B4D678 /* EnglishCardinalTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 629F252D2110E3B200B4D678 /* EnglishCardinalTests.m */; };
+		629F25372111194F00B4D678 /* DeutschCardinalTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 629F25362111194F00B4D678 /* DeutschCardinalTests.m */; };
+		629F253921119A6000B4D678 /* UkrainianCardinalTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 629F253821119A6000B4D678 /* UkrainianCardinalTests.m */; };
+		62B501C32115A28600360AF2 /* NumeralsFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 62B501C22115A28600360AF2 /* NumeralsFormatterTests.m */; };
+		62DA517C21124ED900AB0DA7 /* EnglishOrdinalTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 62DA517B21124ED900AB0DA7 /* EnglishOrdinalTests.m */; };
+		62DA517E21124F0400AB0DA7 /* DeutschOrdinalTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 62DA517D21124F0400AB0DA7 /* DeutschOrdinalTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		629F25302110E3B200B4D678 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 62000E1F210C5B7300AE9F0D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 62000E26210C5B7300AE9F0D;
+			remoteInfo = IDAP_2018;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		62000E27210C5B7300AE9F0D /* IDAP_2018.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IDAP_2018.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		62000E2B210C5B7300AE9F0D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		62000E2D210C5B7300AE9F0D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		62000E2E210C5B7300AE9F0D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		62000E36210C5B7300AE9F0D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		62000E39210C5B7300AE9F0D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		62000E3B210C5B7300AE9F0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		62000E47210C5BF300AE9F0D /* ConverterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConverterViewController.h; sourceTree = "<group>"; };
+		62000E48210C5BF300AE9F0D /* ConverterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConverterViewController.m; sourceTree = "<group>"; };
+		62000E57210C61E800AE9F0D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		625AC5732116C8A300926196 /* uk.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = uk.plist; sourceTree = "<group>"; };
+		625AC5772116CE9B00926196 /* NSString+Formatting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Formatting.h"; sourceTree = "<group>"; };
+		625AC5782116CE9B00926196 /* NSString+Formatting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Formatting.m"; sourceTree = "<group>"; };
+		625AC5792116CE9B00926196 /* NumeralsFormatter+Search.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NumeralsFormatter+Search.h"; sourceTree = "<group>"; };
+		625AC57A2116CE9B00926196 /* NumeralsFormatter+Search.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NumeralsFormatter+Search.m"; sourceTree = "<group>"; };
+		625AC57B2116CE9B00926196 /* Converter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Converter.h; sourceTree = "<group>"; };
+		625AC57C2116CE9B00926196 /* Converter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Converter.m; sourceTree = "<group>"; };
+		625AC57F2116CE9B00926196 /* NumeralsFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumeralsFormatter.h; sourceTree = "<group>"; };
+		625AC5802116CE9B00926196 /* NumeralsFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumeralsFormatter.m; sourceTree = "<group>"; };
+		625AC5812116CE9B00926196 /* NumeralsFormatterPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumeralsFormatterPrivate.h; sourceTree = "<group>"; };
+		625AC5822116CE9B00926196 /* DeutschFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeutschFormatter.h; sourceTree = "<group>"; };
+		625AC5832116CE9B00926196 /* DeutschFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeutschFormatter.m; sourceTree = "<group>"; };
+		625AC5842116CE9B00926196 /* EnglishFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnglishFormatter.h; sourceTree = "<group>"; };
+		625AC5852116CE9B00926196 /* EnglishFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnglishFormatter.m; sourceTree = "<group>"; };
+		625AC5862116CE9B00926196 /* UkrainianFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UkrainianFormatter.h; sourceTree = "<group>"; };
+		625AC5872116CE9B00926196 /* UkrainianFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UkrainianFormatter.m; sourceTree = "<group>"; };
+		625AC5882116CE9B00926196 /* Matcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Matcher.h; sourceTree = "<group>"; };
+		625AC5892116CE9B00926196 /* Matcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Matcher.m; sourceTree = "<group>"; };
+		625AC58B2116CE9B00926196 /* Numerals+Deutsch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Numerals+Deutsch.m"; sourceTree = "<group>"; };
+		625AC58C2116CE9B00926196 /* Numerals+English.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Numerals+English.m"; sourceTree = "<group>"; };
+		625AC58D2116CE9B00926196 /* Numerals+Ukrainian.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Numerals+Ukrainian.m"; sourceTree = "<group>"; };
+		625AC58E2116CE9B00926196 /* Numerals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Numerals.h; sourceTree = "<group>"; };
+		625AC58F2116CE9B00926196 /* Numerals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Numerals.m; sourceTree = "<group>"; };
+		6284AF2C210DC0E500D7BC7C /* GlobalKeys.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlobalKeys.h; sourceTree = "<group>"; };
+		629473B82113673600E5284B /* UkrainianOrdinalTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UkrainianOrdinalTests.m; sourceTree = "<group>"; };
+		629473BD21144AC200E5284B /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		629473BE21144AC200E5284B /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		629473C62114A44400E5284B /* ConverterClassTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConverterClassTests.m; sourceTree = "<group>"; };
+		629F252B2110E3B200B4D678 /* IDAP_2018Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IDAP_2018Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		629F252D2110E3B200B4D678 /* EnglishCardinalTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EnglishCardinalTests.m; sourceTree = "<group>"; };
+		629F252F2110E3B200B4D678 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		629F25362111194F00B4D678 /* DeutschCardinalTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeutschCardinalTests.m; sourceTree = "<group>"; };
+		629F253821119A6000B4D678 /* UkrainianCardinalTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UkrainianCardinalTests.m; sourceTree = "<group>"; };
+		62B501C22115A28600360AF2 /* NumeralsFormatterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumeralsFormatterTests.m; sourceTree = "<group>"; };
+		62DA517B21124ED900AB0DA7 /* EnglishOrdinalTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnglishOrdinalTests.m; sourceTree = "<group>"; };
+		62DA517D21124F0400AB0DA7 /* DeutschOrdinalTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeutschOrdinalTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		62000E24210C5B7300AE9F0D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		629F25282110E3B200B4D678 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		62000E1E210C5B7300AE9F0D = {
+			isa = PBXGroup;
+			children = (
+				62000E29210C5B7300AE9F0D /* IDAP_2018 */,
+				629F252C2110E3B200B4D678 /* IDAP_2018Tests */,
+				62000E28210C5B7300AE9F0D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		62000E28210C5B7300AE9F0D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				62000E27210C5B7300AE9F0D /* IDAP_2018.app */,
+				629F252B2110E3B200B4D678 /* IDAP_2018Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		62000E29210C5B7300AE9F0D /* IDAP_2018 */ = {
+			isa = PBXGroup;
+			children = (
+				62000E42210C5BF300AE9F0D /* Sources */,
+				62000E2A210C5B7300AE9F0D /* Supporting Files */,
+			);
+			path = IDAP_2018;
+			sourceTree = "<group>";
+		};
+		62000E2A210C5B7300AE9F0D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				625AC5732116C8A300926196 /* uk.plist */,
+				62000E38210C5B7300AE9F0D /* LaunchScreen.storyboard */,
+				62000E2D210C5B7300AE9F0D /* AppDelegate.h */,
+				62000E2E210C5B7300AE9F0D /* AppDelegate.m */,
+				62000E36210C5B7300AE9F0D /* Assets.xcassets */,
+				62000E3B210C5B7300AE9F0D /* Info.plist */,
+				62000E2B210C5B7300AE9F0D /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		62000E42210C5BF300AE9F0D /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				62000E43210C5BF300AE9F0D /* Categories */,
+				6284AF30210E6C9A00D7BC7C /* Protocols */,
+				6284AF2B210DC07500D7BC7C /* Global */,
+				62000E46210C5BF300AE9F0D /* Controllers */,
+				62000E49210C5BF300AE9F0D /* Models */,
+				62000E50210C5BF300AE9F0D /* Views */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		62000E43210C5BF300AE9F0D /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		62000E46210C5BF300AE9F0D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				629473BD21144AC200E5284B /* RootViewController.h */,
+				629473BE21144AC200E5284B /* RootViewController.m */,
+				62000E47210C5BF300AE9F0D /* ConverterViewController.h */,
+				62000E48210C5BF300AE9F0D /* ConverterViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		62000E49210C5BF300AE9F0D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				625AC5752116CE9B00926196 /* Converter */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		62000E50210C5BF300AE9F0D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				62000E57210C61E800AE9F0D /* Main.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		625AC5752116CE9B00926196 /* Converter */ = {
+			isa = PBXGroup;
+			children = (
+				625AC5762116CE9B00926196 /* Categories */,
+				625AC57B2116CE9B00926196 /* Converter.h */,
+				625AC57C2116CE9B00926196 /* Converter.m */,
+				625AC57D2116CE9B00926196 /* Formatter */,
+				625AC5882116CE9B00926196 /* Matcher.h */,
+				625AC5892116CE9B00926196 /* Matcher.m */,
+				625AC58A2116CE9B00926196 /* Numerals */,
+			);
+			name = Converter;
+			path = ../../../../Converter;
+			sourceTree = "<group>";
+		};
+		625AC5762116CE9B00926196 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				625AC5772116CE9B00926196 /* NSString+Formatting.h */,
+				625AC5782116CE9B00926196 /* NSString+Formatting.m */,
+				625AC5792116CE9B00926196 /* NumeralsFormatter+Search.h */,
+				625AC57A2116CE9B00926196 /* NumeralsFormatter+Search.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		625AC57D2116CE9B00926196 /* Formatter */ = {
+			isa = PBXGroup;
+			children = (
+				625AC57E2116CE9B00926196 /* AbstractClasses */,
+				625AC5822116CE9B00926196 /* DeutschFormatter.h */,
+				625AC5832116CE9B00926196 /* DeutschFormatter.m */,
+				625AC5842116CE9B00926196 /* EnglishFormatter.h */,
+				625AC5852116CE9B00926196 /* EnglishFormatter.m */,
+				625AC5862116CE9B00926196 /* UkrainianFormatter.h */,
+				625AC5872116CE9B00926196 /* UkrainianFormatter.m */,
+			);
+			path = Formatter;
+			sourceTree = "<group>";
+		};
+		625AC57E2116CE9B00926196 /* AbstractClasses */ = {
+			isa = PBXGroup;
+			children = (
+				625AC57F2116CE9B00926196 /* NumeralsFormatter.h */,
+				625AC5802116CE9B00926196 /* NumeralsFormatter.m */,
+				625AC5812116CE9B00926196 /* NumeralsFormatterPrivate.h */,
+			);
+			path = AbstractClasses;
+			sourceTree = "<group>";
+		};
+		625AC58A2116CE9B00926196 /* Numerals */ = {
+			isa = PBXGroup;
+			children = (
+				625AC58B2116CE9B00926196 /* Numerals+Deutsch.m */,
+				625AC58C2116CE9B00926196 /* Numerals+English.m */,
+				625AC58D2116CE9B00926196 /* Numerals+Ukrainian.m */,
+				625AC58E2116CE9B00926196 /* Numerals.h */,
+				625AC58F2116CE9B00926196 /* Numerals.m */,
+			);
+			path = Numerals;
+			sourceTree = "<group>";
+		};
+		6284AF2B210DC07500D7BC7C /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				6284AF2C210DC0E500D7BC7C /* GlobalKeys.h */,
+			);
+			path = Global;
+			sourceTree = "<group>";
+		};
+		6284AF30210E6C9A00D7BC7C /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		629F252C2110E3B200B4D678 /* IDAP_2018Tests */ = {
+			isa = PBXGroup;
+			children = (
+				629F25362111194F00B4D678 /* DeutschCardinalTests.m */,
+				62DA517D21124F0400AB0DA7 /* DeutschOrdinalTests.m */,
+				629F252D2110E3B200B4D678 /* EnglishCardinalTests.m */,
+				62DA517B21124ED900AB0DA7 /* EnglishOrdinalTests.m */,
+				629F253821119A6000B4D678 /* UkrainianCardinalTests.m */,
+				629F252F2110E3B200B4D678 /* Info.plist */,
+				629473B82113673600E5284B /* UkrainianOrdinalTests.m */,
+				629473C62114A44400E5284B /* ConverterClassTests.m */,
+				62B501C22115A28600360AF2 /* NumeralsFormatterTests.m */,
+			);
+			path = IDAP_2018Tests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		62000E26210C5B7300AE9F0D /* IDAP_2018 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 62000E3E210C5B7300AE9F0D /* Build configuration list for PBXNativeTarget "IDAP_2018" */;
+			buildPhases = (
+				62000E23210C5B7300AE9F0D /* Sources */,
+				62000E24210C5B7300AE9F0D /* Frameworks */,
+				62000E25210C5B7300AE9F0D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = IDAP_2018;
+			productName = IDAP_2018;
+			productReference = 62000E27210C5B7300AE9F0D /* IDAP_2018.app */;
+			productType = "com.apple.product-type.application";
+		};
+		629F252A2110E3B200B4D678 /* IDAP_2018Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 629F25322110E3B300B4D678 /* Build configuration list for PBXNativeTarget "IDAP_2018Tests" */;
+			buildPhases = (
+				629F25272110E3B200B4D678 /* Sources */,
+				629F25282110E3B200B4D678 /* Frameworks */,
+				629F25292110E3B200B4D678 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				629F25312110E3B200B4D678 /* PBXTargetDependency */,
+			);
+			name = IDAP_2018Tests;
+			productName = IDAP_2018Tests;
+			productReference = 629F252B2110E3B200B4D678 /* IDAP_2018Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		62000E1F210C5B7300AE9F0D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "Yevhen Triukhan";
+				TargetAttributes = {
+					62000E26210C5B7300AE9F0D = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = LHD3993YVW;
+						ProvisioningStyle = Automatic;
+					};
+					629F252A2110E3B200B4D678 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = LHD3993YVW;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 62000E26210C5B7300AE9F0D;
+					};
+				};
+			};
+			buildConfigurationList = 62000E22210C5B7300AE9F0D /* Build configuration list for PBXProject "IDAP_2018" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 62000E1E210C5B7300AE9F0D;
+			productRefGroup = 62000E28210C5B7300AE9F0D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				62000E26210C5B7300AE9F0D /* IDAP_2018 */,
+				629F252A2110E3B200B4D678 /* IDAP_2018Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		62000E25210C5B7300AE9F0D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				62000E58210C61E800AE9F0D /* Main.storyboard in Resources */,
+				62000E3A210C5B7300AE9F0D /* LaunchScreen.storyboard in Resources */,
+				625AC5742116C8A300926196 /* uk.plist in Resources */,
+				62000E37210C5B7300AE9F0D /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		629F25292110E3B200B4D678 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		62000E23210C5B7300AE9F0D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				62000E2F210C5B7300AE9F0D /* AppDelegate.m in Sources */,
+				625AC5962116CE9B00926196 /* UkrainianFormatter.m in Sources */,
+				625AC5952116CE9B00926196 /* EnglishFormatter.m in Sources */,
+				625AC5932116CE9B00926196 /* NumeralsFormatter.m in Sources */,
+				625AC5972116CE9B00926196 /* Matcher.m in Sources */,
+				62000E52210C5BF300AE9F0D /* ConverterViewController.m in Sources */,
+				625AC5942116CE9B00926196 /* DeutschFormatter.m in Sources */,
+				62000E2C210C5B7300AE9F0D /* main.m in Sources */,
+				625AC5982116CE9B00926196 /* Numerals+Deutsch.m in Sources */,
+				625AC5922116CE9B00926196 /* Converter.m in Sources */,
+				625AC5912116CE9B00926196 /* NumeralsFormatter+Search.m in Sources */,
+				629473BF21144AC200E5284B /* RootViewController.m in Sources */,
+				625AC59B2116CE9B00926196 /* Numerals.m in Sources */,
+				625AC59A2116CE9B00926196 /* Numerals+Ukrainian.m in Sources */,
+				625AC5902116CE9B00926196 /* NSString+Formatting.m in Sources */,
+				625AC5992116CE9B00926196 /* Numerals+English.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		629F25272110E3B200B4D678 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				629473B92113673600E5284B /* UkrainianOrdinalTests.m in Sources */,
+				62B501C32115A28600360AF2 /* NumeralsFormatterTests.m in Sources */,
+				629F25372111194F00B4D678 /* DeutschCardinalTests.m in Sources */,
+				629F253921119A6000B4D678 /* UkrainianCardinalTests.m in Sources */,
+				62DA517C21124ED900AB0DA7 /* EnglishOrdinalTests.m in Sources */,
+				62DA517E21124F0400AB0DA7 /* DeutschOrdinalTests.m in Sources */,
+				629473C72114A44400E5284B /* ConverterClassTests.m in Sources */,
+				629F252E2110E3B200B4D678 /* EnglishCardinalTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		629F25312110E3B200B4D678 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 62000E26210C5B7300AE9F0D /* IDAP_2018 */;
+			targetProxy = 629F25302110E3B200B4D678 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		62000E38210C5B7300AE9F0D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				62000E39210C5B7300AE9F0D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		62000E3C210C5B7300AE9F0D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		62000E3D210C5B7300AE9F0D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		62000E3F210C5B7300AE9F0D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = LHD3993YVW;
+				INFOPLIST_FILE = IDAP_2018/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.TY.IDAP-2018";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		62000E40210C5B7300AE9F0D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = LHD3993YVW;
+				INFOPLIST_FILE = IDAP_2018/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.TY.IDAP-2018";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		629F25332110E3B300B4D678 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = LHD3993YVW;
+				INFOPLIST_FILE = IDAP_2018Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.TY.IDAP-2018Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IDAP_2018.app/IDAP_2018";
+			};
+			name = Debug;
+		};
+		629F25342110E3B300B4D678 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = LHD3993YVW;
+				INFOPLIST_FILE = IDAP_2018Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.TY.IDAP-2018Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IDAP_2018.app/IDAP_2018";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		62000E22210C5B7300AE9F0D /* Build configuration list for PBXProject "IDAP_2018" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				62000E3C210C5B7300AE9F0D /* Debug */,
+				62000E3D210C5B7300AE9F0D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		62000E3E210C5B7300AE9F0D /* Build configuration list for PBXNativeTarget "IDAP_2018" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				62000E3F210C5B7300AE9F0D /* Debug */,
+				62000E40210C5B7300AE9F0D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		629F25322110E3B300B4D678 /* Build configuration list for PBXNativeTarget "IDAP_2018Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				629F25332110E3B300B4D678 /* Debug */,
+				629F25342110E3B300B4D678 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 62000E1F210C5B7300AE9F0D /* Project object */;
+}
