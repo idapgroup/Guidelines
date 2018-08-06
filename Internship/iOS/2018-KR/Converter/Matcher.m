@@ -10,9 +10,10 @@
 
 #import "DeutschFormatter.h"
 #import "EnglishFormatter.h"
-#import "GlobalKeys.h"
 #import "Numerals.h"
 #import "UkrainianFormatter.h"
+
+#import "GlobalKeys.h"
 
 @interface Matcher ()
 

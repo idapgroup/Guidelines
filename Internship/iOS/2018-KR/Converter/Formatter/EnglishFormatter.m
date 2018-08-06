@@ -8,10 +8,10 @@
 
 #import "EnglishFormatter.h"
 
-#import "GlobalKeys.h"
 #import "Numerals.h"
 #import "NumeralsFormatterPrivate.h"
 
+#import "GlobalKeys.h"
 #import "NSString+Formatting.h"
 
 static NSString * kOrdinalExceptions  = @"ordinalExceptions";

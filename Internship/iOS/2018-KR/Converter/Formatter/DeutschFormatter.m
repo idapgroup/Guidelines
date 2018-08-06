@@ -8,10 +8,10 @@
 
 #import "DeutschFormatter.h"
 
-#import "GlobalKeys.h"
 #import "Numerals.h"
 #import "NumeralsFormatterPrivate.h"
 
+#import "GlobalKeys.h"
 #import "NSString+Formatting.h"
 #import "NumeralsFormatter+Search.h"
 

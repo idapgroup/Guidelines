@@ -8,6 +8,8 @@
 
 #import "Numerals.h"
 
+#import "GlobalKeys.h"
+
 @implementation Numerals (Deutsch)
 
 + (Numerals *)deutsch {

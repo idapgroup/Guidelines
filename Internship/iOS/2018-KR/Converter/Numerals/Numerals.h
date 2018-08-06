@@ -6,14 +6,7 @@
 //  Copyright © 2018 Yevhen Triukhan. All rights reserved.
 //
 
-//  класс содержащий таблицы соответствия цифр и числительных.
-//  имеет несколько удобных методов заполнения таблиц для en, de, uk
-//  удобные методы хранятся в расширениях (не категориях) класса.
-//  должен инититься файлом типа en.plist
-
 #import <Foundation/Foundation.h>
-
-#import "GlobalKeys.h"
 
 @interface Numerals : NSObject
 
