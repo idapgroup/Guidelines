@@ -53,3 +53,21 @@ C:\Users\duuse\Desktop\Усенко Дмитрий\IDAP_TEST_UsenkoDmitry\IDAP_T
 C:\Users\duuse\Desktop\Усенко Дмитрий\IDAP_TEST_UsenkoDmitry\IDAP_TEST - Project\IDAP_TEST\obj\Debug\IDAP_TEST.csproj.GenerateResource.Cache
 C:\Users\duuse\Desktop\Усенко Дмитрий\IDAP_TEST_UsenkoDmitry\IDAP_TEST - Project\IDAP_TEST\obj\Debug\de-DE\IDAP_TEST.resources.dll
 C:\Users\duuse\Desktop\Усенко Дмитрий\IDAP_TEST_UsenkoDmitry\IDAP_TEST - Project\IDAP_TEST\obj\Debug\uk-UA\IDAP_TEST.resources.dll
+C:\Users\duuse\Documents\GitHub\Guidelines\Internship\iOS\2018-KR\UsenkoDmitry\IDAP_TEST - Project\IDAP_TEST\bin\Debug\IDAP_TEST.exe.config
+C:\Users\duuse\Documents\GitHub\Guidelines\Internship\iOS\2018-KR\UsenkoDmitry\IDAP_TEST - Project\IDAP_TEST\obj\Debug\IDAP_TEST.exe
+C:\Users\duuse\Documents\GitHub\Guidelines\Internship\iOS\2018-KR\UsenkoDmitry\IDAP_TEST - Project\IDAP_TEST\obj\Debug\IDAP_TEST.pdb
+C:\Users\duuse\Documents\GitHub\Guidelines\Internship\iOS\2018-KR\UsenkoDmitry\IDAP_TEST - Project\IDAP_TEST\bin\Debug\IDAP_TEST.exe
+C:\Users\duuse\Documents\GitHub\Guidelines\Internship\iOS\2018-KR\UsenkoDmitry\IDAP_TEST - Project\IDAP_TEST\bin\Debug\IDAP_TEST.pdb
+C:\Users\duuse\Documents\GitHub\Guidelines\Internship\iOS\2018-KR\UsenkoDmitry\IDAP_TEST - Project\IDAP_TEST\bin\Debug\de-DE\IDAP_TEST.resources.dll
+C:\Users\duuse\Documents\GitHub\Guidelines\Internship\iOS\2018-KR\UsenkoDmitry\IDAP_TEST - Project\IDAP_TEST\bin\Debug\uk-UA\IDAP_TEST.resources.dll
+C:\Users\duuse\Documents\GitHub\Guidelines\Internship\iOS\2018-KR\UsenkoDmitry\IDAP_TEST - Project\IDAP_TEST\obj\Debug\IDAP_TEST.csprojResolveAssemblyReference.cache
+C:\Users\duuse\Documents\GitHub\Guidelines\Internship\iOS\2018-KR\UsenkoDmitry\IDAP_TEST - Project\IDAP_TEST\obj\Debug\IDAP_TEST.Form.resources
+C:\Users\duuse\Documents\GitHub\Guidelines\Internship\iOS\2018-KR\UsenkoDmitry\IDAP_TEST - Project\IDAP_TEST\obj\Debug\IDAP_TEST.LanguageSettings.resources
+C:\Users\duuse\Documents\GitHub\Guidelines\Internship\iOS\2018-KR\UsenkoDmitry\IDAP_TEST - Project\IDAP_TEST\obj\Debug\IDAP_TEST.Properties.Resources.resources
+C:\Users\duuse\Documents\GitHub\Guidelines\Internship\iOS\2018-KR\UsenkoDmitry\IDAP_TEST - Project\IDAP_TEST\obj\Debug\IDAP_TEST.Form.de-DE.resources
+C:\Users\duuse\Documents\GitHub\Guidelines\Internship\iOS\2018-KR\UsenkoDmitry\IDAP_TEST - Project\IDAP_TEST\obj\Debug\IDAP_TEST.Form.uk-UA.resources
+C:\Users\duuse\Documents\GitHub\Guidelines\Internship\iOS\2018-KR\UsenkoDmitry\IDAP_TEST - Project\IDAP_TEST\obj\Debug\IDAP_TEST.LanguageSettings.de-DE.resources
+C:\Users\duuse\Documents\GitHub\Guidelines\Internship\iOS\2018-KR\UsenkoDmitry\IDAP_TEST - Project\IDAP_TEST\obj\Debug\IDAP_TEST.LanguageSettings.uk-UA.resources
+C:\Users\duuse\Documents\GitHub\Guidelines\Internship\iOS\2018-KR\UsenkoDmitry\IDAP_TEST - Project\IDAP_TEST\obj\Debug\IDAP_TEST.csproj.GenerateResource.Cache
+C:\Users\duuse\Documents\GitHub\Guidelines\Internship\iOS\2018-KR\UsenkoDmitry\IDAP_TEST - Project\IDAP_TEST\obj\Debug\de-DE\IDAP_TEST.resources.dll
+C:\Users\duuse\Documents\GitHub\Guidelines\Internship\iOS\2018-KR\UsenkoDmitry\IDAP_TEST - Project\IDAP_TEST\obj\Debug\uk-UA\IDAP_TEST.resources.dll

@@ -115,44 +115,5 @@ namespace IDAP_TEST
                 }
             }
         }
-        /*
-        private string convertThousends(long number)
-        {
-            string result = "";
-
-            if (number != 0)
-            {
-                long tens = number % 100;
-
-                result = hundredsMap[number / 100];
-                result += tensMap[tens / 10];
-
-                if (tens / 10 != 1)
-                {
-                    if (tens % 10 < 5)
-                    {
-                        switch (tens % 10)
-                        {
-                            case 0:
-                                result += unitsMap[1];
-                                break;
-                            case 1:
-                                result += thousendsMap[0] + unitsMap[1] + endings[2];
-                                break;
-                            case 2:
-                                result += thousendsMap[1] + unitsMap[1] + endings[3];
-                                break;
-                            default:
-                                result += onesMap[tens % 10] + unitsMap[1] + endings[3];
-                                break;
-                        };
-                    }
-                    else result += onesMap[tens % 10] + unitsMap[1];
-                }
-                else result += onesMap[tens] + unitsMap[1];
-            }
-            return result;
-        }*/
-
     }
 }
