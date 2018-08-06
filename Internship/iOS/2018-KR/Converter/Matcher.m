@@ -28,6 +28,16 @@
 
 #pragma mark -
 #pragma mark Accessors
+
+- (void)setLocaleID:(NSString *)userLocale {
+
+    userLocale = [userLocale substringToIndex:2];
+    
+    if (!_localeID || [self isCorrectLocaleID:userLocale]) {
+        _localeID = userLocale;
+    }
+}
+
 - (void)setShortScale:(BOOL)shortScale {
     self.localeFormatter.numerals.shortScale = shortScale;
 }
@@ -83,25 +93,18 @@
     }
 }
 
-- (void)removeFormatterWithLocale:(NSString *)localeID {
-    NSArray *keys = [self availableLocaleID];
+- (void)removeFormatterWithLocale:(NSString *)userLocale {
     
-    for (NSString *key in keys) {
-        
-        if ([localeID hasPrefix:key]) {  //  only language designator
+    if ([self isCorrectLocaleID:userLocale]) {
+        [self.formatters removeObjectForKey:userLocale];
 
-            [self.formatters removeObjectForKey:key];
-            
-            if ([self.localeID isEqualToString:localeID]) {
-                if (self.availableLocaleID.count > 0) {
-                    self.localeID = self.availableLocaleID.firstObject;
-                } else {
-                    self.localeID = nil;
-                }
-            }
+        if (self.availableLocaleID.count > 0) {
+            _localeID = self.availableLocaleID.firstObject;
+        } else {
+            _localeID = nil;
         }
+      
     }
-    
 }
 
 - (NSArray<NSString *> *)availableLocaleID {
@@ -166,7 +169,6 @@
 }
 
 
-
 - (NSString *) starterFormatter:(NSInteger)number {
     return [self.localeFormatter starterFormatter:number];
 }
@@ -175,4 +177,11 @@
     return [self.localeFormatter finishingFormatter:number withString:(NSString *)string];
 }
 
+#pragma mark -
+#pragma mark Private API
+- (BOOL)isCorrectLocaleID:(NSString *)userLocale {  //
+    NSSet *locales = [NSSet setWithArray:[self availableLocaleID]];
+
+    return [locales containsObject:userLocale];
+}
 @end

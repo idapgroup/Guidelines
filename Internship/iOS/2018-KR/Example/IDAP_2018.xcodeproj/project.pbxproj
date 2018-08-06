@@ -208,9 +208,9 @@
 				625AC5762116CE9B00926196 /* Categories */,
 				625AC57B2116CE9B00926196 /* Converter.h */,
 				625AC57C2116CE9B00926196 /* Converter.m */,
-				625AC57D2116CE9B00926196 /* Formatter */,
 				625AC5882116CE9B00926196 /* Matcher.h */,
 				625AC5892116CE9B00926196 /* Matcher.m */,
+				625AC57D2116CE9B00926196 /* Formatter */,
 				625AC58A2116CE9B00926196 /* Numerals */,
 			);
 			name = Converter;

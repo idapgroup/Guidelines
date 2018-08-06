@@ -82,7 +82,21 @@
     XCTAssertEqual(defaultConverter.shortScale, YES);
     XCTAssertEqual(defaultConverter.availableLocaleID.count, 3);  //  en, de, ua
 
+    //  switch locale
     
+    //  try set wrong locale
+    NSString *currentLocale = defaultConverter.localeID;
+    XCTAssertNoThrow(defaultConverter.localeID = @"XXX");
+    XCTAssertEqualObjects(defaultConverter.localeID, currentLocale);
+    
+    //  try set extended locale
+    defaultConverter.localeID = @"en_GB";
+    XCTAssertEqualObjects(defaultConverter.localeID, kEN);
+    defaultConverter.localeID = @"en_AU";
+    XCTAssertEqualObjects(defaultConverter.localeID, kEN);
+    defaultConverter.localeID = @"en_US_POSIX";
+    XCTAssertEqualObjects(defaultConverter.localeID, kEN);
+
 }
 
 - (void)testAddAndRemoveFormatters {
@@ -124,6 +138,7 @@
     
     
 }
+
 
 
 @end
