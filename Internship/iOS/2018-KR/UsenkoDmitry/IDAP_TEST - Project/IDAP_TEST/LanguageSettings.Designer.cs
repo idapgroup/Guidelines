@@ -70,33 +70,6 @@ namespace IDAP_TEST {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на th.
-        /// </summary>
-        internal static string eding0 {
-            get {
-                return ResourceManager.GetString("eding0", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на y.
-        /// </summary>
-        internal static string eding1 {
-            get {
-                return ResourceManager.GetString("eding1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на ieth.
-        /// </summary>
-        internal static string eding2 {
-            get {
-                return ResourceManager.GetString("eding2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Ищет локализованную строку, похожую на  eigh.
         /// </summary>
         internal static string eight {
@@ -268,7 +241,7 @@ namespace IDAP_TEST {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на  nine.
+        ///   Ищет локализованную строку, похожую на  nin.
         /// </summary>
         internal static string nine {
             get {
@@ -430,7 +403,7 @@ namespace IDAP_TEST {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на  twelve.
+        ///   Ищет локализованную строку, похожую на  tvelve.
         /// </summary>
         internal static string twelve {
             get {
@@ -457,7 +430,7 @@ namespace IDAP_TEST {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на zero.
+        ///   Ищет локализованную строку, похожую на null.
         /// </summary>
         internal static string zero {
             get {

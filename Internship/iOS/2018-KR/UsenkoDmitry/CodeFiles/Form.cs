@@ -17,19 +17,42 @@ namespace IDAP_TEST
             InitializeComponent();
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            comboBoxLanguage.DataSource = new System.Globalization.CultureInfo[]
+            {
+                System.Globalization.CultureInfo.GetCultureInfo("en-US"),
+                System.Globalization.CultureInfo.GetCultureInfo("uk-UA"),
+                System.Globalization.CultureInfo.GetCultureInfo("de-DE")
+            };
+            comboBoxLanguage.DisplayMember = "NativeName";
+            comboBoxLanguage.ValueMember = "Name";
+            if (!String.IsNullOrEmpty(Properties.Settings.Default.Language))
+            {
+                comboBoxLanguage.SelectedValue = Properties.Settings.Default.Language;
+            }
+        }
+
         private void buttonTransform_Click(object sender, EventArgs e)
         {
             if (textBoxTransform.Text != "")
             {
+                Number.convertNumberToClasses(Int64.Parse(textBoxTransform.Text));
                 if (System.Threading.Thread.CurrentThread.CurrentUICulture.Name == "uk-UA")
-                {
-                    textField.Text = LongToOrdinalUkr.convert(Int64.Parse(textBoxTransform.Text));
+                 {
+                    NumberToOrdinalUa ua = new NumberToOrdinalUa();
+                    textField.Text = ua.convert();
                 }
                 else if (System.Threading.Thread.CurrentThread.CurrentUICulture.Name == "de-DE")
                 {
-                    textField.Text = LongToOrdinalDe.convert(Int64.Parse(textBoxTransform.Text));
+                    NumberToOrdinalDe de = new NumberToOrdinalDe();
+                    textField.Text = de.convert();
                 }
-                else textField.Text = LongToOrdinalEng.convert(Int64.Parse(textBoxTransform.Text));
+                else
+                {
+                    NumberToOrdinalEng eng = new NumberToOrdinalEng();
+                    textField.Text = eng.convert();
+                }
             }
             else MessageBox.Show(LanguageSettings.messageBoxErrText, LanguageSettings.messageBoxErrTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
@@ -40,30 +63,6 @@ namespace IDAP_TEST
             {
                 e.Handled = true;
             }
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            comboBoxLanguage.DataSource = new System.Globalization.CultureInfo[]
-            {
-                System.Globalization.CultureInfo.GetCultureInfo("en-US"),
-                System.Globalization.CultureInfo.GetCultureInfo("uk-UA"),
-                System.Globalization.CultureInfo.GetCultureInfo("de-DE")
-            };
-
-            comboBoxLanguage.DisplayMember = "NativeName";
-            comboBoxLanguage.ValueMember = "Name";
-
-            if (!String.IsNullOrEmpty(Properties.Settings.Default.Language))
-            {
-                comboBoxLanguage.SelectedValue = Properties.Settings.Default.Language;
-            }
-        }
-
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Properties.Settings.Default.Language = comboBoxLanguage.SelectedValue.ToString();
-            Properties.Settings.Default.Save();
         }
 
         private void comboBoxLanguage_Leave(object sender, EventArgs e)
@@ -85,6 +84,12 @@ namespace IDAP_TEST
         private void comboBoxLanguage_SelectedIndexChanged(object sender, EventArgs e)
         {
             textBoxTransform.Focus();
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Properties.Settings.Default.Language = comboBoxLanguage.SelectedValue.ToString();
+            Properties.Settings.Default.Save();
         }
     }
 }

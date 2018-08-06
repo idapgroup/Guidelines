@@ -117,6 +117,51 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="billion" xml:space="preserve">
+    <value> мільярд</value>
+  </data>
+  <data name="eight" xml:space="preserve">
+    <value> вісім</value>
+  </data>
+  <data name="eighteen" xml:space="preserve">
+    <value> вісімнадцять</value>
+  </data>
+  <data name="eighty" xml:space="preserve">
+    <value> вісімдесят</value>
+  </data>
+  <data name="eleven" xml:space="preserve">
+    <value> одинадцять</value>
+  </data>
+  <data name="fifteen" xml:space="preserve">
+    <value> п'ятнадцять</value>
+  </data>
+  <data name="fifth" xml:space="preserve">
+    <value> п'ятий</value>
+  </data>
+  <data name="fifty" xml:space="preserve">
+    <value> п'ятдесят</value>
+  </data>
+  <data name="first" xml:space="preserve">
+    <value> перший</value>
+  </data>
+  <data name="five" xml:space="preserve">
+    <value> п'ят</value>
+  </data>
+  <data name="forth" xml:space="preserve">
+    <value> четвертий</value>
+  </data>
+  <data name="forty" xml:space="preserve">
+    <value> сорок</value>
+  </data>
+  <data name="four" xml:space="preserve">
+    <value> чотири</value>
+  </data>
+  <data name="fourteen" xml:space="preserve">
+    <value> чотирнадцять</value>
+  </data>
+  <data name="hundred" xml:space="preserve">
+    <value />
+  </data>
   <data name="messageBoxConfirmText" xml:space="preserve">
     <value>Налаштування будуть дійсними після перезавантаження. Перезавантажити зараз?</value>
   </data>
@@ -128,5 +173,74 @@
   </data>
   <data name="messageBoxErrTitle" xml:space="preserve">
     <value>Помилка</value>
+  </data>
+  <data name="million" xml:space="preserve">
+    <value> мільйон</value>
+  </data>
+  <data name="nine" xml:space="preserve">
+    <value> дев'ят</value>
+  </data>
+  <data name="nineteen" xml:space="preserve">
+    <value> дев'ятнадцять</value>
+  </data>
+  <data name="ninety" xml:space="preserve">
+    <value> дев'яносто</value>
+  </data>
+  <data name="one" xml:space="preserve">
+    <value> од</value>
+  </data>
+  <data name="second" xml:space="preserve">
+    <value> другий</value>
+  </data>
+  <data name="seven" xml:space="preserve">
+    <value> сім</value>
+  </data>
+  <data name="seventeen" xml:space="preserve">
+    <value> сімнадцять</value>
+  </data>
+  <data name="seventy" xml:space="preserve">
+    <value> сімдесят</value>
+  </data>
+  <data name="six" xml:space="preserve">
+    <value> шіст</value>
+  </data>
+  <data name="sixteen" xml:space="preserve">
+    <value> шістнадцять</value>
+  </data>
+  <data name="sixty" xml:space="preserve">
+    <value> шістдесят</value>
+  </data>
+  <data name="ten" xml:space="preserve">
+    <value> десять</value>
+  </data>
+  <data name="third" xml:space="preserve">
+    <value> третій</value>
+  </data>
+  <data name="thirteen" xml:space="preserve">
+    <value> тринадцять</value>
+  </data>
+  <data name="thirty" xml:space="preserve">
+    <value> тридцять</value>
+  </data>
+  <data name="thousand" xml:space="preserve">
+    <value> тисяч</value>
+  </data>
+  <data name="three" xml:space="preserve">
+    <value> три</value>
+  </data>
+  <data name="trillion" xml:space="preserve">
+    <value> трильйон</value>
+  </data>
+  <data name="twelve" xml:space="preserve">
+    <value> дванадцять</value>
+  </data>
+  <data name="twenty" xml:space="preserve">
+    <value> двадцять</value>
+  </data>
+  <data name="two" xml:space="preserve">
+    <value> дв</value>
+  </data>
+  <data name="zero" xml:space="preserve">
+    <value>нуль</value>
   </data>
 </root>

@@ -118,49 +118,49 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="billion" xml:space="preserve">
-    <value> milliarden</value>
+    <value> milliard</value>
   </data>
   <data name="eight" xml:space="preserve">
-    <value> acht</value>
+    <value>ach</value>
   </data>
   <data name="eighteen" xml:space="preserve">
-    <value> achtzehn</value>
+    <value>achtzehn</value>
   </data>
   <data name="eighty" xml:space="preserve">
     <value>achtzig</value>
   </data>
   <data name="eleven" xml:space="preserve">
-    <value> elf</value>
+    <value>elf</value>
   </data>
   <data name="fifteen" xml:space="preserve">
-    <value> fünfzehn</value>
+    <value>fünfzehn</value>
   </data>
   <data name="fifth" xml:space="preserve">
-    <value> fünf</value>
+    <value>fünf</value>
   </data>
   <data name="fifty" xml:space="preserve">
     <value>fünfzig</value>
   </data>
   <data name="first" xml:space="preserve">
-    <value> ein</value>
+    <value>erste</value>
   </data>
   <data name="five" xml:space="preserve">
-    <value> fünf</value>
+    <value>fünf</value>
   </data>
   <data name="forty" xml:space="preserve">
     <value>vierzig</value>
   </data>
   <data name="four" xml:space="preserve">
-    <value> vier</value>
+    <value>vier</value>
   </data>
   <data name="fourteen" xml:space="preserve">
-    <value> vierzehn</value>
+    <value>vierzehn</value>
   </data>
   <data name="fourth" xml:space="preserve">
-    <value> vier</value>
+    <value>vier</value>
   </data>
   <data name="hundred" xml:space="preserve">
-    <value> hunderte</value>
+    <value>hundert</value>
   </data>
   <data name="messageBoxConfirmText" xml:space="preserve">
     <value>Möchten Sie Änderungen speichern und das Programm neu starten?</value>
@@ -178,67 +178,67 @@
     <value> millionen</value>
   </data>
   <data name="nine" xml:space="preserve">
-    <value> neun</value>
+    <value>neun</value>
   </data>
   <data name="nineteen" xml:space="preserve">
-    <value> neunzehn</value>
+    <value>neunzehn</value>
   </data>
   <data name="ninety" xml:space="preserve">
     <value>neunzig</value>
   </data>
   <data name="one" xml:space="preserve">
-    <value> ein</value>
+    <value>ein</value>
   </data>
   <data name="second" xml:space="preserve">
-    <value> zwei</value>
+    <value>zwei</value>
   </data>
   <data name="seven" xml:space="preserve">
-    <value> sieben</value>
+    <value>sieb</value>
   </data>
   <data name="seventeen" xml:space="preserve">
-    <value> siebzehn</value>
+    <value>siebzehn</value>
   </data>
   <data name="seventy" xml:space="preserve">
     <value>siebzig</value>
   </data>
   <data name="six" xml:space="preserve">
-    <value> sechs</value>
+    <value>sechs</value>
   </data>
   <data name="sixteen" xml:space="preserve">
-    <value> sechszehn</value>
+    <value>sechszehn</value>
   </data>
   <data name="sixty" xml:space="preserve">
     <value>sechzig</value>
   </data>
   <data name="ten" xml:space="preserve">
-    <value> zehn</value>
+    <value>zehn</value>
   </data>
   <data name="third" xml:space="preserve">
-    <value> drei</value>
+    <value>drite</value>
   </data>
   <data name="thirteen" xml:space="preserve">
-    <value> dreizehn</value>
+    <value>dreizehn</value>
   </data>
   <data name="thirty" xml:space="preserve">
     <value>dreißig</value>
   </data>
   <data name="thousand" xml:space="preserve">
-    <value> tausend</value>
+    <value>tausend</value>
   </data>
   <data name="three" xml:space="preserve">
-    <value> drei</value>
+    <value>drei</value>
   </data>
   <data name="trillion" xml:space="preserve">
     <value> billionen</value>
   </data>
   <data name="twelve" xml:space="preserve">
-    <value> zwölf</value>
+    <value>zwölf</value>
   </data>
   <data name="twenty" xml:space="preserve">
     <value>zwanzig</value>
   </data>
   <data name="two" xml:space="preserve">
-    <value> zwei</value>
+    <value>zwei</value>
   </data>
   <data name="zero" xml:space="preserve">
     <value>null</value>

@@ -75,11 +75,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>LanguageSettings.resx</DependentUpon>
     </Compile>
-    <Compile Include="LongToOrdinalDe.cs" />
-    <Compile Include="LongToOrdinalEng.cs" />
+    <Compile Include="NumberToOrdinal.cs" />
+    <Compile Include="NumberToOrdinalDe.cs" />
+    <Compile Include="NumberToOrdinalEng.cs" />
+    <Compile Include="Number.cs" />
+    <Compile Include="Ordinal.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="LongToOrdinalUa.cs" />
+    <Compile Include="NumberToOrdinalUa.cs" />
     <EmbeddedResource Include="Form.de-DE.resx">
       <DependentUpon>Form.cs</DependentUpon>
     </EmbeddedResource>

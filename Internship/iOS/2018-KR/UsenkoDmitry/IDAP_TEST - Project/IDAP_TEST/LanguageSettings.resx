@@ -120,15 +120,6 @@
   <data name="billion" xml:space="preserve">
     <value> billion</value>
   </data>
-  <data name="eding0" xml:space="preserve">
-    <value>th</value>
-  </data>
-  <data name="eding1" xml:space="preserve">
-    <value>y</value>
-  </data>
-  <data name="eding2" xml:space="preserve">
-    <value>ieth</value>
-  </data>
   <data name="eight" xml:space="preserve">
     <value> eigh</value>
   </data>
@@ -187,7 +178,7 @@
     <value> million</value>
   </data>
   <data name="nine" xml:space="preserve">
-    <value> nine</value>
+    <value> nin</value>
   </data>
   <data name="nineteen" xml:space="preserve">
     <value> nineteen</value>
@@ -241,7 +232,7 @@
     <value> trillion</value>
   </data>
   <data name="twelve" xml:space="preserve">
-    <value> twelve</value>
+    <value> tvelve</value>
   </data>
   <data name="twenty" xml:space="preserve">
     <value> twent</value>
@@ -250,6 +241,6 @@
     <value> two</value>
   </data>
   <data name="zero" xml:space="preserve">
-    <value>zero</value>
+    <value>null</value>
   </data>
 </root>
