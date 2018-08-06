@@ -9,10 +9,11 @@
 #import <XCTest/XCTest.h>
 
 #import "Converter.h"
+#import "DeutschFormatter.h"
+#import "EnglishFormatter.h"
+#import "Numerals.h"
 #import "NumeralsFormatter.h"
 #import "UkrainianFormatter.h"
-#import "EnglishFormatter.h"
-#import "DeutschFormatter.h"
 
 #import "GlobalKeys.h"
 
@@ -59,7 +60,11 @@
 - (void)testInitWithFormatter {
     
     NSString *path = [[NSBundle mainBundle] pathForResource:kUA ofType:@"plist"];
-    UkrainianFormatter *formatter = [[UkrainianFormatter alloc] initWithFile:path];
+    
+    Numerals *uaNumerals = [[Numerals alloc] initWithFile:path];
+    UkrainianFormatter *formatter = [[UkrainianFormatter alloc] initWithNumerals:uaNumerals];
+//    or you can do this faster
+//    UkrainianFormatter *formatter = [[UkrainianFormatter alloc] initWithFile:path];
     
     Converter *converter = [[Converter alloc] initWithFormatter:formatter];
     converter.ordinal = NO;
@@ -70,6 +75,8 @@
     
     XCTAssertNoThrow([[Converter alloc] initWithFormatter:nil]);
     XCTAssertNil([[Converter alloc] initWithFormatter:nil]);
+    
+    
 }
 
 - (void)testProperties {
@@ -83,7 +90,6 @@
     XCTAssertEqual(defaultConverter.availableLocaleID.count, 3);  //  en, de, ua
 
     //  switch locale
-    
     //  try set wrong locale
     NSString *currentLocale = defaultConverter.localeID;
     XCTAssertNoThrow(defaultConverter.localeID = @"XXX");
@@ -127,18 +133,45 @@
     //  switch localeID if formatter for current locale was removed
     DeutschFormatter *deFormatter = [DeutschFormatter formatter];
     XCTAssertNil(self.uaConverter.localeID);
+    
     [self.uaConverter addFormatter:enFormatter];
     XCTAssertEqualObjects(self.uaConverter.localeID, kEN);
+    
     [self.uaConverter addFormatter:deFormatter];
     XCTAssertEqualObjects(self.uaConverter.localeID, kEN);
+    
     [self.uaConverter removeFormatterWithLocale:kEN];
     XCTAssertEqualObjects(self.uaConverter.localeID, kDE);
+    
     [self.uaConverter removeFormatterWithLocale:kDE];
     XCTAssertNil(self.uaConverter.localeID);
     
-    
 }
 
+- (void)testConvertWithLocale {
+    Converter *defaultConverter = [Converter new];
+    
+    defaultConverter.localeID = kEN;
+    NSString *enNumber = [defaultConverter stringFromNumber:2];
+    NSLocale *enLocale = [NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"];
+    XCTAssertEqualObjects([defaultConverter stringFromNumber:2 withLocale:enLocale], enNumber);
+    
+    defaultConverter.localeID = kDE;
+    NSString *deNumber = [defaultConverter stringFromNumber:2];
+    NSLocale *deLocale = [NSLocale localeWithLocaleIdentifier:@"de_DE"];
+    XCTAssertEqualObjects([defaultConverter stringFromNumber:2 withLocale:deLocale], deNumber);
+    
+    defaultConverter.localeID = kUA;
+    NSString *uaNumber = [defaultConverter stringFromNumber:2];
+    NSLocale *uaLocale = [NSLocale localeWithLocaleIdentifier:@"uk_UA"];
+    XCTAssertEqualObjects([defaultConverter stringFromNumber:2 withLocale:uaLocale], uaNumber);
+
+    //  locale not available or nil
+    NSLocale *frLocale = [NSLocale localeWithLocaleIdentifier:@"fr_FR"];
+    XCTAssertNil([defaultConverter stringFromNumber:2 withLocale:frLocale]);
+    XCTAssertNil([defaultConverter stringFromNumber:2 withLocale:nil]);
+
+}
 
 
 @end

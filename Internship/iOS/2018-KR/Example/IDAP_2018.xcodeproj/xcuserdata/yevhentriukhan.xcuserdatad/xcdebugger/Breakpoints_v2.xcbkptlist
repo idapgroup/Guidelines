@@ -450,11 +450,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IDAP_2018Tests/ConverterClassTests.m"
-            timestampString = "555193947.674233"
+            timestampString = "555240906.397522"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
             landmarkName = "-testInitWithFormatter"
             landmarkType = "7">
             <Locations>
@@ -528,11 +528,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IDAP_2018Tests/ConverterClassTests.m"
-            timestampString = "555193170.781118"
+            timestampString = "555240906.397522"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
             landmarkName = "-testInit"
             landmarkType = "7">
          </BreakpointContent>
@@ -560,11 +560,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IDAP_2018Tests/ConverterClassTests.m"
-            timestampString = "555193947.674233"
+            timestampString = "555240906.397522"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
             landmarkName = "-testInit"
             landmarkType = "7">
             <Locations>
@@ -638,11 +638,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IDAP_2018Tests/ConverterClassTests.m"
-            timestampString = "555193947.674233"
+            timestampString = "555240906.397522"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
             landmarkName = "-testInit"
             landmarkType = "7">
          </BreakpointContent>
@@ -654,11 +654,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IDAP_2018Tests/ConverterClassTests.m"
-            timestampString = "555193947.674233"
+            timestampString = "555240906.397522"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
             landmarkName = "-testProperties"
             landmarkType = "7">
             <Locations>
@@ -732,11 +732,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IDAP_2018Tests/ConverterClassTests.m"
-            timestampString = "555232720.092842"
+            timestampString = "555240906.397522"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
             landmarkName = "-testInitWithFormatter"
             landmarkType = "7">
          </BreakpointContent>
@@ -764,7 +764,23 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IDAP_2018Tests/ConverterClassTests.m"
-            timestampString = "555233312.327458"
+            timestampString = "555240906.397522"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
+            landmarkName = "-testProperties"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IDAP_2018Tests/ConverterClassTests.m"
+            timestampString = "555240906.397522"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "93"
@@ -780,27 +796,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IDAP_2018Tests/ConverterClassTests.m"
-            timestampString = "555233323.551864"
+            timestampString = "555240906.397522"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
-            landmarkName = "-testProperties"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "IDAP_2018Tests/ConverterClassTests.m"
-            timestampString = "555233392.774729"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
             landmarkName = "-testProperties"
             landmarkType = "7">
          </BreakpointContent>
@@ -828,11 +828,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IDAP_2018Tests/ConverterClassTests.m"
-            timestampString = "555233867.730004"
+            timestampString = "555240906.397522"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
             landmarkName = "-testAddAndRemoveFormatters"
             landmarkType = "7">
             <Locations>
@@ -876,11 +876,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IDAP_2018Tests/ConverterClassTests.m"
-            timestampString = "555233950.4651099"
+            timestampString = "555240906.397522"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
             landmarkName = "-testAddAndRemoveFormatters"
             landmarkType = "7">
          </BreakpointContent>

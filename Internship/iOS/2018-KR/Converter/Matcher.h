@@ -29,7 +29,7 @@
 - (NSString *)largeNumbersForMultiplier:(long long)multiplier quantity:(NSInteger)quantity;
 
 - (NSString *)ordinalFormatter:(long long)number withString:(NSString *)string;
-- (NSString *)starterFormatter:(NSInteger)number;
-- (NSString *)finishingFormatter:(NSInteger)number withString:(NSString *)string;
+- (NSString *)starterFormatter:(long long)number;
+- (NSString *)finishingFormatter:(long long)number withString:(NSString *)string;
 
 @end

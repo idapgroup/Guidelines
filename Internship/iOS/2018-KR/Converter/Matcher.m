@@ -169,11 +169,11 @@
 }
 
 
-- (NSString *) starterFormatter:(NSInteger)number {
+- (NSString *) starterFormatter:(long long)number {
     return [self.localeFormatter starterFormatter:number];
 }
 
-- (NSString *) finishingFormatter:(NSInteger)number withString:(NSString *)string{
+- (NSString *) finishingFormatter:(long long)number withString:(NSString *)string{
     return [self.localeFormatter finishingFormatter:number withString:(NSString *)string];
 }
 
