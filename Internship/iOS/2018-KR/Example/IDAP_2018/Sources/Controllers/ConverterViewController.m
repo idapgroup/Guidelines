@@ -61,7 +61,7 @@
 #pragma mark Private API
 - (void)setupViews {
     self.containerView.hidden = self.isManual;
-    self.numberTextView.userInteractionEnabled = YES; // = self.isManual;
+    self.numberTextView.userInteractionEnabled = YES;
     
     self.enLabel.text = self.uaLabel.text = self.deLabel.text = kEMPTY_STRING;
     
@@ -101,8 +101,8 @@
 
 - (IBAction)generate:(UIButton *)sender {
     NSInteger number = arc4random_uniform(self.slider.value);
-    self.numberTextView.text = [NSString stringWithFormat:@"%ld", number];
     
+    self.numberTextView.text = [NSString stringWithFormat:@"%ld", number];
     [self convertNumber:number];
 }
 
