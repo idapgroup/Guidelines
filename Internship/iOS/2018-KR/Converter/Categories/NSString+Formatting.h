@@ -10,7 +10,7 @@
 
 @interface NSString (Formatting)
 
-+ (NSString *)TYstringWithInt:(NSInteger)number;
++ (NSString *)TYstringWithInt:(long long)number;
 
 + (NSString *)TYstringWithLeadingWhitespace:(NSString *)string;
 

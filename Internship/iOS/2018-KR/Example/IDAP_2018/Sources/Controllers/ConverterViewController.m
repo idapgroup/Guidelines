@@ -15,7 +15,6 @@
 
 @interface ConverterViewController () <UITextViewDelegate>
 
-//@property (weak, nonatomic) IBOutlet UITextView *deTextView;
 @property (weak, nonatomic) IBOutlet UILabel *deLabel;
 @property (weak, nonatomic) IBOutlet UILabel *enLabel;
 @property (weak, nonatomic) IBOutlet UILabel *uaLabel;
@@ -25,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) IBOutlet UILabel *maxLabel;
 @property (weak, nonatomic) IBOutlet UISlider *slider;
+@property (weak, nonatomic) IBOutlet UILabel *randNumberLabel;
 
 @property (strong, nonatomic) Converter *converter;
 @end
@@ -61,7 +61,8 @@
 #pragma mark Private API
 - (void)setupViews {
     self.containerView.hidden = self.isManual;
-    self.numberTextView.userInteractionEnabled = YES;
+    self.numberTextView.hidden = !self.isManual;
+    self.numberTextView.userInteractionEnabled = self.isManual;
     
     self.enLabel.text = self.uaLabel.text = self.deLabel.text = kEMPTY_STRING;
     
@@ -94,6 +95,7 @@
 }
 
 //  MARK: UI Actions
+//  current max limit
 - (IBAction)valueChanged:(UISlider *)sender {
     NSInteger value = (NSInteger)sender.value;
     self.maxLabel.text = [self formattedStringFromInteger:value];
@@ -101,8 +103,8 @@
 
 - (IBAction)generate:(UIButton *)sender {
     NSInteger number = arc4random_uniform(self.slider.value);
-    
-    self.numberTextView.text = [NSString stringWithFormat:@"%ld", number];
+    self.randNumberLabel.text = [self formattedStringFromInteger:number];
+//    self.numberTextView.text = [NSString stringWithFormat:@"%ld", (long)number];
     [self convertNumber:number];
 }
 

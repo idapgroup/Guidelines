@@ -100,7 +100,7 @@ static NSString * kExceptions         = @"exceptions";
             _exceptions = [plist objectForKey:kExceptions];
             
             _localeID = [plist objectForKey:kLocaleID];
-            _shortScale = [plist objectForKey:kShortScale];
+            _shortScale = ((NSNumber *)[plist objectForKey:kShortScale]).boolValue;
         }
     }
     

@@ -58,17 +58,17 @@
     return nil;
 }
 
-- (NSString *)unitsFormatter:(NSInteger)number multiplier:(NSInteger)multiplier     { PROTECT }
-- (NSString *)teensFormatter:(NSInteger)number multiplier:(NSInteger)multiplier     { PROTECT }
-- (NSString *)roundTensFormatter:(NSInteger)number multiplier:(NSInteger)multiplier { PROTECT }
-- (NSString *)tensFormatter:(NSInteger)number multiplier:(NSInteger)multiplier      { PROTECT }
-- (NSString *)hundredsFormatter:(NSInteger)number multiplier:(NSInteger)multiplier  { PROTECT }
+- (NSString *)unitsFormatter:(NSInteger)number multiplier:(long long)multiplier     { PROTECT }
+- (NSString *)teensFormatter:(NSInteger)number multiplier:(long long)multiplier     { PROTECT }
+- (NSString *)roundTensFormatter:(NSInteger)number multiplier:(long long)multiplier { PROTECT }
+- (NSString *)tensFormatter:(NSInteger)number multiplier:(long long)multiplier      { PROTECT }
+- (NSString *)hundredsFormatter:(NSInteger)number multiplier:(long long)multiplier  { PROTECT }
 
-- (NSString *)largeNumbersFormatter:(NSInteger)multiplier quantity:(NSInteger)quantity   { PROTECT }
+- (NSString *)largeNumbersFormatter:(long long)multiplier quantity:(NSInteger)quantity   { PROTECT }
 
 - (NSString *)ordinalFormatter:(long long)number withString:(NSString *)string    { PROTECT }
-- (NSString *)starterFormatter:(NSInteger)number                                  { PROTECT }
-- (NSString *)finishingFormatter:(NSInteger)number  withString:(NSString *)string { PROTECT }
+- (NSString *)starterFormatter:(long long)number                                  { PROTECT }
+- (NSString *)finishingFormatter:(long long)number  withString:(NSString *)string { PROTECT }
 
 #pragma mark -
 #pragma mark Private API

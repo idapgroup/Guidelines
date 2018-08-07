@@ -168,7 +168,7 @@ static NSString * kMIN_LIMIT_MESSAGE = @"converter doesn't support negative numb
     return [self.matcher finishingFormatter:number withString:result];
 }
 
-- (NSString *)threeDigitParser:(NSInteger)number multiplier:(NSInteger)multiplier{
+- (NSString *)threeDigitParser:(NSInteger)number multiplier:(long long)multiplier{
     NSString *result = kEMPTY_STRING;
     
     result = [self.matcher unitsIn:number multiplier:multiplier];

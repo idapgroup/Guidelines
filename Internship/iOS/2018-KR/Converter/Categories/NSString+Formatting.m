@@ -10,9 +10,9 @@
 
 @implementation NSString (Formatting)
 
-+ (NSString *)TYstringWithInt:(NSInteger)number {
++ (NSString *)TYstringWithInt:(long long)number {
     
-    return [NSString stringWithFormat:@"%ld", number];
+    return [NSString stringWithFormat:@"%lld", number];
 }
 
 + (NSString *)TYstringWithLeadingWhitespace:(NSString *)string {

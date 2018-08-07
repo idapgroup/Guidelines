@@ -20,17 +20,17 @@
 - (instancetype)initWithNumerals:(Numerals *)numerals;
 - (instancetype)initWithFile:(NSString *)path;
 
-- (NSString *)unitsFormatter:(NSInteger)number multiplier:(NSInteger)multiplier;
-- (NSString *)teensFormatter:(NSInteger)number multiplier:(NSInteger)multiplier;
-- (NSString *)roundTensFormatter:(NSInteger)number multiplier:(NSInteger)multiplier;
-- (NSString *)tensFormatter:(NSInteger)number multiplier:(NSInteger)multiplier;
-- (NSString *)hundredsFormatter:(NSInteger)number multiplier:(NSInteger)multiplier;
+- (NSString *)unitsFormatter:(NSInteger)number multiplier:(long long)multiplier;
+- (NSString *)teensFormatter:(NSInteger)number multiplier:(long long)multiplier;
+- (NSString *)roundTensFormatter:(NSInteger)number multiplier:(long long)multiplier;
+- (NSString *)tensFormatter:(NSInteger)number multiplier:(long long)multiplier;
+- (NSString *)hundredsFormatter:(NSInteger)number multiplier:(long long)multiplier;
 
-- (NSString *)largeNumbersFormatter:(NSInteger)multiplier quantity:(NSInteger)quantity;
+- (NSString *)largeNumbersFormatter:(long long)multiplier quantity:(NSInteger)quantity;
 
 - (NSString *)ordinalFormatter:(long long)number withString:(NSString *)string;
-- (NSString *)starterFormatter:(NSInteger)number;
-- (NSString *)finishingFormatter:(NSInteger)number withString:(NSString *)string;
+- (NSString *)starterFormatter:(long long)number;
+- (NSString *)finishingFormatter:(long long)number withString:(NSString *)string;
 
 @end
 

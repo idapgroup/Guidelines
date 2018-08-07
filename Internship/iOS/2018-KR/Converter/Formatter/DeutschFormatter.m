@@ -29,27 +29,27 @@ static NSString * kSingleLargeExceptions = @"singleLargeExceptions";
     return _formatter;
 }
 
-- (NSString *)unitsFormatter:(NSInteger)number multiplier:(NSInteger)multiplier {
+- (NSString *)unitsFormatter:(NSInteger)number multiplier:(long long)multiplier {
     
 
     NSString *unitsString = self.numerals.cardinal[[NSString TYstringWithInt:number]];
     return [NSString TYstringWithLeadingWhitespace:unitsString];
 }
 
-- (NSString *)teensFormatter:(NSInteger)number multiplier:(NSInteger)multiplier {
+- (NSString *)teensFormatter:(NSInteger)number multiplier:(long long)multiplier {
     NSString *teensString = self.numerals.cardinal[[NSString TYstringWithInt:number]];
     
     return [NSString TYstringWithLeadingWhitespace:teensString];
 }
 
-- (NSString *)roundTensFormatter:(NSInteger)number multiplier:(NSInteger)multiplier {
+- (NSString *)roundTensFormatter:(NSInteger)number multiplier:(long long)multiplier {
     NSString *roundTensString = self.numerals.cardinal[[NSString TYstringWithInt:number]];
     
     return [NSString TYstringWithLeadingWhitespace:roundTensString];
 }
 
 //  units + und + tens
-- (NSString *)tensFormatter:(NSInteger)number multiplier:(NSInteger)multiplier {
+- (NSString *)tensFormatter:(NSInteger)number multiplier:(long long)multiplier {
     NSInteger units = number % 10;
     NSInteger roundTens = number - units;
     
@@ -66,13 +66,13 @@ static NSString * kSingleLargeExceptions = @"singleLargeExceptions";
     return [@[unitsString, roundTensString] componentsJoinedByString:@" und "];
 }
 
-- (NSString *)hundredsFormatter:(NSInteger)number multiplier:(NSInteger)multiplier {
+- (NSString *)hundredsFormatter:(NSInteger)number multiplier:(long long)multiplier {
     NSString *hundredsString = self.numerals.cardinal[[NSString TYstringWithInt:number]];
     
     return [NSString TYstringWithLeadingWhitespace:hundredsString];
 }
 
-- (NSString *)largeNumbersFormatter:(NSInteger)multiplier quantity:(NSInteger)quantity {
+- (NSString *)largeNumbersFormatter:(long long)multiplier quantity:(NSInteger)quantity {
     NSString *result = kEMPTY_STRING;
     NSString *key = [NSString TYstringWithInt:multiplier];
     
@@ -93,7 +93,7 @@ static NSString * kSingleLargeExceptions = @"singleLargeExceptions";
 }
 
 //  MARK:  common formatters
-- (NSString *)starterFormatter:(NSInteger)number {
+- (NSString *)starterFormatter:(long long)number {
     NSString *result = nil;
     NSString *key = [NSString TYstringWithInt:number];
     
@@ -132,7 +132,7 @@ static NSString * kSingleLargeExceptions = @"singleLargeExceptions";
     return [tempNumberParts componentsJoinedByString:kWHITESPACE];
 }
 
-- (NSString *)finishingFormatter:(NSInteger)number withString:(NSString *)string {
+- (NSString *)finishingFormatter:(long long)number withString:(NSString *)string {
     NSString *result = nil;
     
     //  замена eins <large_number> -> eine <large_number>

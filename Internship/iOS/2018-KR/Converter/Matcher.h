@@ -22,9 +22,9 @@
 
 - (NSArray<NSString *> *)availableLocaleID;
 
-- (NSString *)unitsIn:(NSInteger)number multiplier:(NSInteger)multiplier;
-- (NSString *)tensAndTeensIn:(NSInteger)number multiplier:(NSInteger)multiplier;
-- (NSString *)hundredsIn:(NSInteger)number multiplier:(NSInteger)multiplier;
+- (NSString *)unitsIn:(NSInteger)number multiplier:(long long)multiplier;
+- (NSString *)tensAndTeensIn:(NSInteger)number multiplier:(long long)multiplier;
+- (NSString *)hundredsIn:(NSInteger)number multiplier:(long long)multiplier;
 
 - (NSString *)largeNumbersForMultiplier:(long long)multiplier quantity:(NSInteger)quantity;
 

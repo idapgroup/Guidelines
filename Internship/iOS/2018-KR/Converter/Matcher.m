@@ -112,7 +112,7 @@
     return [self.formatters allKeys];
 }
 
-- (NSString *)unitsIn:(NSInteger)number multiplier:(NSInteger)multiplier {
+- (NSString *)unitsIn:(NSInteger)number multiplier:(long long)multiplier {
     NSString *unitString = kEMPTY_STRING;
     NSInteger units = number % 100;
     
@@ -124,7 +124,7 @@
 }
 
 
-- (NSString *)tensAndTeensIn:(NSInteger)number multiplier:(NSInteger)multiplier {
+- (NSString *)tensAndTeensIn:(NSInteger)number multiplier:(long long)multiplier {
     NSString *tensOrTeensString = kEMPTY_STRING;
     NSInteger tens = number % 100;
     
@@ -144,7 +144,7 @@
     return tensOrTeensString;
 }
 
-- (NSString *)hundredsIn:(NSInteger)number multiplier:(NSInteger)multiplier {
+- (NSString *)hundredsIn:(NSInteger)number multiplier:(long long)multiplier {
     NSString *hundredsString = kEMPTY_STRING;
     
     if (number > 99) {
