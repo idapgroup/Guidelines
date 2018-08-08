@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<numbers>
+  <ten_numbers>
+    <number>одна </number>
+    <number>дві </number>
+    <number>три </number>
+    <number>чотири </number>
+    <number>п'ять </number>
+    <number>шість </number>
+    <number>сім </number>
+    <number>вісім </number>
+    <number>дев'ять </number>
+    <number>десять </number>
+    <number>одинадцять</number>
+    <number>дванадцять</number>
+    <number>тринадцять</number>
+    <number>чотирнадцять</number>
+    <number>п'ятнадцять</number>
+    <number>шістнадцять</number>
+    <number>сімнадцять</number>
+    <number>вісімнадцять</number>
+    <number>дев'ятнадцять</number>
+  </ten_numbers>
+  <first_ten_numbers>
+    <number>перший</number>
+    <number>другий</number>
+    <number>третій</number>
+    <number>четвертий</number>
+    <number>п'ятий</number>
+    <number>шостий</number>
+    <number>сьомий</number>
+    <number>восьмий</number>
+    <number>дев'ятий</number>
+    <number>десятий</number>
+    <number>одинадцятий</number>
+    <number>дванадцятий</number>
+    <number>тринадцятий</number>
+    <number>чотирнадцятий</number>
+    <number>п'ятнадцятий</number>
+    <number>шістнадцятий</number>
+    <number>сімнадцятий</number>
+    <number>вісімнадцятий</number>
+    <number>дев'ятнадцятий</number>
+  </first_ten_numbers>
+  <tens>
+    <number>десять</number>
+    <number>двадцять</number>
+    <number>тридцять</number>
+    <number>сорок</number>
+    <number>п'ятдесят</number>
+    <number>шістдесят</number>
+    <number>симдесят</number>
+    <number>вісімдесят</number>
+    <number>дев'яносто</number>
+    <number>десяти</number>
+    <number>двадцяти</number>
+    <number>тридцяти</number>
+    <number>сорока</number>
+    <number>п'ятдесяти</number>
+    <number>шістдесяти</number>
+    <number>сімдесяти</number>
+    <number>вісімдесяти</number>
+    <number>дев'яносто</number>
+  </tens>
+  <ordinal_ten>
+    <number>десятий</number>
+    <number>двадцятий</number>
+    <number>тридцятий</number>
+    <number>сороковий</number>
+    <number>п'ятидесятий</number>
+    <number>шістдесятий</number>
+    <number>сімдесятий</number>
+    <number>вісімдесятий</number>
+    <number>дев'яностий</number>
+    <number>сотий</number>
+    <number>двохсотий</number>
+    <number>трьохсотий</number>
+    <number>чотирьохсотий</number>
+    <number>п'ятисотий</number>
+    <number>шістсотий</number>
+    <number>сімсотий</number>
+    <number>восьмисотий</number>
+    <number>дев'ятсотий</number>
+    <number>одно</number>
+    <number>двох</number>
+    <number>трьох</number>
+    <number>чотирьох</number>
+    <number>п'яти</number>
+    <number>шести</number>
+    <number>семи</number>
+    <number>восьми</number>
+    <number>дев'яти</number>
+  </ordinal_ten>
+  <discharge>
+    <number>сто</number>
+    <number>тисяча</number>
+    <number>мільйон</number>
+    <number>мільярд</number>
+    <number>трильйон</number>
+    <number>тисячний</number>
+    <number>мільйонний</number>
+    <number>мільярдний</number>
+    <number>трильйонний</number>
+  </discharge>
+  <hundreds>
+    <number>сто</number>
+    <number>двісті</number>
+    <number>триста</number>
+    <number>чотириста</number>
+    <number>п'ятсот</number>
+    <number>шістсот</number>
+    <number>сімсот</number>
+    <number>вісімсот</number>
+    <number>дев'ятсот</number>
+  </hundreds>
+  <ending>
+    <number>тисяч</number>
+    <number>мільйонів</number>
+    <number>мільярдів</number>
+    <number>трильйонів</number>
+    <number>тисячі</number>
+    <number>мільйони</number>
+    <number>мільярди</number>
+    <number>трильйони</number>
+    <number>один</number>
+    <number>два</number>
+  </ending>
+</numbers>

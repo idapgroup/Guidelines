@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<numbers>
+  <ten_numbers>
+    <number>one </number>
+    <number>two </number>
+    <number>three </number>
+    <number>four </number>
+    <number>five </number>
+    <number>six </number>
+    <number>seven </number>
+    <number>eight </number>
+    <number>nine </number>
+    <number>ten </number>
+    <number>eleven </number>
+    <number>twelve </number>
+    <number>thirteen </number>
+    <number>fourteen </number>
+    <number>fifteen </number>
+    <number>sixteen </number>
+    <number>seventeen </number>
+    <number>eighteen </number>
+    <number>nineteen </number>
+    <number> </number>
+  </ten_numbers>
+  <first_ten_numbers>
+    <number>first</number>
+    <number>second</number>
+    <number>third</number>
+    <number>fourth</number>
+    <number>fifth</number>
+    <number>sixth</number>
+    <number>seventh</number>
+    <number>eighth</number>
+    <number>ninth</number>
+    <number>tenth</number>
+    <number>eleventh</number>
+    <number>twelfth</number>
+    <number>thirteenth</number>
+    <number>fourteenth</number>
+    <number>fifteenth</number>
+    <number>sixteenth</number>
+    <number>seventeenth</number>
+    <number>eighteenth</number>
+    <number>nineteenth</number>
+  </first_ten_numbers>
+  <tens>
+    <number>ten</number>
+    <number>twenty</number>
+    <number>thirty</number>
+    <number>forty</number>
+    <number>fifty</number>
+    <number>sixty</number>
+    <number>seventy</number>
+    <number>eighty</number>
+    <number>ninety</number>
+  </tens>
+  <ordinal_ten>
+    <number>tenth</number>
+    <number>twentieth</number>
+    <number>thirtieth</number>
+    <number>forties</number>
+    <number>fiftieth</number>
+    <number>sixtieth</number>
+    <number>seventieth</number>
+    <number>eightieth</number>
+    <number>ninetieth</number>
+  </ordinal_ten>
+  <discharge>
+    <number>hundred</number>
+    <number>thousand</number>
+    <number>million</number>
+    <number>billion</number>
+    <number>trillion</number>
+  </discharge>
+  <hundreds>
+    <number>one hundred</number>
+    <number>two hundred</number>
+    <number>three hundred</number>
+    <number>four hundred</number>
+    <number>five hundred</number>
+    <number>six hundred</number>
+    <number>seven hundred</number>
+    <number>eight hundred</number>
+    <number>nine hundred</number>
+  </hundreds>
+  <ending>
+    <number>th</number>
+  </ending>
+</numbers>

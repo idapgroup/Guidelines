@@ -1,0 +1,15 @@
+c:\users\ansfa\documents\visual studio 2015\Projects\Task_solution\Task_solution\bin\Debug\Task_solution.exe.config
+c:\users\ansfa\documents\visual studio 2015\Projects\Task_solution\Task_solution\bin\Debug\Task_solution.exe
+c:\users\ansfa\documents\visual studio 2015\Projects\Task_solution\Task_solution\bin\Debug\Task_solution.pdb
+c:\users\ansfa\documents\visual studio 2015\Projects\Task_solution\Task_solution\obj\Debug\Task_solution.csprojResolveAssemblyReference.cache
+c:\users\ansfa\documents\visual studio 2015\Projects\Task_solution\Task_solution\obj\Debug\Task_solution.Form1.resources
+c:\users\ansfa\documents\visual studio 2015\Projects\Task_solution\Task_solution\obj\Debug\Task_solution.Properties.Resources.resources
+c:\users\ansfa\documents\visual studio 2015\Projects\Task_solution\Task_solution\obj\Debug\Task_solution.csproj.GenerateResource.Cache
+c:\users\ansfa\documents\visual studio 2015\Projects\Task_solution\Task_solution\obj\Debug\Task_solution.exe
+c:\users\ansfa\documents\visual studio 2015\Projects\Task_solution\Task_solution\obj\Debug\Task_solution.pdb
+c:\users\ansfa\documents\visual studio 2015\Projects\Task_solution\Task_solution\bin\Debug\Eng.xml
+C:\Users\ansfa\documents\visual studio 2015\Projects\Task_solution\Task_solution\bin\Debug\Ukr.xml
+C:\Users\ansfa\documents\visual studio 2015\Projects\Task_solution\Task_solution\bin\Debug\Ger.xml
+C:\Users\ansfa\Source\Repos\Guidelines\Task_solution\Task_solution\bin\Debug\Task_solution.exe.config
+C:\Users\ansfa\Source\Repos\Guidelines\Task_solution\Task_solution\obj\Debug\Task_solution.exe
+C:\Users\ansfa\Source\Repos\Guidelines\Task_solution\Task_solution\obj\Debug\Task_solution.pdb
