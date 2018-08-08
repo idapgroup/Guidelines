@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace TestNumConvertor
@@ -8,19 +7,7 @@ namespace TestNumConvertor
     {
         public Languages Lang { get; set; }
 
-        private ulong num;
-        private bool validNum;
-        private string strNum;
-        public string StrNum
-        {
-            get { return strNum; }
-            set
-            {
-                validNum = UInt64.TryParse(value, out num);
-                strNum = value;
-                OnPropertyChanged("StrNum");
-            }
-        }
+        public ulong Num { get; set; }
 
         private string result;
         public string Result
@@ -44,24 +31,17 @@ namespace TestNumConvertor
                 return convertCmd ??
                     (
                         convertCmd = new RelayCommand(obj =>
-                        {
-                            Result = num > Math.Pow(10, 15) 
-                            ? "Диапазон превышен" 
-                            : NumConvertor.Convert(num, Lang);
-                        }, o => validNum)
+                            Result = NumConvertor.Convert(Num, Lang))
                     );
             }
         }
 
-        public AppViewModel()
-        {
-            Result = "Результат преобразования отобразиться здесь";
-        }
-
+        #region INotifyPropertyChanged members
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         }
+        #endregion
     }
 }

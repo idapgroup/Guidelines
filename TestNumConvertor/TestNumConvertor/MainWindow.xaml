@@ -4,12 +4,35 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TestNumConvertor"
+        xmlns:sys ="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="MainWindow" Height="175" Width="800" MinHeight="175" MinWidth="800">
+        Title="NumConvertor" Height="175" Width="800" MinHeight="175" MinWidth="800">
     <Window.DataContext>
         <local:AppViewModel/>
     </Window.DataContext>
 
+    <Window.Resources>
+        <sys:String x:Key="NumRegValidator">^[0-9]{0,15}$</sys:String>
+        <sys:String x:Key="NumValidationError">Число должно быть положительным целым и не больше 10^15-1</sys:String>
+        <sys:String x:Key="StartResMes">Результат преобразования отобразиться здесь</sys:String>
+
+        <Style x:Key="textBoxInError" TargetType="TextBox">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="true">
+                    <Setter Property="ToolTip" Value="{Binding RelativeSource={x:Static RelativeSource.Self},
+                        Path=(Validation.Errors)[0].ErrorContent}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="cmdButton" TargetType="Button">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding ElementName=inputField,Path=(Validation.HasError)}" Value="True">
+                    <Setter Property="IsEnabled" Value="False"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
@@ -19,15 +42,27 @@
             <ColumnDefinition Width="60*"/>
             <ColumnDefinition Width="40*"/>
         </Grid.ColumnDefinitions>
-        <TextBox Text="{Binding Path=StrNum, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" Margin="30 20 10 10"/>
-        <ComboBox ItemsSource="{Binding Path=Lang, Converter={local:EnumConvertor}, Mode=OneTime}"
+        <TextBox x:Name="inputField" VerticalContentAlignment="Center" Margin="30 20 10 10" Style="{StaticResource textBoxInError}">
+            <TextBox.Text>
+                <Binding Path="Num" UpdateSourceTrigger="PropertyChanged" >
+                    <Binding.ValidationRules>
+                        <local:InputByRegexRule RegexExp="{StaticResource NumRegValidator}" 
+                                                ErrorMessage="{StaticResource NumValidationError}"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <ComboBox ItemsSource="{Binding Path=Lang, Converter={local:EnumConvertor}, Mode=OneTime, UpdateSourceTrigger=PropertyChanged}"
                   Margin="10 20 30 10" Grid.Column="1"
                   VerticalContentAlignment="Center" 
                   SelectedValuePath="Item1"
                   DisplayMemberPath="Item2"
-                  SelectedValue="{Binding Path=Lang}">
-        </ComboBox>
-        <Button Command="{Binding ConvertCmd}" VerticalAlignment ="Top"  Height="30" Margin="10 5 30 20" Content="Перевести число в строку" Grid.Row="1" Grid.Column="2"/>
-        <TextBlock TextWrapping="Wrap" Text="{Binding Path=Result, UpdateSourceTrigger=PropertyChanged}" Margin="30 5 10 20" Grid.Row="1"/>
+                  SelectedValue="{Binding Path=Lang}"/>
+        <Button Command="{Binding ConvertCmd}" 
+                VerticalAlignment ="Top"  Height="30" Margin="10 5 30 20" 
+                Content="Перевести число в строку" Grid.Row="1" Grid.Column="2"
+                Style="{StaticResource cmdButton}"/>
+        <TextBlock Text="{Binding Path=Result, UpdateSourceTrigger=PropertyChanged, TargetNullValue={StaticResource StartResMes}}"
+                   Margin="30 5 10 20" Grid.Row="1" TextWrapping="Wrap" />
     </Grid>
 </Window>

@@ -57,6 +57,7 @@
     </ApplicationDefinition>
     <Compile Include="EnumConvertor.cs" />
     <Compile Include="EnumHelper.cs" />
+    <Compile Include="InputByRegexRule.cs" />
     <Compile Include="Langs\DE.cs" />
     <Compile Include="Langs\ENG.cs" />
     <Compile Include="ILanguage.cs" />

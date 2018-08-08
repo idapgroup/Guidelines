@@ -17,7 +17,7 @@ namespace TestNumConvertor
             switch (lang)
             {
                 case Languages.ENG:
-                    cache.Add(lang, new ENG());
+                    cache.Add(lang, new eng2());
                     return ConvertNum();
                 case Languages.DE:
                     cache.Add(lang, new DE());

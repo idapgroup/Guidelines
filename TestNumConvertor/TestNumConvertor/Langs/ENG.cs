@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace TestNumConvertor.Langs
 {
-    class ENG : ILanguage
+    class eng2 : ILanguage
     {
         private struct Endings
         {
