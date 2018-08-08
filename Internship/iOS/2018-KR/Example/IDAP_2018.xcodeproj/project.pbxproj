@@ -63,8 +63,8 @@
 		625AC5782116CE9B00926196 /* NSString+Formatting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Formatting.m"; sourceTree = "<group>"; };
 		625AC5792116CE9B00926196 /* NumeralsFormatter+Search.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NumeralsFormatter+Search.h"; sourceTree = "<group>"; };
 		625AC57A2116CE9B00926196 /* NumeralsFormatter+Search.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NumeralsFormatter+Search.m"; sourceTree = "<group>"; };
-		625AC57B2116CE9B00926196 /* Converter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Converter.h; sourceTree = "<group>"; };
-		625AC57C2116CE9B00926196 /* Converter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Converter.m; sourceTree = "<group>"; };
+		625AC57B2116CE9B00926196 /* Converter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Converter.h; path = ../Converter/Converter.h; sourceTree = "<group>"; };
+		625AC57C2116CE9B00926196 /* Converter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Converter.m; path = ../Converter/Converter.m; sourceTree = "<group>"; };
 		625AC57F2116CE9B00926196 /* NumeralsFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumeralsFormatter.h; sourceTree = "<group>"; };
 		625AC5802116CE9B00926196 /* NumeralsFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumeralsFormatter.m; sourceTree = "<group>"; };
 		625AC5812116CE9B00926196 /* NumeralsFormatterPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumeralsFormatterPrivate.h; sourceTree = "<group>"; };
@@ -74,8 +74,8 @@
 		625AC5852116CE9B00926196 /* EnglishFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnglishFormatter.m; sourceTree = "<group>"; };
 		625AC5862116CE9B00926196 /* UkrainianFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UkrainianFormatter.h; sourceTree = "<group>"; };
 		625AC5872116CE9B00926196 /* UkrainianFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UkrainianFormatter.m; sourceTree = "<group>"; };
-		625AC5882116CE9B00926196 /* Matcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Matcher.h; sourceTree = "<group>"; };
-		625AC5892116CE9B00926196 /* Matcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Matcher.m; sourceTree = "<group>"; };
+		625AC5882116CE9B00926196 /* Matcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Matcher.h; path = ../Converter/Matcher.h; sourceTree = "<group>"; };
+		625AC5892116CE9B00926196 /* Matcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Matcher.m; path = ../Converter/Matcher.m; sourceTree = "<group>"; };
 		625AC58B2116CE9B00926196 /* Numerals+Deutsch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Numerals+Deutsch.m"; sourceTree = "<group>"; };
 		625AC58C2116CE9B00926196 /* Numerals+English.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Numerals+English.m"; sourceTree = "<group>"; };
 		625AC58D2116CE9B00926196 /* Numerals+Ukrainian.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Numerals+Ukrainian.m"; sourceTree = "<group>"; };
@@ -239,7 +239,8 @@
 				625AC5862116CE9B00926196 /* UkrainianFormatter.h */,
 				625AC5872116CE9B00926196 /* UkrainianFormatter.m */,
 			);
-			path = Formatter;
+			name = Formatter;
+			path = ../Converter/Formatter;
 			sourceTree = "<group>";
 		};
 		625AC57E2116CE9B00926196 /* AbstractClasses */ = {
@@ -261,7 +262,8 @@
 				625AC58E2116CE9B00926196 /* Numerals.h */,
 				625AC58F2116CE9B00926196 /* Numerals.m */,
 			);
-			path = Numerals;
+			name = Numerals;
+			path = ../Converter/Numerals;
 			sourceTree = "<group>";
 		};
 		6284AF2B210DC07500D7BC7C /* Global */ = {
