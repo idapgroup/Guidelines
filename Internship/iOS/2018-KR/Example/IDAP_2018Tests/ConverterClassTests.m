@@ -174,39 +174,52 @@
 }
 
 - (void)testPerformance {
-    NSInteger CYCLE_COUNT = 10000;
+    
+#define TEST
+    
+#ifdef TEST
+    CGFloat appleTime = 0;
+    CGFloat converterTime = 0;
+    
+    NSInteger CYCLE_COUNT = 10*THOUSAND;
     uint32_t limit = MILLION;
     
     Converter *defaultConverter = [Converter new];
     defaultConverter.localeID = kEN;
     defaultConverter.ordinal = NO;
     
-    
     NSDate *start = [NSDate date];
- 
+    
     for (NSInteger idx = 0; idx < CYCLE_COUNT; idx++) {
         long long number = arc4random_uniform(limit);
         NSLog(@"%@", [defaultConverter stringFromNumber:number]);
     }
+    converterTime =  [start timeIntervalSinceNow];
+    //    NSLog(@"** %f sec", [start timeIntervalSinceNow]);
     
-    NSLog(@"** %f sec", [start timeIntervalSinceNow]);
     
     
-    start = [NSDate date];
-
     NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
     [numberFormatter setNumberStyle:NSNumberFormatterSpellOutStyle];
     [numberFormatter setLocale:[NSLocale localeWithLocaleIdentifier:@"en"]];
+    
+    start = [NSDate date];
     
     for (NSInteger idx = 0; idx < CYCLE_COUNT; idx++) {
         NSNumber *number = [NSNumber numberWithLongLong: arc4random_uniform(limit)];
         NSLog(@"%@", [numberFormatter stringFromNumber:number]);
     }
     
-    NSLog(@"** %f sec", [start timeIntervalSinceNow]);
-
+    appleTime = [start timeIntervalSinceNow];
+    //    NSLog(@"** %f sec", [start timeIntervalSinceNow]);
     
+    NSInteger diff = (NSInteger) ((converterTime - appleTime) * (100 / appleTime));
+    NSLog(@"*** RESULT:");
+    NSLog(@"*** NSNumber = %f", appleTime);
+    NSLog(@"*** Converter = %f, (%ld%%)",converterTime, diff);
+#endif
     
+   
 }
 
 
