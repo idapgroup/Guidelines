@@ -14,7 +14,12 @@
 #import "GlobalKeys.h"
 #import "NSString+Formatting.h"
 
+
 static NSString * kOrdinalExceptions  = @"ordinalExceptions";
+
+static NSString * _cardinal [] = {@"", @"one"};
+
+
 
 @implementation EnglishFormatter
 

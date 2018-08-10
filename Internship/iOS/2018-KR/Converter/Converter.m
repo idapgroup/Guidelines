@@ -133,43 +133,43 @@ static NSString * kMIN_LIMIT_MESSAGE = @"converter doesn't support negative numb
     return [self convertLongNumber:number];
     
     
-    NSString *result = nil;
-    long long tempNumber = number;
-    
-    result = [self.matcher starterFormatter:number];
-    
-    if (!result) {
-        result = kEMPTY_STRING;
-        
-        for (NSInteger idx = 0; tempNumber > 0; idx++, tempNumber /= THOUSAND) {
-            NSInteger threeDigits = tempNumber % THOUSAND;
-            NSString *threeDigitsString = kEMPTY_STRING;
-            
-            if (threeDigits > 0) {
-                long long multiplier = (long long)pow((double)THOUSAND, (double)idx);
-                
-                
-                threeDigitsString = [self threeDigitParser:threeDigits multiplier:multiplier];
-                
-                if (multiplier >= THOUSAND) {
-                    NSString *largeNumberString = [self.matcher largeNumbersForMultiplier:multiplier
-                                                                                 quantity:threeDigits];
-                    
-                    threeDigitsString = [threeDigitsString stringByAppendingString:largeNumberString];
-                }
-                
-            }
-            //  накопление результата 1 миллион + 100 тысяч + 200
-            result = [threeDigitsString stringByAppendingString:result];
-        }
- 
-    }
-    
-    if(self.isOrdinal) {
-        result = [self.matcher ordinalFormatter:number withString:result];
-    }
-    
-    return [self.matcher finishingFormatter:number withString:result];
+//    NSString *result = nil;
+//    long long tempNumber = number;
+//    
+//    result = [self.matcher starterFormatter:number];
+//    
+//    if (!result) {
+//        result = kEMPTY_STRING;
+//        
+//        for (NSInteger idx = 0; tempNumber > 0; idx++, tempNumber /= THOUSAND) {
+//            NSInteger threeDigits = tempNumber % THOUSAND;
+//            NSString *threeDigitsString = kEMPTY_STRING;
+//            
+//            if (threeDigits > 0) {
+//                long long multiplier = (long long)pow((double)THOUSAND, (double)idx);
+//                
+//                
+//                threeDigitsString = [self threeDigitParser:threeDigits multiplier:multiplier];
+//                
+//                if (multiplier >= THOUSAND) {
+//                    NSString *largeNumberString = [self.matcher largeNumbersForMultiplier:multiplier
+//                                                                                 quantity:threeDigits];
+//                    
+//                    threeDigitsString = [threeDigitsString stringByAppendingString:largeNumberString];
+//                }
+//                
+//            }
+//            //  накопление результата 1 миллион + 100 тысяч + 200
+//            result = [threeDigitsString stringByAppendingString:result];
+//        }
+// 
+//    }
+//    
+//    if(self.isOrdinal) {
+//        result = [self.matcher ordinalFormatter:number withString:result];
+//    }
+//    
+//    return [self.matcher finishingFormatter:number withString:result];
 }
 
 - (NSString *)convertLongNumber:(long long)number {
@@ -196,9 +196,7 @@ static NSString * kMIN_LIMIT_MESSAGE = @"converter doesn't support negative numb
             }
             tempNumber = tempNumber % multiplier;
         }
-        
-//         NSLog(@"%@", parts);
-        
+                
     } else {
         return result;
     }

@@ -112,47 +112,37 @@
     return [self.formatters allKeys];
 }
 
-- (NSString *)unitsIn:(NSInteger)number multiplier:(long long)multiplier {
-    NSString *unitString = kEMPTY_STRING;
-    NSInteger units = number % 100;
-    
-    if (units > 0 && units < 10) {
-        unitString = [self.localeFormatter unitsFormatter:units multiplier:multiplier];
-    }
-    
-    return unitString;
-}
-
-
-- (NSString *)tensAndTeensIn:(NSInteger)number multiplier:(long long)multiplier {
-    NSString *tensOrTeensString = kEMPTY_STRING;
-    NSInteger tens = number % 100;
-    
-    if (tens > 9 && tens <= 19) {
-        tensOrTeensString = [self.localeFormatter teensFormatter:tens multiplier:multiplier];
-        
-    } else if (tens > 19) {  //  защита от 01, 02 итд.
-        BOOL isRoundNumber = number % 10 ? NO : YES;
-        
-        if (isRoundNumber) {
-            tensOrTeensString = [self.localeFormatter roundTensFormatter:tens multiplier:multiplier];
-        } else {
-            tensOrTeensString = [self.localeFormatter tensFormatter:tens multiplier:multiplier];
-        }
-    }
-    
-    return tensOrTeensString;
-}
-
-- (NSString *)hundredsIn:(NSInteger)number multiplier:(long long)multiplier {
-    NSString *hundredsString = kEMPTY_STRING;
+- (NSMutableArray *)threeDigitParser:(NSInteger)number multiplier:(long long)multiplier {
+    NSMutableArray *parts = [NSMutableArray new];
+    NSString *result = nil;
     
     if (number > 99) {
         NSInteger hundreds = number - (number % 100);  //  сотни
-        hundredsString = [self.localeFormatter hundredsFormatter:hundreds multiplier:multiplier];
+        result = [self.localeFormatter hundredsFormatter:hundreds multiplier:multiplier];
+        if (result) [parts addObject:result];
     }
     
-    return hundredsString;
+    NSInteger units = number % 100;
+    if (units > 0 && units < 10) {
+        result = [self.localeFormatter unitsFormatter:units multiplier:multiplier];
+        if (result) [parts addObject:result];
+        
+    } else if (units > 9 && units <= 19) {
+        result = [self.localeFormatter teensFormatter:units multiplier:multiplier];
+        if (result) [parts addObject:result];
+        
+    } else if (units > 19) {  
+        BOOL isRoundNumber = number % 10 ? NO : YES;
+        
+        if (isRoundNumber) {
+            result = [self.localeFormatter roundTensFormatter:units multiplier:multiplier];
+        } else {
+            result = [self.localeFormatter tensFormatter:units multiplier:multiplier];
+        }
+        if (result) [parts addObject:result];
+    }
+    
+    return parts;
 }
 
 - (NSString *)largeNumbersForMultiplier:(long long)multiplier quantity:(NSInteger)quantity {
@@ -195,35 +185,6 @@
 
 
 
-- (NSMutableArray *)threeDigitParser:(NSInteger)number multiplier:(long long)multiplier {
-    NSMutableArray *parts = [NSMutableArray new];
-    NSString *result = nil;
-    
-    if (number > 99) {
-        NSInteger hundreds = number - (number % 100);  //  сотни
-        result = [self.localeFormatter hundredsFormatter:hundreds multiplier:multiplier];
-        if (result) [parts addObject:result];
-    }
 
-    NSInteger units = number % 100;
-    if (units > 0 && units < 10) {
-        result = [self.localeFormatter unitsFormatter:units multiplier:multiplier];
-        if (result) [parts addObject:result];
-    } else if (units > 9 && units <= 19) {
-        result = [self.localeFormatter teensFormatter:units multiplier:multiplier];
-        if (result) [parts addObject:result];
-    } else if (units > 19) {  //  защита от 01, 02 итд.
-        BOOL isRoundNumber = number % 10 ? NO : YES;
-        
-        if (isRoundNumber) {
-            result = [self.localeFormatter roundTensFormatter:units multiplier:multiplier];
-        } else {
-            result = [self.localeFormatter tensFormatter:units multiplier:multiplier];
-        }
-        if (result) [parts addObject:result];
-    }
-    
-    return parts;
-}
 
 @end
