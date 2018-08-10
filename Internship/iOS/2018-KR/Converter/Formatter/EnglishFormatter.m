@@ -29,23 +29,17 @@ static NSString * kOrdinalExceptions  = @"ordinalExceptions";
 
 //  1..9
 - (NSString *)unitsFormatter:(NSInteger)number multiplier:(long long)multiplier {
-//    NSString *unitsString = self.numerals.cardinal[[NSString TYstringWithInt:number]];
     return self.numerals.cardinal[[NSString TYstringWithInt:number]];
-//    return [NSString TYstringWithLeadingWhitespace:unitsString];
 }
 
 //  10..19
 - (NSString *)teensFormatter:(NSInteger)number multiplier:(long long)multiplier {
-//    NSString *teensString = self.numerals.cardinal[[NSString TYstringWithInt:number]];
     return self.numerals.cardinal[[NSString TYstringWithInt:number]];
-//    return [NSString TYstringWithLeadingWhitespace:teensString];
 }
 
 //  20, 30, 40..90
 - (NSString *)roundTensFormatter:(NSInteger)number multiplier:(long long)multiplier {
-//    NSString *roundTensString = self.numerals.cardinal[[NSString TYstringWithInt:number]];
     return self.numerals.cardinal[[NSString TYstringWithInt:number]];
-//    return [NSString TYstringWithLeadingWhitespace:roundTensString];
 }
 
 //  21, 22, 23..99
@@ -55,7 +49,6 @@ static NSString * kOrdinalExceptions  = @"ordinalExceptions";
     
     //  as part of combined numeral unit deesn't need leading whitespace
     NSString *unitsString = [self unitsFormatter:units multiplier:multiplier];
-//    unitsString = [unitsString TYstringByTrimmingWhitespace];
     
     NSString *roundTensString = [self roundTensFormatter:roundTens multiplier:multiplier];
 
@@ -64,27 +57,17 @@ static NSString * kOrdinalExceptions  = @"ordinalExceptions";
 
 //  100, 200, 300..900
 - (NSString *)hundredsFormatter:(NSInteger)number multiplier:(long long)multiplier {
-//    NSString *hundredsString = self.numerals.cardinal[[NSString TYstringWithInt:number]];
     return self.numerals.cardinal[[NSString TYstringWithInt:number]];
-    ;
-//    return [NSString TYstringWithLeadingWhitespace:hundredsString];
 }
 
 //  10^3, 10^6..10^12
 - (NSString *)largeNumbersFormatter:(long long)multiplier quantity:(NSInteger)quantity {
-    NSString *result = kEMPTY_STRING;
     
     if (multiplier == THOUSAND) {
-//        result = self.numerals.cardinal[[NSString TYstringWithInt:multiplier]];
         return self.numerals.cardinal[[NSString TYstringWithInt:multiplier]];
-
     } else {
-//        result = self.numerals.cardinalLarge[[NSString TYstringWithInt:multiplier]];
         return self.numerals.cardinalLarge[[NSString TYstringWithInt:multiplier]];
     }
-//    NSString *result = self.numerals.cardinalLarge[[NSString TYstringWithInt:multiplier]];
-    
-//    return [NSString TYstringWithLeadingWhitespace:result];
 }
 
 //  MARK:  common formatters
@@ -109,9 +92,6 @@ static NSString * kOrdinalExceptions  = @"ordinalExceptions";
 }
 
 - (NSMutableArray *)ordinalFormatter:(long long)number withParts:(NSMutableArray *)parts {
-//    NSArray *numberParts = [string componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-//    NSMutableArray *tempNumberParts = [numberParts mutableCopy];
-//    NSMutableArray *tempNumberParts = [parts mutableCopy];
 
     NSString *ordinal = nil;
     NSString *cardinal = parts.lastObject;
@@ -136,7 +116,6 @@ static NSString * kOrdinalExceptions  = @"ordinalExceptions";
     [parts replaceObjectAtIndex:parts.count - 1
                                withObject:ordinal];
     
-//    return [tempNumberParts componentsJoinedByString:kWHITESPACE];
     return parts;
 }
 
