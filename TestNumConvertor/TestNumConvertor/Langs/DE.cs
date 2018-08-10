@@ -32,16 +32,17 @@ namespace TestNumConvertor.Langs
         private string ToTextRealiz(ulong x, bool lastDigit = true)
         {
             var res = String.Empty;
-            var ending = Endings.ordinal;
-            if (x >= 20)
-                ending = Endings.letterS + ending;
+
+            var ending = Endings.ordinal;             
+            if (x >= 20)                              
+                ending = Endings.letterS + ending;    
 
             for (int i = scales.Length - 1; i >= 0; --i)
                 res = ScaleNum(ref x, i, res);
 
             if (x >= 20)
             {
-                if (x % 10 != 0)
+                if (x % 10 != 0)                      
                     res += nums[x % 10] + Endings.und;
 
                 res = Declension(x / 10, res, Endings.tensAboveNineteen);
@@ -55,15 +56,16 @@ namespace TestNumConvertor.Langs
             {
                 if (lastDigit)
                 {
-                    switch (x)
-                    {
-                        case 1: return res + ExceptionsToRules.erste;
-                        case 3: return res + ExceptionsToRules.dritte;
-                        case 8: return res + ExceptionsToRules.achte;
-                        default: return res + nums[x] + ending;
-                    }
+                    switch (x)                                           
+                    {                                                    
+                        case 1: res += ExceptionsToRules.erste; break;   
+                        case 3: res += ExceptionsToRules.dritte; break;  
+                        case 8: res += ExceptionsToRules.achte; break;   
+                        default: res += nums[x]; break;                  
+                    }                                                     
                 }
-                return res + nums[x];
+                else
+                    return res + nums[x];
             }
 
             if (lastDigit)
