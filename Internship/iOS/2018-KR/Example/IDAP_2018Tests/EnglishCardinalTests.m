@@ -131,9 +131,11 @@
     XCTAssert([[self.converter stringFromNumber:TRILLION] isEqualToString:@"one trillion"]);
     
     //  1,256,721
+     NSLog(@"%@", [self.converter stringFromNumber:1256721]);
     XCTAssert([[self.converter stringFromNumber:1256721] isEqualToString:
                @"one million two hundred fifty-six thousand seven hundred twenty-one"]);
     //  31,256,721
+    NSLog(@"%@", [self.converter stringFromNumber:31256721]);
     XCTAssert([[self.converter stringFromNumber:31256721] isEqualToString:
                @"thirty-one million two hundred fifty-six thousand seven hundred twenty-one"]);
     //  631,256,721

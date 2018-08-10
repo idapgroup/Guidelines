@@ -32,4 +32,11 @@
 - (NSString *)starterFormatter:(long long)number;
 - (NSString *)finishingFormatter:(long long)number withString:(NSString *)string;
 
+
+- (NSMutableArray *)threeDigitParser:(NSInteger)number multiplier:(long long)multiplier;
+
+
+- (NSMutableArray *)ordinalFormatter:(long long)number withParts:(NSMutableArray *)parts;
+- (NSString *)finishingFormatter:(long long)number withParts:(NSMutableArray *)parts;
+
 @end

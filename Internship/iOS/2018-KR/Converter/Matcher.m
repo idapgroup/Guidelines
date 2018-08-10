@@ -169,6 +169,9 @@
     return [self.localeFormatter ordinalFormatter:number withString:string];
 }
 
+- (NSMutableArray *)ordinalFormatter:(long long)number withParts:(NSMutableArray *)parts{
+    return [self.localeFormatter ordinalFormatter:number withParts:parts];
+}
 
 - (NSString *) starterFormatter:(long long)number {
     return [self.localeFormatter starterFormatter:number];
@@ -178,6 +181,10 @@
     return [self.localeFormatter finishingFormatter:number withString:(NSString *)string];
 }
 
+- (NSString *)finishingFormatter:(long long)number withParts:(NSMutableArray *)parts {
+    return [self.localeFormatter finishingFormatter:number withParts:parts];
+}
+
 #pragma mark -
 #pragma mark Private API
 - (BOOL)isCorrectLocaleID:(NSString *)userLocale {  //
@@ -185,4 +192,38 @@
 
     return [locales containsObject:userLocale];
 }
+
+
+
+- (NSMutableArray *)threeDigitParser:(NSInteger)number multiplier:(long long)multiplier {
+    NSMutableArray *parts = [NSMutableArray new];
+    NSString *result = nil;
+    
+    if (number > 99) {
+        NSInteger hundreds = number - (number % 100);  //  сотни
+        result = [self.localeFormatter hundredsFormatter:hundreds multiplier:multiplier];
+        if (result) [parts addObject:result];
+    }
+
+    NSInteger units = number % 100;
+    if (units > 0 && units < 10) {
+        result = [self.localeFormatter unitsFormatter:units multiplier:multiplier];
+        if (result) [parts addObject:result];
+    } else if (units > 9 && units <= 19) {
+        result = [self.localeFormatter teensFormatter:units multiplier:multiplier];
+        if (result) [parts addObject:result];
+    } else if (units > 19) {  //  защита от 01, 02 итд.
+        BOOL isRoundNumber = number % 10 ? NO : YES;
+        
+        if (isRoundNumber) {
+            result = [self.localeFormatter roundTensFormatter:units multiplier:multiplier];
+        } else {
+            result = [self.localeFormatter tensFormatter:units multiplier:multiplier];
+        }
+        if (result) [parts addObject:result];
+    }
+    
+    return parts;
+}
+
 @end

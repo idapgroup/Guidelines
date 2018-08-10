@@ -78,4 +78,6 @@
     return nil;
 }
 
+- (NSMutableArray *)ordinalFormatter:(long long)number withParts:(NSMutableArray *)parts { PROTECT }
+- (NSString *)finishingFormatter:(long long)number withParts:(NSMutableArray *)parts { PROTECT }
 @end

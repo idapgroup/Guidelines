@@ -32,6 +32,10 @@
 - (NSString *)starterFormatter:(long long)number;
 - (NSString *)finishingFormatter:(long long)number withString:(NSString *)string;
 
+
+- (NSMutableArray *)ordinalFormatter:(long long)number withParts:(NSMutableArray *)parts;
+- (NSString *)finishingFormatter:(long long)number withParts:(NSMutableArray *)parts;
+
 @end
 
 
