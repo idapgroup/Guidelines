@@ -146,30 +146,31 @@
 }
 
 - (NSString *)largeNumbersForMultiplier:(long long)multiplier quantity:(NSInteger)quantity {
-    NSString *largeNumberString = kEMPTY_STRING;
+//    NSString *largeNumberString = kEMPTY_STRING;
     
-    if (multiplier >= THOUSAND) {
-        largeNumberString = [self.localeFormatter largeNumbersFormatter:multiplier quantity:quantity];
-    }
+//    if (multiplier >= THOUSAND) {
+//        largeNumberString = [self.localeFormatter largeNumbersFormatter:multiplier quantity:quantity];
+//    }
     
-    return largeNumberString;
+//    return largeNumberString;
+    return [self.localeFormatter largeNumbersFormatter:multiplier quantity:quantity];
 }
 
-- (NSString *)ordinalFormatter:(long long)number withString:(NSString *)string {
-    return [self.localeFormatter ordinalFormatter:number withString:string];
-}
+//- (NSString *)ordinalFormatter:(long long)number withString:(NSString *)string {
+//    return [self.localeFormatter ordinalFormatter:number withString:string];
+//}
 
 - (NSMutableArray *)ordinalFormatter:(long long)number withParts:(NSMutableArray *)parts{
     return [self.localeFormatter ordinalFormatter:number withParts:parts];
 }
 
-- (NSString *) starterFormatter:(long long)number {
-    return [self.localeFormatter starterFormatter:number];
-}
+//- (NSString *) starterFormatter:(long long)number {
+//    return [self.localeFormatter starterFormatter:number];
+//}
 
-- (NSString *) finishingFormatter:(long long)number withString:(NSString *)string{
-    return [self.localeFormatter finishingFormatter:number withString:(NSString *)string];
-}
+//- (NSString *) finishingFormatter:(long long)number withString:(NSString *)string{
+//    return [self.localeFormatter finishingFormatter:number withString:(NSString *)string];
+//}
 
 - (NSString *)finishingFormatter:(long long)number withParts:(NSMutableArray *)parts {
     return [self.localeFormatter finishingFormatter:number withParts:parts];

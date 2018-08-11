@@ -19,7 +19,7 @@
 		625AC5922116CE9B00926196 /* Converter.m in Sources */ = {isa = PBXBuildFile; fileRef = 625AC57C2116CE9B00926196 /* Converter.m */; };
 		625AC5932116CE9B00926196 /* NumeralsFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 625AC5802116CE9B00926196 /* NumeralsFormatter.m */; };
 		625AC5942116CE9B00926196 /* DeutschFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 625AC5832116CE9B00926196 /* DeutschFormatter.m */; };
-		625AC5952116CE9B00926196 /* EnglishFormatter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 625AC5852116CE9B00926196 /* EnglishFormatter.mm */; };
+		625AC5952116CE9B00926196 /* EnglishFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 625AC5852116CE9B00926196 /* EnglishFormatter.m */; };
 		625AC5962116CE9B00926196 /* UkrainianFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 625AC5872116CE9B00926196 /* UkrainianFormatter.m */; };
 		625AC5972116CE9B00926196 /* Matcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 625AC5892116CE9B00926196 /* Matcher.m */; };
 		625AC5982116CE9B00926196 /* Numerals+Deutsch.m in Sources */ = {isa = PBXBuildFile; fileRef = 625AC58B2116CE9B00926196 /* Numerals+Deutsch.m */; };
@@ -71,7 +71,7 @@
 		625AC5822116CE9B00926196 /* DeutschFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeutschFormatter.h; sourceTree = "<group>"; };
 		625AC5832116CE9B00926196 /* DeutschFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeutschFormatter.m; sourceTree = "<group>"; };
 		625AC5842116CE9B00926196 /* EnglishFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnglishFormatter.h; sourceTree = "<group>"; };
-		625AC5852116CE9B00926196 /* EnglishFormatter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = EnglishFormatter.mm; sourceTree = "<group>"; };
+		625AC5852116CE9B00926196 /* EnglishFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnglishFormatter.m; sourceTree = "<group>"; };
 		625AC5862116CE9B00926196 /* UkrainianFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UkrainianFormatter.h; sourceTree = "<group>"; };
 		625AC5872116CE9B00926196 /* UkrainianFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UkrainianFormatter.m; sourceTree = "<group>"; };
 		625AC5882116CE9B00926196 /* Matcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Matcher.h; path = ../Converter/Matcher.h; sourceTree = "<group>"; };
@@ -237,7 +237,7 @@
 				625AC5822116CE9B00926196 /* DeutschFormatter.h */,
 				625AC5832116CE9B00926196 /* DeutschFormatter.m */,
 				625AC5842116CE9B00926196 /* EnglishFormatter.h */,
-				625AC5852116CE9B00926196 /* EnglishFormatter.mm */,
+				625AC5852116CE9B00926196 /* EnglishFormatter.m */,
 				62C46A2E211EC3E200FDD727 /* EnglishFormatter+DataSource.m */,
 				625AC5862116CE9B00926196 /* UkrainianFormatter.h */,
 				625AC5872116CE9B00926196 /* UkrainianFormatter.m */,
@@ -406,7 +406,7 @@
 			files = (
 				62000E2F210C5B7300AE9F0D /* AppDelegate.m in Sources */,
 				625AC5962116CE9B00926196 /* UkrainianFormatter.m in Sources */,
-				625AC5952116CE9B00926196 /* EnglishFormatter.mm in Sources */,
+				625AC5952116CE9B00926196 /* EnglishFormatter.m in Sources */,
 				625AC5932116CE9B00926196 /* NumeralsFormatter.m in Sources */,
 				625AC5972116CE9B00926196 /* Matcher.m in Sources */,
 				62C46A2F211EC3E200FDD727 /* EnglishFormatter+DataSource.m in Sources */,

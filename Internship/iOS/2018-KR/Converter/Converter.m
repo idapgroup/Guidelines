@@ -189,7 +189,7 @@ static NSString * kMIN_LIMIT_MESSAGE = @"converter doesn't support negative numb
             if (threeDigits > 0) {
                 [parts addObjectsFromArray:[self.matcher threeDigitParser:threeDigits multiplier:multiplier]];
                 
-                if (multiplier > 0) {
+                if (multiplier > 1) {
                     [parts addObject:[self.matcher largeNumbersForMultiplier:multiplier
                                                                     quantity:threeDigits]];
                 }

@@ -90,6 +90,7 @@
 }
 
 - (void)testCardinalHundreds {
+
     XCTAssert([[self.converter stringFromNumber:100] isEqualToString:@"einhundert"]);
     XCTAssert([[self.converter stringFromNumber:101] isEqualToString:@"einhunderteins"]);
     XCTAssert([[self.converter stringFromNumber:139] isEqualToString:@"einhundertneununddreißig"]);
@@ -103,9 +104,10 @@
 }
 
 - (void)testCardinalThousands {
- 
+    NSLog(@"%@", [self.converter stringFromNumber:1571]);
+
     XCTAssert([[self.converter stringFromNumber:1571] isEqualToString:@"eintausendfünfhunderteinundsiebzig"]);
-//    XCTAssert([[self.converter stringFromNumber:3834] isEqualToString:@"dreitausendachthundertvierunddreißig"]);
+    XCTAssert([[self.converter stringFromNumber:3834] isEqualToString:@"dreitausendachthundertvierunddreißig"]);
     XCTAssert([[self.converter stringFromNumber:3834] isEqualToString:@"dreitausendachthundertvierunddreißig"]);
     XCTAssert([[self.converter stringFromNumber:4000] isEqualToString:@"viertausend"]);
     XCTAssert([[self.converter stringFromNumber:12853] isEqualToString:@"zwölftausendachthundertdreiundfünfzig"]);

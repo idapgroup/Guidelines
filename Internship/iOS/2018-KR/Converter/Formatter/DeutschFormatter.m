@@ -31,20 +31,23 @@ static NSString * kSingleLargeExceptions = @"singleLargeExceptions";
 - (NSString *)unitsFormatter:(NSInteger)number multiplier:(long long)multiplier {
     
 
-    NSString *unitsString = self.numerals.cardinal[[NSString TYstringWithInt:number]];
-    return [NSString TYstringWithLeadingWhitespace:unitsString];
+//    NSString *unitsString = self.numerals.cardinal[[NSString TYstringWithInt:number]];
+//    return [NSString TYstringWithLeadingWhitespace:unitsString];
+    return self.numerals.cardinal[[NSString TYstringWithInt:number]];
 }
 
 - (NSString *)teensFormatter:(NSInteger)number multiplier:(long long)multiplier {
-    NSString *teensString = self.numerals.cardinal[[NSString TYstringWithInt:number]];
-    
-    return [NSString TYstringWithLeadingWhitespace:teensString];
+//    NSString *teensString = self.numerals.cardinal[[NSString TYstringWithInt:number]];
+//    
+//    return [NSString TYstringWithLeadingWhitespace:teensString];
+    return self.numerals.cardinal[[NSString TYstringWithInt:number]];
 }
 
 - (NSString *)roundTensFormatter:(NSInteger)number multiplier:(long long)multiplier {
-    NSString *roundTensString = self.numerals.cardinal[[NSString TYstringWithInt:number]];
-    
-    return [NSString TYstringWithLeadingWhitespace:roundTensString];
+//    NSString *roundTensString = self.numerals.cardinal[[NSString TYstringWithInt:number]];
+//    
+//    return [NSString TYstringWithLeadingWhitespace:roundTensString];
+    return self.numerals.cardinal[[NSString TYstringWithInt:number]];
 }
 
 //  units + und + tens
@@ -58,7 +61,7 @@ static NSString * kSingleLargeExceptions = @"singleLargeExceptions";
     }
     
     NSString *roundTensString = [self roundTensFormatter:roundTens multiplier:multiplier];
-    roundTensString = [roundTensString TYstringByTrimmingWhitespace];
+//    roundTensString = [roundTensString TYstringByTrimmingWhitespace];
     
     //return [NSString TYjoinString:unitsString withString:roundTensString separatedByString:@" und "];
     
@@ -66,9 +69,10 @@ static NSString * kSingleLargeExceptions = @"singleLargeExceptions";
 }
 
 - (NSString *)hundredsFormatter:(NSInteger)number multiplier:(long long)multiplier {
-    NSString *hundredsString = self.numerals.cardinal[[NSString TYstringWithInt:number]];
-    
-    return [NSString TYstringWithLeadingWhitespace:hundredsString];
+//    NSString *hundredsString = self.numerals.cardinal[[NSString TYstringWithInt:number]];
+//    
+//    return [NSString TYstringWithLeadingWhitespace:hundredsString];
+    return self.numerals.cardinal[[NSString TYstringWithInt:number]];
 }
 
 - (NSString *)largeNumbersFormatter:(long long)multiplier quantity:(NSInteger)quantity {
@@ -87,38 +91,76 @@ static NSString * kSingleLargeExceptions = @"singleLargeExceptions";
                 result = [result capitalizedString];
             }
     }
-
-    return [NSString TYstringWithLeadingWhitespace:result];
+    return result;
+//    return [NSString TYstringWithLeadingWhitespace:result];
 }
 
 //  MARK:  common formatters
-- (NSString *)starterFormatter:(long long)number {
-    NSString *result = nil;
-    NSString *key = [NSString TYstringWithInt:number];
-    
-    switch (number) {
-        case 0:
-            result = self.numerals.cardinal[key];
-            break;
-        case MILLION:  //  million, billion, trillions have same one method call it's OK!
-        case BILLION:
-        case TRILLION:
-            result = [NSString stringWithFormat:@"eine %@", self.numerals.cardinalLarge[key]];
-            break;
-        default:
-            break;
-    }
-    
-    return result;
-}
+//- (NSString *)starterFormatter:(long long)number {
+//    NSString *result = nil;
+//    NSString *key = [NSString TYstringWithInt:number];
+//    
+//    switch (number) {
+//        case 0:
+//            result = self.numerals.cardinal[key];
+//            break;
+//        case MILLION:  //  million, billion, trillions have same one method call it's OK!
+//        case BILLION:
+//        case TRILLION:
+//            result = [NSString stringWithFormat:@"eine %@", self.numerals.cardinalLarge[key]];
+//            break;
+//        default:
+//            break;
+//    }
+//    
+//    return result;
+//}
 
-- (NSString *)ordinalFormatter:(long long)number withString:(NSString *)string {
-    NSArray *numberParts = [string componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-    NSMutableArray *tempNumberParts = [numberParts mutableCopy];
+//- (NSString *)ordinalFormatter:(long long)number withString:(NSString *)string {
+//    NSArray *numberParts = [string componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+//    NSMutableArray *tempNumberParts = [numberParts mutableCopy];
+//    
+//    NSString *ordinal = nil;
+//    NSString *cardinal = tempNumberParts.lastObject;
+//
+//    ordinal = [self searchOrdinalInDictionaryWithKey:cardinal];
+//    
+//    if (!ordinal) {
+//        NSDictionary *exceptions = self.numerals.exceptions[kOrdinalExceptions];
+//        ordinal = exceptions[cardinal];
+//    }
+//    
+//    [tempNumberParts replaceObjectAtIndex:tempNumberParts.count - 1 withObject:ordinal];
+//    
+//    return [tempNumberParts componentsJoinedByString:kWHITESPACE];
+//}
+//
+//- (NSString *)finishingFormatter:(long long)number withString:(NSString *)string {
+//    NSString *result = nil;
+//    
+//    //  замена eins <large_number> -> eine <large_number>
+//    result = [self replaceEinsWithEineInString:string];
+//
+//    
+//    //  удаление и вставка пробелов <large_namber> -> < large_number >
+//    NSArray *numberParts = [result componentsSeparatedByString:kWHITESPACE];
+//    numberParts = [self addWhitespaceToLarge:numberParts];
+//
+//    //  склейка и последняя обрезка
+//    result = [numberParts componentsJoinedByString:kEMPTY_STRING];
+//    
+//    return [result TYstringByTrimmingWhitespace];
+//}
+
+
+//   new
+- (NSMutableArray *)ordinalFormatter:(long long)number withParts:(NSMutableArray *)parts {
+//    NSArray *numberParts = [string componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    NSMutableArray *tempParts = [[[parts componentsJoinedByString:kWHITESPACE] componentsSeparatedByString:kWHITESPACE] mutableCopy];
     
     NSString *ordinal = nil;
-    NSString *cardinal = tempNumberParts.lastObject;
-
+    NSString *cardinal = tempParts.lastObject;
+    
     ordinal = [self searchOrdinalInDictionaryWithKey:cardinal];
     
     if (!ordinal) {
@@ -126,27 +168,29 @@ static NSString * kSingleLargeExceptions = @"singleLargeExceptions";
         ordinal = exceptions[cardinal];
     }
     
-    [tempNumberParts replaceObjectAtIndex:tempNumberParts.count - 1 withObject:ordinal];
+    [tempParts replaceObjectAtIndex:tempParts.count - 1 withObject:ordinal];
     
-    return [tempNumberParts componentsJoinedByString:kWHITESPACE];
+    return tempParts;
 }
 
-- (NSString *)finishingFormatter:(long long)number withString:(NSString *)string {
-    NSString *result = nil;
+- (NSString *)finishingFormatter:(long long)number withParts:(NSMutableArray *)parts {
+    NSString *result = [parts componentsJoinedByString:kWHITESPACE];
     
     //  замена eins <large_number> -> eine <large_number>
-    result = [self replaceEinsWithEineInString:string];
-
+//    parts = [self replaceEinsWithEineInString:parts];
+    result = [self replaceEinsWithEineInString:result];
     
     //  удаление и вставка пробелов <large_namber> -> < large_number >
     NSArray *numberParts = [result componentsSeparatedByString:kWHITESPACE];
-    numberParts = [self addWhitespaceToLarge:numberParts];
-
+    result = [self addWhitespaceToLarge:numberParts];
+//    parts = [self addWhitespaceToLarge:parts];
+    
     //  склейка и последняя обрезка
-    result = [numberParts componentsJoinedByString:kEMPTY_STRING];
+//    result = [parts componentsJoinedByString:kEMPTY_STRING];
     
     return [result TYstringByTrimmingWhitespace];
 }
+
 
 #pragma mark -
 #pragma mark Private API
@@ -168,7 +212,7 @@ static NSString * kSingleLargeExceptions = @"singleLargeExceptions";
     return [temp copy];
 }
 
-- (NSArray *)addWhitespaceToLarge:(NSArray<NSString *> *)parts {
+- (NSString *)addWhitespaceToLarge:(NSArray<NSString *> *)parts {
     NSMutableArray<NSString *> *tempParts = [parts mutableCopy];
     
     NSMutableArray<NSString *> *largeNumbers = [[self.numerals.cardinalLarge allValues] mutableCopy];
@@ -190,6 +234,48 @@ static NSString * kSingleLargeExceptions = @"singleLargeExceptions";
         }
     }
 
-    return [tempParts copy];
+//    return [tempParts copy];
+    return [tempParts componentsJoinedByString:kEMPTY_STRING];
 }
+
+//- (NSMutableArray<NSString *> *)replaceEinsWithEineInString:(NSMutableArray<NSString *> *)parts {
+//    NSArray *singleLargeExceptions = [self.numerals.exceptions[kSingleLargeExceptions] allKeys];
+//    
+//    
+//    for (NSInteger idx = 0; idx < parts.count; idx++) {
+//        NSString *part = parts[idx];
+//        
+//        for (NSString *exception in singleLargeExceptions) {
+//            if ([part isEqualToString:exception]) {
+//                [parts replaceObjectAtIndex:idx withObject:self.numerals.exceptions[kSingleLargeExceptions][exception]];
+//            }
+//        }
+//    }
+//    
+//    return parts;
+//}
+
+//- (NSMutableArray<NSString *> *)addWhitespaceToLarge:(NSMutableArray<NSString *> *)parts {
+//    
+//    NSMutableArray<NSString *> *largeNumbers = [[self.numerals.cardinalLarge allValues] mutableCopy];
+//    NSArray<NSString *> *singleLargeExceptions = [self.numerals.exceptions[kOrdinalExceptions] allValues];
+//    [largeNumbers addObjectsFromArray:singleLargeExceptions];
+//    
+//    
+//    
+//    for (NSString *large in largeNumbers) {
+//        
+//        for (NSInteger idx = 0; idx < parts.count; idx++) {
+//            NSString *part = parts[idx];
+//            
+//            if ([part hasPrefix:large]) {
+//                part = [part stringByAppendingString:kWHITESPACE];
+//                part = [kWHITESPACE stringByAppendingString:part];
+//                parts[idx] = part;
+//            }
+//        }
+//    }
+//    
+//    return parts;
+//}
 @end
