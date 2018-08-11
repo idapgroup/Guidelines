@@ -11,3 +11,7 @@
 @interface EnglishFormatter : NumeralsFormatter
 
 @end
+
+@interface EnglishFormatter (DataSource)
+- (void) test;
+@end

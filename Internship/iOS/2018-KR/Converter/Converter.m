@@ -178,10 +178,10 @@ static NSString * kMIN_LIMIT_MESSAGE = @"converter doesn't support negative numb
 
     long long tempNumber = number;
     
-    result = [self.matcher starterFormatter:tempNumber];
+//    result = [self.matcher starterFormatter:tempNumber];
+//    
+//    if (!result) {
     
-    if (!result) {
-        
         
         for (long long multiplier = TRILLION; multiplier > 0; multiplier /= THOUSAND) {
             NSInteger threeDigits = tempNumber / multiplier;
@@ -197,9 +197,9 @@ static NSString * kMIN_LIMIT_MESSAGE = @"converter doesn't support negative numb
             tempNumber = tempNumber % multiplier;
         }
                 
-    } else {
-        return result;
-    }
+//    } else {
+//        return result;
+//    }
     
     if(self.isOrdinal) {
         parts = [self.matcher ordinalFormatter:number withParts:parts];
@@ -209,15 +209,15 @@ static NSString * kMIN_LIMIT_MESSAGE = @"converter doesn't support negative numb
 }
 
 
-- (NSString *)threeDigitParser:(NSInteger)number multiplier:(long long)multiplier{
-    NSString *result = kEMPTY_STRING;
-    
-    result = [self.matcher unitsIn:number multiplier:multiplier];
-    result = [[self.matcher tensAndTeensIn:number multiplier:multiplier] stringByAppendingString:result];
-    result = [[self.matcher hundredsIn:number multiplier:multiplier] stringByAppendingString:result];
-    
-    return result;
-}
+//- (NSString *)threeDigitParser:(NSInteger)number multiplier:(long long)multiplier{
+//    NSString *result = kEMPTY_STRING;
+//    
+//    result = [self.matcher unitsIn:number multiplier:multiplier];
+//    result = [[self.matcher tensAndTeensIn:number multiplier:multiplier] stringByAppendingString:result];
+//    result = [[self.matcher hundredsIn:number multiplier:multiplier] stringByAppendingString:result];
+//    
+//    return result;
+//}
 
 @end
 

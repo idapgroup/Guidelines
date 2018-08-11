@@ -182,7 +182,7 @@
     CGFloat converterTime = 0;
     
     NSInteger CYCLE_COUNT = 10*THOUSAND;
-    uint32_t limit = MILLION;
+    uint32_t limit = 1000;
     
     Converter *defaultConverter = [Converter new];
     defaultConverter.localeID = kEN;
@@ -192,7 +192,7 @@
     
     for (NSInteger idx = 0; idx < CYCLE_COUNT; idx++) {
         long long number = arc4random_uniform(limit);
-        NSLog(@"%@", [defaultConverter stringFromNumber:number]);
+        NSLog(@"%@", [defaultConverter convertLongNumber:number]);
     }
     converterTime =  [start timeIntervalSinceNow];
     //    NSLog(@"** %f sec", [start timeIntervalSinceNow]);

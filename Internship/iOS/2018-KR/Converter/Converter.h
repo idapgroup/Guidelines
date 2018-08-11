@@ -25,4 +25,7 @@
 
 - (NSString *)stringFromNumber:(long long)number;  //  with current locale property
 - (NSString *)stringFromNumber:(long long)number withLocale:(NSLocale *)locale;
+
+
+- (NSString *)convertLongNumber:(long long)number ;
 @end

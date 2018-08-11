@@ -9,15 +9,30 @@
 #import "EnglishFormatter.h"
 
 #import "Numerals.h"
-#import "NumeralsFormatterPrivate.h"
 
 #import "GlobalKeys.h"
 #import "NSString+Formatting.h"
 
+#import <vector>
+#import <map>
 
+using namespace std;
+
+@interface EnglishFormatter ()
+{
+    map<long, NSString *>__cardinalMap;
+    NSArray *__cardinalNSA;
+}
+@property (strong, nonatomic) NSArray *cardinal;
+
+@property (strong, nonatomic) NSArray <NSString *>*cardinalUnitsAndTeens;
+@property (strong, nonatomic) NSArray <NSString *>*cardinalTens;
+@property (strong, nonatomic) NSArray <NSString *>*cardinalHundreds;
+@property (strong, nonatomic) NSArray <NSString *>*cardinalLarge;
+
+@end
 static NSString * kOrdinalExceptions  = @"ordinalExceptions";
 
-static NSString * _cardinal [] = {@"", @"one"};
 
 
 
@@ -28,51 +43,120 @@ static NSString * _cardinal [] = {@"", @"one"};
 + (instancetype)formatter {
     Numerals *numerals = [Numerals english];
     EnglishFormatter *_formatter = [[EnglishFormatter alloc] initWithNumerals:numerals];
+    _formatter->__cardinalMap = { {0, @"zero"},
+        {1, @"one"},
+        {2, @"two"},
+        {3, @"three"},
+        {4, @"four"},
+        {5, @"five"},
+        {6, @"six"},
+        {7, @"seven"},
+        {8, @"eight"},
+        {9, @"nine"},
+        
+        {10, @"ten"},
+        {11, @"eleven"},
+        {12, @"twelve"},
+        {13, @"thirteen"},
+        {14, @"fourteen"},
+        {15, @"fifteen"},
+        {16, @"sixteen"},
+        {17, @"seventeen"},
+        {18, @"eighteen"},
+        {19, @"nineteen"},
+        
+        {20, @"twenty"},
+        {30, @"thirty"},
+        {40, @"forty"},
+        {50, @"fifty"},
+        {60, @"sixty"},
+        {70, @"seventy"},
+        {80, @"eighty"},
+        {90, @"ninety"},
+        
+        {100, @"one hundred"},
+        {200, @"two hundred"},
+        {300, @"three hundred"},
+        {400, @"four hundred"},
+        {500, @"five hundred"},
+        {600, @"six hundred"},
+        {700, @"seven hundred"},
+        {800, @"eight hundred"},
+        {900, @"nine hundred"},
+        {1000, @"thousand"}};
     
+    _formatter->__cardinalNSA = @[ @"MARK_X",
+                                   @"one", @"two", @"three", @"four", @"five", @"six", @"seven", @"eight", @"nine", @"ten",
+                                   @"eleven", @"twelve", @"thirteen", @"fourteen", @"fifteen", @"sixteen", @"seventeen", @"eighteen", @"nineteen",
+                                   @"twenty", @"thirty", @"forty", @"fifty", @"sixty", @"seventy", @"eighty", @"ninety",
+                                   @"one hundred", @"two hundred", @"three hundred", @"four hundred", @"five hundred", @"six hundred", @"seven hundred", @"eight hundred", @"nine hundred",
+                                   @"thousand"];
+    
+    _formatter.cardinalUnitsAndTeens = @[@"zero",
+                                         @"one", @"two", @"three", @"four", @"five", @"six", @"seven", @"eight", @"nine", @"ten",
+                                         @"eleven", @"twelve", @"thirteen", @"fourteen", @"fifteen", @"sixteen", @"seventeen", @"eighteen", @"nineteen"];
+    _formatter.cardinalTens = @[@"", @"ten", @"twenty", @"thirty", @"forty", @"fifty", @"sixty", @"seventy", @"eighty", @"ninety"];
+    _formatter.cardinalHundreds = @[@"", @"one hundred", @"two hundred", @"three hundred", @"four hundred", @"five hundred", @"six hundred", @"seven hundred", @"eight hundred", @"nine hundred"];
+    _formatter.cardinalLarge = @[@"", @"thousand", @"million", @"billion", @"trillion"];
     return _formatter;
 }
 
+
+
 //  1..9
 - (NSString *)unitsFormatter:(NSInteger)number multiplier:(long long)multiplier {
-    return self.numerals.cardinal[[NSString TYstringWithInt:number]];
+//    return __cardinalMap[number];
+//    return __cardinalNSA[number];
+    return self.cardinalUnitsAndTeens[number];
 }
 
 //  10..19
 - (NSString *)teensFormatter:(NSInteger)number multiplier:(long long)multiplier {
-    return self.numerals.cardinal[[NSString TYstringWithInt:number]];
+//    return __cardinalMap[number];
+//    return __cardinalNSA[number];
+    return self.cardinalUnitsAndTeens[number];
 }
 
 //  20, 30, 40..90
 - (NSString *)roundTensFormatter:(NSInteger)number multiplier:(long long)multiplier {
-    return self.numerals.cardinal[[NSString TYstringWithInt:number]];
+//    return __cardinalMap[number];
+//    return __cardinalNSA[18 + (number / 10)];
+    return self.cardinalTens[number / 10];
+
 }
 
 //  21, 22, 23..99
 - (NSString *)tensFormatter:(NSInteger)number multiplier:(long long)multiplier {
-    NSInteger units = number % 10;
-    NSInteger roundTens = number - units;
+//    NSInteger units = number % 10;
+//    NSInteger roundTens = number - units;
     
     //  as part of combined numeral unit deesn't need leading whitespace
-    NSString *unitsString = [self unitsFormatter:units multiplier:multiplier];
-    
-    NSString *roundTensString = [self roundTensFormatter:roundTens multiplier:multiplier];
+//    NSString *unitsString = [self unitsFormatter:units multiplier:multiplier];
+//    
+//    NSString *roundTensString = [self roundTensFormatter:roundTens multiplier:multiplier];
 
-    return [@[roundTensString, unitsString] componentsJoinedByString:@"-"];
+    return [@[self.cardinalTens[number / 10], self.cardinalUnitsAndTeens[number % 10]] componentsJoinedByString:@"-"];
 }
 
 //  100, 200, 300..900
 - (NSString *)hundredsFormatter:(NSInteger)number multiplier:(long long)multiplier {
-    return self.numerals.cardinal[[NSString TYstringWithInt:number]];
+//    return __cardinalMap[number];
+//    return __cardinalNSA[27 + (number / 100)];
+    return self.cardinalHundreds[number / 100];
 }
 
 //  10^3, 10^6..10^12
 - (NSString *)largeNumbersFormatter:(long long)multiplier quantity:(NSInteger)quantity {
     
-    if (multiplier == THOUSAND) {
-        return self.numerals.cardinal[[NSString TYstringWithInt:multiplier]];
-    } else {
-        return self.numerals.cardinalLarge[[NSString TYstringWithInt:multiplier]];
-    }
+    NSUInteger power = (log10(multiplier)) / 3;
+    return self.cardinalLarge[power];
+    
+//    if (multiplier == THOUSAND) {
+////        return __cardinalMap[multiplier];
+//        return __cardinalNSA[37];
+//    } else {
+//        return self.numerals.cardinalLarge[[NSString TYstringWithInt:multiplier]];
+//    }
 }
 
 //  MARK:  common formatters
@@ -125,8 +209,7 @@ static NSString * _cardinal [] = {@"", @"one"};
 }
 
 - (NSString *)finishingFormatter:(long long)number withParts:(NSMutableArray *)parts {
-    
-    return [[parts componentsJoinedByString:kWHITESPACE] TYstringByTrimmingWhitespace];
+        return [[parts componentsJoinedByString:kWHITESPACE] TYstringByTrimmingWhitespace];
 };
 
 #pragma mark -

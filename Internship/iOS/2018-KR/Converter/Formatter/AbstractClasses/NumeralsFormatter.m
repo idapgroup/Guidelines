@@ -8,7 +8,6 @@
 
 #import "NumeralsFormatter.h"
 
-#import "NumeralsFormatterPrivate.h"
 #import "Numerals.h"
 
 #define PROTECT  return [self protect];

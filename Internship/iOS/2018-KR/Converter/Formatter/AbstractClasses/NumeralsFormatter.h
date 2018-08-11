@@ -8,7 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@class Numerals;
+
+@class Numerals, map;
 
 @interface NumeralsFormatter : NSObject
 
