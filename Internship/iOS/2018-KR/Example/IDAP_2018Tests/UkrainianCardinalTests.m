@@ -91,6 +91,7 @@
 }
 
 - (void)testCardinalHundreds {
+     NSLog(@"%@", [self.converter stringFromNumber:101]);
     XCTAssert([[self.converter stringFromNumber:100] isEqualToString:@"сто"]);
     XCTAssert([[self.converter stringFromNumber:101] isEqualToString:@"сто один"]);
     XCTAssert([[self.converter stringFromNumber:119] isEqualToString:@"сто дев'ятнадцять"]);

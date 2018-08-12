@@ -56,19 +56,22 @@ static NSString * kGenitiveForm     = @"genitiveForm";
         unitsString = self.numerals.cardinal[key];
     }
     
-    return [NSString TYstringWithLeadingWhitespace:unitsString];
+//    return [NSString TYstringWithLeadingWhitespace:unitsString];
+    return unitsString;
 }
 //  10..19
 - (NSString *)teensFormatter:(NSInteger)number multiplier:(long long)multiplier {
-    NSString *teensString = self.numerals.cardinal[[NSString TYstringWithInt:number]];
-    
-    return [NSString TYstringWithLeadingWhitespace:teensString];
+//    NSString *teensString = self.numerals.cardinal[[NSString TYstringWithInt:number]];
+//    
+//    return [NSString TYstringWithLeadingWhitespace:teensString];
+    return self.numerals.cardinal[[NSString TYstringWithInt:number]];
 }
 //  20, 30, 40..90
 - (NSString *)roundTensFormatter:(NSInteger)number multiplier:(long long)multiplier {
-    NSString *roundTensString = self.numerals.cardinal[[NSString TYstringWithInt:number]];
-    
-    return [NSString TYstringWithLeadingWhitespace:roundTensString];
+//    NSString *roundTensString = self.numerals.cardinal[[NSString TYstringWithInt:number]];
+//    
+//    return [NSString TYstringWithLeadingWhitespace:roundTensString];
+    return self.numerals.cardinal[[NSString TYstringWithInt:number]];
 }
 //  21, 22, 23..99
 - (NSString *)tensFormatter:(NSInteger)number multiplier:(long long)multiplier {
@@ -76,7 +79,7 @@ static NSString * kGenitiveForm     = @"genitiveForm";
     NSInteger roundTens = number - units;
     
     NSString *unitsString = [self unitsFormatter:units multiplier:multiplier];
-    unitsString = [unitsString TYstringByTrimmingWhitespace];
+//    unitsString = [unitsString TYstringByTrimmingWhitespace];
     
     NSString *roundTensString = [self roundTensFormatter:roundTens multiplier:multiplier];
     
@@ -84,9 +87,10 @@ static NSString * kGenitiveForm     = @"genitiveForm";
 }
 //  100, 200, 300..900
 - (NSString *)hundredsFormatter:(NSInteger)number multiplier:(long long)multiplier {
-    NSString *hundredsString = self.numerals.cardinal[[NSString TYstringWithInt:number]];
+//    NSString *hundredsString = self.numerals.cardinal[[NSString TYstringWithInt:number]];
     
-    return [NSString TYstringWithLeadingWhitespace:hundredsString];
+//    return [NSString TYstringWithLeadingWhitespace:hundredsString];
+    return self.numerals.cardinal[[NSString TYstringWithInt:number]];
 }
 
 
@@ -121,29 +125,30 @@ static NSString * kGenitiveForm     = @"genitiveForm";
         }
     }
     
-    return [NSString TYstringWithLeadingWhitespace:result];
+    return result;
+//    return [NSString TYstringWithLeadingWhitespace:result];
 }
 
 //  MARK:  common formatters
-- (NSString *)starterFormatter:(long long)number {
-    NSString *result = nil;
-    NSString *key = [NSString TYstringWithInt:number];
-    
-    switch (number) {
-        case 0:
-            result = self.numerals.cardinal[key];
-            break;
-        case MILLION:  //  million, billion, trillions have same one method call it's OK!
-        case BILLION:
-        case TRILLION:
-            result = [NSString stringWithFormat:@"один %@", self.numerals.cardinalLarge[key]];
-            break;
-        default:
-            break;
-    }
-    
-    return result;
-}
+//- (NSString *)starterFormatter:(long long)number {
+//    NSString *result = nil;
+//    NSString *key = [NSString TYstringWithInt:number];
+//    
+//    switch (number) {
+//        case 0:
+//            result = self.numerals.cardinal[key];
+//            break;
+//        case MILLION:  //  million, billion, trillions have same one method call it's OK!
+//        case BILLION:
+//        case TRILLION:
+//            result = [NSString stringWithFormat:@"один %@", self.numerals.cardinalLarge[key]];
+//            break;
+//        default:
+//            break;
+//    }
+//    
+//    return result;
+//}
 
 - (NSString *)ordinalFormatter:(long long)number withString:(NSString *)string {
     //  split, analyze, replace, join
@@ -194,22 +199,75 @@ static NSString * kGenitiveForm     = @"genitiveForm";
     }
 }
 
+- (NSMutableArray *)ordinalFormatter:(long long)number withParts:(NSMutableArray *)parts {
+    NSString *ordinal = nil;
+//    NSArray *numberParts = [[string TYstringByTrimmingWhitespace]
+//                            componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+//    NSMutableArray *tempParts = [numberParts mutableCopy];
+    NSMutableArray *tempParts = [[[parts componentsJoinedByString:kWHITESPACE] componentsSeparatedByString:kWHITESPACE] mutableCopy];
+
+    NSString *cardinal = tempParts.lastObject;
+    
+    
+    //  "одна тисяча" -> "тисячний"
+    if (number == THOUSAND || number == MILLION || number == BILLION || number == TRILLION) {
+        [tempParts removeObjectAtIndex:tempParts.count - 2];
+        ordinal = [self searchOrdinalInDictionaryWithKey:cardinal];
+    }
+    
+    
+    //  1..999
+    if (!ordinal) {
+        ordinal = [self searchOrdinalInDictionaryWithKey:cardinal];
+    }
+    
+    //  thousand, million, billion, etc
+    if (!ordinal) {
+        
+        //  some large numbers were changed (дві тисячі, два мільйона), they can't be found in main dictionary
+        NSDictionary *prefixes = self.exceptions[kOrdinalPrefixes];
+        
+        for (NSString *prefix in prefixes) {
+            if ([cardinal hasPrefix:prefix]) {
+                ordinal = prefixes[prefix];
+                break;
+            }
+        }
+        tempParts = [[self replaceWordWithGenitiveForm:tempParts number:number] mutableCopy];
+        
+        [tempParts replaceObjectAtIndex:tempParts.count - 1
+                                   withObject:ordinal];
+        tempParts = [NSMutableArray arrayWithObject:[tempParts componentsJoinedByString:kEMPTY_STRING]];
+        return tempParts;
+//        return [parts componentsJoinedByString:kEMPTY_STRING];
+        
+    } else {  //  success for 1...999
+        //  restore whitespaces
+        [tempParts replaceObjectAtIndex:tempParts.count - 1 withObject:ordinal];
+        
+        return tempParts;
+//        return [parts componentsJoinedByString:kWHITESPACE];
+    }
+}
 
 
 
+//- (NSString *)finishingFormatter:(long long)number withString:(NSString *)string {
+//    return [string TYstringByTrimmingWhitespace];
+//}
 
-- (NSString *)finishingFormatter:(long long)number withString:(NSString *)string {
-    return [string TYstringByTrimmingWhitespace];
-};
+- (NSString *)finishingFormatter:(long long)number withParts:(NSMutableArray *)parts {
+    return [[parts componentsJoinedByString:kWHITESPACE] TYstringByTrimmingWhitespace];
+}
 
 #pragma mark -
 #pragma mark Private Api
-- (NSArray<NSString *> *) replaceWordWithGenitiveForm:(NSArray<NSString *> *)parts number:(long long)number {
-    NSMutableArray *tempParts = [parts mutableCopy];
+- (NSMutableArray<NSString *> *) replaceWordWithGenitiveForm:(NSMutableArray<NSString *> *)parts number:(long long)number {
+//    NSMutableArray *parts = [parts mutableCopy];
     
     //  replace  "дві", "тисячі" -> "двох", "тисячний"
     //  or even better    "двадцять", "дві", "тисячі" -> "двадцяти", "двох", "тисячний"
-    NSInteger lastIdx = tempParts.count - 1;
+    NSInteger lastIdx = parts.count - 1;
     
     //  calculate two last valuable digits  24000 -> 24
     NSInteger units = 0;
@@ -229,17 +287,18 @@ static NSString * kGenitiveForm     = @"genitiveForm";
 
     BOOL isCombinedNumeral = (tens > 20 && units != 1);
     
-    NSString *secondlast = tempParts[lastIdx - 1];
-    [tempParts replaceObjectAtIndex:(lastIdx - 1)
+    NSString *secondlast = parts[lastIdx - 1];
+    [parts replaceObjectAtIndex:(lastIdx - 1)
                                withObject:[self genitiveForCardinalNumber:secondlast]];
     
     if (isCombinedNumeral) {
-        NSString *thirdLast = tempParts[lastIdx - 2];
-        [tempParts replaceObjectAtIndex:(lastIdx - 2)
+        NSString *thirdLast = parts[lastIdx - 2];
+        [parts replaceObjectAtIndex:(lastIdx - 2)
                              withObject:[self genitiveForCardinalNumber:thirdLast]];
     }
-     
-    return [tempParts copy];
+    
+    return parts;
+//    return [tempParts copy];
 }
 
 - (NSString *)genitiveForCardinalNumber:(NSString *)number {

@@ -214,9 +214,79 @@
     //    NSLog(@"** %f sec", [start timeIntervalSinceNow]);
     
     NSInteger diff = (NSInteger) ((converterTime - appleTime) * (100 / appleTime));
-    NSLog(@"*** RESULT:");
-    NSLog(@"*** NSNumber = %f", appleTime);
+    NSLog(@"*** ENGLISHT RESULT:");
+    NSLog(@"*** NSNumberFormatter = %f", appleTime);
     NSLog(@"*** Converter = %f, (%ld%%)",converterTime, diff);
+    
+/*** deutsch tests ***/
+    
+    defaultConverter.localeID = kDE;
+    defaultConverter.ordinal = NO;
+    
+    start = [NSDate date];
+    
+    for (NSInteger idx = 0; idx < CYCLE_COUNT; idx++) {
+        long long number = arc4random_uniform(limit);
+        NSLog(@"%@", [defaultConverter convertLongNumber:number]);
+    }
+    converterTime =  [start timeIntervalSinceNow];
+    //    NSLog(@"** %f sec", [start timeIntervalSinceNow]);
+    
+    
+    
+    [numberFormatter setNumberStyle:NSNumberFormatterSpellOutStyle];
+    [numberFormatter setLocale:[NSLocale localeWithLocaleIdentifier:@"de"]];
+    
+    start = [NSDate date];
+    
+    for (NSInteger idx = 0; idx < CYCLE_COUNT; idx++) {
+        NSNumber *number = [NSNumber numberWithLongLong: arc4random_uniform(limit)];
+        NSLog(@"%@", [numberFormatter stringFromNumber:number]);
+    }
+    
+    appleTime = [start timeIntervalSinceNow];
+    //    NSLog(@"** %f sec", [start timeIntervalSinceNow]);
+    
+    diff = (NSInteger) ((converterTime - appleTime) * (100 / appleTime));
+    NSLog(@"*** DEUTSCH RESULT:");
+    NSLog(@"*** NSNumberFormatter = %f", appleTime);
+    NSLog(@"*** Converter = %f, (%ld%%)",converterTime, diff);
+
+    /*** ukrainian tests ***/
+    
+    defaultConverter.localeID = kUA;
+    defaultConverter.ordinal = NO;
+    
+    start = [NSDate date];
+    
+    for (NSInteger idx = 0; idx < CYCLE_COUNT; idx++) {
+        long long number = arc4random_uniform(limit);
+        NSLog(@"%@", [defaultConverter convertLongNumber:number]);
+    }
+    converterTime =  [start timeIntervalSinceNow];
+    //    NSLog(@"** %f sec", [start timeIntervalSinceNow]);
+    
+    
+    
+    [numberFormatter setNumberStyle:NSNumberFormatterSpellOutStyle];
+    [numberFormatter setLocale:[NSLocale localeWithLocaleIdentifier:@"de"]];
+    
+    start = [NSDate date];
+    
+    for (NSInteger idx = 0; idx < CYCLE_COUNT; idx++) {
+        NSNumber *number = [NSNumber numberWithLongLong: arc4random_uniform(limit)];
+        NSLog(@"%@", [numberFormatter stringFromNumber:number]);
+    }
+    
+    appleTime = [start timeIntervalSinceNow];
+    //    NSLog(@"** %f sec", [start timeIntervalSinceNow]);
+    
+    diff = (NSInteger) ((converterTime - appleTime) * (100 / appleTime));
+    NSLog(@"*** UKRAINIAN RESULT:");
+    NSLog(@"*** NSNumberFormatter = %f", appleTime);
+    NSLog(@"*** Converter = %f, (%ld%%)",converterTime, diff);
+    
+
 #endif
     
    

@@ -156,6 +156,9 @@ static NSString * kSingleLargeExceptions = @"singleLargeExceptions";
 //   new
 - (NSMutableArray *)ordinalFormatter:(long long)number withParts:(NSMutableArray *)parts {
 //    NSArray *numberParts = [string componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    //  проблема: составное числительное идет как одно слово. Мне нужно разбить его на части. Приходится собирать строку из массива и заново разбивать.
+    //  может лучше что-то с форматтером нихимичить
+    //  может как с английским искать не слово, а suffix
     NSMutableArray *tempParts = [[[parts componentsJoinedByString:kWHITESPACE] componentsSeparatedByString:kWHITESPACE] mutableCopy];
     
     NSString *ordinal = nil;
