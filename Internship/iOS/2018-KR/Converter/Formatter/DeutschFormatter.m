@@ -33,7 +33,11 @@ static NSString * kSingleLargeExceptions = @"singleLargeExceptions";
 
 //    NSString *unitsString = self.numerals.cardinal[[NSString TYstringWithInt:number]];
 //    return [NSString TYstringWithLeadingWhitespace:unitsString];
-    return self.numerals.cardinal[[NSString TYstringWithInt:number]];
+    NSString *unitsString = self.numerals.cardinal[[NSString TYstringWithInt:number]];
+    if (multiplier == THOUSAND && number == 1) {
+        unitsString = [unitsString TYreplaseSuffix:@"s" withString:kEMPTY_STRING];
+    }
+    return unitsString;
 }
 
 - (NSString *)teensFormatter:(NSInteger)number multiplier:(long long)multiplier {
@@ -163,13 +167,49 @@ static NSString * kSingleLargeExceptions = @"singleLargeExceptions";
     
     NSString *ordinal = nil;
     NSString *cardinal = tempParts.lastObject;
+    //  old -- поиск по словарю, если неудача поиск по словарю исключений
+    //  ОЧЕНЬ медленно
+//    ordinal = [self searchOrdinalInDictionaryWithKey:cardinal];
+//    
+//    if (!ordinal) {
+//        NSDictionary *exceptions = self.numerals.exceptions[kOrdinalExceptions];
+//        ordinal = exceptions[cardinal];
+//    }
     
-    ordinal = [self searchOrdinalInDictionaryWithKey:cardinal];
+    //  new поиск по исключениям, нет - добавление окончания
+    
+    //  eins -> erste,
+    NSDictionary *exceptions = self.numerals.exceptions[kOrdinalExceptions];
+    for (NSString *key in exceptions) {
+        
+        if ([cardinal hasSuffix:key]) {
+            ordinal = [cardinal TYreplaseSuffix:key withString:exceptions[key]];
+            break;
+        }
+    }
     
     if (!ordinal) {
-        NSDictionary *exceptions = self.numerals.exceptions[kOrdinalExceptions];
-        ordinal = exceptions[cardinal];
+        NSInteger remainder = (number % 100);
+        //  numbers
+        if ( remainder > 0 && remainder < 20) {
+            ordinal = [cardinal stringByAppendingString:@"te"];
+//            cardinal = [cardinal TYreplaseSuffix:@"y" withString:@"ie"];
+        } else {
+            //  Millionen, Trillionen -> Million, Trillion
+            //  Milliarden, Trilliarden -> Milliard, Trilliard
+            if ([cardinal hasSuffix:@"nen"] ) {
+                cardinal = [cardinal TYreplaseSuffix:@"en" withString:kEMPTY_STRING];
+            //  Milliarde, Trilliarde -> Milliard, Trilliard
+            } else if ([cardinal hasSuffix:@"arde"]) {
+                cardinal = [cardinal TYreplaseSuffix:@"e" withString:kEMPTY_STRING];
+            }
+            ordinal = [cardinal stringByAppendingString:@"ste"];
+        }
+        
+       
+//        ordinal = [cardinal stringByAppendingString:@"th"];
     }
+    
     
     [tempParts replaceObjectAtIndex:tempParts.count - 1 withObject:ordinal];
     
@@ -177,20 +217,36 @@ static NSString * kSingleLargeExceptions = @"singleLargeExceptions";
 }
 
 - (NSString *)finishingFormatter:(long long)number withParts:(NSMutableArray *)parts {
-    NSString *result = [parts componentsJoinedByString:kWHITESPACE];
+//    NSString *result = [parts componentsJoinedByString:kWHITESPACE];
+    NSString *result = nil;
     
+    parts = [[[parts componentsJoinedByString:kWHITESPACE] componentsSeparatedByString:kWHITESPACE] mutableCopy];
+
     //  замена eins <large_number> -> eine <large_number>
 //    parts = [self replaceEinsWithEineInString:parts];
-    result = [self replaceEinsWithEineInString:result];
+//    result = [self replaceEinsWithEineInString:result];
+    
     
     //  удаление и вставка пробелов <large_namber> -> < large_number >
-    NSArray *numberParts = [result componentsSeparatedByString:kWHITESPACE];
-    result = [self addWhitespaceToLarge:numberParts];
+    if (number >= MILLION) {
+        parts = [self addWhitespaceToLarge:parts];
+        
+        //  замена eins <large_number> -> eine <large_number>
+
+        for (NSInteger idx = 0; idx < parts.count-1; idx++) {
+            if ([parts[idx] isEqualToString:@"eins"]) {
+                [parts replaceObjectAtIndex:idx withObject:@"eine"];
+            }
+        }
+        
+        
+    }
+//    NSArray *numberParts = [result componentsSeparatedByString:kWHITESPACE];
+//    result = [self addWhitespaceToLarge:numberParts];
 //    parts = [self addWhitespaceToLarge:parts];
     
     //  склейка и последняя обрезка
-//    result = [parts componentsJoinedByString:kEMPTY_STRING];
-    
+    result = [parts componentsJoinedByString:kEMPTY_STRING];
     return [result TYstringByTrimmingWhitespace];
 }
 
@@ -215,8 +271,9 @@ static NSString * kSingleLargeExceptions = @"singleLargeExceptions";
     return [temp copy];
 }
 
-- (NSString *)addWhitespaceToLarge:(NSArray<NSString *> *)parts {
-    NSMutableArray<NSString *> *tempParts = [parts mutableCopy];
+
+- (NSMutableArray<NSString *> *)addWhitespaceToLarge:(NSMutableArray<NSString *> *)parts {
+//    NSMutableArray<NSString *> *tempParts = [parts mutableCopy];
     
     NSMutableArray<NSString *> *largeNumbers = [[self.numerals.cardinalLarge allValues] mutableCopy];
     NSArray<NSString *> *singleLargeExceptions = [self.numerals.exceptions[kOrdinalExceptions] allValues];
@@ -226,19 +283,20 @@ static NSString * kSingleLargeExceptions = @"singleLargeExceptions";
     
     for (NSString *large in largeNumbers) {
         
-        for (NSInteger idx = 0; idx < tempParts.count; idx++) {
-            NSString *part = tempParts[idx];
+        for (NSInteger idx = 0; idx < parts.count; idx++) {
+            NSString *part = parts[idx];
             
             if ([part hasPrefix:large]) {  
                 part = [part stringByAppendingString:kWHITESPACE];
                 part = [kWHITESPACE stringByAppendingString:part];
-                tempParts[idx] = part;
+                parts[idx] = part;
             }
         }
     }
-
+    
+    return parts;
 //    return [tempParts copy];
-    return [tempParts componentsJoinedByString:kEMPTY_STRING];
+//    return [tempParts componentsJoinedByString:kEMPTY_STRING];
 }
 
 //- (NSMutableArray<NSString *> *)replaceEinsWithEineInString:(NSMutableArray<NSString *> *)parts {

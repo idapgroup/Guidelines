@@ -151,6 +151,11 @@
      @{
        //
        @"ordinalExceptions" : @{
+               @"eins" : @"erste",
+               @"drei" : @"dritte",
+               @"sieben" : @"siebte",
+               @"acht" : @"achte",
+
                @"Millionen" : @"Millionste",
                @"Billionen" : @"Billionste",
                @"Trillion" : @"Trillionste",

@@ -90,6 +90,7 @@
 }
 
 - (void)testOrdinalHundreds {
+     NSLog(@"%@", [self.converter stringFromNumber:101]);
     XCTAssert([[self.converter stringFromNumber:100] isEqualToString:@"einhundertste"]);
     XCTAssert([[self.converter stringFromNumber:101] isEqualToString:@"einhunderterste"]);
     XCTAssert([[self.converter stringFromNumber:102] isEqualToString:@"einhundertzweite"]);
@@ -144,6 +145,9 @@
     
     //  long scale is more popular in Germany
     self.converter.shortScale = NO;
+    NSLog(@"%@", [self.converter stringFromNumber:BILLION]);
+    NSLog(@"%@", [self.converter stringFromNumber:TRILLION]);
+
     XCTAssert([[self.converter stringFromNumber:MILLION] isEqualToString:@"eine Millionste"]);
     XCTAssert([[self.converter stringFromNumber:BILLION] isEqualToString:@"eine Milliardste"]);
     XCTAssert([[self.converter stringFromNumber:TRILLION] isEqualToString:@"eine Billionste"]);
