@@ -20,16 +20,16 @@ namespace TestNumConvertor.Langs
             };
 
             bool modifOrdinalEnding = false;
-            Rules[0].BeforeBaseRule = new LanguageRule(
+            RuleSets[">= 100"].BeforeBaseRule = new LanguageRule(
                 (x, par) => (bool)par && (x % 100 >= 20 || x % 100 == 0),
                 (x, par) =>
                 {
                     modifOrdinalEnding = true;
-                    return new Tuple<string, ulong, object>(String.Empty, x, par);
+                    return RuleResult.EmptyString(x, par);
                 });
 
             bool endConver = false;
-            Rules[1].BeforeBaseRule = new LanguageRule(
+            RuleSets[">= 20"].BeforeBaseRule = new LanguageRule(
                 (x, par) => x >= 20,
                 (x, par) =>
                 {
@@ -40,27 +40,27 @@ namespace TestNumConvertor.Langs
                     if (x % 10 != 0)
                         res = nums[x % 10] + LocalEndings.und;
 
-                    return new Tuple<string, ulong, object>(res, x, par);
+                    return new RuleResult(res, x, par);
                 });
 
-            Rules[3].BaseRule.Predicate = (x, par) => x > 0 && x < 13 && !endConver;
+            RuleSets["0 - 13"].BaseRule.Predicate = (x, par) => x > 0 && x < 13 && !endConver;
 
-            Rules[3].AfterBaseRule = new LanguageRule(
+            RuleSets["0 - 13"].AfterBaseRule = new LanguageRule(
                 (x, par) => endConver,
                 (x, par) =>
                 {
                     endConver = false;
-                    return new Tuple<string, ulong, object>(string.Empty, x, par);
+                    return RuleResult.EmptyString(x, par);
                 });
 
-            Rules[4].BaseRule.Predicate = (x, par) => (bool)par;
+            RuleSets["Ordinal endings"].BaseRule.Predicate = (x, par) => (bool)par;
 
-            Rules[4].BeforeBaseRule = new LanguageRule(
+            RuleSets["Ordinal endings"].BeforeBaseRule = new LanguageRule(
                 (x, par) => (bool)par && modifOrdinalEnding,
                 (x, par) =>
                 {
                     modifOrdinalEnding = false;
-                    return new Tuple<string, ulong, object>(LocalEndings.letterS, x, par);
+                    return new RuleResult(LocalEndings.letterS, x, par);
                 });
         }
 

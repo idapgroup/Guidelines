@@ -1,37 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace TestNumConvertor.LangFamilys
+﻿namespace TestNumConvertor.LangFamilys
 {
     abstract class LanguageFamily
     {
-        protected readonly List<RuleSet> Rules;
+        protected RuleSetCollection RuleSets { get; private set; }
 
         protected string RunAllRules(ulong num, object param)
         {
-            var res = String.Empty;
+            var ruleRes = RuleResult.EmptyString(num, param);
 
-            void TryApplyRule(LanguageRule rule)
-            {
-                if (rule != null && rule.Predicate(num, param))
-                {
-                    Tuple<string, ulong, object> tuple = rule.Rule(num, param);
-                    res += tuple.Item1;
-                    num = tuple.Item2;
-                    param = tuple.Item3;
-                }
-            }
+            foreach (RuleSet ruleSet in RuleSets.Values)
+                ruleRes += ruleSet.ApplyRuleSet(ruleRes.Num, ruleRes.Param);
 
-            foreach (var ruleSet in Rules)
-            {
-                TryApplyRule(ruleSet.BeforeBaseRule);
-                TryApplyRule(ruleSet.BaseRule);
-                TryApplyRule(ruleSet.AfterBaseRule);
-            }
-
-            return res;
+            return ruleRes.String;
         }
 
-        protected LanguageFamily() => Rules = new List<RuleSet>();
+        protected LanguageFamily() => RuleSets = new RuleSetCollection();
     }
 }

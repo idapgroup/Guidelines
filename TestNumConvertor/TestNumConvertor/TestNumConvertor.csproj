@@ -58,10 +58,10 @@
     <Compile Include="EnumConvertor.cs" />
     <Compile Include="EnumHelper.cs" />
     <Compile Include="InputByRegexRule.cs" />
+    <Compile Include="LangFamilys\RuleResult.cs" />
     <Compile Include="LangFamilys\RuleSet.cs" />
-    <Compile Include="Langs\DE.cs" />
+    <Compile Include="LangFamilys\RuleSetCollection.cs" />
     <Compile Include="Langs\DeByFamily.cs" />
-    <Compile Include="Langs\ENG.cs" />
     <Compile Include="ILanguage.cs" />
     <Compile Include="Langs\EngByFamily.cs" />
     <Compile Include="LangFamilys\EngDeFamily.cs" />

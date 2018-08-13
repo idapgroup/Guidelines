@@ -39,24 +39,24 @@ namespace TestNumConvertor.LangFamilys
 
         protected EngDeFamily()
         {
-            Rules.Add(new RuleSet(new LanguageRule(
-                (x, par) => x >= 100,
-                (x, par) =>
-                {
-                    var res = String.Empty;
-                    Tuple<string, ulong> tuple = null;
-
-                    for (int i = scales.Length - 1; i >= 0; --i)
+            RuleSets.AddBaseRule(">= 100",
+                    (x, par) => x >= 100,
+                    (x, par) =>
                     {
-                        tuple = ScaleNum(x, i);
-                        res += tuple.Item1;
-                        x = tuple.Item2;
-                    }
+                        var res = String.Empty;
+                        Tuple<string, ulong> tuple = null;
 
-                    return new Tuple<string, ulong, object>(res, x, par);
-                })));
+                        for (int i = scales.Length - 1; i >= 0; --i)
+                        {
+                            tuple = ScaleNum(x, i);
+                            res += tuple.Item1;
+                            x = tuple.Item2;
+                        }
 
-            Rules.Add(new RuleSet(new LanguageRule(
+                        return new RuleResult(res, x, par);
+                    });
+
+            RuleSets.AddBaseRule(">= 20",
                 (x, par) => x >= 20,
                 (x, par) =>
                 {
@@ -68,31 +68,31 @@ namespace TestNumConvertor.LangFamilys
                     }
 
                     var res = Declension(x / 10, ending);
-                    return new Tuple<string, ulong, object>(res, x % 10, par);
-                })));
+                    return new RuleResult(res, x % 10, par);
+                });
 
-            Rules.Add(new RuleSet(new LanguageRule(
+            RuleSets.AddBaseRule(">= 13",
                 (x, par) => x >= 13,
                 (x, par) =>
                 {
                     var res = Declension(x % 10, Endings.betweenTenAndTwenty);
-                    return new Tuple<string, ulong, object>(res, x, par);
-                })));
+                    return new RuleResult(res, x, par);
+                });
 
-            Rules.Add(new RuleSet(new LanguageRule(
+            RuleSets.AddBaseRule("0 - 13",
                 (x, par) => x > 0 && x < 13,
                 (x, par) =>
                 {
-                    var res = (bool)par 
-                        ? GetOrdinalExceptions(x) 
+                    var res = (bool)par
+                        ? GetOrdinalExceptions(x)
                         : nums[x] + Endings.space;
 
-                    return new Tuple<string, ulong, object>(res, x, par);
-                })));
+                    return new RuleResult(res, x, par);
+                });
 
-            Rules.Add(new RuleSet(new LanguageRule(
+            RuleSets.AddBaseRule("Ordinal endings",
                 (x, par) => (bool)par && (x == 0 || x > 3),
-                (x, par) => new Tuple<string, ulong, object>(Endings.ordinal, x, par))));
+                (x, par) => new RuleResult(Endings.ordinal, x, par));
         }
     }
 }

@@ -19,18 +19,18 @@ namespace TestNumConvertor.Langs
                 space = " "
             };
 
-            Rules[1].BeforeBaseRule = new LanguageRule(
+            RuleSets[">= 20"].BeforeBaseRule = new LanguageRule(
                 (x, par) => x >= 20,
                 (x, par) =>
-                {                          
-                    var ending = String.Empty;                         
-                                                                       
-                    if (x % 10 > 0)                                                                              
-                        ending = Endings.tensAboveNineteen + Endings.space;                                                                                 
-                    else                                               
+                {
+                    var ending = String.Empty;
+
+                    if (x % 10 > 0)
+                        ending = Endings.tensAboveNineteen + Endings.space;
+                    else
                         ending = LocalEndings.tensAboveNineteenNotComposite;
 
-                    return new Tuple<string, ulong, object>(String.Empty, x, new Tuple<object, string>(par, ending));
+                    return RuleResult.EmptyString(x, new Tuple<object, string>(par, ending));
                 });
         }
 

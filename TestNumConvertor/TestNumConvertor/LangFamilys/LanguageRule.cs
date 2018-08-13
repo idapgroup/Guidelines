@@ -2,17 +2,43 @@
 
 namespace TestNumConvertor.LangFamilys
 {
+    public delegate bool RulePredicate(ulong num, object param);
+    public delegate RuleResult RuleFunc(ulong num, object param);
+
     class LanguageRule
     {
-        public delegate Tuple<string, ulong, object> RuleFunc(ulong num, object param);
-
-        public Func<ulong, object, bool> Predicate { get; set; }
-        public RuleFunc Rule { get; set; }
-
-        public LanguageRule(Func<ulong, object, bool> pred, RuleFunc rule)
+        private RulePredicate predicate;
+        public RulePredicate Predicate
         {
-            Predicate = pred;
-            Rule = rule;
+            get => predicate;
+            set => predicate = value ?? throw new ArgumentNullException("Predicate");
+        }
+
+        private RuleFunc func;
+        public RuleFunc Func
+        {
+            get => func;
+            set => func = value ?? throw new ArgumentNullException("Rule");
+        }
+
+        public LanguageRule(RulePredicate rulePred, RuleFunc ruleFunc)
+        {
+            Predicate = rulePred;
+            Func = ruleFunc;
+        }
+
+        public static LanguageRule EmptyRule
+        {
+            get => new LanguageRule(
+                (num, par) => false,
+                (num, par) => RuleResult.EmptyString(num, par));
+        }
+
+        public RuleResult TryApplyRule(ulong num, object param)
+        {
+            return Predicate(num, param)
+                ? Func(num, param)
+                : RuleResult.EmptyString(num, param);
         }
     }
 }

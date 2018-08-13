@@ -22,17 +22,11 @@ namespace TestNumConvertor
 
             switch (lang)
             {
-                case Languages.DEFAM:
-                    cache.Add(lang, new DeByFamily());
-                    return ConvertNum();
-                case Languages.ENGFAM:
+                case Languages.ENG:
                     cache.Add(lang, new EngByFamily());
                     return ConvertNum();
-                case Languages.ENG:
-                    cache.Add(lang, new ENG());
-                    return ConvertNum();
                 case Languages.DE:
-                    cache.Add(lang, new DE());
+                    cache.Add(lang, new DeByFamily());
                     return ConvertNum();
                 case Languages.UK:
                     cache.Add(lang, new UK());
