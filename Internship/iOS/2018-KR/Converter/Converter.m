@@ -132,44 +132,6 @@ static NSString * kMIN_LIMIT_MESSAGE = @"converter doesn't support negative numb
     
     return [self convertLongNumber:number];
     
-    
-//    NSString *result = nil;
-//    long long tempNumber = number;
-//    
-//    result = [self.matcher starterFormatter:number];
-//    
-//    if (!result) {
-//        result = kEMPTY_STRING;
-//        
-//        for (NSInteger idx = 0; tempNumber > 0; idx++, tempNumber /= THOUSAND) {
-//            NSInteger threeDigits = tempNumber % THOUSAND;
-//            NSString *threeDigitsString = kEMPTY_STRING;
-//            
-//            if (threeDigits > 0) {
-//                long long multiplier = (long long)pow((double)THOUSAND, (double)idx);
-//                
-//                
-//                threeDigitsString = [self threeDigitParser:threeDigits multiplier:multiplier];
-//                
-//                if (multiplier >= THOUSAND) {
-//                    NSString *largeNumberString = [self.matcher largeNumbersForMultiplier:multiplier
-//                                                                                 quantity:threeDigits];
-//                    
-//                    threeDigitsString = [threeDigitsString stringByAppendingString:largeNumberString];
-//                }
-//                
-//            }
-//            //  накопление результата 1 миллион + 100 тысяч + 200
-//            result = [threeDigitsString stringByAppendingString:result];
-//        }
-// 
-//    }
-//    
-//    if(self.isOrdinal) {
-//        result = [self.matcher ordinalFormatter:number withString:result];
-//    }
-//    
-//    return [self.matcher finishingFormatter:number withString:result];
 }
 
 - (NSString *)convertLongNumber:(long long)number {
@@ -177,47 +139,92 @@ static NSString * kMIN_LIMIT_MESSAGE = @"converter doesn't support negative numb
     NSMutableArray *parts = [NSMutableArray new];
 
     long long tempNumber = number;
-    
-//    result = [self.matcher starterFormatter:tempNumber];
+
+    NSDate *start = [NSDate date];
+
 //    
-//    if (!result) {
-    
-        
-        for (long long multiplier = TRILLION; multiplier > 0; multiplier /= THOUSAND) {
-            NSInteger threeDigits = tempNumber / multiplier;
-            
-            if (threeDigits > 0) {
-                [parts addObjectsFromArray:[self.matcher threeDigitParser:threeDigits multiplier:multiplier]];
-                
-                if (multiplier > 1) {
-                    [parts addObject:[self.matcher largeNumbersForMultiplier:multiplier
-                                                                    quantity:threeDigits]];
-                }
-            }
-            tempNumber = tempNumber % multiplier;
-        }
-                
-//    } else {
-//        return result;
+//    for (NSInteger idx = 0; tempNumber > 0; idx++, tempNumber /= THOUSAND) {
+//        NSInteger threeDigits = tempNumber % THOUSAND;
+//        NSString *threeDigitsString = kEMPTY_STRING;
+//        
+//        if (threeDigits > 0) {
+//            long long multiplier = (long long)pow((double)THOUSAND, (double)idx);
+//            
+//            
+//            threeDigitsString = [self threeDigitParser:threeDigits multiplier:multiplier];
+//            
+//            if (multiplier >= THOUSAND) {
+//                NSString *largeNumberString = [self.matcher largeNumbersForMultiplier:multiplier
+//                                                                             quantity:threeDigits];
+//                
+//                threeDigitsString = [threeDigitsString stringByAppendingString:largeNumberString];
+//            }
+//            
+//        }
+//        //  накопление результата 1 миллион + 100 тысяч + 200
+//        result = [threeDigitsString stringByAppendingString:result];
 //    }
+// 
+//    for (; tempNumber > 0; tempNumber /= THOUSAND) {
+//        NSInteger threeDigits = tempNumber % THOUSAND;
+//        
+//    }
+//    
+//    NSDate *start = [NSDate date];
+//
+    for (NSInteger idx = 0; tempNumber > 0; idx++, tempNumber /= THOUSAND) {
+        NSInteger threeDigits = tempNumber % THOUSAND;
+        
+        if (threeDigits > 0) {
+            long long multiplier = (long long)pow((double)THOUSAND, (double)idx);
+            
+            if (multiplier >= THOUSAND) {
+                [parts addObject:[self.matcher largeNumbersForMultiplier:multiplier quantity:threeDigits]];
+
+            }
+
+            [parts addObjectsFromArray:[self.matcher threeDigitParser:threeDigits multiplier:multiplier]];
+        }
+    }
     
+    if ([parts count] > 1) {
+        NSUInteger i = 0;
+        NSUInteger j = [parts count] - 1;
+        
+        while (i < j) {
+            [parts exchangeObjectAtIndex:i
+                      withObjectAtIndex:j];
+            
+            i++;
+            j--;
+        }
+    }
+#warning рабочая старая версия.
+//        for (long long multiplier = TRILLION; multiplier > 0; multiplier /= THOUSAND) {
+//            NSInteger threeDigits = tempNumber / multiplier;
+//            
+//            if (threeDigits > 0) {
+//                [parts addObjectsFromArray:[self.matcher threeDigitParser:threeDigits multiplier:multiplier]];
+//                
+//                if (multiplier > 1) {
+//                    [parts addObject:[self.matcher largeNumbersForMultiplier:multiplier quantity:threeDigits]];
+//                }
+//            }
+//            tempNumber = tempNumber % multiplier;
+//        }
+////    NSLog(@"old %f sec", [start timeIntervalSinceNow]);
+
     if(self.isOrdinal) {
         parts = [self.matcher ordinalFormatter:number withParts:parts];
     }
+//    NSLog(@"*** parser time %f sec", [start timeIntervalSinceNow]);
+
     result = [self.matcher finishingFormatter:number withParts:parts];
+//    NSLog(@"*** finishing formatter time %f sec", [start timeIntervalSinceNow]);
+
     return result;
 }
 
-
-//- (NSString *)threeDigitParser:(NSInteger)number multiplier:(long long)multiplier{
-//    NSString *result = kEMPTY_STRING;
-//    
-//    result = [self.matcher unitsIn:number multiplier:multiplier];
-//    result = [[self.matcher tensAndTeensIn:number multiplier:multiplier] stringByAppendingString:result];
-//    result = [[self.matcher hundredsIn:number multiplier:multiplier] stringByAppendingString:result];
-//    
-//    return result;
-//}
 
 @end
 

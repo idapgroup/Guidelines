@@ -106,7 +106,11 @@
 }
 
 - (void)testCardinalThousands {
+#warning удалить
+     NSLog(@"%@", [self.converter stringFromNumber:1492638526]);
 
+
+    
     XCTAssert([[self.converter stringFromNumber:1000] isEqualToString:@"one thousand"]);
     XCTAssert([[self.converter stringFromNumber:2001] isEqualToString:@"two thousand one"]);
     XCTAssert([[self.converter stringFromNumber:3010] isEqualToString:@"three thousand ten"]);

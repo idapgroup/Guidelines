@@ -182,7 +182,7 @@
     CGFloat converterTime = 0;
     
     NSInteger CYCLE_COUNT = 10*THOUSAND;
-    uint32_t limit = THOUSAND;//INT32_MAX;
+    uint32_t limit = INT32_MAX;
     
     Converter *defaultConverter = [Converter new];
     defaultConverter.localeID = kEN;

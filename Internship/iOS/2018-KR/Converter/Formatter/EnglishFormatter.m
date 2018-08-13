@@ -214,8 +214,23 @@ static NSString * kOrdinalExceptions  = @"ordinalExceptions";
     return parts;
 }
 
-- (NSString *)finishingFormatter:(long long)number withParts:(NSMutableArray *)parts {
-        return [[parts componentsJoinedByString:kWHITESPACE] TYstringByTrimmingWhitespace];
+- (NSString *)finishingFormatter:(long long)number withParts:(NSMutableArray<NSString *> *)parts {
+    char *carr = (char *)calloc(1000, sizeof(char));
+    strcat(carr, parts.firstObject.UTF8String);
+    
+        for (NSInteger idx = 1; idx < parts.count; idx++) {
+            char const * currstr = parts[idx].UTF8String;
+            
+            size_t length = strlen(carr);
+            carr[length] = ' '; // overwrite null termination
+            carr[length+1] = '\0'; // add a new null termination
+            
+            memcpy(carr+strlen(carr), currstr, strlen(currstr)+1);
+            
+//            strcat(carr, currstr);
+        }
+    return [NSString stringWithUTF8String:carr];
+//        return [[parts componentsJoinedByString:kWHITESPACE] TYstringByTrimmingWhitespace];
 };
 
 #pragma mark -

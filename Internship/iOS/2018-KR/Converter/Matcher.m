@@ -116,11 +116,12 @@
     NSMutableArray *parts = [NSMutableArray new];
     NSString *result = nil;
     
-    if (number > 99) {
-        NSInteger hundreds = number - (number % 100);  //  сотни
-        result = [self.localeFormatter hundredsFormatter:hundreds multiplier:multiplier];
-        if (result) [parts addObject:result];
-    }
+#warning для рабочего конвертера!
+//    if (number > 99) {
+//        NSInteger hundreds = number - (number % 100);  //  сотни
+//        result = [self.localeFormatter hundredsFormatter:hundreds multiplier:multiplier];
+//        if (result) [parts addObject:result];
+//    }
     
     NSInteger units = number % 100;
     if (units > 0 && units < 10) {
@@ -141,6 +142,13 @@
         }
         if (result) [parts addObject:result];
     }
+    
+    if (number > 99) {
+        NSInteger hundreds = number - (number % 100);  //  сотни
+        result = [self.localeFormatter hundredsFormatter:hundreds multiplier:multiplier];
+        if (result) [parts addObject:result];
+    }
+
     
     return parts;
 }
