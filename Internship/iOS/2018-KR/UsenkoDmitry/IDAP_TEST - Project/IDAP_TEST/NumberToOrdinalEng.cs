@@ -8,9 +8,7 @@ namespace IDAP_TEST
 {
     public class NumberToOrdinalEng : NumberToOrdinal
     {
-
-        string hundredsToOrdinal;
-
+        string result;
         private string checkOnes(int tens)
         {
             switch (tens)
@@ -20,86 +18,97 @@ namespace IDAP_TEST
                 case 8:
                     return Ordinal.getOnes(tens) + "t "; // eigh - t - th
                 case 9:
-                    return hundredsToOrdinal = Ordinal.getOnes(tens) + "e"; // nin - e - th
+                    return result = Ordinal.getOnes(tens) + "e"; // nin - e - th
                 default:
-                    return hundredsToOrdinal = Ordinal.getOnes(tens);
+                    return result = Ordinal.getOnes(tens);
             }
         }
 
         protected override string convertHundreds(int hundreds, int tens, int classOfNumber)
         {
-            hundredsToOrdinal = "";
-            // Hundreds
-            if (!Number.isNull(classOfNumber))
+            result = "";
+            switch (!Number.isNull(classOfNumber))
             {
-                switch (hundreds != 0)
-                {
-                    case true:
-                        hundredsToOrdinal += checkOnes(hundreds) + Ordinal.getClass(0);
-                        switch (classOfNumber == 0 && tens == 0)
-                        {
-                            case true:
-                                hundredsToOrdinal += "th";
-                                break;
-                        }
-                        break;
-                }
-                //Tens
-                if (tens > 19)
-                {
-                    hundredsToOrdinal += Ordinal.getTens(tens / 10);
-                    if (classOfNumber == 0) // if last hundred
+                case true:
+                    switch (hundreds != 0)//hundreds
                     {
-                        if (tens % 10 != 0)
-                        {
-                            hundredsToOrdinal += "y";
-                            if (tens % 10 < 5)
+                        case true:
+                            result += checkOnes(hundreds) + Ordinal.getClassName(0);
+                            switch (classOfNumber == 0 && tens == 0)
                             {
-                                hundredsToOrdinal += Ordinal.getLastOnes(tens % 10);
+                                case true:
+                                    result += "th";
+                                    break;
                             }
-                            else
-                                hundredsToOrdinal += Ordinal.getOnes(tens % 10) + "th";
-                        }
-                        else
-                            hundredsToOrdinal += "ieth";
+                            break;
                     }
-                    else
+                    switch (tens > 19)//Tens
                     {
-                        hundredsToOrdinal += "y";
-                        hundredsToOrdinal += checkOnes(tens % 10);
+                        case true:
+                            result += Ordinal.getTens(tens / 10);
+                            switch (classOfNumber == 0) // if last hundred
+                            {
+                                case true:
+                                    switch (tens % 10 != 0)
+                                    {
+                                        case true:
+                                            result += "y";
+                                            switch (tens % 10 < 5)
+                                            {
+                                                case true:
+                                                    result += Ordinal.getLastOnes(tens % 10);
+                                                    break;
+                                                case false:
+                                                    result += Ordinal.getOnes(tens % 10) + "th";
+                                                    break;
+                                            }
+                                            break;
+                                        case false:
+                                            result += "ieth";
+                                            break;
+                                    }
+                                    break;
+                                case false:
+                                    result += "y";
+                                    result += checkOnes(tens % 10);
+                                    break;
+                            }
+                            break;
+                        case false:
+                            switch (classOfNumber == 0) // if last hundred
+                            {
+                                case true:
+                                    switch (tens < 5)
+                                    {
+                                        case true:
+                                            result += Ordinal.getLastOnes(tens);
+                                            break;
+                                        case false:
+                                            result += Ordinal.getOnes(tens) + "th";
+                                            break;
+                                    }
+                                    break;
+                                case false:
+                                    result += checkOnes(tens);
+                                    break;
+                            }
+                            break;
                     }
-                }
-                else
-                {
-                    if (classOfNumber == 0) // if last hundred
+                    switch (classOfNumber > 0) // Names of number classes
                     {
-                        if (tens < 5)
-                        {
-                            hundredsToOrdinal += Ordinal.getLastOnes(tens);
-                        }
-                        else
-                            hundredsToOrdinal += Ordinal.getOnes(tens) + "th";
+                        case true:
+                            result += Ordinal.getClassName(classOfNumber);
+                            switch (Number.getLastClass() == classOfNumber)
+                            {
+                                case true:
+                                    result += "th";
+                                    break;
+                            }
+                            break;
                     }
-                    else
-                    {
-                        hundredsToOrdinal += checkOnes(tens);
-                    }
-                }
-                // Names of number classes
-                switch (classOfNumber > 0)
-                {
-                    case true:
-                        hundredsToOrdinal += Ordinal.getClass(classOfNumber);
-                        switch (Number.getLastClass() == classOfNumber)
-                        {
-                            case true:
-                                hundredsToOrdinal += "th";
-                                break;
-                        }
-                        break;
-                }
+                    break;
             }
-            return hundredsToOrdinal;
+            return result;
         }
     }
 }

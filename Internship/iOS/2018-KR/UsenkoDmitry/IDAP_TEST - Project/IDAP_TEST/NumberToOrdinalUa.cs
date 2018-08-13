@@ -8,152 +8,316 @@ namespace IDAP_TEST
 {
     public class NumberToOrdinalUa : NumberToOrdinal
     {
-        // Временное решение, в течении 2 дней заменю
-        string result = "";
-        protected override string convertHundreds(int hundreds, int tens, int classOfNumber)
+        string result;
+        private void onesInLastThousandsToOrdinal(int tens) // для числівників, що закінчуються на "тисячний, мільйонний, мільярдний, трильйонний"
         {
-            if (!Number.isNull(classOfNumber))
+            switch (tens)
             {
-                switch (hundreds)
-                {
-                    case 0:
-                        break;
-                    case 1:
-                        result = "сто";
-                        break;
-                    case 2:
-                        result = Ordinal.getOnes(hundreds) + "істі";
-                        break;
-                    case 3:
-                        result = Ordinal.getOnes(hundreds) + "ста";
-                        break;
-                    case 4:
-                        result = Ordinal.getOnes(hundreds) + "ста";
-                        break;
-                    default:
-                        result = Ordinal.getOnes(hundreds) + "сот";
-                        break;
-                }
-
-                result += Ordinal.getTens(tens/10);
-                if (tens > 19)
-                {
-                    result += Ordinal.getOnes(tens % 10);
-                    createEndClasses(tens % 10, classOfNumber);
-                }
-                else
-                {
-                    result += Ordinal.getOnes(tens);
-                    createEndClasses(tens, classOfNumber);
-                    
-                }
+                case 0:
+                    break;
+                case 1:
+                    result += Ordinal.getOnes(tens) + "но";
+                    break;
+                case 2:
+                    result += Ordinal.getOnes(tens) + "ох";
+                    break;
+                case 3:
+                    result += "трьох";
+                    break;
+                case 4:
+                    result += "чотирьох";
+                    break;
+                case 6:
+                    result += "шести";
+                    break;
+                case 7:
+                    result += "семи";
+                    break;
+                case 8:
+                    result += "восьми";
+                    break;
+                default:
+                    result += Ordinal.getOnes(tens) + "и";
+                    break;
             }
-            return result;
         }
 
-        private void createEndClasses(int tens, int classOfNumber)
+        private void onesToOrdinal(int tens)
         {
-            
-            if(tens == 5 || tens == 6 || tens == 9)
+            switch (tens != 8 && tens != 7)
             {
-                result += "ь";
+                case true:
+                    result += Ordinal.getOnes(tens) + "ь ";
+                    break;
+                case false:
+                    result += Ordinal.getOnes(tens);
+                    break;
             }
-            if (classOfNumber != 1)
+        }
+
+        private void tensToOrdinal(int tens)
+        {
+            result += Ordinal.getTens(tens);
+            switch (tens)
             {
-                if (classOfNumber == 0)
-                {
-                    switch (tens)
+                case 1:
+                    break;
+                case 2:
+                    result += "ь ";
+                    break;
+                case 3:
+                    result += "ь ";
+                    break;
+                case 9:
+                    result += "о ";
+                    break;
+                default:
+                    result += " ";
+                    break;
+            }
+        }
+
+        private void hundredsToOrdinal(int hundreds)
+        {
+            switch (hundreds)
+            {
+                case 0:
+                    break;
+                case 1:
+                    result = "сто ";
+                    break;
+                case 2:
+                    result = Ordinal.getOnes(hundreds) + "істі ";
+                    break;
+                case 3:
+                    result = Ordinal.getOnes(hundreds) + "ста ";
+                    break;
+                case 4:
+                    result = Ordinal.getOnes(hundreds) + "ста ";
+                    break;
+                default:
+                    result = Ordinal.getOnes(hundreds) + "сот ";
+                    break;
+            }
+        }
+
+        private void onesInLastHundredToOrdinal(int tens) // для сотні
+        {
+            switch (tens)
+            {
+                case 1:
+                    result += Ordinal.getLastOnes(tens);
+                    break;
+                case 2:
+                    result += Ordinal.getLastOnes(tens);
+                    break;
+                case 3:
+                    result += Ordinal.getLastOnes(tens);
+                    break;
+                case 4:
+                    result += Ordinal.getLastOnes(tens);
+                    break;
+                case 6:
+                    result += "шостий";
+                    break;
+                case 7:
+                    result += "сьомий";
+                    break;
+                case 8:
+                    result += "восьмий";
+                    break;
+                default:
+                    result += Ordinal.getOnes(tens) + "ий";
+                    break;
+            }
+        }
+
+        private string lastHundred(int hundreds, int tens) // сотня
+        {
+            switch (tens == 0)
+            {
+                case true:
+                    switch (hundreds)
                     {
                         case 1:
-                            result += "ин";
-                            break;
-                        case 2:
-                            result += "а";
-                            break;
-                    }
-                }
-                else
-                {
-                    switch (tens)
-                    {
-                        case 1:
-                            result += "ин" + Ordinal.getClass(classOfNumber);
-                            break;
-                        case 2:
-                            result += "а" + Ordinal.getClass(classOfNumber) + "a";
-                            break;
-                        case 3:
-                            result += Ordinal.getClass(classOfNumber) + "а";
-                            break;
-                        case 4:
-                            result += Ordinal.getClass(classOfNumber) + "а";
+                            result = "сотий";
                             break;
                         default:
-                            result += Ordinal.getClass(classOfNumber) + "ів";
+                            onesInLastThousandsToOrdinal(hundreds);
+                            result += "сотий";
                             break;
                     }
-                }
-            }
-            else
-            {
-                switch (tens)
-                {
-                    case 1:
-                        result += "на " + Ordinal.getClass(classOfNumber) + "a";
-                        break;
-                    case 2:
-                        result += "і " + Ordinal.getClass(classOfNumber) + "і";
-                        break;
-                    case 3:
-                        result += Ordinal.getClass(classOfNumber) + "і";
-                        break;
-                    case 4:
-                        result += Ordinal.getClass(classOfNumber) + "і";
-                        break;
-                    default:
-                        result += Ordinal.getClass(classOfNumber);
-                        break;
-                }
-            }
-        }
-        /*
-        private string convertThousends(long number)
-        {
-            string result = "";
-
-            if (number != 0)
-            {
-                long tens = number % 100;
-
-                result = hundredsMap[number / 100];
-                result += tensMap[tens / 10];
-
-                if (tens / 10 != 1)
-                {
-                    if (tens % 10 < 5)
+                    break;
+                case false:
+                    hundredsToOrdinal(hundreds);
+                    switch (tens > 19)
                     {
-                        switch (tens % 10)
-                        {
-                            case 0:
-                                result += unitsMap[1];
-                                break;
-                            case 1:
-                                result += thousendsMap[0] + unitsMap[1] + endings[2];
-                                break;
-                            case 2:
-                                result += thousendsMap[1] + unitsMap[1] + endings[3];
-                                break;
-                            default:
-                                result += onesMap[tens % 10] + unitsMap[1] + endings[3];
-                                break;
-                        };
+                        case true:
+                            switch (tens % 10 == 0)
+                            {
+                                case true:
+                                    result += Ordinal.getTens(tens / 10);
+                                    switch (tens / 10)
+                                    {
+                                        case 2:
+                                            result += "ий";
+                                            break;
+                                        case 3:
+                                            result += "тий";
+                                            break;
+                                        case 4:
+                                            result += "овий";
+                                            break;
+                                        default:
+                                            result += "ий";
+                                            break;
+                                    }
+                                    break;
+                                case false:
+                                    tensToOrdinal(tens / 10);
+                                    onesInLastHundredToOrdinal(tens % 10);
+                                    break;
+                            }
+                            break;
+                        case false:
+                            onesInLastHundredToOrdinal(tens % 10);
+                            break;
                     }
-                    else result += onesMap[tens % 10] + unitsMap[1];
-                }
-                else result += onesMap[tens] + unitsMap[1];
+                    break;
             }
             return result;
-        }*/
+        }
 
+        protected override string convertHundreds(int hundreds, int tens, int classOfNumber)
+        {
+            result = "";
+            switch (!Number.isNull(classOfNumber))
+            {
+                case true:
+                    switch (classOfNumber == 0)
+                    {
+                        case true:
+                            lastHundred(hundreds, tens);
+                            break;
+                        case false:
+                            switch (classOfNumber == Number.getLastClass())
+                            {
+                                case true: // якщо клас числа є останнім (Складні порядові числівники, що закінчуються на "тисячний, мільйонний, мільярдний, трильйонний" пишуться разом та всі частини відмінюються)
+                                    switch (hundreds)
+                                    {
+                                        case 0:
+                                            break;
+                                        case 1:
+                                            result += "ста";
+                                            break;
+                                        default:
+                                            onesInLastThousandsToOrdinal(hundreds);
+                                            result += "сот";
+                                            break;
+                                    }
+                                    switch (tens > 19)
+                                    {
+                                        case true:
+                                            switch (tens / 10)
+                                            {
+                                                case 4:
+                                                    result += Ordinal.getTens(tens / 10) + "а";
+                                                    break;
+                                                case 9:
+                                                    result += Ordinal.getTens(tens / 10) + "о";
+                                                    break;
+                                                default:
+                                                    result += Ordinal.getTens(tens / 10) + "и";
+                                                    break;
+                                            }
+                                            onesInLastThousandsToOrdinal(tens % 10); // винесено у метод для уникнення повторення
+                                            break;
+                                        case false:
+                                            switch (tens)
+                                            {
+                                                case 1:
+                                                    break;
+                                                default:
+                                                    onesInLastThousandsToOrdinal(tens); // винесено у метод для уникнення повторення
+                                                    break;
+                                            }
+                                            break;
+                                    }
+                                    result += Ordinal.getClassName(classOfNumber) + "ний";
+                                    break;
+                                case false: // Не останній класс числа
+                                    hundredsToOrdinal(hundreds);
+                                    tensToOrdinal(tens / 10);
+                                    switch (classOfNumber) // для корректного роду числівників
+                                    {
+                                        case 1:
+                                            switch (tens > 19 || tens < 4)
+                                            {
+                                                case true: // одна тисяча, дві-три-чотири тисячі... тисяч
+                                                    switch (tens % 10)
+                                                    {
+                                                        case 1:
+                                                            result += Ordinal.getOnes(tens % 10) + "нa " + Ordinal.getClassName(classOfNumber) + "а ";
+                                                            break;
+                                                        case 2:
+                                                            result += Ordinal.getOnes(tens % 10) + "і " + Ordinal.getClassName(classOfNumber) + "і ";
+                                                            break;
+                                                        case 3:
+                                                            result += Ordinal.getOnes(tens % 10) + " " + Ordinal.getClassName(classOfNumber) + "і ";
+                                                            break;
+                                                        case 4:
+                                                            result += Ordinal.getOnes(tens % 10) + " " + Ordinal.getClassName(classOfNumber) + "і ";
+                                                            break;
+                                                        default:
+                                                            onesToOrdinal(tens % 10);
+                                                            result += " " + Ordinal.getClassName(classOfNumber) + " ";
+                                                            break;
+                                                    }
+                                                    break;
+                                                case false:
+                                                    onesToOrdinal(tens);
+                                                    result += Ordinal.getClassName(classOfNumber) + " ";
+                                                    break;
+                                            }
+                                            break;
+                                        default:
+                                            switch (tens > 19 || tens < 4)
+                                            {
+                                                case true: // один мільйон-мільярд... і тд. два мільйони-мільярди...
+                                                    switch (tens % 10)
+                                                    {
+                                                        case 1:
+                                                            result += Ordinal.getOnes(tens % 10) + "ин " + Ordinal.getClassName(classOfNumber) + " ";
+                                                            break;
+                                                        case 2:
+                                                            result += Ordinal.getOnes(tens % 10) + "а " + Ordinal.getClassName(classOfNumber) + "и ";
+                                                            break;
+                                                        case 3:
+                                                            result += Ordinal.getOnes(tens % 10) + " " + Ordinal.getClassName(classOfNumber) + "и ";
+                                                            break;
+                                                        case 4:
+                                                            result += Ordinal.getOnes(tens % 10) + " " + Ordinal.getClassName(classOfNumber) + "и ";
+                                                            break;
+                                                        default:
+                                                            onesToOrdinal(tens % 10);
+                                                            result += Ordinal.getClassName(classOfNumber) + "ів ";
+                                                            break;
+                                                    }
+                                                    break;
+                                                case false:
+                                                    onesToOrdinal(tens);
+                                                    result += Ordinal.getClassName(classOfNumber) + "iв ";
+                                                    break;
+                                            }
+                                            break;
+                                    }
+                                    break;
+                            }
+                            break;
+                    }
+                    break;
+            }
+            return result;
+        }
     }
 }

@@ -8,15 +8,7 @@ namespace IDAP_TEST
 {
     class NumberToOrdinalDe : NumberToOrdinal
     {
-
-        public NumberToOrdinalDe()//Ordinal ordinalObject)
-        {
-            //ordinal = ordinalObject;
-        }
-
-        string hundredsToOrdinal;
-
-
+        string result;
         private string checkOnes(int tens)
         {
             switch (tens)
@@ -26,91 +18,95 @@ namespace IDAP_TEST
                 case 7:
                     return Ordinal.getOnes(tens) + "en"; // Sieb - en -  te
                 case 8:
-                    return hundredsToOrdinal = Ordinal.getOnes(tens) + "t"; // Ach - t - te
+                    return result = Ordinal.getOnes(tens) + "t"; // Ach - t - te
                 default:
-                    return hundredsToOrdinal = Ordinal.getOnes(tens);
+                    return result = Ordinal.getOnes(tens);
             }
         }
 
-
         protected override string convertHundreds(int hundreds, int tens, int classOfNumber)
         {
-            hundredsToOrdinal = "";
-
-            //hundreds
-            if (!Number.isNull(classOfNumber))
+            result = "";
+            switch (!Number.isNull(classOfNumber))//hundreds
             {
-                switch (hundreds != 0)
-                {
-                    case true:
-                        hundredsToOrdinal += checkOnes(hundreds) + Ordinal.getClass(0);
-                        switch (classOfNumber == 0 && tens == 0)
-                        {
-                            case true:
-                                hundredsToOrdinal += "ste ";
-                                break;
-                        }
-                        break;
-                }
-
-                //tens
-                if (tens > 19)
-                {
-                    if (tens % 10 != 0)
+                case true:
+                    switch (hundreds != 0)
                     {
-                        hundredsToOrdinal += Ordinal.getOnes(tens % 10) + "und";
+                        case true:
+                            result += checkOnes(hundreds) + Ordinal.getClassName(0);
+                            switch (classOfNumber == 0 && tens == 0)
+                            {
+                                case true:
+                                    result += "ste";
+                                    break;
+                            }
+                            result += " ";
+                            break;
                     }
-                        hundredsToOrdinal += Ordinal.getTens(tens / 10);
-                    if (tens % 10 == 0 || classOfNumber == 0)
+                    switch (tens > 19) //tens
                     {
-                        hundredsToOrdinal += "ste ";
+                        case true:
+                            switch (tens % 10 != 0)
+                            {
+                                case true:
+                                    result += Ordinal.getOnes(tens % 10) + "und";
+                                    break;
+                            }
+                            result += Ordinal.getTens(tens / 10);
+                            switch (tens % 10 == 0 || classOfNumber == 0)
+                            {
+                                case true:
+                                    result += "ste ";
+                                    break;
+                            }
+                            break;
+                        case false:
+                            switch (classOfNumber == 0)
+                            {
+                                case true:
+                                    switch (tens)
+                                    {
+                                        case 1:
+                                            result += Ordinal.getLastOnes(tens);
+                                            break;
+                                        case 3:
+                                            result += Ordinal.getLastOnes(tens);
+                                            break;
+                                        default:
+                                            result += Ordinal.getOnes(tens) + "te";
+                                            break;
+                                    }
+                                    break;
+                                case false:
+                                    result += Ordinal.getOnes(tens);
+                                    break;
+                            }
+                            break;
                     }
-                }
-                else
-                {
-                    if (classOfNumber == 0)
+                    switch (classOfNumber > 0)// classes
                     {
-                        switch (tens)
-                        {
-                            case 1:
-                                hundredsToOrdinal += Ordinal.getLastOnes(tens);
-                                break;
-                            case 3:
-                                hundredsToOrdinal += Ordinal.getLastOnes(tens);
-                                break;
-                            default:
-                                hundredsToOrdinal += Ordinal.getOnes(tens) + "te";
-                                break;
-                        }
+                        case true:
+                            result += Ordinal.getClassName(classOfNumber);
+                            switch (Number.getLastClass() == classOfNumber)
+                            {
+                                case true:
+                                    result += "ste ";
+                                    break;
+                                case false:
+                                    switch (classOfNumber)
+                                    {
+                                        case 3:
+                                            result += "en"; // milliard - en
+                                            break;
+                                    }
+                                    result += " ";
+                                    break;
+                            }
+                            break;
                     }
-                    else 
-                        hundredsToOrdinal += Ordinal.getOnes(tens);
-                }
-
-                // classes
-                switch (classOfNumber > 0)
-                {
-                    case true:
-                        hundredsToOrdinal += Ordinal.getClass(classOfNumber);
-                        switch (Number.getLastClass() == classOfNumber)
-                        {
-                            case true:
-                                hundredsToOrdinal += "ste ";
-                                break;
-                            case false:
-                                switch (classOfNumber)
-                                {
-                                    case 3:
-                                        hundredsToOrdinal += "en"; // milliard - en
-                                        break;
-                                }
-                                hundredsToOrdinal += " ";
-                                break;
-                        }
-                        break;
-                }
+                    break;
             }
-            return hundredsToOrdinal;
+            return result;
         }
     }
 }

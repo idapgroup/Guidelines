@@ -118,46 +118,46 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="billion" xml:space="preserve">
-    <value> мільярд</value>
+    <value>мільярд</value>
   </data>
   <data name="eight" xml:space="preserve">
-    <value> вісім</value>
+    <value>вісім</value>
   </data>
   <data name="eighteen" xml:space="preserve">
-    <value> вісімнадцять</value>
+    <value>вісімнадцят</value>
   </data>
   <data name="eighty" xml:space="preserve">
-    <value> вісімдесят</value>
+    <value>вісімдесят</value>
   </data>
   <data name="eleven" xml:space="preserve">
-    <value> одинадцять</value>
+    <value>одинадцят</value>
   </data>
   <data name="fifteen" xml:space="preserve">
-    <value> п'ятнадцять</value>
+    <value>п'ятнадцят</value>
   </data>
   <data name="fifth" xml:space="preserve">
-    <value> п'ятий</value>
+    <value>п'ятий</value>
   </data>
   <data name="fifty" xml:space="preserve">
-    <value> п'ятдесят</value>
+    <value>п'ятдесят</value>
   </data>
   <data name="first" xml:space="preserve">
-    <value> перший</value>
+    <value>перший</value>
   </data>
   <data name="five" xml:space="preserve">
-    <value> п'ят</value>
-  </data>
-  <data name="forth" xml:space="preserve">
-    <value> четвертий</value>
+    <value>п'ят</value>
   </data>
   <data name="forty" xml:space="preserve">
-    <value> сорок</value>
+    <value>сорок</value>
   </data>
   <data name="four" xml:space="preserve">
-    <value> чотири</value>
+    <value>чотири</value>
   </data>
   <data name="fourteen" xml:space="preserve">
-    <value> чотирнадцять</value>
+    <value>чотирнадцят</value>
+  </data>
+  <data name="fourth" xml:space="preserve">
+    <value>четвертий</value>
   </data>
   <data name="hundred" xml:space="preserve">
     <value />
@@ -175,70 +175,70 @@
     <value>Помилка</value>
   </data>
   <data name="million" xml:space="preserve">
-    <value> мільйон</value>
+    <value>мільйон</value>
   </data>
   <data name="nine" xml:space="preserve">
-    <value> дев'ят</value>
+    <value>дев'ят</value>
   </data>
   <data name="nineteen" xml:space="preserve">
-    <value> дев'ятнадцять</value>
+    <value>дев'ятнадцят</value>
   </data>
   <data name="ninety" xml:space="preserve">
-    <value> дев'яносто</value>
+    <value>дев'яност</value>
   </data>
   <data name="one" xml:space="preserve">
-    <value> од</value>
+    <value>од</value>
   </data>
   <data name="second" xml:space="preserve">
-    <value> другий</value>
+    <value>другий</value>
   </data>
   <data name="seven" xml:space="preserve">
-    <value> сім</value>
+    <value>сім</value>
   </data>
   <data name="seventeen" xml:space="preserve">
-    <value> сімнадцять</value>
+    <value>сімнадцят</value>
   </data>
   <data name="seventy" xml:space="preserve">
-    <value> сімдесят</value>
+    <value>сімдесят</value>
   </data>
   <data name="six" xml:space="preserve">
-    <value> шіст</value>
+    <value>шіст</value>
   </data>
   <data name="sixteen" xml:space="preserve">
-    <value> шістнадцять</value>
+    <value>шістнадцят</value>
   </data>
   <data name="sixty" xml:space="preserve">
-    <value> шістдесят</value>
+    <value>шістдесят</value>
   </data>
   <data name="ten" xml:space="preserve">
-    <value> десять</value>
+    <value>десят</value>
   </data>
   <data name="third" xml:space="preserve">
-    <value> третій</value>
+    <value>третій</value>
   </data>
   <data name="thirteen" xml:space="preserve">
-    <value> тринадцять</value>
+    <value>тринадцят</value>
   </data>
   <data name="thirty" xml:space="preserve">
-    <value> тридцять</value>
+    <value>тридцят</value>
   </data>
   <data name="thousand" xml:space="preserve">
-    <value> тисяч</value>
+    <value>тисяч</value>
   </data>
   <data name="three" xml:space="preserve">
-    <value> три</value>
+    <value>три</value>
   </data>
   <data name="trillion" xml:space="preserve">
-    <value> трильйон</value>
+    <value>трильйон</value>
   </data>
   <data name="twelve" xml:space="preserve">
-    <value> дванадцять</value>
+    <value>дванадцят</value>
   </data>
   <data name="twenty" xml:space="preserve">
-    <value> двадцять</value>
+    <value>двадцят</value>
   </data>
   <data name="two" xml:space="preserve">
-    <value> дв</value>
+    <value>дв</value>
   </data>
   <data name="zero" xml:space="preserve">
     <value>нуль</value>

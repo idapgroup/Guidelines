@@ -40,8 +40,7 @@ namespace IDAP_TEST
                     comboBoxLanguage.SelectedValue = Properties.Settings.Default.Language;
                     break;
             }
-            // One object per launch
-            switch (System.Threading.Thread.CurrentThread.CurrentUICulture.Name)
+            switch (System.Threading.Thread.CurrentThread.CurrentUICulture.Name)// One object per launch
             {
                 case "uk-UA":
                     ua = new NumberToOrdinalUa();
@@ -114,9 +113,8 @@ namespace IDAP_TEST
             textBoxTransform.Focus();
         }
 
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)//Saving to settings file
         {
-            //Saving to settings file
             Properties.Settings.Default.Language = comboBoxLanguage.SelectedValue.ToString();
             Properties.Settings.Default.Save();
         }

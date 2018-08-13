@@ -66,14 +66,17 @@ namespace IDAP_TEST
         {
             return tens[ten];
         }
+
         public static string getOnes(int one)
         {
             return ones[one];
         }
-        public static string getClass(int numberOfClass)
+
+        public static string getClassName(int numberOfClass)
         {
             return classes[numberOfClass];
         }
+
         public static string getLastOnes(int one)
         {
             return lastOnes[one];
