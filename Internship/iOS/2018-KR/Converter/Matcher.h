@@ -28,9 +28,9 @@
 
 - (NSString *)largeNumbersForMultiplier:(long long)multiplier quantity:(NSInteger)quantity;
 
-- (NSString *)ordinalFormatter:(long long)number withString:(NSString *)string;
-- (NSString *)starterFormatter:(long long)number;
-- (NSString *)finishingFormatter:(long long)number withString:(NSString *)string;
+//- (NSString *)ordinalFormatter:(long long)number withString:(NSString *)string;
+//- (NSString *)starterFormatter:(long long)number;
+//- (NSString *)finishingFormatter:(long long)number withString:(NSString *)string;
 
 
 - (NSMutableArray *)threeDigitParser:(NSInteger)number multiplier:(long long)multiplier;
@@ -39,4 +39,9 @@
 - (NSMutableArray *)ordinalFormatter:(long long)number withParts:(NSMutableArray *)parts;
 - (NSString *)finishingFormatter:(long long)number withParts:(NSMutableArray *)parts;
 
+
+
+
+
+- (NSMutableArray *)newThreeDigitParser:(NSInteger)number multiplier:(long long)multiplier;
 @end

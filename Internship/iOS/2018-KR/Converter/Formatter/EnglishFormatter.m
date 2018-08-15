@@ -14,10 +14,12 @@
 #import "NSString+Formatting.h"
 
 @interface EnglishFormatter ()
-
+{
+    NSArray *__cardinalNSA;
+}
 @property (strong, nonatomic) NSArray *cardinal;
 
-@property (strong, nonatomic) NSArray <NSString *>*cardinalUnitsAndTeens;
+@property (strong, nonatomic) NSArray <NSString *>*cardinalUnits;
 @property (strong, nonatomic) NSArray <NSString *>*cardinalTens;
 @property (strong, nonatomic) NSArray <NSString *>*cardinalHundreds;
 @property (strong, nonatomic) NSArray <NSString *>*cardinalLarge;
@@ -25,7 +27,9 @@
 @end
 static NSString * kOrdinalExceptions  = @"ordinalExceptions";
 
-
+static NSString *__cardinalUnits [] = { @"zero",@"one", @"two", @"three", @"four", @"five", @"six", @"seven", @"eight", @"nine" };
+static NSString *__cardinalTens [] = { @"ten", @"eleven", @"twelve", @"thirteen", @"fourteen", @"fifteen", @"sixteen", @"seventeen", @"eighteen", @"nineteen", @"twenty", @"thirty", @"forty", @"fifty", @"sixty", @"seventy", @"eighty", @"ninety" };
+static NSString *__cardinalHundreds [] = { @"", @"one hundred", @"two hundred", @"three hundred", @"four hundred", @"five hundred", @"six hundred", @"seven hundred", @"eight hundred", @"nine hundred" };
 
 
 @implementation EnglishFormatter
@@ -77,16 +81,17 @@ static NSString * kOrdinalExceptions  = @"ordinalExceptions";
 //        {900, @"nine hundred"},
 //        {1000, @"thousand"}};
     
-//    _formatter->__cardinalNSA = @[ @"MARK_X",
-//                                   @"one", @"two", @"three", @"four", @"five", @"six", @"seven", @"eight", @"nine", @"ten",
-//                                   @"eleven", @"twelve", @"thirteen", @"fourteen", @"fifteen", @"sixteen", @"seventeen", @"eighteen", @"nineteen",
-//                                   @"twenty", @"thirty", @"forty", @"fifty", @"sixty", @"seventy", @"eighty", @"ninety",
-//                                   @"one hundred", @"two hundred", @"three hundred", @"four hundred", @"five hundred", @"six hundred", @"seven hundred", @"eight hundred", @"nine hundred",
-//                                   @"thousand"];
+    _formatter->__cardinalNSA = @[ @"MARK_X",
+                                   @"one", @"two", @"three", @"four", @"five", @"six", @"seven", @"eight", @"nine", @"ten",
+                                   @"eleven", @"twelve", @"thirteen", @"fourteen", @"fifteen", @"sixteen", @"seventeen", @"eighteen", @"nineteen",
+                                   @"twenty", @"thirty", @"forty", @"fifty", @"sixty", @"seventy", @"eighty", @"ninety",
+                                   @"one hundred", @"two hundred", @"three hundred", @"four hundred", @"five hundred", @"six hundred", @"seven hundred", @"eight hundred", @"nine hundred",
+                                   @"thousand"];
     
-    _formatter.cardinalUnitsAndTeens = @[@"zero",
-                                         @"one", @"two", @"three", @"four", @"five", @"six", @"seven", @"eight", @"nine", @"ten",
-                                         @"eleven", @"twelve", @"thirteen", @"fourteen", @"fifteen", @"sixteen", @"seventeen", @"eighteen", @"nineteen"];
+    _formatter.cardinalUnits = @[@"zero",@"one", @"two", @"three", @"four", @"five", @"six", @"seven", @"eight", @"nine"];
+    _formatter.cardinalTens = @[@"ten",@"eleven", @"twelve", @"thirteen", @"fourteen", @"fifteen", @"sixteen", @"seventeen", @"eighteen", @"nineteen", @"twenty", @"thirty", @"forty", @"fifty", @"sixty", @"seventy", @"eighty", @"ninety"];
+    
+    
     _formatter.cardinalTens = @[@"", @"ten", @"twenty", @"thirty", @"forty", @"fifty", @"sixty", @"seventy", @"eighty", @"ninety"];
     _formatter.cardinalHundreds = @[@"", @"one hundred", @"two hundred", @"three hundred", @"four hundred", @"five hundred", @"six hundred", @"seven hundred", @"eight hundred", @"nine hundred"];
     _formatter.cardinalLarge = @[@"", @"thousand", @"million", @"billion", @"trillion"];
@@ -98,7 +103,8 @@ static NSString * kOrdinalExceptions  = @"ordinalExceptions";
 //  1..9
 - (NSString *)unitsFormatter:(NSInteger)number multiplier:(long long)multiplier {
 //    return __cardinalMap[number];
-//    return __cardinalNSA[number];
+    return __cardinalUnits[number];
+    return __cardinalNSA[number];
 //    return self.cardinalUnitsAndTeens[number];
     return self.numerals.cardinal[[NSString TYstringWithInt:number]];
 }
@@ -106,7 +112,7 @@ static NSString * kOrdinalExceptions  = @"ordinalExceptions";
 //  10..19
 - (NSString *)teensFormatter:(NSInteger)number multiplier:(long long)multiplier {
 //    return __cardinalMap[number];
-//    return __cardinalNSA[number];
+    return __cardinalNSA[number];
 //    return self.cardinalUnitsAndTeens[number];
     return self.numerals.cardinal[[NSString TYstringWithInt:number]];
 }
@@ -114,7 +120,7 @@ static NSString * kOrdinalExceptions  = @"ordinalExceptions";
 //  20, 30, 40..90
 - (NSString *)roundTensFormatter:(NSInteger)number multiplier:(long long)multiplier {
 //    return __cardinalMap[number];
-//    return __cardinalNSA[18 + (number / 10)];
+    return __cardinalNSA[18 + (number / 10)];
 //    return self.cardinalTens[number / 10];
     return self.numerals.cardinal[[NSString TYstringWithInt:number]];
 
@@ -122,8 +128,41 @@ static NSString * kOrdinalExceptions  = @"ordinalExceptions";
 
 //  21, 22, 23..99
 - (NSString *)tensFormatter:(NSInteger)number multiplier:(long long)multiplier {
+    //  new version, from 10 to 99
+    if (number < 20) {
+        return __cardinalTens[number % 10];
+        return __cardinalNSA[number];
+    } else {
+        NSString *tens = __cardinalTens[8 + (number / 10)];
+        NSInteger remainder = number %  10;
+        
+        if (remainder > 0) {
+            tens = [NSString stringWithFormat:@"%@-%@", tens, [self unitsFormatter:remainder multiplier:multiplier]];
+        }
+
+//        NSString *tens = __cardinalNSA[18 + (number / 10)];
+//        NSInteger remainder = number %  10;
+//        
+//        if (remainder > 0) {
+//            tens = [NSString stringWithFormat:@"%@-%@", tens, [self unitsFormatter:remainder multiplier:multiplier]];
+//        }
+        
+        return tens;
+    }
+    
+    
+    
+    
+    NSString *tens = __cardinalNSA[18 + (number / 10)];
+    NSInteger remainder = number %  10;
+    if (remainder > 0) {
+        tens = [NSString stringWithFormat:@"%@-%@", tens, [self unitsFormatter:remainder multiplier:multiplier]];
+    }
+    return tens;
+    
     NSInteger units = number % 10;
     NSInteger roundTens = number - units;
+    
     
     //  as part of combined numeral unit deesn't need leading whitespace
     NSString *unitsString = [self unitsFormatter:units multiplier:multiplier];
@@ -139,12 +178,26 @@ static NSString * kOrdinalExceptions  = @"ordinalExceptions";
 //    return __cardinalMap[number];
 //    return __cardinalNSA[27 + (number / 100)];
 //    return self.cardinalHundreds[number / 100];
+    return __cardinalHundreds[number / 100];
     return self.numerals.cardinal[[NSString TYstringWithInt:number]];
 
 }
 
 //  10^3, 10^6..10^12
 - (NSString *)largeNumbersFormatter:(long long)multiplier quantity:(NSInteger)quantity {
+    switch (multiplier) {
+        case THOUSAND: return @"thousand";
+            break;
+        case MILLION: return @"million";
+            break;
+        case BILLION: return @"billion";
+            break;
+        case TRILLION: return @"trillion";
+            break;
+        default:
+            break;
+    }
+    return nil;
     
 //    NSUInteger power = (log10(multiplier)) / 3;
 //    return self.cardinalLarge[power];
@@ -215,21 +268,20 @@ static NSString * kOrdinalExceptions  = @"ordinalExceptions";
 }
 
 - (NSString *)finishingFormatter:(long long)number withParts:(NSMutableArray<NSString *> *)parts {
-    char *carr = (char *)calloc(1000, sizeof(char));
-    strcat(carr, parts.firstObject.UTF8String);
+//    char *carr = (char *)calloc(1000, sizeof(char));
+//    strcat(carr, parts.firstObject.UTF8String);
+//    
+//        for (NSInteger idx = 1; idx < parts.count; idx++) {
+//            char const * currstr = parts[idx].UTF8String;
+//            
+//            size_t length = strlen(carr);
+//            carr[length] = ' '; // overwrite null termination
+//            
+//            memcpy(carr+strlen(carr), currstr, strlen(currstr)+1);
+//        }
+//    return [NSString stringWithUTF8String:carr];
     
-        for (NSInteger idx = 1; idx < parts.count; idx++) {
-            char const * currstr = parts[idx].UTF8String;
-            
-            size_t length = strlen(carr);
-            carr[length] = ' '; // overwrite null termination
-            carr[length+1] = '\0'; // add a new null termination
-            
-            memcpy(carr+strlen(carr), currstr, strlen(currstr)+1);
-            
-//            strcat(carr, currstr);
-        }
-    return [NSString stringWithUTF8String:carr];
+    return [parts componentsJoinedByString:kWHITESPACE];
 //        return [[parts componentsJoinedByString:kWHITESPACE] TYstringByTrimmingWhitespace];
 };
 

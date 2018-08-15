@@ -12,6 +12,7 @@
 
 @interface Converter : NSObject
 
+
 @property (strong, nonatomic) NSString *localeID;
 @property (assign, nonatomic, getter = isOrdinal) BOOL ordinal;
 @property (assign, nonatomic, getter = isShortScale) BOOL shortScale;
@@ -27,5 +28,5 @@
 - (NSString *)stringFromNumber:(long long)number withLocale:(NSLocale *)locale;
 
 
-- (NSString *)convertLongNumber:(long long)number ;
+//- (NSString *)convertLongNumber:(long long)number ;
 @end

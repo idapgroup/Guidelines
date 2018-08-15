@@ -181,8 +181,14 @@
     CGFloat appleTime = 0;
     CGFloat converterTime = 0;
     
-    NSInteger CYCLE_COUNT = 10*THOUSAND;
-    uint32_t limit = INT32_MAX;
+    NSInteger CYCLE_COUNT = 1*THOUSAND;
+    uint32_t limit = 1000;//INT32_MAX;
+    
+    NSInteger c_arr[CYCLE_COUNT];
+    for (NSInteger idx = 0; idx < CYCLE_COUNT; idx++) {
+        c_arr[idx] = arc4random_uniform(limit);// + 1000000;
+    }
+    
     
     Converter *defaultConverter = [Converter new];
     defaultConverter.localeID = kEN;
@@ -191,13 +197,16 @@
     NSDate *start = [NSDate date];
     
     for (NSInteger idx = 0; idx < CYCLE_COUNT; idx++) {
-        long long number = arc4random_uniform(limit);
-        NSLog(@"%@", [defaultConverter convertLongNumber:number]);
+        NSLog(@"%@", [defaultConverter stringFromNumber:c_arr[idx]]);
     }
     converterTime =  [start timeIntervalSinceNow];
     //    NSLog(@"** %f sec", [start timeIntervalSinceNow]);
     
-    
+//    double middleTime = 0;
+//    for (NSInteger idx = 0; idx < CYCLE_COUNT; idx++) {
+//        middleTime += defaultConverter.measurements[idx].doubleValue;
+//    }
+//    NSLog(@"*** middle time = %f", (middleTime / (double)CYCLE_COUNT));
     
     NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
     [numberFormatter setNumberStyle:NSNumberFormatterSpellOutStyle];
@@ -206,12 +215,10 @@
     start = [NSDate date];
     
     for (NSInteger idx = 0; idx < CYCLE_COUNT; idx++) {
-        NSNumber *number = [NSNumber numberWithLongLong: arc4random_uniform(limit)];
-        NSLog(@"%@", [numberFormatter stringFromNumber:number]);
+        NSLog(@"%@", [numberFormatter stringFromNumber:@(c_arr[idx])]);
     }
     
     appleTime = [start timeIntervalSinceNow];
-    //    NSLog(@"** %f sec", [start timeIntervalSinceNow]);
     
     NSInteger diff = (NSInteger) ((converterTime - appleTime) * (100 / appleTime));
     NSLog(@"*** ENGLISHT RESULT:");
@@ -220,72 +227,65 @@
     
 /*** deutsch tests ***/
     
-    defaultConverter.localeID = kDE;
-    defaultConverter.ordinal = NO;
-    
-    start = [NSDate date];
-    
-    for (NSInteger idx = 0; idx < CYCLE_COUNT; idx++) {
-        long long number = arc4random_uniform(limit);
-        NSLog(@"%@", [defaultConverter convertLongNumber:number]);
-    }
-    converterTime =  [start timeIntervalSinceNow];
-    //    NSLog(@"** %f sec", [start timeIntervalSinceNow]);
-    
-    
-    
-    [numberFormatter setNumberStyle:NSNumberFormatterSpellOutStyle];
-    [numberFormatter setLocale:[NSLocale localeWithLocaleIdentifier:@"de"]];
-    
-    start = [NSDate date];
-    
-    for (NSInteger idx = 0; idx < CYCLE_COUNT; idx++) {
-        NSNumber *number = [NSNumber numberWithLongLong: arc4random_uniform(limit)];
-        NSLog(@"%@", [numberFormatter stringFromNumber:number]);
-    }
-    
-    appleTime = [start timeIntervalSinceNow];
-    //    NSLog(@"** %f sec", [start timeIntervalSinceNow]);
-    
-    diff = (NSInteger) ((converterTime - appleTime) * (100 / appleTime));
-    NSLog(@"*** DEUTSCH RESULT:");
-    NSLog(@"*** NSNumberFormatter = %f", appleTime);
-    NSLog(@"*** Converter = %f, (%ld%%)",converterTime, diff);
-
-    /*** ukrainian tests ***/
-    
-    defaultConverter.localeID = kUA;
-    defaultConverter.ordinal = NO;
-    
-    start = [NSDate date];
-    
-    for (NSInteger idx = 0; idx < CYCLE_COUNT; idx++) {
-        long long number = arc4random_uniform(limit);
-        NSLog(@"%@", [defaultConverter convertLongNumber:number]);
-    }
-    converterTime =  [start timeIntervalSinceNow];
-    //    NSLog(@"** %f sec", [start timeIntervalSinceNow]);
-    
-    
-    
-    [numberFormatter setNumberStyle:NSNumberFormatterSpellOutStyle];
-    [numberFormatter setLocale:[NSLocale localeWithLocaleIdentifier:@"de"]];
-    
-    start = [NSDate date];
-    
-    for (NSInteger idx = 0; idx < CYCLE_COUNT; idx++) {
-        NSNumber *number = [NSNumber numberWithLongLong: arc4random_uniform(limit)];
-        NSLog(@"%@", [numberFormatter stringFromNumber:number]);
-    }
-    
-    appleTime = [start timeIntervalSinceNow];
-    //    NSLog(@"** %f sec", [start timeIntervalSinceNow]);
-    
-    diff = (NSInteger) ((converterTime - appleTime) * (100 / appleTime));
-    NSLog(@"*** UKRAINIAN RESULT:");
-    NSLog(@"*** NSNumberFormatter = %f", appleTime);
-    NSLog(@"*** Converter = %f, (%ld%%)",converterTime, diff);
-    
+//    defaultConverter.localeID = kDE;
+//    defaultConverter.ordinal = NO;
+//    
+//    start = [NSDate date];
+//    
+//    for (NSInteger idx = 0; idx < CYCLE_COUNT; idx++) {
+//        NSLog(@"%@", [defaultConverter convertLongNumber:c_arr[idx]]);
+//    }
+//    converterTime =  [start timeIntervalSinceNow];
+//    
+//    
+//    
+//    [numberFormatter setNumberStyle:NSNumberFormatterSpellOutStyle];
+//    [numberFormatter setLocale:[NSLocale localeWithLocaleIdentifier:@"de"]];
+//    
+//    start = [NSDate date];
+//    
+//    for (NSInteger idx = 0; idx < CYCLE_COUNT; idx++) {
+//        NSLog(@"%@", [numberFormatter stringFromNumber:@(c_arr[idx])]);
+//    }
+//    
+//    appleTime = [start timeIntervalSinceNow];
+//    
+//    diff = (NSInteger) ((converterTime - appleTime) * (100 / appleTime));
+//    NSLog(@"*** DEUTSCH RESULT:");
+//    NSLog(@"*** NSNumberFormatter = %f", appleTime);
+//    NSLog(@"*** Converter = %f, (%ld%%)",converterTime, diff);
+//
+//    /*** ukrainian tests ***/
+//    
+//    defaultConverter.localeID = kUA;
+//    defaultConverter.ordinal = NO;
+//    
+//    start = [NSDate date];
+//    
+//    for (NSInteger idx = 0; idx < CYCLE_COUNT; idx++) {
+//        NSLog(@"%@", [defaultConverter convertLongNumber:c_arr[idx]]);
+//    }
+//    converterTime =  [start timeIntervalSinceNow];
+//    
+//    
+//    
+//    [numberFormatter setNumberStyle:NSNumberFormatterSpellOutStyle];
+//    [numberFormatter setLocale:[NSLocale localeWithLocaleIdentifier:@"de"]];
+//    
+//    start = [NSDate date];
+//    
+//    for (NSInteger idx = 0; idx < CYCLE_COUNT; idx++) {
+//        NSLog(@"%@", [numberFormatter stringFromNumber:@(c_arr[idx])]);
+//    }
+//    
+//    appleTime = [start timeIntervalSinceNow];
+//    //    NSLog(@"** %f sec", [start timeIntervalSinceNow]);
+//    
+//    diff = (NSInteger) ((converterTime - appleTime) * (100 / appleTime));
+//    NSLog(@"*** UKRAINIAN RESULT:");
+//    NSLog(@"*** NSNumberFormatter = %f", appleTime);
+//    NSLog(@"*** Converter = %f, (%ld%%)",converterTime, diff);
+//    
 
 #endif
     

@@ -25,7 +25,7 @@
 
 @implementation Matcher
 
-@dynamic localeFormatter, shortScale;
+@dynamic  shortScale;//, localeFormatter;
 
 #pragma mark -
 #pragma mark Accessors
@@ -36,6 +36,7 @@
     
     if (!_localeID || [self isCorrectLocaleID:userLocale]) {
         _localeID = userLocale;
+        _localeFormatter = [self.formatters objectForKey:_localeID];
     }
 }
 
@@ -55,11 +56,6 @@
     
     return _formatters;
 }
-
-- (NumeralsFormatter *)localeFormatter {
-    return [self.formatters objectForKey:self.localeID];
-}
-
 
 #pragma mark -
 #pragma mark Public API
@@ -111,44 +107,58 @@
 - (NSArray<NSString *> *)availableLocaleID {
     return [self.formatters allKeys];
 }
-
-- (NSMutableArray *)threeDigitParser:(NSInteger)number multiplier:(long long)multiplier {
+- (NSMutableArray *)newThreeDigitParser:(NSInteger)number multiplier:(long long)multiplier {
     NSMutableArray *parts = [NSMutableArray new];
     NSString *result = nil;
     
-#warning для рабочего конвертера!
-//    if (number > 99) {
-//        NSInteger hundreds = number - (number % 100);  //  сотни
-//        result = [self.localeFormatter hundredsFormatter:hundreds multiplier:multiplier];
-//        if (result) [parts addObject:result];
-//    }
+    if (number >= 100) {
+        NSInteger hundreds = number - (number % 100);  //  сотни
+        result = [self.localeFormatter hundredsFormatter:hundreds multiplier:multiplier];
+        if (result) [parts addObject:result];
+    }
     
     NSInteger units = number % 100;
-    if (units > 0 && units < 10) {
+    
+    if (units > 10) {
+        result = [self.localeFormatter tensFormatter:units multiplier:multiplier];
+        if (result) [parts addObject:result];
+        
+//    } else if (units > 9) { //&& units <= 19) {
+//        result = [self.localeFormatter teensFormatter:units multiplier:multiplier];
+//        if (result) [parts addObject:result];
+//        
+    } else if (units > 0) {  //  защита от остатка круглых чисел
         result = [self.localeFormatter unitsFormatter:units multiplier:multiplier];
         if (result) [parts addObject:result];
         
-    } else if (units > 9 && units <= 19) {
-        result = [self.localeFormatter teensFormatter:units multiplier:multiplier];
-        if (result) [parts addObject:result];
-        
-    } else if (units > 19) {  
-        BOOL isRoundNumber = number % 10 ? NO : YES;
-        
-        if (isRoundNumber) {
-            result = [self.localeFormatter roundTensFormatter:units multiplier:multiplier];
-        } else {
-            result = [self.localeFormatter tensFormatter:units multiplier:multiplier];
-        }
-        if (result) [parts addObject:result];
     }
+    
+    return parts;}
+- (NSMutableArray *)threeDigitParser:(NSInteger)number multiplier:(long long)multiplier {
+    NSMutableArray *parts = [NSMutableArray new];
+    NSString *result = nil;
     
     if (number > 99) {
         NSInteger hundreds = number - (number % 100);  //  сотни
         result = [self.localeFormatter hundredsFormatter:hundreds multiplier:multiplier];
         if (result) [parts addObject:result];
     }
-
+    
+    NSInteger units = number % 100;
+    
+    if (units > 19) {
+        result = [self.localeFormatter tensFormatter:units multiplier:multiplier];
+        if (result) [parts addObject:result];
+        
+    } else if (units > 9) { //&& units <= 19) {
+        result = [self.localeFormatter teensFormatter:units multiplier:multiplier];
+        if (result) [parts addObject:result];
+        
+    } else if (units > 0) { //&& units < 10) {
+        result = [self.localeFormatter unitsFormatter:units multiplier:multiplier];
+        if (result) [parts addObject:result];
+        
+    }
     
     return parts;
 }

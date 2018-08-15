@@ -133,7 +133,7 @@
     
     //  short scale
     self.converter.shortScale = YES;
-     NSLog(@"%@", [self.converter stringFromNumber:MILLION]);
+//     NSLog(@"%@", [self.converter stringFromNumber:MILLION]);
     XCTAssert([[self.converter stringFromNumber:MILLION] isEqualToString:@"мільйонний"]);
     XCTAssert([[self.converter stringFromNumber:BILLION] isEqualToString:@"більйонний"]);
     XCTAssert([[self.converter stringFromNumber:TRILLION] isEqualToString:@"трильйонний"]);

@@ -104,7 +104,7 @@
 }
 
 - (void)testCardinalThousands {
-    NSLog(@"%@", [self.converter stringFromNumber:1571]);
+//    NSLog(@"%@", [self.converter stringFromNumber:1571]);
 
     XCTAssert([[self.converter stringFromNumber:1571] isEqualToString:@"eintausendfünfhunderteinundsiebzig"]);
     XCTAssert([[self.converter stringFromNumber:3834] isEqualToString:@"dreitausendachthundertvierunddreißig"]);
@@ -121,7 +121,7 @@
 
 - (void)testCardinalLargeNumbers {
     //  short scale
-     NSLog(@"%@", [self.converter stringFromNumber:MILLION]);
+//     NSLog(@"%@", [self.converter stringFromNumber:MILLION]);
     XCTAssert([[self.converter stringFromNumber:MILLION] isEqualToString:@"eine Million"]);
     XCTAssert([[self.converter stringFromNumber:BILLION] isEqualToString:@"eine Billion"]);
     XCTAssert([[self.converter stringFromNumber:TRILLION] isEqualToString:@"eine Trillion"]);
