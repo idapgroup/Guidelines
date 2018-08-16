@@ -16,7 +16,6 @@
     Numerals *_ukrainian = [Numerals new];
     
     _ukrainian.localeID = kUA;
-    _ukrainian.shortScale = YES;
     
     _ukrainian.cardinal =
         @{
@@ -220,7 +219,6 @@
 //    [plist setObject:_ukrainian.cardinalLargeShort forKey:@"cardinalLargeShort"];
 //    [plist setObject:_ukrainian.cardinalLargeLong forKey:@"cardinalLargeLong"];
 //    [plist setObject:_ukrainian.localeID forKey:@"localeID"];
-//    [plist setObject:[NSNumber numberWithBool:_ukrainian.shortScale] forKey:@"shortScale"];
 //    
 //    NSDictionary *consPlist = [plist copy];
 //    

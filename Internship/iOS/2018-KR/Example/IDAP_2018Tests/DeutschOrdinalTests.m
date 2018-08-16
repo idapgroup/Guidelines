@@ -37,7 +37,7 @@
 }
 
 - (void)testOrdinalUnits {
-    //    XCTAssert([[self.converter stringFromNumber:0] isEqualToString:@"null"]);
+    XCTAssert([[self.converter stringFromNumber:0] isEqualToString:@"null"]);
     XCTAssert([[self.converter stringFromNumber:1] isEqualToString:@"erste"]);
     XCTAssert([[self.converter stringFromNumber:2] isEqualToString:@"zweite"]);
     XCTAssert([[self.converter stringFromNumber:3] isEqualToString:@"dritte"]);
@@ -125,14 +125,10 @@
 }
 
 - (void)testOrdinalLargeNumbers {
-    //  short scale
     XCTAssert([[self.converter stringFromNumber:MILLION] isEqualToString:@"eine Millionste"]);
-    XCTAssert([[self.converter stringFromNumber:BILLION] isEqualToString:@"eine Billionste"]);
-    XCTAssert([[self.converter stringFromNumber:TRILLION] isEqualToString:@"eine Trillionste"]);
+        XCTAssert([[self.converter stringFromNumber:50*MILLION] isEqualToString:@"fünfzig Millionste"]);
     
-    XCTAssert([[self.converter stringFromNumber:50*MILLION] isEqualToString:@"fünfzig Millionste"]);
-    XCTAssert([[self.converter stringFromNumber:2*BILLION] isEqualToString:@"zwei Billionste"]);
-    
+   
     
     XCTAssert([[self.converter stringFromNumber:1204613] isEqualToString:@"eine Million zweihundertviertausendsechshundertdreizehnte"]);
     XCTAssert([[self.converter stringFromNumber:4000] isEqualToString:@"viertausendste"]);
@@ -142,16 +138,18 @@
                isEqualToString:@"achthunderteinundneunzigtausendsiebenhundertvierundzwanzigste"]);
     XCTAssert([[self.converter stringFromNumber:914] isEqualToString:@"neunhundertvierzehnte"]);
     
-    
-    //  long scale is more popular in Germany
-    self.converter.shortScale = NO;
-//    NSLog(@"%@", [self.converter stringFromNumber:BILLION]);
-//    NSLog(@"%@", [self.converter stringFromNumber:TRILLION]);
 
     XCTAssert([[self.converter stringFromNumber:MILLION] isEqualToString:@"eine Millionste"]);
     XCTAssert([[self.converter stringFromNumber:BILLION] isEqualToString:@"eine Milliardste"]);
     XCTAssert([[self.converter stringFromNumber:TRILLION] isEqualToString:@"eine Billionste"]);
     XCTAssert([[self.converter stringFromNumber:1001001001000] isEqualToString:@"eine Billion eine Milliarde eine Million eintausendste"]);
+    
+    //  short-long scale was deleting
+    //    XCTAssert([[self.converter stringFromNumber:BILLION] isEqualToString:@"eine Billionste"]);
+    //    XCTAssert([[self.converter stringFromNumber:TRILLION] isEqualToString:@"eine Trillionste"]);
+    
+    
+    //    XCTAssert([[self.converter stringFromNumber:2*BILLION] isEqualToString:@"zwei Billionste"]);
     
 }
 

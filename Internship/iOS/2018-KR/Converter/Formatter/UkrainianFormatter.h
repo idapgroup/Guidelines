@@ -10,6 +10,10 @@
 
 @interface UkrainianFormatter : NumeralsFormatter
 
+@end
 
+@interface UkrainianFormatter (Initialization)
+
++ (instancetype)formatter;
 
 @end

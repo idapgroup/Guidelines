@@ -16,7 +16,6 @@
     Numerals *_english = [Numerals new];
     
     _english.localeID = kEN;
-    _english.shortScale = YES;
     
     _english.cardinal =
         @{

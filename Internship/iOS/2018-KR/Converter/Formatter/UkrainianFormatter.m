@@ -8,95 +8,78 @@
 
 #import "UkrainianFormatter.h"
 
-#import "Numerals.h"
-
 #import "GlobalKeys.h"
 #import "NSString+Formatting.h"
-#import "NumeralsFormatter+Search.h"
 
 @interface UkrainianFormatter()
 
-@property (strong, nonatomic)  NSDictionary <NSString *, NSDictionary <NSString *, NSString *>*> *exceptions;
+@property (strong, nonatomic, readwrite) NSString *localeID;
 
 @end
 
+static NSString * kOrdinalForm      = @"ordinalForm";
 static NSString * kOrdinalPrefixes  = @"ordinalPrefixes";
 static NSString * kUnitsForThousend = @"unitsForThousend";
 static NSString * kGenitiveForm     = @"genitiveForm";
 
 @implementation UkrainianFormatter
 
+@synthesize localeID = _localeID;
+
 #pragma mark -
-#pragma mark Accessors
-- ( NSDictionary <NSString *, NSDictionary <NSString *, NSString *>*> *)exceptions {
-    if (!_exceptions) {
-        _exceptions = self.numerals.exceptions;
+#pragma mark Initialization
+- (instancetype)init {
+    self = [super init];
+    
+    if (self) {
+        _localeID = kUA;
     }
     
-    return _exceptions;
+    return self;
 }
 
 #pragma mark -
 #pragma mark Public API
-+ (instancetype)formatter {
-    Numerals *numerals = [Numerals ukrainian];
-    UkrainianFormatter *_formatter = [[UkrainianFormatter alloc] initWithNumerals:numerals];
-    
-    return _formatter;
-}
-
-//  1..9
 - (NSString *)unitsFormatter:(NSInteger)number multiplier:(long long)multiplier {
-    NSString *unitsString = nil;
-    NSString *key = [NSString TYstringWithInt:number];
+    
+    NSString *units = self.cardinalUnits[number];  //  1..9
     
     if (multiplier == THOUSAND && number <= 2) {  //  один -> одна, два -> дві
-        unitsString = self.exceptions[kUnitsForThousend][key];
-    } else {
-        unitsString = self.numerals.cardinal[key];
+        units = self.exceptions[kUnitsForThousend][units];
     }
     
-//    return [NSString TYstringWithLeadingWhitespace:unitsString];
-    return unitsString;
+    return units;
 }
-//  10..19
-- (NSString *)teensFormatter:(NSInteger)number multiplier:(long long)multiplier {
-//    NSString *teensString = self.numerals.cardinal[[NSString TYstringWithInt:number]];
-//    
-//    return [NSString TYstringWithLeadingWhitespace:teensString];
-    return self.numerals.cardinal[[NSString TYstringWithInt:number]];
-}
-//  20, 30, 40..90
-- (NSString *)roundTensFormatter:(NSInteger)number multiplier:(long long)multiplier {
-//    NSString *roundTensString = self.numerals.cardinal[[NSString TYstringWithInt:number]];
-//    
-//    return [NSString TYstringWithLeadingWhitespace:roundTensString];
-    return self.numerals.cardinal[[NSString TYstringWithInt:number]];
-}
-//  21, 22, 23..99
+
 - (NSString *)tensFormatter:(NSInteger)number multiplier:(long long)multiplier {
-    NSInteger units = number % 10;
-    NSInteger roundTens = number - units;
     
-    NSString *unitsString = [self unitsFormatter:units multiplier:multiplier];
-//    unitsString = [unitsString TYstringByTrimmingWhitespace];
-    
-    NSString *roundTensString = [self roundTensFormatter:roundTens multiplier:multiplier];
-    
-    return [@[roundTensString, unitsString] componentsJoinedByString:kWHITESPACE];
+    if (number < 20) {  //  10..19
+        
+        return self.cardinalTens[number % 10];
+        
+    } else {  //  20, 30, .. 90
+        NSString *tens = self.cardinalTens[8 + (number / 10)];
+        NSInteger remainder = number % 10;
+        
+        if (remainder > 0) {
+            //  complex numerals, unit und tens
+            NSString *units = [self unitsFormatter:remainder multiplier:multiplier];
+            
+            tens = [NSString stringWithFormat:@"%@ %@", tens, units];
+        }
+        
+        return tens;
+    }
 }
-//  100, 200, 300..900
+
 - (NSString *)hundredsFormatter:(NSInteger)number multiplier:(long long)multiplier {
-//    NSString *hundredsString = self.numerals.cardinal[[NSString TYstringWithInt:number]];
-    
-//    return [NSString TYstringWithLeadingWhitespace:hundredsString];
-    return self.numerals.cardinal[[NSString TYstringWithInt:number]];
+
+    return self.cardinalHundreds[number / 100];
 }
 
 
 - (NSString *)largeNumbersFormatter:(long long)multiplier quantity:(NSInteger)quantity {
-    NSString *result = kEMPTY_STRING;
-    NSString *key = [NSString TYstringWithInt:multiplier];
+    NSInteger idx = log10(multiplier)/3;
     NSInteger tens  = quantity % 100;
     NSInteger units = quantity % 10;
     
@@ -108,123 +91,55 @@ static NSString * kGenitiveForm     = @"genitiveForm";
     //  5,6,7-20,...,
     BOOL isSecondRange = (tens >= 5 && tens <= 20) || (units >= 5 && tens > 20) || units == 0;
     
-    result = self.numerals.cardinalLarge[key];  //  тисяча, hidden range 1,21,31..91 (except 11)
+    NSString *large = self.cardinalLarge[idx];  //  тисяча, hidden range 1,21,31..91 (except 11)
 
     
     if (isFirstRange) {
         if (multiplier == THOUSAND) {
-            result = [result TYreplaseSuffix:@"а" withString:@"і"];
+            large = [large TYreplaseSuffix:@"а" withString:@"і"];
         } else {
-            result = [result stringByAppendingString:@"а"];
+            large = [large stringByAppendingString:@"а"];
         }
     } else if (isSecondRange) {
         if (multiplier == THOUSAND) {
-            result = [result TYreplaseSuffix:@"а" withString:kEMPTY_STRING];
+            large = [large TYreplaseSuffix:@"а" withString:kEMPTY_STRING];
         } else {
-            result = [result stringByAppendingString:@"ів"];
+            large = [large stringByAppendingString:@"ів"];
         }
     }
     
-    return result;
-//    return [NSString TYstringWithLeadingWhitespace:result];
-}
-
-//  MARK:  common formatters
-//- (NSString *)starterFormatter:(long long)number {
-//    NSString *result = nil;
-//    NSString *key = [NSString TYstringWithInt:number];
-//    
-//    switch (number) {
-//        case 0:
-//            result = self.numerals.cardinal[key];
-//            break;
-//        case MILLION:  //  million, billion, trillions have same one method call it's OK!
-//        case BILLION:
-//        case TRILLION:
-//            result = [NSString stringWithFormat:@"один %@", self.numerals.cardinalLarge[key]];
-//            break;
-//        default:
-//            break;
-//    }
-//    
-//    return result;
-//}
-
-- (NSString *)ordinalFormatter:(long long)number withString:(NSString *)string {
-    //  split, analyze, replace, join
-    NSString *ordinal = nil;
-    NSArray *numberParts = [[string TYstringByTrimmingWhitespace]
-                            componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-    NSMutableArray *tempNumberParts = [numberParts mutableCopy];
-    
-    NSString *cardinal = tempNumberParts.lastObject;
-
-    
-    //  "одна тисяча" -> "тисячний"
-    if (number == THOUSAND || number == MILLION || number == BILLION || number == TRILLION) {
-        [tempNumberParts removeObjectAtIndex:tempNumberParts.count - 2];
-        ordinal = [self searchOrdinalInDictionaryWithKey:cardinal];
-    }
-    
-    
-    //  1..999
-    if (!ordinal) {
-        ordinal = [self searchOrdinalInDictionaryWithKey:cardinal];
-    }
-
-    //  thousand, million, billion, etc
-    if (!ordinal) {
-        
-    //  some large numbers were changed (дві тисячі, два мільйона), they can't be found in main dictionary
-        NSDictionary *prefixes = self.exceptions[kOrdinalPrefixes];
-        
-        for (NSString *prefix in prefixes) {
-            if ([cardinal hasPrefix:prefix]) {
-                ordinal = prefixes[prefix];
-                break;
-            }
-        }
-        tempNumberParts = [[self replaceWordWithGenitiveForm:tempNumberParts number:number] mutableCopy];
-        
-        [tempNumberParts replaceObjectAtIndex:tempNumberParts.count - 1
-                                   withObject:ordinal];
-        
-        return [tempNumberParts componentsJoinedByString:kEMPTY_STRING];
-        
-    } else {  //  success for 1...999
-        //  restore whitespaces
-        [tempNumberParts replaceObjectAtIndex:tempNumberParts.count - 1 withObject:ordinal];
-
-        return [tempNumberParts componentsJoinedByString:kWHITESPACE];
-    }
+    return large;
 }
 
 - (NSMutableArray *)ordinalFormatter:(long long)number withParts:(NSMutableArray *)parts {
-    NSString *ordinal = nil;
-//    NSArray *numberParts = [[string TYstringByTrimmingWhitespace]
-//                            componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-//    NSMutableArray *tempParts = [numberParts mutableCopy];
+    
+    if (parts.count == 0) {
+        NSString *zero = self.exceptions[kOrdinalForm][self.cardinalUnits[ZERO]];
+        return [NSMutableArray arrayWithObject:zero];
+    }
+    
+    //  "двацять один" -> "двадцять", "один".
     NSMutableArray *tempParts = [[[parts componentsJoinedByString:kWHITESPACE] componentsSeparatedByString:kWHITESPACE] mutableCopy];
-
+    
+    NSString *ordinal = nil;
     NSString *cardinal = tempParts.lastObject;
-    
-    
-    //  "одна тисяча" -> "тисячний"
-    if (number == THOUSAND || number == MILLION || number == BILLION || number == TRILLION) {
-        [tempParts removeObjectAtIndex:tempParts.count - 2];
-        ordinal = [self searchOrdinalInDictionaryWithKey:cardinal];
+
+    if (!cardinal) {
+        cardinal = self.cardinalUnits[ZERO];
+        [tempParts addObject:cardinal];
     }
     
-    
-    //  1..999
+    //  0..999
     if (!ordinal) {
-        ordinal = [self searchOrdinalInDictionaryWithKey:cardinal];
+        ordinal = self.exceptions[kOrdinalForm][cardinal];
     }
     
-    //  thousand, million, billion, etc
+    //  n thousand, million, billion, etc
     if (!ordinal) {
-        
-        //  some large numbers were changed (дві тисячі, два мільйона), they can't be found in main dictionary
+        //  replace last word
+        //  some large numbers have changed ending (тисяча -> тисячі, мільйон -> мільйона),
+        //  they can't be found in main ordinalForm dictionary.
+        //  check out prefix dictionary
         NSDictionary *prefixes = self.exceptions[kOrdinalPrefixes];
         
         for (NSString *prefix in prefixes) {
@@ -233,40 +148,46 @@ static NSString * kGenitiveForm     = @"genitiveForm";
                 break;
             }
         }
-        tempParts = [[self replaceWordWithGenitiveForm:tempParts number:number] mutableCopy];
-        
         [tempParts replaceObjectAtIndex:tempParts.count - 1
-                                   withObject:ordinal];
+                             withObject:ordinal];
+        
+        //  replace word(s) before last with same word in genitive form
+        tempParts = [self replaceWordWithGenitiveForm:tempParts number:number];
+        
+        //  join all words in ona big word
         tempParts = [NSMutableArray arrayWithObject:[tempParts componentsJoinedByString:kEMPTY_STRING]];
-        return tempParts;
-//        return [parts componentsJoinedByString:kEMPTY_STRING];
-        
-    } else {  //  success for 1...999
-        //  restore whitespaces
-        [tempParts replaceObjectAtIndex:tempParts.count - 1 withObject:ordinal];
         
         return tempParts;
-//        return [parts componentsJoinedByString:kWHITESPACE];
+    }
+    
+    //  "одна тисяча" -> "тисячний", "один мільйон" -> "мільйонний"
+    if (number == THOUSAND || number == MILLION || number == BILLION || number == TRILLION) {
+        [tempParts removeObjectAtIndex:tempParts.count - 2];
+        ordinal = self.exceptions[kOrdinalForm][cardinal];
+    }
+    
+    [tempParts replaceObjectAtIndex:tempParts.count - 1 withObject:ordinal];
+        
+    return tempParts;
+}
+
+- (NSString *)finishingFormatter:(long long)number withParts:(NSMutableArray *)parts {
+    
+    if (parts.count == 0) {
+        return self.cardinalUnits[ZERO];
+    } else if (parts.count == 1) {
+        return parts.firstObject;
+    } else {
+        return [parts componentsJoinedByString:kWHITESPACE];
     }
 }
 
-
-
-//- (NSString *)finishingFormatter:(long long)number withString:(NSString *)string {
-//    return [string TYstringByTrimmingWhitespace];
-//}
-
-- (NSString *)finishingFormatter:(long long)number withParts:(NSMutableArray *)parts {
-    return [[parts componentsJoinedByString:kWHITESPACE] TYstringByTrimmingWhitespace];
-}
-
 #pragma mark -
-#pragma mark Private Api
+#pragma mark Private API
 - (NSMutableArray<NSString *> *) replaceWordWithGenitiveForm:(NSMutableArray<NSString *> *)parts number:(long long)number {
-//    NSMutableArray *parts = [parts mutableCopy];
     
     //  replace  "дві", "тисячі" -> "двох", "тисячний"
-    //  or even better    "двадцять", "дві", "тисячі" -> "двадцяти", "двох", "тисячний"
+    //  or even better  "двадцять", "дві", "тисячі" -> "двадцяти", "двох", "тисячний"
     NSInteger lastIdx = parts.count - 1;
     
     //  calculate two last valuable digits  24000 -> 24
@@ -284,7 +205,9 @@ static NSString * kGenitiveForm     = @"genitiveForm";
             }
         }
     }
-
+    
+    //  all numerals from "двадцять один" to "дев'яносто дев'ять" (except round tens) is combined
+    //  and need to replace two both digits
     BOOL isCombinedNumeral = (tens > 20 && units != 1);
     
     NSString *secondlast = parts[lastIdx - 1];
@@ -298,16 +221,18 @@ static NSString * kGenitiveForm     = @"genitiveForm";
     }
     
     return parts;
-//    return [tempParts copy];
 }
 
 - (NSString *)genitiveForCardinalNumber:(NSString *)number {
-    NSString *key = [self.numerals.cardinal allKeysForObject:number].lastObject;
-    if (!key) {
-        key = [self.exceptions[kUnitsForThousend] allKeysForObject:number].lastObject;
+    NSString *genitive = self.exceptions[kGenitiveForm][number];
+    
+    //  одна, дві
+    if (!genitive) {
+        NSString *origin = [self.exceptions[kUnitsForThousend] allKeysForObject:number].firstObject;
+        genitive = self.exceptions[kGenitiveForm][origin];
     }
     
-    return self.exceptions[kGenitiveForm][key];
+    return genitive;
 }
 
 @end

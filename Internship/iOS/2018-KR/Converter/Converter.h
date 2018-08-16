@@ -15,18 +15,12 @@
 
 @property (strong, nonatomic) NSString *localeID;
 @property (assign, nonatomic, getter = isOrdinal) BOOL ordinal;
-@property (assign, nonatomic, getter = isShortScale) BOOL shortScale;
 @property (strong, nonatomic, readonly) NSArray<NSString *> *availableLocaleID;
 
 - (instancetype)init;  //  eng, ger, ukr
-- (instancetype)initWithFormatter:(NumeralsFormatter *)formatter;
-
-- (void)addFormatter:(NumeralsFormatter *)formatter;
-- (void)removeFormatterWithLocale:(NSString *)localeID;
 
 - (NSString *)stringFromNumber:(long long)number;  //  with current locale property
-- (NSString *)stringFromNumber:(long long)number withLocale:(NSLocale *)locale;
+//- (NSString *)stringFromNumber:(long long)number withLocale:(NSLocale *)locale;
 
 
-//- (NSString *)convertLongNumber:(long long)number ;
 @end

@@ -37,7 +37,7 @@
 }
 
 - (void)testCardinalUnits {
-//    XCTAssert([[self.converter stringFromNumber:0] isEqualToString:@"null"]);
+    XCTAssert([[self.converter stringFromNumber:0] isEqualToString:@"null"]);
     XCTAssert([[self.converter stringFromNumber:1] isEqualToString:@"eins"]);
     XCTAssert([[self.converter stringFromNumber:2] isEqualToString:@"zwei"]);
     XCTAssert([[self.converter stringFromNumber:3] isEqualToString:@"drei"]);
@@ -121,15 +121,16 @@
 
 - (void)testCardinalLargeNumbers {
     //  short scale
-//     NSLog(@"%@", [self.converter stringFromNumber:MILLION]);
+     NSLog(@"%@", [self.converter stringFromNumber:MILLION]);
     XCTAssert([[self.converter stringFromNumber:MILLION] isEqualToString:@"eine Million"]);
-    XCTAssert([[self.converter stringFromNumber:BILLION] isEqualToString:@"eine Billion"]);
-    XCTAssert([[self.converter stringFromNumber:TRILLION] isEqualToString:@"eine Trillion"]);
+    XCTAssert([[self.converter stringFromNumber:BILLION] isEqualToString:@"eine Milliarde"]);
+    XCTAssert([[self.converter stringFromNumber:TRILLION] isEqualToString:@"eine Billion"]);
 //
 //    
 
     XCTAssert([[self.converter stringFromNumber:2*MILLION] isEqualToString:@"zwei Millionen"]);
-    XCTAssert([[self.converter stringFromNumber:2*BILLION] isEqualToString:@"zwei Billionen"]);
+    NSLog(@"%@", [self.converter stringFromNumber:2*BILLION]);
+    XCTAssert([[self.converter stringFromNumber:2*BILLION] isEqualToString:@"zwei Milliarden"]);
 
     
 
@@ -145,11 +146,10 @@
     
     
     //  long scale is more popular in Germany
-    self.converter.shortScale = NO;
-    XCTAssert([[self.converter stringFromNumber:MILLION] isEqualToString:@"eine Million"]);
-    XCTAssert([[self.converter stringFromNumber:BILLION] isEqualToString:@"eine Milliarde"]);
-    XCTAssert([[self.converter stringFromNumber:TRILLION] isEqualToString:@"eine Billion"]);
-    XCTAssert([[self.converter stringFromNumber:1001001001000] isEqualToString:@"eine Billion eine Milliarde eine Million eintausend"]);
+//    XCTAssert([[self.converter stringFromNumber:MILLION] isEqualToString:@"eine Million"]);
+//    XCTAssert([[self.converter stringFromNumber:BILLION] isEqualToString:@"eine Milliarde"]);
+//    XCTAssert([[self.converter stringFromNumber:TRILLION] isEqualToString:@"eine Billion"]);
+//    XCTAssert([[self.converter stringFromNumber:1001001001000] isEqualToString:@"eine Billion eine Milliarde eine Million eintausend"]);
 
 }
 

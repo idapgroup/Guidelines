@@ -27,7 +27,6 @@
     if (!_converter) {
         _converter = [[Converter alloc] init];
         _converter.localeID = kUA;
-        _converter.shortScale = YES;
         _converter.ordinal = YES;
     }
 }
@@ -38,7 +37,7 @@
 }
 
 - (void)testOrdinalUnits {
-    //    XCTAssert([[self.converter stringFromNumber:0] isEqualToString:@"нуль"]);
+    XCTAssert([[self.converter stringFromNumber:0] isEqualToString:@"нульовий"]);
     XCTAssert([[self.converter stringFromNumber:1] isEqualToString:@"перший"]);
     XCTAssert([[self.converter stringFromNumber:2] isEqualToString:@"другий"]);
     XCTAssert([[self.converter stringFromNumber:3] isEqualToString:@"третій"]);
@@ -132,15 +131,14 @@
 - (void)testOrdinalLargeNumbers {
     
     //  short scale
-    self.converter.shortScale = YES;
 //     NSLog(@"%@", [self.converter stringFromNumber:MILLION]);
     XCTAssert([[self.converter stringFromNumber:MILLION] isEqualToString:@"мільйонний"]);
-    XCTAssert([[self.converter stringFromNumber:BILLION] isEqualToString:@"більйонний"]);
-    XCTAssert([[self.converter stringFromNumber:TRILLION] isEqualToString:@"трильйонний"]);
+    XCTAssert([[self.converter stringFromNumber:BILLION] isEqualToString:@"мільярдний"]);
+    XCTAssert([[self.converter stringFromNumber:TRILLION] isEqualToString:@"більйонний"]);
     
     XCTAssert([[self.converter stringFromNumber:2*MILLION] isEqualToString:@"двохмільйонний"]);
-    XCTAssert([[self.converter stringFromNumber:2*BILLION] isEqualToString:@"двохбільйонний"]);
-    XCTAssert([[self.converter stringFromNumber:2*TRILLION] isEqualToString:@"двохтрильйонний"]);
+    XCTAssert([[self.converter stringFromNumber:2*BILLION] isEqualToString:@"двохмільярдний"]);
+    XCTAssert([[self.converter stringFromNumber:2*TRILLION] isEqualToString:@"двохбільйонний"]);
     
     XCTAssert([[self.converter stringFromNumber:2*MILLION] isEqualToString:@"двохмільйонний"]);
     XCTAssert([[self.converter stringFromNumber:4*MILLION] isEqualToString:@"чотирьохмільйонний"]);
@@ -155,10 +153,9 @@
     XCTAssert([[self.converter stringFromNumber:999*MILLION] isEqualToString:@"дев'ятсотдев'яностадев'ятимільйонний"]);
 
     //  long scale
-    self.converter.shortScale = NO;
-    XCTAssert([[self.converter stringFromNumber:MILLION] isEqualToString:@"мільйонний"]);
-    XCTAssert([[self.converter stringFromNumber:BILLION] isEqualToString:@"мільярдний"]);
-    XCTAssert([[self.converter stringFromNumber:TRILLION] isEqualToString:@"більйонний"]);
+//    XCTAssert([[self.converter stringFromNumber:MILLION] isEqualToString:@"мільйонний"]);
+//    XCTAssert([[self.converter stringFromNumber:BILLION] isEqualToString:@"мільярдний"]);
+//    XCTAssert([[self.converter stringFromNumber:TRILLION] isEqualToString:@"більйонний"]);
 }
 
 @end

@@ -36,7 +36,6 @@
     if (!_converter) {
         _converter = [Converter new];
         _converter.ordinal = YES;
-        _converter.shortScale = YES;
     }
     
     return _converter;

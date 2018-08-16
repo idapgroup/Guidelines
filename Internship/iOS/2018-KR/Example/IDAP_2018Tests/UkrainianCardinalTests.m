@@ -26,7 +26,6 @@
     if (!_converter) {
         _converter = [[Converter alloc] init];
         _converter.localeID = kUA;
-        _converter.shortScale = YES;
         _converter.ordinal = NO;
     }
 }
@@ -37,7 +36,7 @@
 }
 
 - (void)testCardinalUnits {
-    //    XCTAssert([[self.converter stringFromNumber:0] isEqualToString:@"нуль"]);
+    XCTAssert([[self.converter stringFromNumber:0] isEqualToString:@"нуль"]);
     XCTAssert([[self.converter stringFromNumber:1] isEqualToString:@"один"]);
     XCTAssert([[self.converter stringFromNumber:2] isEqualToString:@"два"]);
     XCTAssert([[self.converter stringFromNumber:3] isEqualToString:@"три"]);
@@ -134,14 +133,13 @@
 - (void)testCardinalLargeNumbers {
     
     //  short scale
-    self.converter.shortScale = YES;
     XCTAssert([[self.converter stringFromNumber:MILLION] isEqualToString:@"один мільйон"]);
-    XCTAssert([[self.converter stringFromNumber:BILLION] isEqualToString:@"один більйон"]);
-    XCTAssert([[self.converter stringFromNumber:TRILLION] isEqualToString:@"один трильйон"]);
+    XCTAssert([[self.converter stringFromNumber:BILLION] isEqualToString:@"один мільярд"]);
+    XCTAssert([[self.converter stringFromNumber:TRILLION] isEqualToString:@"один більйон"]);
   
     XCTAssert([[self.converter stringFromNumber:2*MILLION] isEqualToString:@"два мільйона"]);
-    XCTAssert([[self.converter stringFromNumber:2*BILLION] isEqualToString:@"два більйона"]);
-    XCTAssert([[self.converter stringFromNumber:2*TRILLION] isEqualToString:@"два трильйона"]);
+    XCTAssert([[self.converter stringFromNumber:2*BILLION] isEqualToString:@"два мільярда"]);
+    XCTAssert([[self.converter stringFromNumber:2*TRILLION] isEqualToString:@"два більйона"]);
     
     XCTAssert([[self.converter stringFromNumber:6*MILLION] isEqualToString:@"шість мільйонів"]);
     XCTAssert([[self.converter stringFromNumber:9*MILLION] isEqualToString:@"дев'ять мільйонів"]);
@@ -149,9 +147,9 @@
     XCTAssert([[self.converter stringFromNumber:21*MILLION] isEqualToString:@"двадцять один мільйон"]);
     XCTAssert([[self.converter stringFromNumber:35*MILLION] isEqualToString:@"тридцять п'ять мільйонів"]);
     XCTAssert([[self.converter stringFromNumber:82*MILLION] isEqualToString:@"вісімдесят два мільйона"]);
-    XCTAssert([[self.converter stringFromNumber:90*MILLION] isEqualToString:@"дев'яносто мільйонів"]);
-    XCTAssert([[self.converter stringFromNumber:91*MILLION] isEqualToString:@"дев'яносто один мільйон"]);
-    XCTAssert([[self.converter stringFromNumber:94*MILLION] isEqualToString:@"дев'яносто чотири мільйона"]);
+    XCTAssert([[self.converter stringFromNumber:90*BILLION] isEqualToString:@"дев'яносто мільярдів"]);
+    XCTAssert([[self.converter stringFromNumber:91*BILLION] isEqualToString:@"дев'яносто один мільярд"]);
+    XCTAssert([[self.converter stringFromNumber:94*BILLION] isEqualToString:@"дев'яносто чотири мільярда"]);
 
     
 
@@ -166,19 +164,15 @@
                @"шістсот тридцять один мільйон двісті п'ятдесят шість тисяч сімсот двадцять три"]);
     //  1,492,638,524
     XCTAssert([[self.converter stringFromNumber:1492638524] isEqualToString:
-               @"один більйон чотириста дев'яносто два мільйона шістсот тридцять вісім тисяч п'ятсот двадцять чотири"]);
+               @"один мільярд чотириста дев'яносто два мільйона шістсот тридцять вісім тисяч п'ятсот двадцять чотири"]);
     //  41,492,638,525
     XCTAssert([[self.converter stringFromNumber:41492638525] isEqualToString:
-               @"сорок один більйон чотириста дев'яносто два мільйона шістсот тридцять вісім тисяч п'ятсот двадцять п'ять"]);
+               @"сорок один мільярд чотириста дев'яносто два мільйона шістсот тридцять вісім тисяч п'ятсот двадцять п'ять"]);
     //  941,492,638,526
     XCTAssert([[self.converter stringFromNumber:941492638526] isEqualToString:
-               @"дев'ятсот сорок один більйон чотириста дев'яносто два мільйона шістсот тридцять вісім тисяч п'ятсот двадцять шість"]);
+               @"дев'ятсот сорок один мільярд чотириста дев'яносто два мільйона шістсот тридцять вісім тисяч п'ятсот двадцять шість"]);
 
-    //  long scale
-    self.converter.shortScale = NO;
-    XCTAssert([[self.converter stringFromNumber:MILLION] isEqualToString:@"один мільйон"]);
-    XCTAssert([[self.converter stringFromNumber:BILLION] isEqualToString:@"один мільярд"]);
-    XCTAssert([[self.converter stringFromNumber:TRILLION] isEqualToString:@"один більйон"]);
+
 }
 
 @end

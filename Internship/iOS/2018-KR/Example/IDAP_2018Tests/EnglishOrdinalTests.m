@@ -26,7 +26,6 @@
     if (!_converter) {
         _converter = [[Converter alloc] init];
         _converter.localeID = kEN;
-        _converter.shortScale = YES;
         _converter.ordinal = YES;
     }
     // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -39,7 +38,7 @@
 
 
 - (void)testOrdinalUnits {
-    //    XCTAssert([[self.converter stringFromNumber:0] isEqualToString:@"zero"]);
+        XCTAssert([[self.converter stringFromNumber:0] isEqualToString:@"zeroth"]);
     XCTAssert([[self.converter stringFromNumber:1] isEqualToString:@"first"]);
     XCTAssert([[self.converter stringFromNumber:2] isEqualToString:@"second"]);
     XCTAssert([[self.converter stringFromNumber:3] isEqualToString:@"third"]);
@@ -125,7 +124,6 @@
 - (void)testOrdinalLargeNumbers {
     
     //  short scale
-    self.converter.shortScale = YES;
     XCTAssert([[self.converter stringFromNumber:MILLION] isEqualToString:@"one millionth"]);
     XCTAssert([[self.converter stringFromNumber:BILLION] isEqualToString:@"one billionth"]);
     XCTAssert([[self.converter stringFromNumber:TRILLION] isEqualToString:@"one trillionth"]);
@@ -149,11 +147,6 @@
     XCTAssert([[self.converter stringFromNumber:941492638526] isEqualToString:
                @"nine hundred forty-one billion four hundred ninety-two million six hundred thirty-eight thousand five hundred twenty-sixth"]);
     
-    //  long scale
-    self.converter.shortScale = NO;
-    XCTAssert([[self.converter stringFromNumber:MILLION] isEqualToString:@"one millionth"]);
-    XCTAssert([[self.converter stringFromNumber:BILLION] isEqualToString:@"one milliardth"]);
-    XCTAssert([[self.converter stringFromNumber:TRILLION] isEqualToString:@"one billionth"]);
 }
 
 

@@ -11,3 +11,9 @@
 @interface DeutschFormatter : NumeralsFormatter
 
 @end
+
+@interface DeutschFormatter (Initialization)
+
++ (instancetype)formatter;
+
+@end

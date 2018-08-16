@@ -16,7 +16,6 @@
     Numerals *_deutsch = [Numerals new];
     
     _deutsch.localeID = kDE;
-    _deutsch.shortScale = YES;
     
     _deutsch.cardinal =
     @{

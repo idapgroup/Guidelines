@@ -8,55 +8,26 @@
 
 #import "NumeralsFormatter.h"
 
-#import "Numerals.h"
-
 #define PROTECT  return [self protect];
 
 @implementation NumeralsFormatter
 
-@synthesize numerals = _numerals;
-
 #pragma mark -
 #pragma mark Initialization
-- (instancetype)initWithNumerals:(Numerals *)numerals {
-    self = [super init];
-    
-    if (self) {
-        _numerals = numerals;
-    }
-    
-    return self;
-}
 
 - (instancetype)initWithFile:(NSString *)path {
     self = [super init];
     
     if (self) {
-        Numerals *numerals = [[Numerals alloc] initWithFile:path];
-        self = [self initWithNumerals:numerals];
+        //  path should point to plist with arrays and dictionaries
+        //  in this place all properties will initialize with these collections
     }
     
     return self;
 }
 
 #pragma mark -
-#pragma mark Accessors
-- (NSString *)localeID {
-    return self.numerals.localeID;
-}
-
-- (Numerals *)numerals {
-    return _numerals;
-}
-
-#pragma mark -
 #pragma mark Public API
-+ (instancetype)formatter {
-    [self doesNotRecognizeSelector:_cmd];
-    
-    return nil;
-}
-
 - (NSString *)unitsFormatter:(NSInteger)number multiplier:(long long)multiplier     { PROTECT }
 - (NSString *)teensFormatter:(NSInteger)number multiplier:(long long)multiplier     { PROTECT }
 - (NSString *)roundTensFormatter:(NSInteger)number multiplier:(long long)multiplier { PROTECT }

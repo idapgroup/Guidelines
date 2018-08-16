@@ -11,7 +11,6 @@
 #import "Converter.h"
 #import "DeutschFormatter.h"
 #import "EnglishFormatter.h"
-#import "Numerals.h"
 #import "NumeralsFormatter.h"
 #import "UkrainianFormatter.h"
 
@@ -21,20 +20,13 @@
 
 @property (strong, nonatomic, readonly) Converter *converter;
 @property (strong, nonatomic, readonly) Converter *uaConverter;
+
 @end
 
 
 @implementation ConverterClassTests
 
 - (void)setUp {
-    [super setUp];
-    
-    _converter = [Converter new];
-    
-    NSString *path = [[NSBundle mainBundle] pathForResource:kUA ofType:@"plist"];
-    UkrainianFormatter *formatter = [[UkrainianFormatter alloc] initWithFile:path];
-    
-    _uaConverter = [[Converter alloc] initWithFormatter:formatter];
 
 }
 
@@ -59,22 +51,21 @@
 
 - (void)testInitWithFormatter {
     
-    NSString *path = [[NSBundle mainBundle] pathForResource:kUA ofType:@"plist"];
-    
-    Numerals *uaNumerals = [[Numerals alloc] initWithFile:path];
-    UkrainianFormatter *formatter = [[UkrainianFormatter alloc] initWithNumerals:uaNumerals];
-//    or you can do this faster
-//    UkrainianFormatter *formatter = [[UkrainianFormatter alloc] initWithFile:path];
-    
-    Converter *converter = [[Converter alloc] initWithFormatter:formatter];
-    converter.ordinal = NO;
-    
-    XCTAssertEqualObjects(converter.localeID, formatter.localeID);
-    XCTAssertEqual(1, converter.availableLocaleID.count);
-    XCTAssertEqualObjects([converter stringFromNumber:33], @"тридцять три");
-    
-    XCTAssertNoThrow([[Converter alloc] initWithFormatter:nil]);
-    XCTAssertNil([[Converter alloc] initWithFormatter:nil]);
+//    //NSString *path = [[NSBundle mainBundle] pathForResource:kUA ofType:@"plist"];
+//    
+//    UkrainianFormatter *formatter = [UkrainianFormatter formatter];
+////    or you can do this faster
+////    UkrainianFormatter *formatter = [[UkrainianFormatter alloc] initWithFile:path];
+//    
+//    Converter *converter = [[Converter alloc] initWithFormatter:formatter];
+//    converter.ordinal = NO;
+//    
+//    XCTAssertEqualObjects(converter.localeID, formatter.localeID);
+//    XCTAssertEqual(1, converter.availableLocaleID.count);
+//    XCTAssertEqualObjects([converter stringFromNumber:33], @"тридцять три");
+//    
+//    XCTAssertNoThrow([[Converter alloc] initWithFormatter:nil]);
+//    XCTAssertNil([[Converter alloc] initWithFormatter:nil]);
     
     
 }
@@ -86,7 +77,6 @@
     //  check default values
     XCTAssertEqualObjects(defaultConverter.localeID, kEN);
     XCTAssertEqual(defaultConverter.ordinal, YES);
-    XCTAssertEqual(defaultConverter.shortScale, YES);
     XCTAssertEqual(defaultConverter.availableLocaleID.count, 3);  //  en, de, ua
 
     //  switch locale
@@ -106,72 +96,76 @@
 }
 
 - (void)testAddAndRemoveFormatters {
-    NSInteger count = self.uaConverter.availableLocaleID.count;
+    //  old tests
+    //  in new version there is no way add/remove Formatters
     
-    //  succefull remove
-    XCTAssertNoThrow([self.uaConverter removeFormatterWithLocale:kUA]);
-    XCTAssertNotEqual(count, self.uaConverter.availableLocaleID.count);
-    XCTAssertNil(self.uaConverter.localeID);
     
-    //  succefull adding
-    EnglishFormatter *enFormatter = [EnglishFormatter formatter];
-    
-    [self.uaConverter addFormatter:enFormatter];
-    XCTAssertEqual(count, self.uaConverter.availableLocaleID.count);
-    
-    //  safe remove with wrong local
-    XCTAssertNoThrow([self.uaConverter removeFormatterWithLocale:@"XXX"]);
-    XCTAssertEqual(count, self.uaConverter.availableLocaleID.count);
-    
-    //  safe remove without any formater
-    NSInteger iteration = self.uaConverter.availableLocaleID.count + 10;
-    while (iteration > 0) {
-        XCTAssertNoThrow([self.uaConverter removeFormatterWithLocale:kEN]);
-        iteration--;
-    }
-    
-    //  switch localeID if formatter for current locale was removed
-    DeutschFormatter *deFormatter = [DeutschFormatter formatter];
-    XCTAssertNil(self.uaConverter.localeID);
-    
-    [self.uaConverter addFormatter:enFormatter];
-    XCTAssertEqualObjects(self.uaConverter.localeID, kEN);
-    
-    [self.uaConverter addFormatter:deFormatter];
-    XCTAssertEqualObjects(self.uaConverter.localeID, kEN);
-    
-    [self.uaConverter removeFormatterWithLocale:kEN];
-    XCTAssertEqualObjects(self.uaConverter.localeID, kDE);
-    
-    [self.uaConverter removeFormatterWithLocale:kDE];
-    XCTAssertNil(self.uaConverter.localeID);
-    
+//    NSInteger count = self.uaConverter.availableLocaleID.count;
+//    
+//    //  succefull remove
+//    XCTAssertNoThrow([self.uaConverter removeFormatterWithLocale:kUA]);
+//    XCTAssertNotEqual(count, self.uaConverter.availableLocaleID.count);
+//    XCTAssertNil(self.uaConverter.localeID);
+//    
+//    //  succefull adding
+//    EnglishFormatter *enFormatter = [EnglishFormatter formatter];
+//    
+//    [self.uaConverter addFormatter:enFormatter];
+//    XCTAssertEqual(count, self.uaConverter.availableLocaleID.count);
+//    
+//    //  safe remove with wrong local
+//    XCTAssertNoThrow([self.uaConverter removeFormatterWithLocale:@"XXX"]);
+//    XCTAssertEqual(count, self.uaConverter.availableLocaleID.count);
+//    
+//    //  safe remove without any formater
+//    NSInteger iteration = self.uaConverter.availableLocaleID.count + 10;
+//    while (iteration > 0) {
+//        XCTAssertNoThrow([self.uaConverter removeFormatterWithLocale:kEN]);
+//        iteration--;
+//    }
+//    
+//    //  switch localeID if formatter for current locale was removed
+//    DeutschFormatter *deFormatter = [DeutschFormatter formatter];
+//    XCTAssertNil(self.uaConverter.localeID);
+//    
+//    [self.uaConverter addFormatter:enFormatter];
+//    XCTAssertEqualObjects(self.uaConverter.localeID, kEN);
+//    
+//    [self.uaConverter addFormatter:deFormatter];
+//    XCTAssertEqualObjects(self.uaConverter.localeID, kEN);
+//    
+//    [self.uaConverter removeFormatterWithLocale:kEN];
+//    XCTAssertEqualObjects(self.uaConverter.localeID, kDE);
+//    
+//    [self.uaConverter removeFormatterWithLocale:kDE];
+//    XCTAssertNil(self.uaConverter.localeID);
+//    
 }
 
-- (void)testConvertWithLocale {
-    Converter *defaultConverter = [Converter new];
-    
-    defaultConverter.localeID = kEN;
-    NSString *enNumber = [defaultConverter stringFromNumber:2];
-    NSLocale *enLocale = [NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"];
-    XCTAssertEqualObjects([defaultConverter stringFromNumber:2 withLocale:enLocale], enNumber);
-    
-    defaultConverter.localeID = kDE;
-    NSString *deNumber = [defaultConverter stringFromNumber:2];
-    NSLocale *deLocale = [NSLocale localeWithLocaleIdentifier:@"de_DE"];
-    XCTAssertEqualObjects([defaultConverter stringFromNumber:2 withLocale:deLocale], deNumber);
-    
-    defaultConverter.localeID = kUA;
-    NSString *uaNumber = [defaultConverter stringFromNumber:2];
-    NSLocale *uaLocale = [NSLocale localeWithLocaleIdentifier:@"uk_UA"];
-    XCTAssertEqualObjects([defaultConverter stringFromNumber:2 withLocale:uaLocale], uaNumber);
-
-    //  locale not available or nil
-    NSLocale *frLocale = [NSLocale localeWithLocaleIdentifier:@"fr_FR"];
-    XCTAssertNil([defaultConverter stringFromNumber:2 withLocale:frLocale]);
-    XCTAssertNil([defaultConverter stringFromNumber:2 withLocale:nil]);
-
-}
+//- (void)testConvertWithLocale {
+//    Converter *defaultConverter = [Converter new];
+//    
+//    defaultConverter.localeID = kEN;
+//    NSString *enNumber = [defaultConverter stringFromNumber:2];
+//    NSLocale *enLocale = [NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"];
+//    XCTAssertEqualObjects([defaultConverter stringFromNumber:2 withLocale:enLocale], enNumber);
+//    
+//    defaultConverter.localeID = kDE;
+//    NSString *deNumber = [defaultConverter stringFromNumber:2];
+//    NSLocale *deLocale = [NSLocale localeWithLocaleIdentifier:@"de_DE"];
+//    XCTAssertEqualObjects([defaultConverter stringFromNumber:2 withLocale:deLocale], deNumber);
+//    
+//    defaultConverter.localeID = kUA;
+//    NSString *uaNumber = [defaultConverter stringFromNumber:2];
+//    NSLocale *uaLocale = [NSLocale localeWithLocaleIdentifier:@"uk_UA"];
+//    XCTAssertEqualObjects([defaultConverter stringFromNumber:2 withLocale:uaLocale], uaNumber);
+//
+//    //  locale not available or nil
+//    NSLocale *frLocale = [NSLocale localeWithLocaleIdentifier:@"fr_FR"];
+//    XCTAssertNil([defaultConverter stringFromNumber:2 withLocale:frLocale]);
+//    XCTAssertNil([defaultConverter stringFromNumber:2 withLocale:nil]);
+//
+//}
 
 - (void)testPerformance {
     
@@ -181,9 +175,10 @@
     CGFloat appleTime = 0;
     CGFloat converterTime = 0;
     
-    NSInteger CYCLE_COUNT = 1*THOUSAND;
-    uint32_t limit = 1000;//INT32_MAX;
+    NSInteger CYCLE_COUNT = 10*THOUSAND;
+    uint32_t limit = INT32_MAX;
     
+    //  массив генерируется, что бы проверять конверторы на одном наборе чисел
     NSInteger c_arr[CYCLE_COUNT];
     for (NSInteger idx = 0; idx < CYCLE_COUNT; idx++) {
         c_arr[idx] = arc4random_uniform(limit);// + 1000000;
@@ -200,13 +195,8 @@
         NSLog(@"%@", [defaultConverter stringFromNumber:c_arr[idx]]);
     }
     converterTime =  [start timeIntervalSinceNow];
-    //    NSLog(@"** %f sec", [start timeIntervalSinceNow]);
     
-//    double middleTime = 0;
-//    for (NSInteger idx = 0; idx < CYCLE_COUNT; idx++) {
-//        middleTime += defaultConverter.measurements[idx].doubleValue;
-//    }
-//    NSLog(@"*** middle time = %f", (middleTime / (double)CYCLE_COUNT));
+    //    NSLog(@"** %f sec", [start timeIntervalSinceNow]);
     
     NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
     [numberFormatter setNumberStyle:NSNumberFormatterSpellOutStyle];
@@ -220,72 +210,75 @@
     
     appleTime = [start timeIntervalSinceNow];
     
-    NSInteger diff = (NSInteger) ((converterTime - appleTime) * (100 / appleTime));
+    converterTime = converterTime / CYCLE_COUNT;
+    appleTime = appleTime / CYCLE_COUNT;
+    
+    long diff = (NSInteger) ((converterTime - appleTime) * (100 / appleTime));
     NSLog(@"*** ENGLISHT RESULT:");
     NSLog(@"*** NSNumberFormatter = %f", appleTime);
     NSLog(@"*** Converter = %f, (%ld%%)",converterTime, diff);
     
 /*** deutsch tests ***/
     
-//    defaultConverter.localeID = kDE;
-//    defaultConverter.ordinal = NO;
-//    
-//    start = [NSDate date];
-//    
-//    for (NSInteger idx = 0; idx < CYCLE_COUNT; idx++) {
-//        NSLog(@"%@", [defaultConverter convertLongNumber:c_arr[idx]]);
-//    }
-//    converterTime =  [start timeIntervalSinceNow];
-//    
-//    
-//    
-//    [numberFormatter setNumberStyle:NSNumberFormatterSpellOutStyle];
-//    [numberFormatter setLocale:[NSLocale localeWithLocaleIdentifier:@"de"]];
-//    
-//    start = [NSDate date];
-//    
-//    for (NSInteger idx = 0; idx < CYCLE_COUNT; idx++) {
-//        NSLog(@"%@", [numberFormatter stringFromNumber:@(c_arr[idx])]);
-//    }
-//    
-//    appleTime = [start timeIntervalSinceNow];
-//    
-//    diff = (NSInteger) ((converterTime - appleTime) * (100 / appleTime));
-//    NSLog(@"*** DEUTSCH RESULT:");
-//    NSLog(@"*** NSNumberFormatter = %f", appleTime);
-//    NSLog(@"*** Converter = %f, (%ld%%)",converterTime, diff);
-//
-//    /*** ukrainian tests ***/
-//    
-//    defaultConverter.localeID = kUA;
-//    defaultConverter.ordinal = NO;
-//    
-//    start = [NSDate date];
-//    
-//    for (NSInteger idx = 0; idx < CYCLE_COUNT; idx++) {
-//        NSLog(@"%@", [defaultConverter convertLongNumber:c_arr[idx]]);
-//    }
-//    converterTime =  [start timeIntervalSinceNow];
-//    
-//    
-//    
-//    [numberFormatter setNumberStyle:NSNumberFormatterSpellOutStyle];
-//    [numberFormatter setLocale:[NSLocale localeWithLocaleIdentifier:@"de"]];
-//    
-//    start = [NSDate date];
-//    
-//    for (NSInteger idx = 0; idx < CYCLE_COUNT; idx++) {
-//        NSLog(@"%@", [numberFormatter stringFromNumber:@(c_arr[idx])]);
-//    }
-//    
-//    appleTime = [start timeIntervalSinceNow];
-//    //    NSLog(@"** %f sec", [start timeIntervalSinceNow]);
-//    
-//    diff = (NSInteger) ((converterTime - appleTime) * (100 / appleTime));
-//    NSLog(@"*** UKRAINIAN RESULT:");
-//    NSLog(@"*** NSNumberFormatter = %f", appleTime);
-//    NSLog(@"*** Converter = %f, (%ld%%)",converterTime, diff);
-//    
+    defaultConverter.localeID = kDE;
+    defaultConverter.ordinal = NO;
+    
+    start = [NSDate date];
+    
+    for (NSInteger idx = 0; idx < CYCLE_COUNT; idx++) {
+        NSLog(@"%@", [defaultConverter stringFromNumber:c_arr[idx]]);
+    }
+    converterTime =  [start timeIntervalSinceNow];
+    
+    
+    
+    [numberFormatter setNumberStyle:NSNumberFormatterSpellOutStyle];
+    [numberFormatter setLocale:[NSLocale localeWithLocaleIdentifier:@"de"]];
+    
+    start = [NSDate date];
+    
+    for (NSInteger idx = 0; idx < CYCLE_COUNT; idx++) {
+        NSLog(@"%@", [numberFormatter stringFromNumber:@(c_arr[idx])]);
+    }
+    
+    appleTime = [start timeIntervalSinceNow];
+    
+    diff = (NSInteger) ((converterTime - appleTime) * (100 / appleTime));
+    NSLog(@"*** DEUTSCH RESULT:");
+    NSLog(@"*** NSNumberFormatter = %f", appleTime);
+    NSLog(@"*** Converter = %f, (%ld%%)",converterTime, diff);
+
+    /*** ukrainian tests ***/
+    
+    defaultConverter.localeID = kUA;
+    defaultConverter.ordinal = NO;
+    
+    start = [NSDate date];
+    
+    for (NSInteger idx = 0; idx < CYCLE_COUNT; idx++) {
+        NSLog(@"%@", [defaultConverter stringFromNumber:c_arr[idx]]);
+    }
+    converterTime =  [start timeIntervalSinceNow];
+    
+    
+    
+    [numberFormatter setNumberStyle:NSNumberFormatterSpellOutStyle];
+    [numberFormatter setLocale:[NSLocale localeWithLocaleIdentifier:@"de"]];
+    
+    start = [NSDate date];
+    
+    for (NSInteger idx = 0; idx < CYCLE_COUNT; idx++) {
+        NSLog(@"%@", [numberFormatter stringFromNumber:@(c_arr[idx])]);
+    }
+    
+    appleTime = [start timeIntervalSinceNow];
+    //    NSLog(@"** %f sec", [start timeIntervalSinceNow]);
+    
+    diff = (NSInteger) ((converterTime - appleTime) * (100 / appleTime));
+    NSLog(@"*** UKRAINIAN RESULT:");
+    NSLog(@"*** NSNumberFormatter = %f", appleTime);
+    NSLog(@"*** Converter = %f, (%ld%%)",converterTime, diff);
+    
 
 #endif
     

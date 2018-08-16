@@ -8,9 +8,10 @@
 
 #import "Converter.h"
 
-#import "Numerals.h"
 #import "NumeralsFormatter.h"
-#import "Matcher.h"
+#import "DeutschFormatter.h"
+#import "EnglishFormatter.h"
+#import "UkrainianFormatter.h"
 
 #import "GlobalKeys.h"
 #import "NSString+Formatting.h"
@@ -18,8 +19,8 @@
 
 @interface Converter()
 
-@property (strong, nonatomic) Matcher *matcher;
-
+@property (strong, nonatomic) NSMutableDictionary <NSString *, NumeralsFormatter *> *formatters;
+@property (strong, nonatomic, readonly) NumeralsFormatter *localeFormatter;
 @end
 
 static NSString * kMAX_LIMIT_MESSAGE = @"number larger than limit";
@@ -27,7 +28,7 @@ static NSString * kMIN_LIMIT_MESSAGE = @"converter doesn't support negative numb
 
 @implementation Converter
 
-@dynamic availableLocaleID, shortScale, localeID;
+@dynamic availableLocaleID;
 
 #pragma mark -
 #pragma mark Initialization
@@ -35,11 +36,18 @@ static NSString * kMIN_LIMIT_MESSAGE = @"converter doesn't support negative numb
     self = [super init];
     if (self) {
         _ordinal = YES;
+        _localeID = kEN;
         
-        _matcher = [Matcher defaultMatcher];
-        _matcher.localeID = kEN;
-        _matcher.shortScale = YES;
+        DeutschFormatter *deutschFormatter = [DeutschFormatter formatter];
+        EnglishFormatter *englishFormatter = [EnglishFormatter formatter];
+        UkrainianFormatter *ukrainianFormatter = [UkrainianFormatter formatter];
         
+        _formatters = [NSMutableDictionary new];
+        [_formatters setObject:deutschFormatter forKey:deutschFormatter.localeID];
+        [_formatters setObject:englishFormatter forKey:englishFormatter.localeID];
+        [_formatters setObject:ukrainianFormatter forKey:ukrainianFormatter.localeID];
+        
+        _localeFormatter = englishFormatter;
     }
     
     return self;
@@ -51,9 +59,9 @@ static NSString * kMIN_LIMIT_MESSAGE = @"converter doesn't support negative numb
         
         if (self) {
             _ordinal = YES;
+            _formatters = [NSMutableDictionary new];
             
-            _matcher = [Matcher new];  //  empty
-            [_matcher addFormatter:formatter];
+            [self addFormatter:formatter];
         }
     } else {
         return nil;
@@ -65,24 +73,19 @@ static NSString * kMIN_LIMIT_MESSAGE = @"converter doesn't support negative numb
 
 #pragma mark -
 #pragma mark Accessors
-- (void)setLocaleID:(NSString *)localeID {
-    self.matcher.localeID = localeID;
+- (void)setLocaleID:(NSString *)userLocale {
+    
+    userLocale = [userLocale substringToIndex:2];
+    
+    if (!_localeID || [self isCorrectLocaleID:userLocale]) {
+        _localeID = userLocale;
+        _localeFormatter = [self.formatters objectForKey:_localeID];
+    }
 }
 
-- (NSString *)localeID {
-    return self.matcher.localeID;
-}
-
-- (void)setShortScale:(BOOL)shortScale {
-    self.matcher.shortScale = shortScale;
-}
-
-- (BOOL)isShortScale {
-    return self.matcher.isShortScale;
-}
 
 - (NSArray<NSString *> *)availableLocaleID {
-    return self.matcher.availableLocaleID;
+    return [self.formatters allKeys];
 }
 
 #pragma mark -
@@ -91,23 +94,37 @@ static NSString * kMIN_LIMIT_MESSAGE = @"converter doesn't support negative numb
 - (void)addFormatter:(NumeralsFormatter *)formatter {
     
     if (formatter) {
-        [self.matcher addFormatter:formatter];
+        [self.formatters setObject:formatter forKey:formatter.localeID];
+        
+        if (!self.localeID) {  //  add to empty matcher
+            self.localeID = formatter.localeID;
+        }
     }
 }
 
-- (void)removeFormatterWithLocale:(NSString *)localeID {
-    [self.matcher removeFormatterWithLocale:localeID];
+- (void)removeFormatterWithLocale:(NSString *)userLocale {
+    
+    if ([self isCorrectLocaleID:userLocale]) {
+        [self.formatters removeObjectForKey:userLocale];
+        
+        if (self.availableLocaleID.count > 0) {
+            _localeID = self.availableLocaleID.firstObject;
+        } else {
+            _localeID = nil;
+        }
+        
+    }
 }
 
-- (NSString *)stringFromNumber:(long long)number {
-    
-    if (number > QUADRILLION)  return kMAX_LIMIT_MESSAGE;
-    if (number < 0)            return kMIN_LIMIT_MESSAGE;
-    
-    NSString *result = [self convertNumber:number];
-    
-    return result;
-}
+//- (NSString *)stringFromNumber:(long long)number {
+//    
+//    if (number > QUADRILLION)  return kMAX_LIMIT_MESSAGE;
+//    if (number < 0)            return kMIN_LIMIT_MESSAGE;
+//    
+//    NSString *result = [self convertNumber:number];
+//    
+//    return result;
+//}
 
 - (NSString *)stringFromNumber:(long long)number withLocale:(NSLocale *)locale {
     NSString *localeIdentifier = locale.localeIdentifier;
@@ -130,7 +147,8 @@ static NSString * kMIN_LIMIT_MESSAGE = @"converter doesn't support negative numb
 #pragma mark -
 #pragma mark Private API
 
-- (NSString *)convertNumber:(long long)number {
+//- (NSString *)convertNumber:(long long)number {
+- (NSString *)stringFromNumber:(long long)number {
     NSMutableArray *parts = [NSMutableArray new];
 
     long long tempNumber = number;
@@ -139,14 +157,14 @@ static NSString * kMIN_LIMIT_MESSAGE = @"converter doesn't support negative numb
     long long multiplier = pow(THOUSAND, power/3);
     
         for (; multiplier > 0; multiplier /= THOUSAND) {
-            NSInteger threeDigits = tempNumber / multiplier;
+            NSInteger threeDigits = (NSInteger)(tempNumber / multiplier);
             
             if (threeDigits > 0) {
 //                [parts addObjectsFromArray:[self.matcher threeDigitParser:threeDigits multiplier:multiplier]];
-                [parts addObjectsFromArray:[self.matcher newThreeDigitParser:threeDigits multiplier:multiplier]];
+                [parts addObjectsFromArray:[self threeDigitParser:threeDigits multiplier:multiplier]];
                 
                 if (multiplier > 1) {
-                    [parts addObject:[self.matcher largeNumbersForMultiplier:multiplier quantity:threeDigits]];
+                    [parts addObject:[self.localeFormatter largeNumbersFormatter:multiplier quantity:threeDigits]];
                 }
             }
             tempNumber = tempNumber % multiplier;
@@ -154,13 +172,45 @@ static NSString * kMIN_LIMIT_MESSAGE = @"converter doesn't support negative numb
             if (tempNumber == 0) break;
         }
 
+
     if(self.isOrdinal) {
-        parts = [self.matcher ordinalFormatter:number withParts:parts];
+        parts = [self.localeFormatter ordinalFormatter:number withParts:parts];
     }
 
-    return [self.matcher finishingFormatter:number withParts:parts];;
+
+    return [self.localeFormatter finishingFormatter:number withParts:parts];
 }
 
+- (NSMutableArray *)threeDigitParser:(NSInteger)number multiplier:(long long)multiplier {
+    NSMutableArray *parts = [NSMutableArray new];
+    NSString *result = nil;
+    
+    if (number >= 100) {
+        NSInteger hundreds = number - (number % 100);  //  сотни
+        result = [self.localeFormatter hundredsFormatter:hundreds multiplier:multiplier];
+        if (result) [parts addObject:result];
+    }
+    
+    NSInteger units = number % 100;
+    
+    if (units >= 10) {
+        result = [self.localeFormatter tensFormatter:units multiplier:multiplier];
+        
+        if (result) [parts addObject:result];
+        
+    } else if (units > 0) {  //  защита от остатка круглых чисел
+        result = [self.localeFormatter unitsFormatter:units multiplier:multiplier];
+        
+        if (result) [parts addObject:result];
+    }
+    
+    return parts;
+}
 
+- (BOOL)isCorrectLocaleID:(NSString *)userLocale {  //
+    NSSet *locales = [NSSet setWithArray:[self availableLocaleID]];
+    
+    return [locales containsObject:userLocale];
+}
 @end
 

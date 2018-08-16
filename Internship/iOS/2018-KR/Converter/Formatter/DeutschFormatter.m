@@ -8,178 +8,115 @@
 
 #import "DeutschFormatter.h"
 
-#import "Numerals.h"
-
 #import "GlobalKeys.h"
 #import "NSString+Formatting.h"
-#import "NumeralsFormatter+Search.h"
+
+@interface DeutschFormatter()
+
+@property (strong, nonatomic, readwrite) NSString *localeID;
+
+@end
 
 static NSString * kOrdinalExceptions  = @"ordinalExceptions";
 static NSString * kSingleLargeExceptions = @"singleLargeExceptions";
 
 @implementation DeutschFormatter
 
+@synthesize localeID = _localeID;
+
+#pragma mark -
+#pragma mark Initialization
+- (instancetype)init {
+    self = [super init];
+    
+    if (self) {
+        _localeID = kUA;
+    }
+    
+    return self;
+}
+
 #pragma mark -
 #pragma mark Public API
-+ (instancetype)formatter {
-    Numerals *numerals = [Numerals deutsch];
-    DeutschFormatter *_formatter = [[DeutschFormatter alloc] initWithNumerals:numerals];
-    
-    return _formatter;
-}
 
 - (NSString *)unitsFormatter:(NSInteger)number multiplier:(long long)multiplier {
+
+    NSString *units = self.cardinalUnits[number];
     
-
-//    NSString *unitsString = self.numerals.cardinal[[NSString TYstringWithInt:number]];
-//    return [NSString TYstringWithLeadingWhitespace:unitsString];
-    NSString *unitsString = self.numerals.cardinal[[NSString TYstringWithInt:number]];
-    if (multiplier == THOUSAND && number == 1) {
-        unitsString = [unitsString TYreplaseSuffix:@"s" withString:kEMPTY_STRING];
+    if (number == 1 && multiplier == THOUSAND) {
+        //  ein for tausend
+        units = [units TYreplaseSuffix:@"s" withString:kEMPTY_STRING];
+    } else if (number == 1 && multiplier >= MILLION) {
+        //  eine for Million, Milliard and more
+        units = [units TYreplaseSuffix:@"s" withString:@"e"];
     }
-    return unitsString;
+    return units;
+
 }
 
-- (NSString *)teensFormatter:(NSInteger)number multiplier:(long long)multiplier {
-//    NSString *teensString = self.numerals.cardinal[[NSString TYstringWithInt:number]];
-//    
-//    return [NSString TYstringWithLeadingWhitespace:teensString];
-    return self.numerals.cardinal[[NSString TYstringWithInt:number]];
-}
-
-- (NSString *)roundTensFormatter:(NSInteger)number multiplier:(long long)multiplier {
-//    NSString *roundTensString = self.numerals.cardinal[[NSString TYstringWithInt:number]];
-//    
-//    return [NSString TYstringWithLeadingWhitespace:roundTensString];
-    return self.numerals.cardinal[[NSString TYstringWithInt:number]];
-}
-
-//  units + und + tens
 - (NSString *)tensFormatter:(NSInteger)number multiplier:(long long)multiplier {
-    NSInteger units = number % 10;
-    NSInteger roundTens = number - units;
     
-    NSString *unitsString = [self unitsFormatter:units multiplier:multiplier];
-    if (units == 1) {  //  eins -> ein
-        unitsString = [unitsString TYreplaseSuffix:@"s" withString:@""];
+    if (number < 20) {  //  10..19
+        
+        return self.cardinalTens[number % 10];
+        
+    } else {  //  20, 30, .. 90
+        NSString *tens = self.cardinalTens[8 + (number / 10)];
+        NSInteger remainder = number % 10;
+        
+        if (remainder > 0) {
+            //  complex numerals, unit und tens
+            NSString *units = [self unitsFormatter:remainder multiplier:multiplier];
+            
+            if (remainder == 1) {  //  eins -> ein
+                units = [units TYreplaseSuffix:@"s" withString:@""];
+            }
+            tens = [NSString stringWithFormat:@"%@und%@", units, tens];
+        }
+        
+        return tens;
     }
-    
-    NSString *roundTensString = [self roundTensFormatter:roundTens multiplier:multiplier];
-//    roundTensString = [roundTensString TYstringByTrimmingWhitespace];
-    
-    //return [NSString TYjoinString:unitsString withString:roundTensString separatedByString:@" und "];
-    
-    return [@[unitsString, roundTensString] componentsJoinedByString:@" und "];
 }
 
 - (NSString *)hundredsFormatter:(NSInteger)number multiplier:(long long)multiplier {
-//    NSString *hundredsString = self.numerals.cardinal[[NSString TYstringWithInt:number]];
-//    
-//    return [NSString TYstringWithLeadingWhitespace:hundredsString];
-    return self.numerals.cardinal[[NSString TYstringWithInt:number]];
+
+    return self.cardinalHundreds[number / 100];
 }
 
 - (NSString *)largeNumbersFormatter:(long long)multiplier quantity:(NSInteger)quantity {
-    NSString *result = kEMPTY_STRING;
-    NSString *key = [NSString TYstringWithInt:multiplier];
+    NSString *result = nil;
+    NSInteger idx = log10(multiplier)/3;
     
     if (multiplier == THOUSAND) {
-        result = self.numerals.cardinal[key];
-//        if (quantity == 1) {
-//            result = [@"ein" stringByAppendingString:result];
-//        }
+        
+        return self.cardinalHundreds.lastObject;
     } else {
-        result = self.numerals.cardinalLarge[key];
+        result = self.cardinalLarge[idx];
+        
             if (quantity > 1) {  //  plurals
+                if ([result hasSuffix:@"e"]) {
+                    //  Milliarde -> Milliard
+                    result = [result TYreplaseSuffix:@"e" withString:kEMPTY_STRING];
+                }
+                //  Million -> Millionen
                 result = [result stringByAppendingString:@"en"];
-                result = [result capitalizedString];
             }
+        
+        return result;
     }
-    return result;
-//    return [NSString TYstringWithLeadingWhitespace:result];
 }
 
-//  MARK:  common formatters
-//- (NSString *)starterFormatter:(long long)number {
-//    NSString *result = nil;
-//    NSString *key = [NSString TYstringWithInt:number];
-//    
-//    switch (number) {
-//        case 0:
-//            result = self.numerals.cardinal[key];
-//            break;
-//        case MILLION:  //  million, billion, trillions have same one method call it's OK!
-//        case BILLION:
-//        case TRILLION:
-//            result = [NSString stringWithFormat:@"eine %@", self.numerals.cardinalLarge[key]];
-//            break;
-//        default:
-//            break;
-//    }
-//    
-//    return result;
-//}
-
-//- (NSString *)ordinalFormatter:(long long)number withString:(NSString *)string {
-//    NSArray *numberParts = [string componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-//    NSMutableArray *tempNumberParts = [numberParts mutableCopy];
-//    
-//    NSString *ordinal = nil;
-//    NSString *cardinal = tempNumberParts.lastObject;
-//
-//    ordinal = [self searchOrdinalInDictionaryWithKey:cardinal];
-//    
-//    if (!ordinal) {
-//        NSDictionary *exceptions = self.numerals.exceptions[kOrdinalExceptions];
-//        ordinal = exceptions[cardinal];
-//    }
-//    
-//    [tempNumberParts replaceObjectAtIndex:tempNumberParts.count - 1 withObject:ordinal];
-//    
-//    return [tempNumberParts componentsJoinedByString:kWHITESPACE];
-//}
-//
-//- (NSString *)finishingFormatter:(long long)number withString:(NSString *)string {
-//    NSString *result = nil;
-//    
-//    //  замена eins <large_number> -> eine <large_number>
-//    result = [self replaceEinsWithEineInString:string];
-//
-//    
-//    //  удаление и вставка пробелов <large_namber> -> < large_number >
-//    NSArray *numberParts = [result componentsSeparatedByString:kWHITESPACE];
-//    numberParts = [self addWhitespaceToLarge:numberParts];
-//
-//    //  склейка и последняя обрезка
-//    result = [numberParts componentsJoinedByString:kEMPTY_STRING];
-//    
-//    return [result TYstringByTrimmingWhitespace];
-//}
-
-
-//   new
 - (NSMutableArray *)ordinalFormatter:(long long)number withParts:(NSMutableArray *)parts {
-//    NSArray *numberParts = [string componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-    //  проблема: составное числительное идет как одно слово. Мне нужно разбить его на части. Приходится собирать строку из массива и заново разбивать.
-    //  может лучше что-то с форматтером нихимичить
-    //  может как с английским искать не слово, а suffix
-    NSMutableArray *tempParts = [[[parts componentsJoinedByString:kWHITESPACE] componentsSeparatedByString:kWHITESPACE] mutableCopy];
+    
+    if (parts.count == 0) {
+        return [NSMutableArray arrayWithObject:self.cardinalUnits[ZERO]];
+    }
     
     NSString *ordinal = nil;
-    NSString *cardinal = tempParts.lastObject;
-    //  old -- поиск по словарю, если неудача поиск по словарю исключений
-    //  ОЧЕНЬ медленно
-//    ordinal = [self searchOrdinalInDictionaryWithKey:cardinal];
-//    
-//    if (!ordinal) {
-//        NSDictionary *exceptions = self.numerals.exceptions[kOrdinalExceptions];
-//        ordinal = exceptions[cardinal];
-//    }
-    
+    NSString *cardinal = parts.lastObject;
     //  new поиск по исключениям, нет - добавление окончания
-    
     //  eins -> erste,
-    NSDictionary *exceptions = self.numerals.exceptions[kOrdinalExceptions];
+    NSDictionary *exceptions = self.exceptions[kOrdinalExceptions];
     for (NSString *key in exceptions) {
         
         if ([cardinal hasSuffix:key]) {
@@ -206,137 +143,51 @@ static NSString * kSingleLargeExceptions = @"singleLargeExceptions";
             ordinal = [cardinal stringByAppendingString:@"ste"];
         }
         
-       
-//        ordinal = [cardinal stringByAppendingString:@"th"];
     }
     
     
-    [tempParts replaceObjectAtIndex:tempParts.count - 1 withObject:ordinal];
+    [parts replaceObjectAtIndex:parts.count - 1 withObject:ordinal];
     
-    return tempParts;
+    return parts;
 }
 
 - (NSString *)finishingFormatter:(long long)number withParts:(NSMutableArray *)parts {
-//    NSString *result = [parts componentsJoinedByString:kWHITESPACE];
     NSString *result = nil;
     
-    parts = [[[parts componentsJoinedByString:kWHITESPACE] componentsSeparatedByString:kWHITESPACE] mutableCopy];
-
-    //  замена eins <large_number> -> eine <large_number>
-//    parts = [self replaceEinsWithEineInString:parts];
-//    result = [self replaceEinsWithEineInString:result];
-    
-    
-    //  удаление и вставка пробелов <large_namber> -> < large_number >
-    if (number >= MILLION) {
-        parts = [self addWhitespaceToLarge:parts];
-        
-        //  замена eins <large_number> -> eine <large_number>
-
-        for (NSInteger idx = 0; idx < parts.count-1; idx++) {
-            if ([parts[idx] isEqualToString:@"eins"]) {
-                [parts replaceObjectAtIndex:idx withObject:@"eine"];
-            }
-        }
-        
-        
+    if (parts.count == 0) {
+        return self.cardinalUnits[ZERO];
     }
-//    NSArray *numberParts = [result componentsSeparatedByString:kWHITESPACE];
-//    result = [self addWhitespaceToLarge:numberParts];
-//    parts = [self addWhitespaceToLarge:parts];
+    
+    if (number >= MILLION) {  //  <large_namber> -> < large_number >
+        parts = [self addWhitespaceToLarge:parts];
+    }
     
     //  склейка и последняя обрезка
-    result = [parts componentsJoinedByString:kEMPTY_STRING];
+    if (parts.count > 1) {
+        result = [parts componentsJoinedByString:kEMPTY_STRING];
+    } else {
+        result = parts.firstObject;
+    }
+    
     return [result TYstringByTrimmingWhitespace];
 }
 
 
 #pragma mark -
 #pragma mark Private API
-//  change not just eins -> eine, but eins 
-- (NSString *)replaceEinsWithEineInString:(NSString *)string {
-    NSMutableString *temp = [string mutableCopy];
-    NSArray *singleLargeExceptions = [self.numerals.exceptions[kSingleLargeExceptions] allKeys];
-    
-    for (NSString *exception in singleLargeExceptions) {
-        
-        if ([temp containsString:exception]) {
-            [temp replaceOccurrencesOfString:exception
-                                  withString:self.numerals.exceptions[kSingleLargeExceptions][exception]
-                                     options:0
-                                       range:NSMakeRange(0, temp.length)];
-        }
-    }
-    
-    return [temp copy];
-}
-
-
 - (NSMutableArray<NSString *> *)addWhitespaceToLarge:(NSMutableArray<NSString *> *)parts {
-//    NSMutableArray<NSString *> *tempParts = [parts mutableCopy];
-    
-    NSMutableArray<NSString *> *largeNumbers = [[self.numerals.cardinalLarge allValues] mutableCopy];
-    NSArray<NSString *> *singleLargeExceptions = [self.numerals.exceptions[kOrdinalExceptions] allValues];
-    [largeNumbers addObjectsFromArray:singleLargeExceptions];
-    
-    
-    
-    for (NSString *large in largeNumbers) {
+
+    for (NSInteger idx = 0; idx < parts.count; idx++) {
         
-        for (NSInteger idx = 0; idx < parts.count; idx++) {
-            NSString *part = parts[idx];
-            
-            if ([part hasPrefix:large]) {  
-                part = [part stringByAppendingString:kWHITESPACE];
-                part = [kWHITESPACE stringByAppendingString:part];
-                parts[idx] = part;
-            }
+        if ([parts[idx] containsString:@"illi"]) {
+            NSString *temp = parts[idx];
+            temp = [temp stringByAppendingString:kWHITESPACE];
+            temp = [kWHITESPACE stringByAppendingString:temp];
+            parts[idx] = temp;
         }
     }
     
     return parts;
-//    return [tempParts copy];
-//    return [tempParts componentsJoinedByString:kEMPTY_STRING];
 }
 
-//- (NSMutableArray<NSString *> *)replaceEinsWithEineInString:(NSMutableArray<NSString *> *)parts {
-//    NSArray *singleLargeExceptions = [self.numerals.exceptions[kSingleLargeExceptions] allKeys];
-//    
-//    
-//    for (NSInteger idx = 0; idx < parts.count; idx++) {
-//        NSString *part = parts[idx];
-//        
-//        for (NSString *exception in singleLargeExceptions) {
-//            if ([part isEqualToString:exception]) {
-//                [parts replaceObjectAtIndex:idx withObject:self.numerals.exceptions[kSingleLargeExceptions][exception]];
-//            }
-//        }
-//    }
-//    
-//    return parts;
-//}
-
-//- (NSMutableArray<NSString *> *)addWhitespaceToLarge:(NSMutableArray<NSString *> *)parts {
-//    
-//    NSMutableArray<NSString *> *largeNumbers = [[self.numerals.cardinalLarge allValues] mutableCopy];
-//    NSArray<NSString *> *singleLargeExceptions = [self.numerals.exceptions[kOrdinalExceptions] allValues];
-//    [largeNumbers addObjectsFromArray:singleLargeExceptions];
-//    
-//    
-//    
-//    for (NSString *large in largeNumbers) {
-//        
-//        for (NSInteger idx = 0; idx < parts.count; idx++) {
-//            NSString *part = parts[idx];
-//            
-//            if ([part hasPrefix:large]) {
-//                part = [part stringByAppendingString:kWHITESPACE];
-//                part = [kWHITESPACE stringByAppendingString:part];
-//                parts[idx] = part;
-//            }
-//        }
-//    }
-//    
-//    return parts;
-//}
 @end

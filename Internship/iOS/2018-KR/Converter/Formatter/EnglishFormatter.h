@@ -12,6 +12,8 @@
 
 @end
 
-@interface EnglishFormatter (DataSource)
-- (void) test;
+@interface EnglishFormatter (Initialization)
+
++ (instancetype)formatter;
+
 @end

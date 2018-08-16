@@ -25,7 +25,6 @@
     if (!_converter) {
         _converter = [[Converter alloc] init];
         _converter.localeID = kEN;
-        _converter.shortScale = YES;
         _converter.ordinal = NO;
     }
 }
@@ -37,7 +36,7 @@
 
 
 - (void)testCardinalUnits {
-//    XCTAssert([[self.converter stringFromNumber:0] isEqualToString:@"zero"]);
+    XCTAssert([[self.converter stringFromNumber:0] isEqualToString:@"zero"]);
     XCTAssert([[self.converter stringFromNumber:1] isEqualToString:@"one"]);
     XCTAssert([[self.converter stringFromNumber:2] isEqualToString:@"two"]);
     XCTAssert([[self.converter stringFromNumber:3] isEqualToString:@"three"]);
@@ -106,11 +105,6 @@
 }
 
 - (void)testCardinalThousands {
-#warning удалить
-//     NSLog(@"%@", [self.converter stringFromNumber:1492638526]);
-
-
-    
     XCTAssert([[self.converter stringFromNumber:1000] isEqualToString:@"one thousand"]);
     XCTAssert([[self.converter stringFromNumber:2001] isEqualToString:@"two thousand one"]);
     XCTAssert([[self.converter stringFromNumber:3010] isEqualToString:@"three thousand ten"]);
@@ -129,7 +123,6 @@
 - (void)testCardinalLargeNumbers {
     
     //  short scale
-    self.converter.shortScale = YES;
     XCTAssert([[self.converter stringFromNumber:MILLION] isEqualToString:@"one million"]);
     XCTAssert([[self.converter stringFromNumber:BILLION] isEqualToString:@"one billion"]);
     XCTAssert([[self.converter stringFromNumber:TRILLION] isEqualToString:@"one trillion"]);
@@ -155,11 +148,7 @@
     XCTAssert([[self.converter stringFromNumber:941492638526] isEqualToString:
                @"nine hundred forty-one billion four hundred ninety-two million six hundred thirty-eight thousand five hundred twenty-six"]);
     
-    //  long scale
-    self.converter.shortScale = NO;
-    XCTAssert([[self.converter stringFromNumber:MILLION] isEqualToString:@"one million"]);
-    XCTAssert([[self.converter stringFromNumber:BILLION] isEqualToString:@"one milliard"]);
-    XCTAssert([[self.converter stringFromNumber:TRILLION] isEqualToString:@"one billion"]);
+
 }
 
 
