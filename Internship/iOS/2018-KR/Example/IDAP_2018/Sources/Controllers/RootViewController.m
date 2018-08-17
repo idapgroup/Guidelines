@@ -12,16 +12,22 @@
 
 @interface RootViewController ()
 
+@property (weak, nonatomic) IBOutlet UILabel *cardinalLabel;
+@property (weak, nonatomic) IBOutlet UILabel *ordinalLabel;
+
+@property (weak, nonatomic) IBOutlet UISwitch *ordinalSwitch;
+
 @end
 
 static NSString * kManual = @"manual";
 static NSString * kSemiautomatic = @"semiautomatic";
 
-
 @implementation RootViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self ordinalMode:self.ordinalSwitch];
     // Do any additional setup after loading the view.
 }
 
@@ -32,6 +38,7 @@ static NSString * kSemiautomatic = @"semiautomatic";
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     ConverterViewController *destinationVC = ((ConverterViewController *)segue.destinationViewController);
+    destinationVC.ordinal = self.ordinalSwitch.on;
     
     if ([segue.identifier isEqualToString:kManual]) {
         destinationVC.manual = YES;
@@ -39,6 +46,10 @@ static NSString * kSemiautomatic = @"semiautomatic";
         destinationVC.manual = NO;
     }
     
+}
+- (IBAction)ordinalMode:(UISwitch *)sender {
+    self.ordinalLabel.enabled = sender.on;
+    self.cardinalLabel.enabled = !sender.on;
 }
 
 @end

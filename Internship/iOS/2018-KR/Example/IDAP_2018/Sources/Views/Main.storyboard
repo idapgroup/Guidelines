@@ -11,7 +11,7 @@
         <!--Converter View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ConverterViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ConverterViewController" id="BYZ-38-t0r" customClass="ConverterViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -24,7 +24,7 @@
                                 <rect key="frame" x="16" y="331" width="288" height="217"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1000000" translatesAutoresizingMaskIntoConstraints="NO" id="mU6-kA-Zrg">
+                                    <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1000000" minValue="0.0" maxValue="1000000" translatesAutoresizingMaskIntoConstraints="NO" id="mU6-kA-Zrg">
                                         <rect key="frame" x="-2" y="93" width="292" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <connections>
@@ -113,7 +113,7 @@
         <!--Menu-->
         <scene sceneID="wwi-sQ-CYf">
             <objects>
-                <viewController id="noP-sX-YQ3" customClass="RootViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RootViewController" id="noP-sX-YQ3" customClass="RootViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="TGj-fN-Kq0"/>
                         <viewControllerLayoutGuide type="bottom" id="tkN-LU-2xO"/>
@@ -130,7 +130,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="Manual"/>
                                         <connections>
-                                            <segue destination="BYZ-38-t0r" kind="show" identifier="manual" id="hOa-B0-VoF"/>
+                                            <segue destination="BYZ-38-t0r" kind="show" identifier="manual" id="l4s-xs-Mq0"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NhU-sg-FR3">
@@ -138,11 +138,32 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="Semiautomatic"/>
                                         <connections>
-                                            <segue destination="BYZ-38-t0r" kind="show" identifier="semiautomatic" id="Cbm-q7-hut"/>
+                                            <segue destination="BYZ-38-t0r" kind="show" identifier="semiautomatic" id="6MG-ma-TaS"/>
                                         </connections>
                                     </button>
                                 </subviews>
                             </stackView>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UCX-J2-zRG">
+                                <rect key="frame" x="136" y="488" width="51" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="ordinalMode:" destination="noP-sX-YQ3" eventType="valueChanged" id="RqL-Mj-zt7"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="One, Two, ..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7FP-13-tAU">
+                                <rect key="frame" x="16" y="493" width="112" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="First, Second, ..." textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YGT-Pg-kIs">
+                                <rect key="frame" x="192" y="493" width="112" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -151,6 +172,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Menu" id="W0l-FM-FJd"/>
+                    <connections>
+                        <outlet property="cardinalLabel" destination="7FP-13-tAU" id="sXW-BO-iP9"/>
+                        <outlet property="ordinalLabel" destination="YGT-Pg-kIs" id="e0X-2Z-jEQ"/>
+                        <outlet property="ordinalSwitch" destination="UCX-J2-zRG" id="YQC-gG-SgH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5cp-eg-wg0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -174,6 +200,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="hOa-B0-VoF"/>
+        <segue reference="6MG-ma-TaS"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -11,6 +11,7 @@
 @interface ConverterViewController : UIViewController
 
 @property (assign, nonatomic, getter = isManual) BOOL manual;
+@property (assign, nonatomic, getter = isOrdinal) BOOL ordinal;
 
 @end
 

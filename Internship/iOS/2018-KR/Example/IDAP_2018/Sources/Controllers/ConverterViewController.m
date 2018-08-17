@@ -35,6 +35,7 @@
 - (Converter *)converter {
     if (!_converter) {
         _converter = [Converter new];
+        _converter.ordinal = self.isOrdinal;
     }
     
     return _converter;
@@ -49,6 +50,13 @@
     [self setupViews];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    
+    if (self.isManual) {
+        [self.numberTextView becomeFirstResponder];
+    }
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -60,17 +68,8 @@
     self.containerView.hidden = self.isManual;
     self.numberTextView.hidden = !self.isManual;
     self.numberTextView.userInteractionEnabled = self.isManual;
-    
-    self.enLabel.text = self.uaLabel.text = self.deLabel.text = kEMPTY_STRING;
-    
-    if (self.isManual) {
-        [self.numberTextView becomeFirstResponder];
-    } else {
-        self.maxLabel.text = [self formattedStringFromInteger:self.slider.value];
-        [self.numberTextView resignFirstResponder];
-    }
-
 }
+
 
 - (void)convertNumber:(NSInteger)number {
     self.converter.localeID = kDE;
@@ -81,8 +80,7 @@
     self.uaLabel.text = [self.converter stringFromNumber:number];
 }
 
-
-
+//  100000 -> 100,000
 - (NSString *)formattedStringFromInteger:(NSInteger)number {
     NSNumber *temp = [NSNumber numberWithLongLong:number];
     NSNumberFormatter *formatter = [NSNumberFormatter new];
@@ -92,7 +90,6 @@
 }
 
 //  MARK: UI Actions
-//  current max limit
 - (IBAction)valueChanged:(UISlider *)sender {
     NSInteger value = (NSInteger)sender.value;
     self.maxLabel.text = [self formattedStringFromInteger:value];
@@ -106,7 +103,6 @@
 
 #pragma mark -
 #pragma mark UITextViewDelegate
-
 - (void)textViewDidChange:(UITextView *)textView {
     [self convertNumber:textView.text.integerValue];
 }
