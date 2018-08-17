@@ -83,8 +83,8 @@ static NSString * kMIN_LIMIT_MESSAGE = @"converter doesn't support negative numb
     }
 }
 
-
 - (NSArray<NSString *> *)availableLocaleID {
+    
     return [self.formatters allKeys];
 }
 
@@ -93,7 +93,7 @@ static NSString * kMIN_LIMIT_MESSAGE = @"converter doesn't support negative numb
 
 - (void)addFormatter:(NumeralsFormatter *)formatter {
     
-    if (formatter) {
+    if ([formatter isKindOfClass:[NumeralsFormatter class]]) {
         [self.formatters setObject:formatter forKey:formatter.localeID];
         
         if (!self.localeID) {  //  add to empty matcher
@@ -108,47 +108,25 @@ static NSString * kMIN_LIMIT_MESSAGE = @"converter doesn't support negative numb
         [self.formatters removeObjectForKey:userLocale];
         
         if (self.availableLocaleID.count > 0) {
-            _localeID = self.availableLocaleID.firstObject;
+            self.localeID = self.availableLocaleID.firstObject;
         } else {
             _localeID = nil;
+            _localeFormatter = nil;
         }
-        
     }
 }
 
-//- (NSString *)stringFromNumber:(long long)number {
-//    
-//    if (number > QUADRILLION)  return kMAX_LIMIT_MESSAGE;
-//    if (number < 0)            return kMIN_LIMIT_MESSAGE;
-//    
-//    NSString *result = [self convertNumber:number];
-//    
-//    return result;
-//}
-
-- (NSString *)stringFromNumber:(long long)number withLocale:(NSLocale *)locale {
-    NSString *localeIdentifier = locale.localeIdentifier;
-    NSArray *keys = [self availableLocaleID];
-    NSString *result = nil;
-
-    for (NSString *key in keys) {
-        //  only language designator
-        if ([localeIdentifier hasPrefix:key]) {
-            NSString *currentLocaleID = self.localeID;
-            self.localeID = key;
-            result = [self stringFromNumber:number];
-            self.localeID = currentLocaleID;
-        }
-    }
+- (NSString *)stringFromNumber:(long long)number {
     
-    return result;
+    if (number > QUADRILLION)  return kMAX_LIMIT_MESSAGE;
+    if (number < 0)            return kMIN_LIMIT_MESSAGE;
+    
+    return [self convertNumber:number];
 }
 
 #pragma mark -
 #pragma mark Private API
-
-//- (NSString *)convertNumber:(long long)number {
-- (NSString *)stringFromNumber:(long long)number {
+- (NSString *)convertNumber:(long long)number {
     NSMutableArray *parts = [NSMutableArray new];
 
     long long tempNumber = number;
@@ -160,7 +138,6 @@ static NSString * kMIN_LIMIT_MESSAGE = @"converter doesn't support negative numb
             NSInteger threeDigits = (NSInteger)(tempNumber / multiplier);
             
             if (threeDigits > 0) {
-//                [parts addObjectsFromArray:[self.matcher threeDigitParser:threeDigits multiplier:multiplier]];
                 [parts addObjectsFromArray:[self threeDigitParser:threeDigits multiplier:multiplier]];
                 
                 if (multiplier > 1) {

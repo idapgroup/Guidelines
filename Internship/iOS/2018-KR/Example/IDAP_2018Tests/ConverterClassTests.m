@@ -18,9 +18,6 @@
 
 @interface ConverterClassTests : XCTestCase
 
-@property (strong, nonatomic, readonly) Converter *converter;
-@property (strong, nonatomic, readonly) Converter *uaConverter;
-
 @end
 
 
@@ -33,6 +30,8 @@
 
 - (void)tearDown {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    
     [super tearDown];
 }
 
@@ -50,24 +49,17 @@
 }
 
 - (void)testInitWithFormatter {
+    UkrainianFormatter *formatter = [UkrainianFormatter formatter];
     
-//    //NSString *path = [[NSBundle mainBundle] pathForResource:kUA ofType:@"plist"];
-//    
-//    UkrainianFormatter *formatter = [UkrainianFormatter formatter];
-////    or you can do this faster
-////    UkrainianFormatter *formatter = [[UkrainianFormatter alloc] initWithFile:path];
-//    
-//    Converter *converter = [[Converter alloc] initWithFormatter:formatter];
-//    converter.ordinal = NO;
-//    
-//    XCTAssertEqualObjects(converter.localeID, formatter.localeID);
-//    XCTAssertEqual(1, converter.availableLocaleID.count);
-//    XCTAssertEqualObjects([converter stringFromNumber:33], @"тридцять три");
-//    
-//    XCTAssertNoThrow([[Converter alloc] initWithFormatter:nil]);
-//    XCTAssertNil([[Converter alloc] initWithFormatter:nil]);
+    Converter *converter = [[Converter alloc] initWithFormatter:formatter];
+    converter.ordinal = NO;
     
+    XCTAssertEqualObjects(converter.localeID, formatter.localeID);
+    XCTAssertEqual(1, converter.availableLocaleID.count);
+    XCTAssertEqualObjects([converter stringFromNumber:33], @"тридцять три");
     
+    XCTAssertNoThrow([[Converter alloc] initWithFormatter:nil]);
+    XCTAssertNil([[Converter alloc] initWithFormatter:nil]);
 }
 
 - (void)testProperties {
@@ -80,12 +72,14 @@
     XCTAssertEqual(defaultConverter.availableLocaleID.count, 3);  //  en, de, ua
 
     //  switch locale
-    //  try set wrong locale
+    //  try set wrong (unavailable) locale
+    //  must stay previous locale
     NSString *currentLocale = defaultConverter.localeID;
     XCTAssertNoThrow(defaultConverter.localeID = @"XXX");
     XCTAssertEqualObjects(defaultConverter.localeID, currentLocale);
     
     //  try set extended locale
+    //  must recognize language designator, ignore country designator
     defaultConverter.localeID = @"en_GB";
     XCTAssertEqualObjects(defaultConverter.localeID, kEN);
     defaultConverter.localeID = @"en_AU";
@@ -99,47 +93,66 @@
     //  old tests
     //  in new version there is no way add/remove Formatters
     
+    Converter *testConverter = [[Converter alloc] initWithFormatter:[UkrainianFormatter formatter]];
     
-//    NSInteger count = self.uaConverter.availableLocaleID.count;
-//    
-//    //  succefull remove
-//    XCTAssertNoThrow([self.uaConverter removeFormatterWithLocale:kUA]);
-//    XCTAssertNotEqual(count, self.uaConverter.availableLocaleID.count);
-//    XCTAssertNil(self.uaConverter.localeID);
-//    
-//    //  succefull adding
-//    EnglishFormatter *enFormatter = [EnglishFormatter formatter];
-//    
-//    [self.uaConverter addFormatter:enFormatter];
-//    XCTAssertEqual(count, self.uaConverter.availableLocaleID.count);
-//    
-//    //  safe remove with wrong local
-//    XCTAssertNoThrow([self.uaConverter removeFormatterWithLocale:@"XXX"]);
-//    XCTAssertEqual(count, self.uaConverter.availableLocaleID.count);
-//    
-//    //  safe remove without any formater
-//    NSInteger iteration = self.uaConverter.availableLocaleID.count + 10;
-//    while (iteration > 0) {
-//        XCTAssertNoThrow([self.uaConverter removeFormatterWithLocale:kEN]);
-//        iteration--;
-//    }
-//    
-//    //  switch localeID if formatter for current locale was removed
-//    DeutschFormatter *deFormatter = [DeutschFormatter formatter];
-//    XCTAssertNil(self.uaConverter.localeID);
-//    
-//    [self.uaConverter addFormatter:enFormatter];
-//    XCTAssertEqualObjects(self.uaConverter.localeID, kEN);
-//    
-//    [self.uaConverter addFormatter:deFormatter];
-//    XCTAssertEqualObjects(self.uaConverter.localeID, kEN);
-//    
-//    [self.uaConverter removeFormatterWithLocale:kEN];
-//    XCTAssertEqualObjects(self.uaConverter.localeID, kDE);
-//    
-//    [self.uaConverter removeFormatterWithLocale:kDE];
-//    XCTAssertNil(self.uaConverter.localeID);
-//    
+    //  count = 1
+    NSInteger count = testConverter.availableLocaleID.count;
+    
+    //  succefull remove
+    XCTAssertNoThrow([testConverter removeFormatterWithLocale:kUA]);
+    XCTAssertNotEqual(count, testConverter.availableLocaleID.count);
+    XCTAssertNil(testConverter.localeID);
+    XCTAssertNil([testConverter stringFromNumber:1]);
+    
+    //  succefull adding
+    EnglishFormatter *enFormatter = [EnglishFormatter formatter];
+    
+    [testConverter addFormatter:enFormatter];
+    XCTAssertEqual(count, testConverter.availableLocaleID.count);
+    XCTAssertEqualObjects(testConverter.localeID, kEN);
+    XCTAssertEqualObjects([testConverter stringFromNumber:1], @"first");
+
+    //  safe remove with wrong local
+    XCTAssertNoThrow([testConverter removeFormatterWithLocale:@"XXX"]);
+    XCTAssertEqual(count, testConverter.availableLocaleID.count);
+    XCTAssertEqualObjects([testConverter stringFromNumber:1], @"first");
+
+    //  safe remove without any formater
+    NSInteger iteration = testConverter.availableLocaleID.count + 10;
+    while (iteration > 0) {
+        XCTAssertNoThrow([testConverter removeFormatterWithLocale:kEN]);
+        iteration--;
+    }
+    XCTAssertNil([testConverter stringFromNumber:1]);
+
+    //  switch localeID if formatter for current locale was removed
+    //  without any formatters localeID return nil
+    XCTAssertNil(testConverter.localeID);
+    
+    //  after adding first formatter, localeID automatically switch LocaleID...
+    [testConverter addFormatter:enFormatter];
+    XCTAssertEqualObjects(testConverter.localeID, kEN);
+    
+    //  ...and remain LocaleID when add another formatters
+    DeutschFormatter *deFormatter = [DeutschFormatter formatter];
+    [testConverter addFormatter:deFormatter];
+    XCTAssertEqualObjects(testConverter.localeID, kEN);
+    
+    UkrainianFormatter *uaFormatter = [UkrainianFormatter formatter];
+    [testConverter addFormatter:uaFormatter];
+    XCTAssertEqualObjects(testConverter.localeID, kEN);
+    
+    //  when removing formatter which is "current formatter"
+    //  localeID switch to first available
+    //  or niled if it was last formatter
+    [testConverter removeFormatterWithLocale:kEN];
+    XCTAssertEqualObjects(testConverter.localeID, kDE);
+    
+    [testConverter removeFormatterWithLocale:kDE];
+    XCTAssertEqualObjects(testConverter.localeID, kUA);
+    
+    [testConverter removeFormatterWithLocale:kUA];
+    XCTAssertNil(testConverter.localeID);
 }
 
 //- (void)testConvertWithLocale {
@@ -169,7 +182,7 @@
 
 - (void)testPerformance {
     
-#define TEST
+#define TEST_
     
 #ifdef TEST
     CGFloat appleTime = 0;

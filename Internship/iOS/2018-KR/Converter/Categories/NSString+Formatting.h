@@ -12,8 +12,6 @@
 
 + (NSString *)TYstringWithInt:(long long)number;
 
-+ (NSString *)TYstringWithLeadingWhitespace:(NSString *)string;
-
 - (NSString *)TYreplaseSuffix:(NSString *)suffix withString:(NSString *)string;
 
 - (NSString *)TYstringByTrimmingWhitespace;

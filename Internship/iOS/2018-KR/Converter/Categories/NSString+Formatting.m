@@ -15,11 +15,6 @@
     return [NSString stringWithFormat:@"%lld", number];
 }
 
-+ (NSString *)TYstringWithLeadingWhitespace:(NSString *)string {
-    
-    return [NSString stringWithFormat:@" %@", string];
-}
-
 - (NSString *)TYreplaseSuffix:(NSString *)suffix withString:(NSString *)string {
     NSString *result = self;
     

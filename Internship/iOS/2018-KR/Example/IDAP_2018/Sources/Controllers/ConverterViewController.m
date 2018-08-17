@@ -35,7 +35,6 @@
 - (Converter *)converter {
     if (!_converter) {
         _converter = [Converter new];
-        _converter.ordinal = YES;
     }
     
     return _converter;
@@ -49,7 +48,6 @@
     
     [self setupViews];
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -103,7 +101,6 @@
 - (IBAction)generate:(UIButton *)sender {
     NSInteger number = arc4random_uniform(self.slider.value);
     self.randNumberLabel.text = [self formattedStringFromInteger:number];
-//    self.numberTextView.text = [NSString stringWithFormat:@"%ld", (long)number];
     [self convertNumber:number];
 }
 

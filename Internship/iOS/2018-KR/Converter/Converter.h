@@ -18,6 +18,10 @@
 @property (strong, nonatomic, readonly) NSArray<NSString *> *availableLocaleID;
 
 - (instancetype)init;  //  eng, ger, ukr
+- (instancetype)initWithFormatter:(NumeralsFormatter *)formatter;
+
+- (void)addFormatter:(NumeralsFormatter *)formatter;
+- (void)removeFormatterWithLocale:(NSString *)userLocale;
 
 - (NSString *)stringFromNumber:(long long)number;  //  with current locale property
 //- (NSString *)stringFromNumber:(long long)number withLocale:(NSLocale *)locale;

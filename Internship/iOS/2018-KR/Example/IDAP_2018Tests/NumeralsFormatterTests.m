@@ -8,7 +8,6 @@
 
 #import <XCTest/XCTest.h>
 
-#import "Numerals.h"
 #import "NumeralsFormatter.h"
 
 @interface NumeralsFormatterTests : XCTestCase
@@ -28,23 +27,17 @@
 }
 
 - (void)testInit {
-    //  base class, most methods should be overrided
-//    XCTAssertThrows([NumeralsFormatter formatter]);
+    //  possible to create, impossible to use
+    NumeralsFormatter *formatter = [[NumeralsFormatter alloc] init];
     
-    //  you can create, bat you can't use
-//    Numerals *uaNumerals = [Numerals ukrainian];
-//    NumeralsFormatter *formatter = [[NumeralsFormatter alloc] initWithNumerals:uaNumerals];
-//    
-//    XCTAssertThrows([formatter unitsFormatter:1 multiplier:1]);
-//    
-//    XCTAssertThrows([formatter tensFormatter:22 multiplier:1]);
-//    XCTAssertThrows([formatter roundTensFormatter:10 multiplier:1]);
-//    XCTAssertThrows([formatter hundredsFormatter:100 multiplier:1]);
-//    
-//    XCTAssertThrows([formatter largeNumbersFormatter:1000 quantity:1]);
-//    
-//    XCTAssertThrows([formatter ordinalFormatter:1 withParts:@[@"one"].mutableCopy]);
-//    XCTAssertThrows([formatter finishingFormatter:1 withParts:@[@"one"].mutableCopy]);
+    XCTAssertThrows([formatter unitsFormatter:1 multiplier:1]);
+    XCTAssertThrows([formatter tensFormatter:22 multiplier:1]);
+    XCTAssertThrows([formatter hundredsFormatter:100 multiplier:1]);
+    
+    XCTAssertThrows([formatter largeNumbersFormatter:1000 quantity:1]);
+    
+    XCTAssertThrows([formatter ordinalFormatter:1 withParts:@[@"one"].mutableCopy]);
+    XCTAssertThrows([formatter finishingFormatter:1 withParts:@[@"one"].mutableCopy]);
 }
 
 @end

@@ -23,10 +23,6 @@
 		625AC5942116CE9B00926196 /* DeutschFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 625AC5832116CE9B00926196 /* DeutschFormatter.m */; };
 		625AC5952116CE9B00926196 /* EnglishFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 625AC5852116CE9B00926196 /* EnglishFormatter.m */; };
 		625AC5962116CE9B00926196 /* UkrainianFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 625AC5872116CE9B00926196 /* UkrainianFormatter.m */; };
-		625AC5982116CE9B00926196 /* Numerals+Deutsch.m in Sources */ = {isa = PBXBuildFile; fileRef = 625AC58B2116CE9B00926196 /* Numerals+Deutsch.m */; };
-		625AC5992116CE9B00926196 /* Numerals+English.m in Sources */ = {isa = PBXBuildFile; fileRef = 625AC58C2116CE9B00926196 /* Numerals+English.m */; };
-		625AC59A2116CE9B00926196 /* Numerals+Ukrainian.m in Sources */ = {isa = PBXBuildFile; fileRef = 625AC58D2116CE9B00926196 /* Numerals+Ukrainian.m */; };
-		625AC59B2116CE9B00926196 /* Numerals.m in Sources */ = {isa = PBXBuildFile; fileRef = 625AC58F2116CE9B00926196 /* Numerals.m */; };
 		629473B92113673600E5284B /* UkrainianOrdinalTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 629473B82113673600E5284B /* UkrainianOrdinalTests.m */; };
 		629473BF21144AC200E5284B /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 629473BE21144AC200E5284B /* RootViewController.m */; };
 		629473C72114A44400E5284B /* ConverterClassTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 629473C62114A44400E5284B /* ConverterClassTests.m */; };
@@ -75,11 +71,6 @@
 		625AC5852116CE9B00926196 /* EnglishFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnglishFormatter.m; sourceTree = "<group>"; };
 		625AC5862116CE9B00926196 /* UkrainianFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UkrainianFormatter.h; sourceTree = "<group>"; };
 		625AC5872116CE9B00926196 /* UkrainianFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UkrainianFormatter.m; sourceTree = "<group>"; };
-		625AC58B2116CE9B00926196 /* Numerals+Deutsch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Numerals+Deutsch.m"; sourceTree = "<group>"; };
-		625AC58C2116CE9B00926196 /* Numerals+English.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Numerals+English.m"; sourceTree = "<group>"; };
-		625AC58D2116CE9B00926196 /* Numerals+Ukrainian.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Numerals+Ukrainian.m"; sourceTree = "<group>"; };
-		625AC58E2116CE9B00926196 /* Numerals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Numerals.h; sourceTree = "<group>"; };
-		625AC58F2116CE9B00926196 /* Numerals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Numerals.m; sourceTree = "<group>"; };
 		6284AF2C210DC0E500D7BC7C /* GlobalKeys.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlobalKeys.h; sourceTree = "<group>"; };
 		629473B82113673600E5284B /* UkrainianOrdinalTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UkrainianOrdinalTests.m; sourceTree = "<group>"; };
 		629473BD21144AC200E5284B /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
@@ -208,7 +199,6 @@
 				625AC57B2116CE9B00926196 /* Converter.h */,
 				625AC57C2116CE9B00926196 /* Converter.m */,
 				625AC57D2116CE9B00926196 /* Formatter */,
-				625AC58A2116CE9B00926196 /* Numerals */,
 			);
 			name = Converter;
 			path = ../../../../Converter;
@@ -249,19 +239,6 @@
 				625AC5802116CE9B00926196 /* NumeralsFormatter.m */,
 			);
 			path = AbstractClasses;
-			sourceTree = "<group>";
-		};
-		625AC58A2116CE9B00926196 /* Numerals */ = {
-			isa = PBXGroup;
-			children = (
-				625AC58B2116CE9B00926196 /* Numerals+Deutsch.m */,
-				625AC58C2116CE9B00926196 /* Numerals+English.m */,
-				625AC58D2116CE9B00926196 /* Numerals+Ukrainian.m */,
-				625AC58E2116CE9B00926196 /* Numerals.h */,
-				625AC58F2116CE9B00926196 /* Numerals.m */,
-			);
-			name = Numerals;
-			path = ../Converter/Numerals;
 			sourceTree = "<group>";
 		};
 		6284AF2B210DC07500D7BC7C /* Global */ = {
@@ -410,13 +387,9 @@
 				620DA7242124B9E700D0451E /* EnglishFormatter+Initialization.m in Sources */,
 				62000E2C210C5B7300AE9F0D /* main.m in Sources */,
 				620DA72A2124C2F100D0451E /* UkrainianFormatter+Initialization.m in Sources */,
-				625AC5982116CE9B00926196 /* Numerals+Deutsch.m in Sources */,
 				625AC5922116CE9B00926196 /* Converter.m in Sources */,
 				629473BF21144AC200E5284B /* RootViewController.m in Sources */,
-				625AC59B2116CE9B00926196 /* Numerals.m in Sources */,
-				625AC59A2116CE9B00926196 /* Numerals+Ukrainian.m in Sources */,
 				625AC5902116CE9B00926196 /* NSString+Formatting.m in Sources */,
-				625AC5992116CE9B00926196 /* Numerals+English.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -110,7 +110,7 @@
             </objects>
             <point key="canvasLocation" x="982.5" y="355.98591549295776"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Menu-->
         <scene sceneID="wwi-sQ-CYf">
             <objects>
                 <viewController id="noP-sX-YQ3" customClass="RootViewController" sceneMemberID="viewController">
@@ -123,17 +123,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="vvC-VM-0Oz">
-                                <rect key="frame" x="109" y="229" width="102" height="110"/>
+                                <rect key="frame" x="93" y="223" width="134" height="122"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="boz-XI-GNJ">
-                                        <rect key="frame" x="26" y="0.0" width="50" height="30"/>
+                                        <rect key="frame" x="34" y="0.0" width="66" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="Manual"/>
                                         <connections>
                                             <segue destination="BYZ-38-t0r" kind="show" identifier="manual" id="hOa-B0-VoF"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NhU-sg-FR3">
-                                        <rect key="frame" x="0.0" y="80" width="102" height="30"/>
+                                        <rect key="frame" x="0.0" y="86" width="134" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="Semiautomatic"/>
                                         <connections>
                                             <segue destination="BYZ-38-t0r" kind="show" identifier="semiautomatic" id="Cbm-q7-hut"/>
@@ -148,7 +150,7 @@
                             <constraint firstItem="vvC-VM-0Oz" firstAttribute="centerX" secondItem="Xoo-Lg-XOf" secondAttribute="centerX" id="ZEP-gI-TMa"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="W0l-FM-FJd"/>
+                    <navigationItem key="navigationItem" title="Menu" id="W0l-FM-FJd"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5cp-eg-wg0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

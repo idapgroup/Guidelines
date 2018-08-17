@@ -19,7 +19,8 @@
 
 @property (strong, nonatomic) NSDictionary<NSString *, NSDictionary *> *exceptions;
 
-- (instancetype)initWithFile:(NSString *)path;
+//  maybe later
+//- (instancetype)initWithFile:(NSString *)path;
 
 - (NSString *)unitsFormatter:(NSInteger)number multiplier:(long long)multiplier;
 - (NSString *)tensFormatter:(NSInteger)number multiplier:(long long)multiplier;

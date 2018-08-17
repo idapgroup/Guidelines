@@ -14,17 +14,16 @@
 
 #pragma mark -
 #pragma mark Initialization
-
-- (instancetype)initWithFile:(NSString *)path {
-    self = [super init];
-    
-    if (self) {
-        //  path should point to plist with arrays and dictionaries
-        //  in this place all properties will initialize with these collections
-    }
-    
-    return self;
-}
+//- (instancetype)initWithFile:(NSString *)path {
+//    self = [super init];
+//    
+//    if (self) {
+//        //  path should point to plist with arrays and dictionaries
+//        //  in this place all properties will initialize with these collections
+//    }
+//    
+//    return self;
+//}
 
 #pragma mark -
 #pragma mark Public API
@@ -36,9 +35,8 @@
 
 - (NSString *)largeNumbersFormatter:(long long)multiplier quantity:(NSInteger)quantity   { PROTECT }
 
-- (NSString *)ordinalFormatter:(long long)number withString:(NSString *)string    { PROTECT }
-- (NSString *)starterFormatter:(long long)number                                  { PROTECT }
-- (NSString *)finishingFormatter:(long long)number  withString:(NSString *)string { PROTECT }
+- (NSMutableArray *)ordinalFormatter:(long long)number withParts:(NSMutableArray *)parts { PROTECT }
+- (NSString *)finishingFormatter:(long long)number withParts:(NSMutableArray *)parts { PROTECT }
 
 #pragma mark -
 #pragma mark Private API
@@ -48,6 +46,4 @@
     return nil;
 }
 
-- (NSMutableArray *)ordinalFormatter:(long long)number withParts:(NSMutableArray *)parts { PROTECT }
-- (NSString *)finishingFormatter:(long long)number withParts:(NSMutableArray *)parts { PROTECT }
 @end

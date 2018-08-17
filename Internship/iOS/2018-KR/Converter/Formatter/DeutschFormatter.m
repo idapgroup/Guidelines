@@ -30,7 +30,7 @@ static NSString * kSingleLargeExceptions = @"singleLargeExceptions";
     self = [super init];
     
     if (self) {
-        _localeID = kUA;
+        _localeID = kDE;
     }
     
     return self;
@@ -127,13 +127,11 @@ static NSString * kSingleLargeExceptions = @"singleLargeExceptions";
     
     if (!ordinal) {
         NSInteger remainder = (number % 100);
-        //  numbers
+        
         if ( remainder > 0 && remainder < 20) {
             ordinal = [cardinal stringByAppendingString:@"te"];
-//            cardinal = [cardinal TYreplaseSuffix:@"y" withString:@"ie"];
         } else {
-            //  Millionen, Trillionen -> Million, Trillion
-            //  Milliarden, Trilliarden -> Milliard, Trilliard
+            //  Millionen -> Million
             if ([cardinal hasSuffix:@"nen"] ) {
                 cardinal = [cardinal TYreplaseSuffix:@"en" withString:kEMPTY_STRING];
             //  Milliarde, Trilliarde -> Milliard, Trilliard
@@ -144,8 +142,6 @@ static NSString * kSingleLargeExceptions = @"singleLargeExceptions";
         }
         
     }
-    
-    
     [parts replaceObjectAtIndex:parts.count - 1 withObject:ordinal];
     
     return parts;
@@ -162,7 +158,6 @@ static NSString * kSingleLargeExceptions = @"singleLargeExceptions";
         parts = [self addWhitespaceToLarge:parts];
     }
     
-    //  склейка и последняя обрезка
     if (parts.count > 1) {
         result = [parts componentsJoinedByString:kEMPTY_STRING];
     } else {
