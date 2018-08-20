@@ -22,7 +22,9 @@
 ```
 
 **Source** - project sources;
+
 **Vendor** - third-party libraries added without package manager usage;
+
 **Resources** - resources, e.g. storyboards, images, etc..
 
 ```
@@ -45,9 +47,13 @@ Source folder:
 ```
 
 **UI** - folder containing **ViewControllers** in a separate folder each;
+
 **ViewController** - folder containing one **ViewController** and its views;
+
 **Private** - entities specific only for current view controller (mostly views);
+
 **Models** - contains models, each in a separate subfolder;
+
 **Lib** - additional shared entities in project.
 
 - Further structuring depends on the task and should be decided by programmer;
