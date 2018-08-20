@@ -30,6 +30,7 @@
 		629F25372111194F00B4D678 /* DeutschCardinalTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 629F25362111194F00B4D678 /* DeutschCardinalTests.m */; };
 		629F253921119A6000B4D678 /* UkrainianCardinalTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 629F253821119A6000B4D678 /* UkrainianCardinalTests.m */; };
 		62B501C32115A28600360AF2 /* NumeralsFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 62B501C22115A28600360AF2 /* NumeralsFormatterTests.m */; };
+		62D205DC212A8E6D00FDA41D /* GlobalKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = 62D205DB212A8E6D00FDA41D /* GlobalKeys.m */; };
 		62DA517C21124ED900AB0DA7 /* EnglishOrdinalTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 62DA517B21124ED900AB0DA7 /* EnglishOrdinalTests.m */; };
 		62DA517E21124F0400AB0DA7 /* DeutschOrdinalTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 62DA517D21124F0400AB0DA7 /* DeutschOrdinalTests.m */; };
 /* End PBXBuildFile section */
@@ -82,6 +83,7 @@
 		629F25362111194F00B4D678 /* DeutschCardinalTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeutschCardinalTests.m; sourceTree = "<group>"; };
 		629F253821119A6000B4D678 /* UkrainianCardinalTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UkrainianCardinalTests.m; sourceTree = "<group>"; };
 		62B501C22115A28600360AF2 /* NumeralsFormatterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumeralsFormatterTests.m; sourceTree = "<group>"; };
+		62D205DB212A8E6D00FDA41D /* GlobalKeys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalKeys.m; sourceTree = "<group>"; };
 		62DA517B21124ED900AB0DA7 /* EnglishOrdinalTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnglishOrdinalTests.m; sourceTree = "<group>"; };
 		62DA517D21124F0400AB0DA7 /* DeutschOrdinalTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeutschOrdinalTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -245,6 +247,7 @@
 			isa = PBXGroup;
 			children = (
 				6284AF2C210DC0E500D7BC7C /* GlobalKeys.h */,
+				62D205DB212A8E6D00FDA41D /* GlobalKeys.m */,
 			);
 			path = Global;
 			sourceTree = "<group>";
@@ -377,6 +380,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62D205DC212A8E6D00FDA41D /* GlobalKeys.m in Sources */,
 				62000E2F210C5B7300AE9F0D /* AppDelegate.m in Sources */,
 				620DA7272124BDA600D0451E /* DeutschFormatter+Initialization.m in Sources */,
 				625AC5962116CE9B00926196 /* UkrainianFormatter.m in Sources */,

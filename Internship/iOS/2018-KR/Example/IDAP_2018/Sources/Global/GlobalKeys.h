@@ -9,22 +9,24 @@
 #ifndef GlobalKeys_h
 #define GlobalKeys_h
 
+#import <Foundation/Foundation.h>
+
 //  names large numbers, short scale
-static long const      ZERO        = 0;
-static long long const THOUSAND    = 1000;
-static long long const MILLION     = 1000000;
-static long long const BILLION     = 1000000000;
-static long long const TRILLION    = 1000000000000;
-static long long const QUADRILLION = 1000000000000000;
+extern long      const ZERO;
+extern long long const THOUSAND;
+extern long long const MILLION;
+extern long long const BILLION;
+extern long long const TRILLION;
+extern long long const QUADRILLION;
 
 
 //  localeID use in Converter, Formatter
-static NSString * kEN = @"en"; 
-static NSString * kDE = @"de";
-static NSString * kUA = @"uk";
+extern NSString * const kEN;
+extern NSString * const kDE;
+extern NSString * const kUA;
 
-static NSString * kEMPTY_STRING = @"";
-static NSString * kWHITESPACE = @" ";
+extern NSString * const kEMPTY_STRING;
+extern NSString * const kWHITESPACE;
 
 
 
