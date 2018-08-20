@@ -282,7 +282,8 @@ Pragmas without methods should be omitted.
 
 @dynamic cached;
 
-#pragma mark - Class Methods
+#pragma mark -
+#pragma mark Class Methods
 
 + (id)sharedObject {
     ...
@@ -296,7 +297,8 @@ Pragmas without methods should be omitted.
     ...
 }
 
-#pragma mark - Initializations and Deallocations
+#pragma mark -
+#pragma mark Initializations and Deallocations
 
 - (void)dealloc {
     ...
@@ -336,7 +338,8 @@ Pragmas without methods should be omitted.
     ...
 }
 
-#pragma mark - Accessors
+#pragma mark -
+#pragma mark Accessors
 
 - (BOOL)isCached {
     ...
@@ -358,25 +361,29 @@ Pragmas without methods should be omitted.
     ...
 }
 
-#pragma mark - View Lifecycle
+#pragma mark -
+#pragma mark View Lifecycle
 
 - (void)viewDidLoad {
     ...
 }
 
-#pragma mark - Interface Handling
+#pragma mark -
+#pragma mark Interface Handling
 
 - (IBAction)onButtonTap:(id)sender {
     ...
 }
 
-#pragma mark - Public
+#pragma mark -
+#pragma mark Public
 
 - (void)execute {
     ...
 }
 
-#pragma mark - View Update
+#pragma mark -
+#pragma mark View Update
 
 // Public
 - (void)updateView {
@@ -390,13 +397,15 @@ Pragmas without methods should be omitted.
     ...
 }
 
-#pragma mark - Private
+#pragma mark -
+#pragma mark Private
 
 - (void)updateModel {
     ...
 }
 
-#pragma mark - UITableViewDelegate
+#pragma mark -
+#pragma mark UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self updateCellAtIndexPath:indexPath];
