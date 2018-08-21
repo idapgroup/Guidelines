@@ -1,0 +1,886 @@
+#include <iostream>
+#include <conio.h>
+#include <windows.h>
+#include <string>
+using namespace std;
+
+string Eng(long long int a) {
+	string str;
+	switch ((a % 1000000000000000) / 100000000000000)
+	{
+	case 1: str += " One hundred "; break;
+	case 2: str += " Two hundred "; break;
+	case 3: str += " Three hundred "; break;
+	case 4: str += " Four hundred "; break;
+	case 5: str += " Five hundred "; break;
+	case 6: str += " Six hundred "; break;
+	case 7: str += " Seven hundred "; break;
+	case 8: str += " Eight hundred "; break;
+	case 9: str += " Nine hundred "; break;
+	}
+	switch ((a % 100000000000000) / 10000000000000)
+	{
+	case 2: str += "Twenty "; break;
+	case 3: str += "Thirty "; break;
+	case 4: str += "Forty "; break;
+	case 5: str += "Fifty "; break;
+	case 6: str += "Sixty "; break;
+	case 7: str += "Seventy "; break;
+	case 8: str += "Eighty "; break;
+	case 9: str += "Ninety "; break;
+	}
+	if ((a % 100000000000000) / 1000000000000 >= 10 & (a % 100000000000000) / 1000000000000 < 20) {
+		switch ((a % 100000000000000) / 1000000000000)
+		{
+		case 10: str += " Ten trillion "; break;
+		case 11: str += " Eleven trillion "; break;
+		case 12: str += " Twelve trillion "; break;
+		case 13: str += " Thirdteen trillion "; break;
+		case 14: str += " Fourthteen trillion "; break;
+		case 15: str += " Fifthteen trillion "; break;
+		case 16: str += " Sixteen trillion "; break;
+		case 17: str += " Seventeen trillion "; break;
+		case 18: str += " Eighteen trillion"; break;
+		case 19: str += " Nineteen trillion "; break;
+		}
+	}
+	else {
+		switch ((a % 10000000000000) / 1000000000000)
+		{
+		case 0:	if ((a % 1000000000000000) / 1000000000000 >= 20 && (a % 1000000000000000) / 1000000000000 <= 999)
+			str += " trillion "; break;
+		case 1: str += " One trillion "; break;
+		case 2: str += " Two trillion "; break;
+		case 3: str += " Three trillion "; break;
+		case 4: str += " Four trillion "; break;
+		case 5: str += " Five trillion "; break;
+		case 6: str += " Six trillion "; break;
+		case 7: str += " Seven trillion "; break;
+		case 8: str += " Eight trillion"; break;
+		case 9: str += " Nine trillion "; break;
+		}
+	}
+	switch ((a % 1000000000000) / 100000000000)
+	{
+	case 1: str += " One hundred "; break;
+	case 2: str += " Two hundred "; break;
+	case 3: str += " Three hundred "; break;
+	case 4: str += " Four hundred "; break;
+	case 5: str += " Five hundred "; break;
+	case 6: str += " Six hundred "; break;
+	case 7: str += " Seven hundred "; break;
+	case 8: str += " Eight hundred "; break;
+	case 9: str += " Nine hundred "; break;
+	}
+	switch ((a % 100000000000) / 10000000000)
+	{
+	case 2: str += "Twenty "; break;
+	case 3: str += "Thirty "; break;
+	case 4: str += "Forty "; break;
+	case 5: str += "Fifty "; break;
+	case 6: str += "Sixty "; break;
+	case 7: str += "Seventy "; break;
+	case 8: str += "Eighty "; break;
+	case 9: str += "Ninety "; break;
+	}
+	if ((a % 100000000000) / 1000000000 >= 10 & (a % 100000000000) / 1000000000 < 20) {
+		switch ((a % 100000000000) / 1000000000)
+		{
+		case 10: str += " Ten billion "; break;
+		case 11: str += " Eleven billion "; break;
+		case 12: str += " Twelve billion "; break;
+		case 13: str += " Thirdteen billion "; break;
+		case 14: str += " Fourthteen billion "; break;
+		case 15: str += " Fifthteen billion "; break;
+		case 16: str += " Sixteen billion "; break;
+		case 17: str += " Seventeen billion "; break;
+		case 18: str += " Eighteen billion"; break;
+		case 19: str += " Nineteen billion "; break;
+		}
+	}
+	else {
+		switch ((a % 10000000000) / 1000000000)
+		{
+		case 0:	if ((a % 1000000000000) / 1000000000 >= 20 && (a % 1000000000000) / 1000000000 <= 999)
+			str += " billion "; break;
+		case 1: str += " One billion "; break;
+		case 2: str += " Two billion "; break;
+		case 3: str += " Three billion "; break;
+		case 4: str += " Four billion "; break;
+		case 5: str += " Five billion "; break;
+		case 6: str += " Six billion "; break;
+		case 7: str += " Seven billion "; break;
+		case 8: str += " Eight billion"; break;
+		case 9: str += " Nine billion "; break;
+		}
+	}
+	switch ((a % 1000000000) / 100000000)
+	{
+	case 1: str += " One hundred "; break;
+	case 2: str += " Two hundred "; break;
+	case 3: str += " Three hundred "; break;
+	case 4: str += " Four hundred "; break;
+	case 5: str += " Five hundred "; break;
+	case 6: str += " Six hundred "; break;
+	case 7: str += " Seven hundred "; break;
+	case 8: str += " Eight hundred "; break;
+	case 9: str += " Nine hundred "; break;
+	}
+	switch ((a % 100000000) / 10000000)
+	{
+	case 2: str += "Twenty "; break;
+	case 3: str += "Thirty "; break;
+	case 4: str += "Forty "; break;
+	case 5: str += "Fifty "; break;
+	case 6: str += "Sixty "; break;
+	case 7: str += "Seventy "; break;
+	case 8: str += "Eighty "; break;
+	case 9: str += "Ninety "; break;
+	}
+	if ((a % 100000000) / 1000000 >= 10 & (a % 100000000) / 1000000 < 20) {
+		switch ((a % 100000000) / 1000000)
+		{
+		case 10: str += " Ten million "; break;
+		case 11: str += " Eleven million "; break;
+		case 12: str += " Twelve million "; break;
+		case 13: str += " Thirdteen million "; break;
+		case 14: str += " Fourthteen million "; break;
+		case 15: str += " Fifthteen million "; break;
+		case 16: str += " Sixteen million "; break;
+		case 17: str += " Seventeen million "; break;
+		case 18: str += " Eighteen million"; break;
+		case 19: str += " Nineteen million "; break;
+		}
+	}
+	else {
+
+		switch ((a % 10000000) / 1000000)
+		{
+		case 0:	if ((a % 1000000000) / 1000000 >= 20 && (a % 1000000000) / 1000000 <= 999)
+			str += " million "; break;
+		case 1: str += " One million "; break;
+		case 2: str += " Two million "; break;
+		case 3: str += " Three million "; break;
+		case 4: str += " Four million "; break;
+		case 5: str += " Five million "; break;
+		case 6: str += " Six million "; break;
+		case 7: str += " Seven million "; break;
+		case 8: str += " Eight million"; break;
+		case 9: str += " Nine million "; break;
+		}
+	}
+	switch ((a % 1000000) / 100000)
+	{
+	case 1: str += " One hundred "; break;
+	case 2: str += " Two hundred "; break;
+	case 3: str += " Three hundred "; break;
+	case 4: str += " Four hundred "; break;
+	case 5: str += " Five hundred "; break;
+	case 6: str += " Six hundred "; break;
+	case 7: str += " Seven hundred "; break;
+	case 8: str += " Eight hundred "; break;
+	case 9: str += " Nine hundred "; break;
+	}
+	switch ((a % 100000) / 10000)
+	{
+	case 2: str += "Twenty "; break;
+	case 3: str += "Thirty "; break;
+	case 4: str += "Forty "; break;
+	case 5: str += "Fifty "; break;
+	case 6: str += "Sixty "; break;
+	case 7: str += "Seventy "; break;
+	case 8: str += "Eighty "; break;
+	case 9: str += "Ninety "; break;
+	}
+	if ((a % 100000) / 1000 >= 10 & (a % 100000) / 1000 < 20) {
+		switch ((a % 100000) / 1000)
+		{
+		case 10: str += " Ten thousand "; break;
+		case 11: str += " Eleven thousand "; break;
+		case 12: str += " Twelve thousand "; break;
+		case 13: str += " Thirdteen thousand "; break;
+		case 14: str += " Fourthteen thousand "; break;
+		case 15: str += " Fifthteen thousand "; break;
+		case 16: str += " Sixteen thousand "; break;
+		case 17: str += " Seventeen thousand "; break;
+		case 18: str += " Eighteen thousand"; break;
+		case 19: str += " Nineteen thousand "; break;
+		}
+	}
+	else {
+		switch ((a % 10000) / 1000)
+		{
+		case 0:if ((a % 1000000) / 1000 >= 20 && (a % 1000000) / 1000 <= 999)
+			str += " thousand "; break;
+		case 1: str += " One thousand "; break;
+		case 2: str += " Two thousand "; break;
+		case 3: str += " Three thousand "; break;
+		case 4: str += " Four thousand "; break;
+		case 5: str += " Five thousand "; break;
+		case 6: str += " Six thousand "; break;
+		case 7: str += " Seven thousand "; break;
+		case 8: str += " Eight thousand"; break;
+		case 9: str += " Nine thousand "; break;
+		}
+	}
+	switch ((a % 1000) / 100)
+	{
+	case 1: str += " One hundred "; break;
+	case 2: str += " Two hundred "; break;
+	case 3: str += " Three hundred "; break;
+	case 4: str += " Four hundred "; break;
+	case 5: str += " Five hundred "; break;
+	case 6: str += " Six hundred "; break;
+	case 7: str += " Seven hundred "; break;
+	case 8: str += " Eight hundred "; break;
+	case 9: str += " Nine hundred "; break;
+	}switch ((a % 100) / 10)
+	{
+	case 2: str += "Twenty "; break;
+	case 3: str += "Thirty "; break;
+	case 4: str += "Forty"; break;
+	case 5: str += "Fifty "; break;
+	case 6: str += "Sixty"; break;
+	case 7: str += "Seventy"; break;
+	case 8: str += "Eighty "; break;
+	case 9: str += "Ninety "; break;
+	}
+	if (a % 100 >= 10 & a % 100 < 20) {
+		switch (a % 100) {
+		case 10: str += "Ten"; break;
+		case 11: str += "Eleven"; break;
+		case 12: str += "Twelve"; break;
+		case 13: str += "Thirdteen"; break;
+		case 14: str += "Fourthteen"; break;
+		case 15: str += "Fifthteen"; break;
+		case 16: str += "Sixteen"; break;
+		case 17: str += "Seventeen"; break;
+		case 18: str += "Eighteen"; break;
+		case 19: str += "Nineteen"; break;
+		}
+	}
+	else {
+		switch (a % 10)
+		{
+		case 1: str += " One\n"; break;
+		case 2: str += " Two\n"; break;
+		case 3: str += " Three\n"; break;
+		case 4: str += " Fouth\n"; break;
+		case 5: str += " Five\n"; break;
+		case 6: str += " Six\n"; break;
+		case 7: str += " Seven\n"; break;
+		case 8: str += " Eight\n"; break;
+		case 9: str += " Nine\n"; break;
+		}
+	}
+	return str;
+	_getch();
+}
+
+string D(long long int a) {
+	string str;
+	switch ((a % 1000000000000000) / 100000000000000)
+	{
+	case 1: str += " Hundert "; break;
+	case 2: str += " Zweihundert "; break;
+	case 3: str +=  " Dreihundert "; break;
+	case 4: str += " Vierhundert "; break;
+	case 5: str += " Fünfhundert "; break;
+	case 6: str += " Sechshundert "; break;
+	case 7: str += " Siebenhundert "; break;
+	case 8: str += " Achthundert "; break;
+	case 9: str += " Neunhundert "; break;
+	}
+	switch ((a % 100000000000000) / 10000000000000)
+	{
+	case 2: str += "Zwanzig "; break;
+	case 3: str += "Dreißig "; break;
+	case 4: str += "Vierzig"; break;
+	case 5: str += "Fünfzig "; break;
+	case 6: str += "Sechzig"; break;
+	case 7: str += "Siebzig"; break;
+	case 8: str += "Achtzig "; break;
+	case 9: str += "Neunzig "; break;
+	}
+	if ((a % 100000000000000) / 1000000000000 >= 10 & (a % 100000000000000) / 1000000000000 < 20) {
+		switch ((a % 100000000000000) / 1000000000000)
+		{
+		case 10: str += "Zehnbillionen"; break;
+		case 11: str += "Elfbillionen"; break;
+		case 12: str += "Zwölfbillionen"; break;
+		case 13: str += "Dreizehnbillionen"; break;
+		case 14: str += "Vierzehnbillionen"; break;
+		case 15: str += "Fünfzehnbillionen"; break;
+		case 16: str += "Sechzehnbillionen"; break;
+		case 17: str += "Siebzehnbillionen"; break;
+		case 18: str += "Achtzehnbillionen"; break;
+		case 19: str += "Neunzehnbillionen"; break;
+		}
+	}
+	else {
+		switch ((a % 10000000000000) / 1000000000000)
+		{
+		case 0:	if ((a % 1000000000000000) / 1000000000000 >= 20 && (a % 1000000000000000) / 1000000000000 <= 999)
+			str += "billionen "; break;
+		case 1: str += " Einsbillionen"; break;
+		case 2: str += " Zweibillionen"; break;
+		case 3: str += " Dreibillionen"; break;
+		case 4: str += " Vierbillionen"; break;
+		case 5: str += " Fünfbillionen"; break;
+		case 6: str += " Sechsbillionen"; break;
+		case 7: str += " Siebenbillionen"; break;
+		case 8: str += " Achtbillionen"; break;
+		case 9: str += " Neunbillionen"; break;
+		}
+	}
+	switch ((a % 1000000000000) / 100000000000)
+	{
+	case 1: str += " Hundert "; break;
+	case 2: str += " Zweihundert "; break;
+	case 3: str += " Dreihundert "; break;
+	case 4: str += " Vierhundert "; break;
+	case 5: str += " Fünfhundert "; break;
+	case 6: str += " Sechshundert "; break;
+	case 7: str += " Siebenhundert "; break;
+	case 8: str += " Achthundert "; break;
+	case 9: str += " Neunhundert "; break;
+	}
+	switch ((a % 100000000000) / 10000000000)
+	{
+	case 2: str += "Zwanzig "; break;
+	case 3: str += "Dreißig "; break;
+	case 4: str += "Vierzig"; break;
+	case 5: str += "Fünfzig "; break;
+	case 6: str += "Sechzig"; break;
+	case 7: str += "Siebzig"; break;
+	case 8: str += "Achtzig "; break;
+	case 9: str += "Neunzig "; break;
+	}
+	if ((a % 100000000000) / 1000000000 >= 10 & (a % 100000000000) / 1000000000 < 20) {
+		switch ((a % 100000000000) / 1000000000)
+		{
+		case 10: str += "Zehnmilliarden"; break;
+		case 11: str += "Elfmilliarden"; break;
+		case 12: str += "Zwölfmilliarden"; break;
+		case 13: str += "Dreizehnmilliarden"; break;
+		case 14: str += "Vierzehnmilliarden"; break;
+		case 15: str += "Fünfzehnmilliarden"; break;
+		case 16: str += "Sechzehnmilliarden"; break;
+		case 17: str += "Siebzehnmilliarden"; break;
+		case 18: str += "Achtzehnmilliarden"; break;
+		case 19: str += "Neunzehnmilliarden"; break;
+		}
+	}
+	else {
+		switch ((a % 10000000000) / 1000000000)
+		{
+		case 0:	if ((a % 1000000000000) / 1000000000 >= 20 && (a % 1000000000000) / 1000000000 <= 999)
+			str += "milliarden "; break;
+		case 1: str += " Einsmilliarden"; break;
+		case 2: str += " Zweimilliarden"; break;
+		case 3: str += " Dreimilliarden"; break;
+		case 4: str += " Viermilliarden"; break;
+		case 5: str += " Fünfmilliarden"; break;
+		case 6: str += " Sechsmilliarden"; break;
+		case 7: str += " Siebenmilliarden"; break;
+		case 8: str += " Achtmilliarden"; break;
+		case 9: str += " Neunmilliarden"; break;
+		}
+	}
+	switch ((a % 1000000000) / 100000000)
+	{
+	case 1: str += " Hundert "; break;
+	case 2: str += " Zweihundert "; break;
+	case 3: str += " Dreihundert "; break;
+	case 4: str += " Vierhundert "; break;
+	case 5: str += " Fünfhundert "; break;
+	case 6: str += " Sechshundert "; break;
+	case 7: str += " Siebenhundert "; break;
+	case 8: str += " Achthundert "; break;
+	case 9: str += " Neunhundert "; break;
+	}
+	switch ((a % 100000000) / 10000000)
+	{
+	case 2: str += "Zwanzig "; break;
+	case 3: str += "Dreißig "; break;
+	case 4: str += "Vierzig"; break;
+	case 5: str += "Fünfzig "; break;
+	case 6: str += "Sechzig"; break;
+	case 7: str += "Siebzig"; break;
+	case 8: str += "Achtzig "; break;
+	case 9: str += "Neunzig "; break;
+	}
+	if ((a % 100000000) / 1000000 >= 10 & (a % 100000000) / 1000000 < 20) {
+		switch ((a % 100000000) / 1000000)
+		{
+		case 10: str += "Zehnmillionen"; break;
+		case 11: str += "Elfmillionen"; break;
+		case 12: str += "Zwölfmillionen"; break;
+		case 13: str += "Dreizehnmillionen"; break;
+		case 14: str += "Vierzehnmillionen"; break;
+		case 15: str += "Fünfzehnmillionen"; break;
+		case 16: str +=  "Sechzehnmillionen"; break;
+		case 17: str +=  "Siebzehnmillionen"; break;
+		case 18: str += "Achtzehnmillionen"; break;
+		case 19: str += "Neunzehnmillionen"; break;
+		}
+	}
+	else {
+
+		switch ((a % 10000000) / 1000000)
+		{
+		case 0:	if ((a % 1000000000) / 1000000 >= 20 && (a % 1000000000) / 1000000 <= 999)
+			str += "millionen "; break;
+		case 1: str += " Einsmillionen"; break;
+		case 2: str += " Zweimillionen"; break;
+		case 3: str += " Dreimillionen"; break;
+		case 4: str += " Viermillionen"; break;
+		case 5: str += " Fünfmillionen"; break;
+		case 6: str += " Sechsmillionen"; break;
+		case 7: str += " Siebenmillionen"; break;
+		case 8: str += " Achtmillionen"; break;
+		case 9: str += " Neunmillionen"; break;
+		}
+	}
+	switch ((a % 1000000) / 100000)
+	{
+	case 1: str += " Hundert "; break;
+	case 2: str += " Zweihundert "; break;
+	case 3: str += " Dreihundert "; break;
+	case 4: str += " Vierhundert "; break;
+	case 5: str += " Fünfhundert "; break;
+	case 6: str += " Sechshundert "; break;
+	case 7: str += " Siebenhundert "; break;
+	case 8: str += " Achthundert "; break;
+	case 9: str += " Neunhundert "; break;
+	}
+	switch ((a % 100000) / 10000)
+	{
+	case 2: str += "Zwanzig "; break;
+	case 3: str += "Dreißig "; break;
+	case 4: str += "Vierzig"; break;
+	case 5: str += "Fünfzig "; break;
+	case 6: str += "Sechzig"; break;
+	case 7: str += "Siebzig"; break;
+	case 8: str += "Achtzig "; break;
+	case 9: str += "Neunzig "; break;
+	}
+	if ((a % 100000) / 1000 >= 10 & (a % 100000) / 1000 < 20) {
+		switch ((a % 100000) / 1000)
+		{
+		case 10: str += " Zehntausend "; break;
+		case 11: str += " Elftausend "; break;
+		case 12: str += " Zwölftausend "; break;
+		case 13: str += " Dreizehntausend "; break;
+		case 14: str += " Vierzehntausend "; break;
+		case 15: str +=  " Fifthteentausend "; break;
+		case 16: str +=  " Sixteentausend "; break;
+		case 17: str += " Seventeentausend "; break;
+		case 18: str += " Eighteentausend "; break;
+		case 19: str += " Nineteentausend "; break;
+		}
+	}
+	else {
+		switch ((a % 10000) / 1000)
+		{
+		case 0:if ((a % 1000000) / 1000 >= 20 && (a % 1000000) / 1000 <= 999)
+			str += "tausend "; break;
+		case 1: str += " Einstausend "; break;
+		case 2: str += " Zweitausend "; break;
+		case 3: str += " Dreitausend "; break;
+		case 4: str += " Viertausend "; break;
+		case 5: str += " Fünftausend "; break;
+		case 6: str += " Sechstausend "; break;
+		case 7: str += " Siebentausend "; break;
+		case 8: str += " Achttausend"; break;
+		case 9: str += " Neuntausend "; break;
+		}
+	}
+	switch ((a % 1000) / 100)
+	{
+	case 1: str += " Hundert "; break;
+	case 2: str += " Zweihundert "; break;
+	case 3: str += " Dreihundert "; break;
+	case 4: str += " Vierhundert "; break;
+	case 5: str += " Fünfhundert "; break;
+	case 6: str += " Sechshundert "; break;
+	case 7: str += " Siebenhundert "; break;
+	case 8: str +=  " Achthundert "; break;
+	case 9: str += " Neunhundert "; break;
+	}switch ((a % 100) / 10)
+	{
+	case 2: str += "Zwanzig "; break;
+	case 3: str += "Dreißig "; break;
+	case 4: str += "Vierzig"; break;
+	case 5: str += "Fünfzig "; break;
+	case 6: str += "Sechzig"; break;
+	case 7: str +=  "Siebzig"; break;
+	case 8: str += "Achtzig "; break;
+	case 9: str += "Neunzig "; break;
+	}
+	if (a % 100 >= 10 & a % 100 < 20) {
+		switch (a % 100) {
+		case 10: str +=  "Zehn"; break;
+		case 11: str +=  "Elf"; break;
+		case 12: str += "Zwölf"; break;
+		case 13: str += "Dreizehn"; break;
+		case 14: str += "Vierzehn"; break;
+		case 15: str += "Fünfzehn"; break;
+		case 16: str += "Sechzehn"; break;
+		case 17: str += "Siebzehn"; break;
+		case 18: str += "Achtzehn"; break;
+		case 19: str += "Neunzehn"; break;
+		}
+	}
+	else {
+		switch (a % 10)
+		{
+		case 1: str += " Eins\n"; break;
+		case 2: str += " Zwei\n"; break;
+		case 3: str += " Drei\n"; break;
+		case 4: str +=  " Vier\n"; break;
+		case 5: str += " Fünf\n"; break;
+		case 6: str += " Sechs\n"; break;
+		case 7: str += " Sieben\n"; break;
+		case 8: str += " Acht\n"; break;
+		case 9: str += " Neun\n"; break;
+		}
+	}
+	return str;
+	_getch();
+}
+
+string Uah(long long int a) {
+	string str;
+	switch ((a % 1000000000000000) / 100000000000000)
+	{
+	case 1: str += " Сто "; break;
+	case 2: str += " Двісті "; break;
+	case 3: str +=  " Триста "; break;
+	case 4: str += " Чотириста "; break;
+	case 5: str += " П'ятьсот "; break;
+	case 6: str += " Шістьсот "; break;
+	case 7: str += " Сімсот "; break;
+	case 8: str += " Вісімсот "; break;
+	case 9: str += " Дев'ятьсот "; break;
+	}
+	switch ((a % 100000000000000) / 10000000000000)
+	{
+	case 2: str += "Двадцять "; break;
+	case 3: str += "Тридцять "; break;
+	case 4: str += "Сорок"; break;
+	case 5: str +=  "П'ятдесят "; break;
+	case 6: str += "Шістдесят"; break;
+	case 7: str += "Сімдесят"; break;
+	case 8: str += "Вісімдесять "; break;
+	case 9: str += "Дев'яносто "; break;
+	}
+	if ((a % 100000000000000) / 1000000000000 >= 10 & (a % 100000000000000) / 1000000000000 < 20) {
+		switch ((a % 100000000000000) / 1000000000000)
+		{
+		case 10: str += " Десять трильйонів "; break;
+		case 11: str += " Одинадцять трильйонів "; break;
+		case 12: str += " Дванадцять трильйонів "; break;
+		case 13: str += " Тринадцять трильйонів "; break;
+		case 14: str += " Чотирнадцять трильйонів "; break;
+		case 15: str += " П'ятнадцять трильйонів "; break;
+		case 16: str +=  " Шістнадцять трильйонів "; break;
+		case 17: str += " Сімнадцять трильйонів "; break;
+		case 18: str += " Вісімнадцять трильйонів"; break;
+		case 19: str += " Дев'ятнадцять трильйонів "; break;
+		}
+	}
+	else {
+		switch ((a % 10000000000000) / 1000000000000)
+		{
+		case 0:	if ((a % 1000000000000000) / 1000000000000 >= 20 && (a % 1000000000000000) / 1000000000000 <= 999)
+			str += " трильйонів"; break;
+		case 1: str += " Один трильйон"; break;
+		case 2: str += " Два трильйони"; break;
+		case 3: str += " Три трильйони"; break;
+		case 4: str += " Чотири трильйони"; break;
+		case 5: str += " П'ять трильйонів"; break;
+		case 6: str +=  " Шість трильйонів"; break;
+		case 7: str += " Сім трильйонів"; break;
+		case 8: str += " Вісім трильйонів"; break;
+		case 9: str += "Дев'ять трильйонів"; break;
+		}
+	}
+	switch ((a % 1000000000000) / 100000000000)
+	{
+	case 1: str += " Сто "; break;
+	case 2: str += " Двісті "; break;
+	case 3: str += " Триста "; break;
+	case 4: str += " Чотириста "; break;
+	case 5: str += " П'ятьсот "; break;
+	case 6: str += " Шістьсот "; break;
+	case 7: str += " Сімсот "; break;
+	case 8: str += " Вісімсот "; break;
+	case 9: str += " Дев'ятьсот "; break;
+	}
+	switch ((a % 100000000000) / 10000000000)
+	{
+	case 2: str += "Двадцять "; break;
+	case 3: str += "Тридцять "; break;
+	case 4: str += "Сорок"; break;
+	case 5: str += "П'ятдесят "; break;
+	case 6: str += "Шістдесят"; break;
+	case 7: str += "Сімдесят"; break;
+	case 8: str += "Вісімдесять "; break;
+	case 9: str += "Дев'яносто "; break;
+	}
+	if ((a % 100000000000) / 1000000000 >= 10 & (a % 100000000000) / 1000000000 < 20) {
+		switch ((a % 100000000000) / 1000000000)
+		{
+		case 10: str += " Десять мiльярдів "; break;
+		case 11: str += " Одинадцять мiльярдів "; break;
+		case 12: str += " Дванадцять мiльярдів "; break;
+		case 13: str += " Тринадцять мiльярдів "; break;
+		case 14: str += " Чотирнадцять мiльярдів "; break;
+		case 15: str += " П'ятнадцять мiльярдів "; break;
+		case 16: str += " Шістнадцять мiльярдів "; break;
+		case 17: str += " Сімнадцять мiльярдів "; break;
+		case 18: str += " Вісімнадцять мiльярдів"; break;
+		case 19: str += " Дев'ятнадцять мiльярдів "; break;
+		}
+	}
+	else {
+		switch ((a % 10000000000) / 1000000000)
+		{
+		case 0:	if ((a % 1000000000000) / 1000000000 >= 20 && (a % 1000000000000) / 1000000000 <= 999)
+			str += " мiльярдів "; break;
+		case 1: str += " Один мiльярд"; break;
+		case 2: str += " Два мiльярди"; break;
+		case 3: str += " Три мiльярди"; break;
+		case 4: str += " Чотир мiльярди"; break;
+		case 5: str += " П'ять мiльярдів"; break;
+		case 6: str += " Шість мiльярдів"; break;
+		case 7: str += " Сім мiльярдів"; break;
+		case 8: str += " Вісім мiльярдів"; break;
+		case 9: str += "Дев'ять мiльярдів"; break;
+		}
+	}
+	switch ((a % 1000000000) / 100000000)
+	{
+	case 1: str += " Сто "; break;
+	case 2: str += " Двісті "; break;
+	case 3: str += " Триста "; break;
+	case 4: str += " Чотириста "; break;
+	case 5: str += " П'ятьсот "; break;
+	case 6: str += " Шістьсот "; break;
+	case 7: str += " Сімсот "; break;
+	case 8: str += " Вісімсот "; break;
+	case 9: str += " Дев'ятьсот "; break;
+	}
+	switch ((a % 100000000) / 10000000)
+	{
+	case 2: str += "Двадцять "; break;
+	case 3: str += "Тридцять "; break;
+	case 4: str += "Сорок"; break;
+	case 5: str += "П'ятдесят "; break;
+	case 6: str += "Шістдесят"; break;
+	case 7: str += "Сімдесят"; break;
+	case 8: str += "Вісімдесять "; break;
+	case 9: str += "Дев'яносто "; break;
+	}
+	if ((a % 100000000) / 1000000 >= 10 & (a % 100000000) / 1000000 < 20) {
+		switch ((a % 100000000) / 1000000)
+		{
+		case 10: str += " Десять мiльйонів "; break;
+		case 11: str += " Одинадцять мiльйонів "; break;
+		case 12: str += " Дванадцять мiльйонів "; break;
+		case 13: str += " Тринадцять мiльйонів "; break;
+		case 14: str += " Чотирнадцять мiльйонів "; break;
+		case 15: str += " П'ятнадцять мiльйонів "; break;
+		case 16: str += " Шістнадцять мiльйонів "; break;
+		case 17: str += " Сімнадцять мiльйонів "; break;
+		case 18: str += " Вісімнадцять мiльйонів"; break;
+		case 19: str += " Дев'ятнадцять мiльйонів "; break;
+		}
+	}
+	else {
+
+		switch ((a % 10000000) / 1000000)
+		{
+		case 0:	if ((a % 1000000000) / 1000000 >= 20 && (a % 1000000000) / 1000000 <= 999)
+			str += " мiльйонів "; break;
+		case 1: str += " Один мiльйон"; break;
+		case 2: str += " Два мiльйони"; break;
+		case 3: str += " Три мiльйони"; break;
+		case 4: str += " Чотир мiльйони"; break;
+		case 5: str += " П'ять мiльйонів"; break;
+		case 6: str += " Шість мiльйонів"; break;
+		case 7: str += " Сім мiльйонів"; break;
+		case 8: str += " Вісім мiльйонів"; break;
+		case 9: str += "Дев'ять мiльйонів"; break;
+		}
+	}
+	switch ((a % 1000000) / 100000)
+	{
+	case 1: str += " Сто "; break;
+	case 2: str += " Двісті "; break;
+	case 3: str += " Триста "; break;
+	case 4: str += " Чотириста "; break;
+	case 5: str += " П'ятьсот "; break;
+	case 6: str += " Шістьсот "; break;
+	case 7: str += " Сімсот "; break;
+	case 8: str += " Вісімсот "; break;
+	case 9: str += " Дев'ятьсот "; break;
+	}
+	switch ((a % 100000) / 10000)
+	{
+	case 2: str += "Двадцять "; break;
+	case 3: str += "Тридцять "; break;
+	case 4: str += "Сорок"; break;
+	case 5: str += "П'ятдесят "; break;
+	case 6: str += "Шістдесят"; break;
+	case 7: str += "Сімдесят"; break;
+	case 8: str += "Вісімдесять "; break;
+	case 9: str += "Дев'яносто "; break;
+	}
+	if ((a % 100000) / 1000 >= 10 & (a % 100000) / 1000 < 20) {
+		switch ((a % 100000) / 1000)
+		{
+		case 10: str += " Десять тисяч "; break;
+		case 11: str += " Одинадцять тисяч "; break;
+		case 12: str += " Дванадцять тисяч "; break;
+		case 13: str += " Тринадцять тисяч "; break;
+		case 14: str += " Чотирнадцять тисяч "; break;
+		case 15: str += " П'ятнадцять тисяч "; break;
+		case 16: str += " Шістнадцять тисяч "; break;
+		case 17: str += " Сімнадцять тисяч "; break;
+		case 18: str += " Вісімнадцять тисяч"; break;
+		case 19: str += " Дев'ятнадцять тисяч "; break;
+		}
+	}
+	else {
+		switch ((a % 10000) / 1000)
+		{
+		case 0:if ((a % 1000000) / 1000 >= 20 && (a % 1000000) / 1000 <= 999)
+			str += " тисяч "; break;
+		case 1: str += " Одна тисяча "; break;
+		case 2: str += " Дві тисячі "; break;
+		case 3: str += " Три тисячі "; break;
+		case 4: str += " Чотири тисячі "; break;
+		case 5: str += " П'ять тисяч "; break;
+		case 6: str += " Шість тисячі "; break;
+		case 7: str += " Сім тисяч "; break;
+		case 8: str += " Вісім тисяч"; break;
+		case 9: str += " Дев'ять тисяч "; break;
+		}
+	}
+	switch ((a % 1000) / 100)
+	{
+	case 1: str+=" Сто "; break;
+	case 2: str += " Двісті "; break;
+	case 3: str +=  " Триста "; break;
+	case 4: str += " Чотириста "; break;
+	case 5: str += " П'ятьсот "; break;
+	case 6: str += " Шістьсот "; break;
+	case 7: str += " Сімсот "; break;
+	case 8: str += " Вісімсот "; break;
+	case 9: str += " Дев'ятьсот "; break;
+	}switch ((a % 100) / 10)
+	{
+	case 2: str += "Двадцять "; break;
+	case 3: str += "Тридцять "; break;
+	case 4: str += "Сорок"; break;
+	case 5: str += "П'ятдесят "; break;
+	case 6: str += "Шістдесят"; break;
+	case 7: str += "Сімдесят"; break;
+	case 8: str += "Вісімдесять "; break;
+	case 9: str += "Дев'яносто "; break;
+	}
+	if (a % 100 >= 10 & a % 100 < 20) {
+		switch (a % 100) {
+		case 10: str += "Десять"; break;
+		case 11: str += "Одинадцять"; break;
+		case 12: str += "Дванадцять"; break;
+		case 13: str += "Тринадцять"; break;
+		case 14: str += "Чотирнадцять"; break;
+		case 15: str += "П'ятнадцять"; break;
+		case 16: str += "Шістнадцять"; break;
+		case 17: str += "Сімнадцять"; break;
+		case 18: str += "Вісімнадцять"; break;
+		case 19: str += "Дев'ятнадцять"; break;
+		}
+	}
+	else {
+		switch (a % 10)
+		{
+		case 1: str += " Один\n"; break;
+		case 2: str += " Два\n"; break;
+		case 3: str += " Три\n"; break;
+		case 4: str += " Чотири\n"; break;
+		case 5: str += " П'ять\n"; break;
+		case 6: str += " Шість\n"; break;
+		case 7: str += " Сім\n"; break;
+		case 8: str += " Вісім\n"; break;
+		case 9: str += "Девтриллион'ять\n" ; break;
+		}
+	}
+	return str;
+	_getch();
+}
+
+
+
+void main() {
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	long long int a;
+	int choice;
+	cout << "1.ENGLISH,2.UKRAINIAN,3.GERMAN\n";
+	cin >> choice;
+	switch (choice)
+	{
+	case 1: {
+		cout << "Введите число: ";
+		cin >> a;
+		if (a < 0) {
+			cout << "Минусовое число";
+
+		}
+		else if (a >= 1000000000000000) {
+			cout << "Вы ввели >= квадраллион";
+		}
+		cout << "Ваше число: " << " ";
+		string str = Eng(a);
+		cout << str;
+		system("pause");
+	}break;
+	case 2: {
+		cout << "Введите число: ";
+		cin >> a;
+		if (a < 0) {
+			cout << "Минусовое число";
+
+		}
+		else if (a >= 1000000000000000) {
+			cout << "Вы ввели >= квадраллион";
+		}
+		cout << "Ваше число: " << " ";
+		string str = Uah(a);
+		cout << str;
+		system("pause");
+	}break;
+	case 3: {
+		cout << "Введите число: ";
+		cin >> a;
+		if (a < 0) {
+			cout << "Минусовое число";
+
+		}
+		else if (a >= 1000000000000000) {
+			cout << "Вы ввели >= квадраллион";
+		}
+		cout << "Ваше число: " << " ";
+		string str = D(a);
+		cout << str;
+		system("pause");
+	}break;
+	default:
+		break;
+	}
+
+}
