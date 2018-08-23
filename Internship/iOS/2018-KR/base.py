@@ -9,7 +9,6 @@ class Convert_base(object):
         self.cards = OrderedDict()
         self.is_title = False
         self.exclude_title = []
-        self.errmsg_toobig = "abs(%s) must be less than %s."
 
         self.setup()
         self.set_numwords()
