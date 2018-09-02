@@ -11,37 +11,18 @@
 #import "GlobalKeys.h"
 #import "NSString+Formatting.h"
 
-@interface DeutschFormatter()
-
-@property (strong, nonatomic, readwrite) NSString *localeID;
-
-@end
-
 static NSString * kOrdinalExceptions  = @"ordinalExceptions";
 static NSString * kSingleLargeExceptions = @"singleLargeExceptions";
 
+static NSString * kDeutschSeparator = @"und";
+
 @implementation DeutschFormatter
-
-@synthesize localeID = _localeID;
-
-#pragma mark -
-#pragma mark Initialization
-- (instancetype)init {
-    self = [super init];
-    
-    if (self) {
-        _localeID = kDE;
-    }
-    
-    return self;
-}
 
 #pragma mark -
 #pragma mark Public API
 
 - (NSString *)unitsFormatter:(NSInteger)number multiplier:(long long)multiplier {
-
-    NSString *units = self.cardinalUnits[number];
+    NSString *units = [super unitsFormatter:number multiplier:multiplier];
     
     if (number == 1 && multiplier == THOUSAND) {
         //  ein for tausend
@@ -55,55 +36,41 @@ static NSString * kSingleLargeExceptions = @"singleLargeExceptions";
 }
 
 - (NSString *)tensFormatter:(NSInteger)number multiplier:(long long)multiplier {
+     NSString *result = [super tensFormatter:number multiplier:multiplier];
+     NSRange separatorRange = [result rangeOfString:kWHITESPACE];
+     
+     if (separatorRange.location != NSNotFound) { // составное числительное
+         //  eins -> ein
+         if ([result hasSuffix:@"eins"]) {
+             result = [result TYreplaseSuffix:@"s" withString:kEMPTY_STRING];
+         }
+         
+         // swap first and last (before and after separator) words
+         result = [self swapWordsInString:result separatorRange:separatorRange];
+         
+         // insert "und" between words
+         result = [result stringByReplacingOccurrencesOfString:kWHITESPACE
+         withString:kDeutschSeparator];
+     
+     }
     
-    if (number < 20) {  //  10..19
-        
-        return self.cardinalTens[number % 10];
-        
-    } else {  //  20, 30, .. 90
-        NSString *tens = self.cardinalTens[8 + (number / 10)];
-        NSInteger remainder = number % 10;
-        
-        if (remainder > 0) {
-            //  complex numerals, unit und tens
-            NSString *units = [self unitsFormatter:remainder multiplier:multiplier];
-            
-            if (remainder == 1) {  //  eins -> ein
-                units = [units TYreplaseSuffix:@"s" withString:@""];
-            }
-            tens = [NSString stringWithFormat:@"%@und%@", units, tens];
-        }
-        
-        return tens;
-    }
-}
-
-- (NSString *)hundredsFormatter:(NSInteger)number multiplier:(long long)multiplier {
-
-    return self.cardinalHundreds[number / 100];
+     return result;
 }
 
 - (NSString *)largeNumbersFormatter:(long long)multiplier quantity:(NSInteger)quantity {
-    NSString *result = nil;
-    NSInteger idx = log10(multiplier)/3;
-    
-    if (multiplier == THOUSAND) {
-        
-        return self.cardinalHundreds.lastObject;
-    } else {
-        result = self.cardinalLarge[idx];
-        
-            if (quantity > 1) {  //  plurals
-                if ([result hasSuffix:@"e"]) {
-                    //  Milliarde -> Milliard
-                    result = [result TYreplaseSuffix:@"e" withString:kEMPTY_STRING];
-                }
-                //  Million -> Millionen
-                result = [result stringByAppendingString:@"en"];
-            }
-        
-        return result;
+    NSString *result = [super largeNumbersFormatter:multiplier quantity:quantity];
+
+    if (quantity > 1 && multiplier != THOUSAND) {  //  plurals
+        if ([result hasSuffix:@"e"]) {
+            //  Milliarde -> Milliard
+            result = [result TYreplaseSuffix:@"e" withString:kEMPTY_STRING];
+        }
+        //  Million -> Millionen
+        result = [result stringByAppendingString:@"en"];
     }
+    
+    return result;
+  
 }
 
 - (NSMutableArray *)ordinalFormatter:(long long)number withParts:(NSMutableArray *)parts {
@@ -126,7 +93,7 @@ static NSString * kSingleLargeExceptions = @"singleLargeExceptions";
     }
     
     if (!ordinal) {
-        NSInteger remainder = (number % 100);
+        NSInteger remainder = (number % HUNDRED);
         
         if ( remainder > 0 && remainder < 20) {
             ordinal = [cardinal stringByAppendingString:@"te"];
@@ -148,23 +115,18 @@ static NSString * kSingleLargeExceptions = @"singleLargeExceptions";
 }
 
 - (NSString *)finishingFormatter:(long long)number withParts:(NSMutableArray *)parts {
-    NSString *result = nil;
     
-    if (parts.count == 0) {
-        return self.cardinalUnits[ZERO];
-    }
-    
-    if (number >= MILLION) {  //  <large_namber> -> < large_number >
-        parts = [self addWhitespaceToLarge:parts];
-    }
-    
-    if (parts.count > 1) {
-        result = [parts componentsJoinedByString:kEMPTY_STRING];
+    if (parts.count <= 1) {  //  0..100 and 200,300,400 etc
+        
+        return [super finishingFormatter:number withParts:parts];
     } else {
-        result = parts.firstObject;
+        
+        if (number >= MILLION) {  //  "Million" -> " Million "
+            parts = [self addWhitespaceToLarge:parts];
+        }
+        
+        return [[parts componentsJoinedByString:kEMPTY_STRING] TYstringByTrimmingWhitespace];
     }
-    
-    return [result TYstringByTrimmingWhitespace];
 }
 
 
@@ -183,6 +145,14 @@ static NSString * kSingleLargeExceptions = @"singleLargeExceptions";
     }
     
     return parts;
+}
+
+//  "one two" -> "two one"
+- (NSString *)swapWordsInString:(NSString *)string separatorRange:(NSRange)range{
+    NSString *firstWord = [string substringToIndex:range.location];
+    NSString *secondWord = [string substringFromIndex:(range.location + range.length)];
+    
+    return [NSString stringWithFormat:@"%@ %@", secondWord, firstWord];
 }
 
 @end

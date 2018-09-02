@@ -8,8 +8,12 @@
 
 #import "GlobalKeys.h"
 
-//  names large numbers, short scale
+//  names numbers
  long const      ZERO        = 0;
+
+ long long const TEN         = 10;
+ long long const HUNDRED     = 100;
+
  long long const THOUSAND    = 1000;
  long long const MILLION     = 1000000;
  long long const BILLION     = 1000000000;

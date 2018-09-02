@@ -940,11 +940,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Converter/Formatter/DeutschFormatter.m"
-            timestampString = "556145657.6783791"
+            timestampString = "557515244.195237"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "204"
-            endingLineNumber = "204">
+            startingLineNumber = "174"
+            endingLineNumber = "174">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -954,11 +954,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IDAP_2018Tests/DeutschCardinalTests.m"
-            timestampString = "555709434.803596"
+            timestampString = "557515306.37308"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
             landmarkName = "-testCardinalLargeNumbers"
             landmarkType = "7">
          </BreakpointContent>
@@ -970,11 +970,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Converter/Formatter/UkrainianFormatter.m"
-            timestampString = "556136445.5705251"
+            timestampString = "557495552.768101"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "195"
-            endingLineNumber = "195"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
             landmarkName = "-replaceWordWithGenitiveForm:number:"
             landmarkType = "7">
          </BreakpointContent>
@@ -986,11 +986,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Converter/Formatter/UkrainianFormatter.m"
-            timestampString = "556136445.5705251"
+            timestampString = "557495552.768101"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "189"
-            endingLineNumber = "189"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
             landmarkName = "-replaceWordWithGenitiveForm:number:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1002,11 +1002,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Converter/Formatter/UkrainianFormatter.m"
-            timestampString = "556136445.5705251"
+            timestampString = "557495552.768101"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "222"
-            endingLineNumber = "222"
+            startingLineNumber = "162"
+            endingLineNumber = "162"
             landmarkName = "-replaceWordWithGenitiveForm:number:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1018,11 +1018,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Converter/Formatter/UkrainianFormatter.m"
-            timestampString = "556136445.5705251"
+            timestampString = "557495552.768101"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "238"
-            endingLineNumber = "238"
+            startingLineNumber = "178"
+            endingLineNumber = "178"
             landmarkName = "@implementation UkrainianFormatter"
             landmarkType = "3">
          </BreakpointContent>
@@ -1278,28 +1278,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Converter/Converter.m"
-            timestampString = "556181640.8498859"
+            timestampString = "557498187.722659"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "140"
-            endingLineNumber = "140"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
             landmarkName = "-convertNumber:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Converter/Formatter/EnglishFormatter.m"
-            timestampString = "556058480.518496"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
-            landmarkName = "-unitsFormatter:multiplier:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1388,7 +1372,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IDAP_2018Tests/DeutschCardinalTests.m"
-            timestampString = "555712764.504099"
+            timestampString = "557498187.722659"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "94"
@@ -1404,7 +1388,7 @@
                   moduleName = "IDAP_2018Tests"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yevhentriukhan/__Guidelines/Internship/iOS/2018-KR/Example/IDAP_2018Tests/DeutschCardinalTests.m"
-                  timestampString = "555712525.507797"
+                  timestampString = "557496105.841588"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "95"
@@ -1419,7 +1403,7 @@
                   moduleName = "IDAP_2018Tests"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yevhentriukhan/__Guidelines/Internship/iOS/2018-KR/Example/IDAP_2018Tests/DeutschCardinalTests.m"
-                  timestampString = "555712525.511487"
+                  timestampString = "557496105.852888"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "95"
@@ -1434,7 +1418,7 @@
                   moduleName = "IDAP_2018Tests"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yevhentriukhan/__Guidelines/Internship/iOS/2018-KR/Example/IDAP_2018Tests/DeutschCardinalTests.m"
-                  timestampString = "555712525.51705"
+                  timestampString = "557496105.867901"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "95"
@@ -1449,7 +1433,7 @@
                   moduleName = "IDAP_2018Tests"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yevhentriukhan/__Guidelines/Internship/iOS/2018-KR/Example/IDAP_2018Tests/DeutschCardinalTests.m"
-                  timestampString = "555712525.522627"
+                  timestampString = "557496105.873423"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "95"
@@ -1457,22 +1441,6 @@
                   offsetFromSymbolStart = "1449">
                </Location>
             </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Converter/Formatter/DeutschFormatter.m"
-            timestampString = "556145657.6783791"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "150"
-            endingLineNumber = "150"
-            landmarkName = "-finishingFormatter:withParts:"
-            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1497,90 +1465,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "IDAP_2018Tests/DeutschCardinalTests.m"
-            timestampString = "555712756.26916"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
-            landmarkName = "-testCardinalThousands"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[DeutschCardinalTests testCardinalThousands]"
-                  moduleName = "IDAP_2018Tests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yevhentriukhan/__Guidelines/Internship/iOS/2018-KR/Example/IDAP_2018Tests/DeutschCardinalTests.m"
-                  timestampString = "555713941.890205"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "109"
-                  endingLineNumber = "109"
-                  offsetFromSymbolStart = "166">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[DeutschCardinalTests testCardinalThousands]"
-                  moduleName = "IDAP_2018Tests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yevhentriukhan/__Guidelines/Internship/iOS/2018-KR/Example/IDAP_2018Tests/DeutschCardinalTests.m"
-                  timestampString = "555713941.89375"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "109"
-                  endingLineNumber = "109"
-                  offsetFromSymbolStart = "752">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[DeutschCardinalTests testCardinalThousands]"
-                  moduleName = "IDAP_2018Tests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yevhentriukhan/__Guidelines/Internship/iOS/2018-KR/Example/IDAP_2018Tests/DeutschCardinalTests.m"
-                  timestampString = "555713941.897067"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "109"
-                  endingLineNumber = "109"
-                  offsetFromSymbolStart = "1327">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[DeutschCardinalTests testCardinalThousands]"
-                  moduleName = "IDAP_2018Tests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yevhentriukhan/__Guidelines/Internship/iOS/2018-KR/Example/IDAP_2018Tests/DeutschCardinalTests.m"
-                  timestampString = "555713941.900467"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "109"
-                  endingLineNumber = "109"
-                  offsetFromSymbolStart = "1449">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "../Converter/Formatter/DeutschFormatter.m"
-            timestampString = "556145657.6783791"
+            timestampString = "557515244.195237"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "145"
-            endingLineNumber = "145"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
             landmarkName = "-ordinalFormatter:withParts:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1592,27 +1482,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Converter/Formatter/DeutschFormatter.m"
-            timestampString = "556135200.113203"
+            timestampString = "557515244.195237"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
-            landmarkName = "-ordinalFormatter:withParts:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Converter/Formatter/DeutschFormatter.m"
-            timestampString = "556135200.113203"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
             landmarkName = "-ordinalFormatter:withParts:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1780,11 +1654,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Converter/Formatter/DeutschFormatter.m"
-            timestampString = "556135200.113203"
+            timestampString = "557515244.195237"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "119"
-            endingLineNumber = "119"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
             landmarkName = "-ordinalFormatter:withParts:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1796,59 +1670,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Converter/Formatter/DeutschFormatter.m"
-            timestampString = "556135200.113203"
+            timestampString = "557515244.195237"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
-            landmarkName = "-ordinalFormatter:withParts:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Converter/Formatter/DeutschFormatter.m"
-            timestampString = "556145657.6783791"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "167"
-            endingLineNumber = "167"
-            landmarkName = "-finishingFormatter:withParts:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Converter/Formatter/DeutschFormatter.m"
-            timestampString = "556145657.6783791"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "157"
-            endingLineNumber = "157"
-            landmarkName = "-finishingFormatter:withParts:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Converter/Formatter/DeutschFormatter.m"
-            timestampString = "556135200.113203"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
             landmarkName = "-ordinalFormatter:withParts:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1937,22 +1763,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Converter/Formatter/DeutschFormatter.m"
-            timestampString = "556135200.113203"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "128"
-            endingLineNumber = "128"
-            landmarkName = "-ordinalFormatter:withParts:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "IDAP_2018Tests/DeutschOrdinalTests.m"
             timestampString = "556111519.257306"
             startingColumnNumber = "9223372036854775807"
@@ -2032,11 +1842,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Converter/Converter.m"
-            timestampString = "556181640.8498859"
+            timestampString = "557498187.722659"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "147"
-            endingLineNumber = "147"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
             landmarkName = "-convertNumber:"
             landmarkType = "7">
          </BreakpointContent>
@@ -2048,11 +1858,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Converter/Converter.m"
-            timestampString = "556181640.8498859"
+            timestampString = "557498187.722659"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
             landmarkName = "-convertNumber:"
             landmarkType = "7">
          </BreakpointContent>
@@ -2096,11 +1906,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Converter/Converter.m"
-            timestampString = "556181640.8498859"
+            timestampString = "557498187.722659"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "153"
-            endingLineNumber = "153"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
             landmarkName = "-convertNumber:"
             landmarkType = "7">
          </BreakpointContent>
@@ -2112,11 +1922,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Converter/Converter.m"
-            timestampString = "556181640.8498859"
+            timestampString = "557498187.722659"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "134"
-            endingLineNumber = "134"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
             landmarkName = "-convertNumber:"
             landmarkType = "7">
          </BreakpointContent>
@@ -2128,11 +1938,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Converter/Converter.m"
-            timestampString = "556181640.8498859"
+            timestampString = "557498187.722659"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "157"
-            endingLineNumber = "157"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
             landmarkName = "-convertNumber:"
             landmarkType = "7">
          </BreakpointContent>
@@ -2331,44 +2141,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Converter/Formatter/DeutschFormatter.m"
-            timestampString = "556129222.90777"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
-            landmarkName = "-largeNumbersFormatter:quantity:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Converter/Formatter/DeutschFormatter.m"
-            timestampString = "556145657.6783791"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "173"
-            endingLineNumber = "173"
-            landmarkName = "-addWhitespaceToLarge:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "IDAP_2018Tests/DeutschCardinalTests.m"
-            timestampString = "556105244.484302"
+            timestampString = "557515306.37308"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
             landmarkName = "-testCardinalLargeNumbers"
             landmarkType = "7">
          </BreakpointContent>
@@ -2380,27 +2158,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Converter/Formatter/UkrainianFormatter.m"
-            timestampString = "556129222.90777"
+            timestampString = "557495552.768101"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
-            landmarkName = "-tensFormatter:multiplier:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Converter/Formatter/UkrainianFormatter.m"
-            timestampString = "556129222.90777"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "114"
-            endingLineNumber = "114"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
             landmarkName = "-ordinalFormatter:withParts:"
             landmarkType = "7">
          </BreakpointContent>
@@ -2412,11 +2174,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Converter/Formatter/UkrainianFormatter.m"
-            timestampString = "556136445.5705251"
+            timestampString = "557495552.768101"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "171"
-            endingLineNumber = "171"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
             landmarkName = "-ordinalFormatter:withParts:"
             landmarkType = "7">
          </BreakpointContent>
@@ -2428,27 +2190,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Converter/Formatter/UkrainianFormatter.m"
-            timestampString = "556136445.5705251"
+            timestampString = "557495552.768101"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "174"
-            endingLineNumber = "174"
-            landmarkName = "-finishingFormatter:withParts:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Converter/Formatter/UkrainianFormatter.m"
-            timestampString = "556136445.5705251"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "187"
-            endingLineNumber = "187"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
             landmarkName = "-replaceWordWithGenitiveForm:number:"
             landmarkType = "7">
          </BreakpointContent>
@@ -2460,11 +2206,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Converter/Formatter/UkrainianFormatter.m"
-            timestampString = "556136445.5705251"
+            timestampString = "557495552.768101"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "227"
-            endingLineNumber = "227"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
             landmarkName = "-genitiveForCardinalNumber:"
             landmarkType = "7">
          </BreakpointContent>
@@ -2476,11 +2222,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Converter/Formatter/UkrainianFormatter.m"
-            timestampString = "556136445.5705251"
+            timestampString = "557495552.768101"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "211"
-            endingLineNumber = "211"
+            startingLineNumber = "151"
+            endingLineNumber = "151"
             landmarkName = "-replaceWordWithGenitiveForm:number:"
             landmarkType = "7">
          </BreakpointContent>
@@ -2492,11 +2238,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Converter/Converter.m"
-            timestampString = "556181640.8498859"
+            timestampString = "557498187.722659"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
+            startingLineNumber = "130"
+            endingLineNumber = "130"
             landmarkName = "-convertNumber:"
             landmarkType = "7">
          </BreakpointContent>
@@ -2508,27 +2254,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Converter/Formatter/EnglishFormatter.m"
-            timestampString = "556134976.5173219"
+            timestampString = "557516898.265367"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
-            landmarkName = "-finishingFormatter:withParts:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Converter/Formatter/EnglishFormatter.m"
-            timestampString = "556134976.5173219"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
             landmarkName = "-ordinalFormatter:withParts:"
             landmarkType = "7">
          </BreakpointContent>
@@ -2540,11 +2270,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Converter/Formatter/UkrainianFormatter.m"
-            timestampString = "556136445.5705251"
+            timestampString = "557495552.768101"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "133"
-            endingLineNumber = "133"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
             landmarkName = "-ordinalFormatter:withParts:"
             landmarkType = "7">
          </BreakpointContent>
@@ -2562,6 +2292,130 @@
             startingLineNumber = "35"
             endingLineNumber = "35"
             landmarkName = "-converter"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Converter/Formatter/EnglishFormatter.m"
+            timestampString = "557512304.768131"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "-tensFormatter:multiplier:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IDAP_2018Tests/EnglishCardinalTests.m"
+            timestampString = "557496005.083011"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
+            landmarkName = "-testCardinalHundreds"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[EnglishCardinalTests testCardinalHundreds]"
+                  moduleName = "IDAP_2018Tests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yevhentriukhan/__Guidelines/Internship/iOS/2018-KR/Example/IDAP_2018Tests/EnglishCardinalTests.m"
+                  timestampString = "557496075.031114"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "93"
+                  endingLineNumber = "93"
+                  offsetFromSymbolStart = "166">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[EnglishCardinalTests testCardinalHundreds]"
+                  moduleName = "IDAP_2018Tests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yevhentriukhan/__Guidelines/Internship/iOS/2018-KR/Example/IDAP_2018Tests/EnglishCardinalTests.m"
+                  timestampString = "557496075.0474221"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "93"
+                  endingLineNumber = "93"
+                  offsetFromSymbolStart = "752">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[EnglishCardinalTests testCardinalHundreds]"
+                  moduleName = "IDAP_2018Tests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yevhentriukhan/__Guidelines/Internship/iOS/2018-KR/Example/IDAP_2018Tests/EnglishCardinalTests.m"
+                  timestampString = "557496075.060943"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "93"
+                  endingLineNumber = "93"
+                  offsetFromSymbolStart = "1327">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[EnglishCardinalTests testCardinalHundreds]"
+                  moduleName = "IDAP_2018Tests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yevhentriukhan/__Guidelines/Internship/iOS/2018-KR/Example/IDAP_2018Tests/EnglishCardinalTests.m"
+                  timestampString = "557496075.0656199"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "93"
+                  endingLineNumber = "93"
+                  offsetFromSymbolStart = "1449">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IDAP_2018/Sources/Global/GlobalKeys.m"
+            timestampString = "557497344.499667"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "23"
+            endingLineNumber = "23">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Converter/Formatter/DeutschFormatter.m"
+            timestampString = "557515244.195237"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "-finishingFormatter:withParts:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -12,12 +12,12 @@
 
 @property (strong, nonatomic, readonly) NSString *localeID;
 
-@property (strong, nonatomic) NSArray<NSString *>*cardinalUnits;
-@property (strong, nonatomic) NSArray<NSString *>*cardinalTens;
-@property (strong, nonatomic) NSArray<NSString *>*cardinalHundreds;
-@property (strong, nonatomic) NSArray<NSString *>*cardinalLarge;
+@property (strong, nonatomic, readonly) NSArray<NSString *>*cardinalUnits;
+@property (strong, nonatomic, readonly) NSArray<NSString *>*cardinalTens;
+@property (strong, nonatomic, readonly) NSArray<NSString *>*cardinalHundreds;
+@property (strong, nonatomic, readonly) NSArray<NSString *>*cardinalLarge;
 
-@property (strong, nonatomic) NSDictionary<NSString *, NSDictionary *> *exceptions;
+@property (strong, nonatomic, readonly) NSDictionary<NSString *, NSDictionary *> *exceptions;
 
 //  maybe later
 //- (instancetype)initWithFile:(NSString *)path;

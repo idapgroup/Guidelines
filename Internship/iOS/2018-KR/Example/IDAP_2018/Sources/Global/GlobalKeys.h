@@ -11,8 +11,14 @@
 
 #import <Foundation/Foundation.h>
 
-//  names large numbers, short scale
+//  names numbers
 extern long      const ZERO;
+//extern long      const FIRST_ELEMENT;
+//extern long      const SECOND_ELEMENT;
+
+extern long long const TEN;
+extern long long const HUNDRED;
+
 extern long long const THOUSAND;
 extern long long const MILLION;
 extern long long const BILLION;

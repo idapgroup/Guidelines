@@ -11,73 +11,32 @@
 #import "GlobalKeys.h"
 #import "NSString+Formatting.h"
 
-@interface EnglishFormatter ()
-
-@property (strong, nonatomic, readwrite) NSString *localeID;
-
-@end
-
+#define AFTER_FIRST_INDEX 1
 
 static NSString * kOrdinalExceptions = @"ordinalExceptions";
 
+static NSString * kEnglishSeparator = @"-";
+
 @implementation EnglishFormatter
-
-@synthesize localeID = _localeID;
-
-#pragma mark -
-#pragma mark Initialization
-- (instancetype)init {
-    self = [super init];
-    
-    if (self) {
-        _localeID = kEN;
-    }
-    
-    return self;
-}
-
 
 #pragma mark -
 #pragma mark Public API
 
-- (NSString *)unitsFormatter:(NSInteger)number multiplier:(long long)multiplier {
-    
-    return self.cardinalUnits[number];
-}
-
 - (NSString *)tensFormatter:(NSInteger)number multiplier:(long long)multiplier {
-    if (number < 20) {
-        
-        return self.cardinalTens[number % 10];
-        
-    } else {
-        NSString *tens = self.cardinalTens[8 + (number / 10)];
-        NSInteger remainder = number %  10;
-        
-        if (remainder > 0) {
-            tens = [NSString stringWithFormat:@"%@-%@", tens, [self unitsFormatter:remainder multiplier:multiplier]];
-        }
-        
-        return tens;
-    }
-}
+    NSString *result = [super tensFormatter:number multiplier:multiplier];
 
-- (NSString *)hundredsFormatter:(NSInteger)number multiplier:(long long)multiplier {
-
-    return self.cardinalHundreds[number / 100];
-}
-
-- (NSString *)largeNumbersFormatter:(long long)multiplier quantity:(NSInteger)quantity {
-    NSInteger idx = log10(multiplier)/3;
+    //  twenty one -> twenty-one
+    return [result stringByReplacingOccurrencesOfString:kWHITESPACE
+                                             withString:kEnglishSeparator];
     
-    return self.cardinalLarge[idx];
 }
 
 - (NSMutableArray *)ordinalFormatter:(long long)number withParts:(NSMutableArray *)parts {
+
     NSString *ordinal = nil;
     NSString *cardinal = parts.lastObject;
-    
-    if (!cardinal) {
+
+    if (parts.count == 0) {
         cardinal = self.cardinalUnits[ZERO];
         [parts addObject:cardinal];
     }
@@ -105,17 +64,5 @@ static NSString * kOrdinalExceptions = @"ordinalExceptions";
     
     return parts;
 }
-
-- (NSString *)finishingFormatter:(long long)number withParts:(NSMutableArray<NSString *> *)parts {
-    
-    if (parts.count == 0) {
-        return self.cardinalUnits[ZERO];
-    } else if (parts.count == 1) {
-        return parts.firstObject;
-    } else {
-        return [parts componentsJoinedByString:kWHITESPACE];
-    }
-};
-
 
 @end

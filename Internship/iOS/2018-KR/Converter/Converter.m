@@ -21,6 +21,7 @@
 
 @property (strong, nonatomic) NSMutableDictionary <NSString *, NumeralsFormatter *> *formatters;
 @property (strong, nonatomic, readonly) NumeralsFormatter *localeFormatter;
+
 @end
 
 static NSString * kMAX_LIMIT_MESSAGE = @"number larger than limit";
@@ -74,7 +75,7 @@ static NSString * kMIN_LIMIT_MESSAGE = @"converter doesn't support negative numb
 #pragma mark -
 #pragma mark Accessors
 - (void)setLocaleID:(NSString *)userLocale {
-    
+    //  en_GB -> en
     userLocale = [userLocale substringToIndex:2];
     
     if (!_localeID || [self isCorrectLocaleID:userLocale]) {
@@ -162,24 +163,22 @@ static NSString * kMIN_LIMIT_MESSAGE = @"converter doesn't support negative numb
     NSMutableArray *parts = [NSMutableArray new];
     NSString *result = nil;
     
-    if (number >= 100) {
-        NSInteger hundreds = number - (number % 100);  //  сотни
+    if (number >= HUNDRED) {
+        NSInteger hundreds = number - (number % HUNDRED);  //  сотни
         result = [self.localeFormatter hundredsFormatter:hundreds multiplier:multiplier];
         if (result) [parts addObject:result];
     }
     
-    NSInteger units = number % 100;
+    NSInteger remainder = number % HUNDRED;
+    result = nil;  //  защита от добавления уже сохраненнных данных
     
-    if (units >= 10) {
-        result = [self.localeFormatter tensFormatter:units multiplier:multiplier];
-        
-        if (result) [parts addObject:result];
-        
-    } else if (units > 0) {  //  защита от остатка круглых чисел
-        result = [self.localeFormatter unitsFormatter:units multiplier:multiplier];
-        
-        if (result) [parts addObject:result];
+    if (remainder >= TEN) {
+        result = [self.localeFormatter tensFormatter:remainder multiplier:multiplier];
+    } else if (remainder > 0) {  //  защита от остатка круглых чисел
+        result = [self.localeFormatter unitsFormatter:remainder multiplier:multiplier];
     }
+    
+    if (result) [parts addObject:result];
     
     return parts;
 }

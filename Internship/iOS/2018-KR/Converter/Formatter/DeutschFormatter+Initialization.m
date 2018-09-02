@@ -7,18 +7,16 @@
 //
 
 #import "DeutschFormatter.h"
-
-#import "GlobalKeys.h"
+#import "NumeralsFormatter_PrivateHeader.h"
 
 @implementation DeutschFormatter (Initialization)
 + (instancetype)formatter {
     DeutschFormatter *formatter = [DeutschFormatter new];
     
-//    formatter.localeID = kDE;
-    [formatter setValue:kDE forKey:@"localeID"];
+    formatter.localeID         = kDE;
     
     formatter.cardinalUnits    = @[
-                                    @"null",
+                                    @"null",  //  0
                                     @"eins",
                                     @"zwei",
                                     @"drei",
@@ -27,11 +25,9 @@
                                     @"sechs",
                                     @"sieben",
                                     @"acht",
-                                    @"neun"
-                                   ];
-    
-    formatter.cardinalTens     = @[
-                                    @"zehn",
+                                    @"neun",  //  9
+                                    
+                                    @"zehn",  //  10
                                     @"elf",
                                     @"zwölf",
                                     @"dreizehn",
@@ -40,8 +36,12 @@
                                     @"sechzehn",
                                     @"siebzehn",
                                     @"achtzehn",
-                                    @"neunzehn",
-
+                                    @"neunzehn",  //  19
+                                   ];
+    
+    formatter.cardinalTens     = @[
+                                    kEMPTY_STRING,
+                                    @"zehn",
                                     @"zwanzig",
                                     @"dreißig",
                                     @"vierzig",
@@ -54,7 +54,7 @@
     
     
     formatter.cardinalHundreds = @[
-                                   @"",
+                                   kEMPTY_STRING,
                                    @"einhundert",
                                    @"zweihundert",
                                    @"dreihundert",
@@ -68,8 +68,9 @@
                                   ];
     
     formatter.cardinalLarge    = @[
-                                   @"",
-                                   @"", //  must be 'tausend'
+                                   kEMPTY_STRING,
+//                                   kEMPTY_STRING, //  can be 'tausend'
+                                   @"tausend",
                                    @"Million",
                                    @"Milliarde",
                                    @"Billion"

@@ -11,12 +11,6 @@
 #import "GlobalKeys.h"
 #import "NSString+Formatting.h"
 
-@interface UkrainianFormatter()
-
-@property (strong, nonatomic, readwrite) NSString *localeID;
-
-@end
-
 static NSString * kOrdinalForm      = @"ordinalForm";
 static NSString * kOrdinalPrefixes  = @"ordinalPrefixes";
 static NSString * kUnitsForThousend = @"unitsForThousend";
@@ -24,25 +18,10 @@ static NSString * kGenitiveForm     = @"genitiveForm";
 
 @implementation UkrainianFormatter
 
-@synthesize localeID = _localeID;
-
-#pragma mark -
-#pragma mark Initialization
-- (instancetype)init {
-    self = [super init];
-    
-    if (self) {
-        _localeID = kUA;
-    }
-    
-    return self;
-}
-
 #pragma mark -
 #pragma mark Public API
 - (NSString *)unitsFormatter:(NSInteger)number multiplier:(long long)multiplier {
-    
-    NSString *units = self.cardinalUnits[number];  //  1..9
+    NSString *units = [super unitsFormatter:number multiplier:multiplier];
     
     if (multiplier == THOUSAND && number <= 2) {  //  один -> одна, два -> дві
         units = self.exceptions[kUnitsForThousend][units];
@@ -51,37 +30,11 @@ static NSString * kGenitiveForm     = @"genitiveForm";
     return units;
 }
 
-- (NSString *)tensFormatter:(NSInteger)number multiplier:(long long)multiplier {
-    
-    if (number < 20) {  //  10..19
-        
-        return self.cardinalTens[number % 10];
-        
-    } else {  //  20, 30, .. 90
-        NSString *tens = self.cardinalTens[8 + (number / 10)];
-        NSInteger remainder = number % 10;
-        
-        if (remainder > 0) {
-            //  complex numerals, unit und tens
-            NSString *units = [self unitsFormatter:remainder multiplier:multiplier];
-            
-            tens = [NSString stringWithFormat:@"%@ %@", tens, units];
-        }
-        
-        return tens;
-    }
-}
-
-- (NSString *)hundredsFormatter:(NSInteger)number multiplier:(long long)multiplier {
-
-    return self.cardinalHundreds[number / 100];
-}
-
-
 - (NSString *)largeNumbersFormatter:(long long)multiplier quantity:(NSInteger)quantity {
-    NSInteger idx = log10(multiplier)/3;
-    NSInteger tens  = quantity % 100;
-    NSInteger units = quantity % 10;
+    NSString *large = [super largeNumbersFormatter:multiplier quantity:quantity];
+    
+    NSInteger tens  = quantity % HUNDRED;
+    NSInteger units = quantity % TEN;
     
     //  (три) тисячі, мільйона, більйона,
     //  2,3,4,.,22,23,24,..,32,33,34, x2,x3,x4. (except 12,13,14)
@@ -90,9 +43,6 @@ static NSString * kGenitiveForm     = @"genitiveForm";
     //  (шість) тисяч, мільйонів, більйонів
     //  5,6,7-20,...,
     BOOL isSecondRange = (tens >= 5 && tens <= 20) || (units >= 5 && tens > 20) || units == 0;
-    
-    NSString *large = self.cardinalLarge[idx];  //  тисяча, hidden range 1,21,31..91 (except 11)
-
     
     if (isFirstRange) {
         if (multiplier == THOUSAND) {
@@ -107,7 +57,8 @@ static NSString * kGenitiveForm     = @"genitiveForm";
             large = [large stringByAppendingString:@"ів"];
         }
     }
-    
+    //  remaining numbers 1,21,31..91 (except 11) -> leave "тисяча" as is
+
     return large;
 }
 
@@ -171,17 +122,6 @@ static NSString * kGenitiveForm     = @"genitiveForm";
     return tempParts;
 }
 
-- (NSString *)finishingFormatter:(long long)number withParts:(NSMutableArray *)parts {
-    
-    if (parts.count == 0) {
-        return self.cardinalUnits[ZERO];
-    } else if (parts.count == 1) {
-        return parts.firstObject;
-    } else {
-        return [parts componentsJoinedByString:kWHITESPACE];
-    }
-}
-
 #pragma mark -
 #pragma mark Private API
 - (NSMutableArray<NSString *> *) replaceWordWithGenitiveForm:(NSMutableArray<NSString *> *)parts number:(long long)number {
@@ -197,8 +137,8 @@ static NSString * kGenitiveForm     = @"genitiveForm";
         while (true) {
             NSInteger remainder = number % THOUSAND;
             if(remainder > 0) {
-                units = remainder % 10;
-                tens = remainder % 100;
+                units = remainder % TEN;
+                tens = remainder % HUNDRED;
                 break;
             } else {
                 number /= THOUSAND;

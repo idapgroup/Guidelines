@@ -7,11 +7,15 @@
 //
 
 #import "EnglishFormatter.h"
+#import "NumeralsFormatter_PrivateHeader.h"
+
 
 @implementation EnglishFormatter (Initialization)
 
 + (instancetype)formatter {
     EnglishFormatter *formatter = [EnglishFormatter new];
+    
+    formatter.localeID         = kEN;
     
     formatter.cardinalUnits    = @[
                                     @"zero",
@@ -23,10 +27,8 @@
                                     @"six",
                                     @"seven",
                                     @"eight",
-                                    @"nine"
-                                  ];
-    
-    formatter.cardinalTens     = @[
+                                    @"nine",
+                                    
                                     @"ten",
                                     @"eleven",
                                     @"twelve",
@@ -37,7 +39,11 @@
                                     @"seventeen",
                                     @"eighteen",
                                     @"nineteen",
-                                    
+                                  ];
+    
+    formatter.cardinalTens     = @[
+                                    kEMPTY_STRING,
+                                    @"ten",
                                     @"twenty",
                                     @"thirty",
                                     @"forty",
@@ -50,7 +56,7 @@
     
     
     formatter.cardinalHundreds = @[
-                                    @"",
+                                    kEMPTY_STRING,
                                     @"one hundred",
                                     @"two hundred",
                                     @"three hundred",
@@ -63,7 +69,7 @@
                                   ];
     
     formatter.cardinalLarge    = @[
-                                    @"",
+                                    kEMPTY_STRING,
                                     @"thousand",
                                     @"million",
                                     @"billion",

@@ -7,10 +7,14 @@
 //
 
 #import "UkrainianFormatter.h"
+#import "NumeralsFormatter_PrivateHeader.h"
+
 
 @implementation UkrainianFormatter (Initialization)
 + (instancetype)formatter {
     UkrainianFormatter *formatter = [UkrainianFormatter new];
+    
+    formatter.localeID         = kUA;
     
     formatter.cardinalUnits    = @[
                                    @"нуль",
@@ -23,10 +27,7 @@
                                    @"сім",
                                    @"вісім",
                                    @"дев'ять",
-
-                                   ];
-    
-    formatter.cardinalTens     = @[
+                                   
                                    @"десять",
                                    @"одинадцять",
                                    @"дванадцять",
@@ -37,7 +38,12 @@
                                    @"сімнадцять",
                                    @"вісімнадцять",
                                    @"дев'ятнадцять",
-                                   
+
+                                   ];
+    
+    formatter.cardinalTens     = @[
+                                   kEMPTY_STRING,
+                                   @"десять",
                                    @"двадцять",
                                    @"тридцять",
                                    @"сорок",
@@ -50,7 +56,7 @@
     
     
     formatter.cardinalHundreds = @[
-                                   @"",
+                                   kEMPTY_STRING,
                                    @"сто",
                                    @"двісті",
                                    @"триста",
@@ -63,7 +69,7 @@
                                    ];
     
     formatter.cardinalLarge    = @[
-                                   @"",
+                                   kEMPTY_STRING,
                                    @"тисяча",
                                    @"мільйон",
                                    @"мільярд",

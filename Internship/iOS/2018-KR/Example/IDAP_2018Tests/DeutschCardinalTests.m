@@ -104,7 +104,6 @@
 }
 
 - (void)testCardinalThousands {
-//    NSLog(@"%@", [self.converter stringFromNumber:1571]);
 
     XCTAssert([[self.converter stringFromNumber:1571] isEqualToString:@"eintausendfünfhunderteinundsiebzig"]);
     XCTAssert([[self.converter stringFromNumber:3834] isEqualToString:@"dreitausendachthundertvierunddreißig"]);
@@ -116,7 +115,6 @@
                isEqualToString:@"fünfhundertzweiunddreißigtausendneunhunderteinundfünfzig"]);
     XCTAssert([[self.converter stringFromNumber:891724]
                isEqualToString:@"achthunderteinundneunzigtausendsiebenhundertvierundzwanzig"]);
-    //    XCTAssert([[self.converter stringFromNumber:914] isEqualToString:@"einunddreißig"]);
 }
 
 - (void)testCardinalLargeNumbers {
@@ -125,32 +123,23 @@
     XCTAssert([[self.converter stringFromNumber:MILLION] isEqualToString:@"eine Million"]);
     XCTAssert([[self.converter stringFromNumber:BILLION] isEqualToString:@"eine Milliarde"]);
     XCTAssert([[self.converter stringFromNumber:TRILLION] isEqualToString:@"eine Billion"]);
-//
-//    
 
+    
     XCTAssert([[self.converter stringFromNumber:2*MILLION] isEqualToString:@"zwei Millionen"]);
-    NSLog(@"%@", [self.converter stringFromNumber:2*BILLION]);
+//    NSLog(@"%@", [self.converter stringFromNumber:2*BILLION]);
     XCTAssert([[self.converter stringFromNumber:2*BILLION] isEqualToString:@"zwei Milliarden"]);
 
     
 
     
 
-//    XCTAssert([[self.converter stringFromNumber:1204613] isEqualToString:@"eine Million zweihundertviertausendsechshundertdreizehn"]);
-//    XCTAssert([[self.converter stringFromNumber:4000] isEqualToString:@"viertausend"]);
-//    XCTAssert([[self.converter stringFromNumber:12853] isEqualToString:@"zwölftausendachthundertdreiundfünfzig"]);
-//    XCTAssert([[self.converter stringFromNumber:400000] isEqualToString:@"vierhunderttausend"]);
-//    XCTAssert([self.converter stringFromNumber:891724]
-//               isEqualToString:@"achthunderteinundneunzigtausendsiebenhundertvierundzwanzig"]);
-    //    XCTAssert([[self.converter stringFromNumber:914] isEqualToString:@"einunddreißig"]);
+    XCTAssert([[self.converter stringFromNumber:1204613] isEqualToString:@"eine Million zweihundertviertausendsechshundertdreizehn"]);
+    XCTAssert([[self.converter stringFromNumber:4000] isEqualToString:@"viertausend"]);
+    XCTAssert([[self.converter stringFromNumber:12853] isEqualToString:@"zwölftausendachthundertdreiundfünfzig"]);
+    XCTAssert([[self.converter stringFromNumber:400000] isEqualToString:@"vierhunderttausend"]);
+    XCTAssert([[self.converter stringFromNumber:891724]
+               isEqualToString:@"achthunderteinundneunzigtausendsiebenhundertvierundzwanzig"]);
     
-    
-    //  long scale is more popular in Germany
-//    XCTAssert([[self.converter stringFromNumber:MILLION] isEqualToString:@"eine Million"]);
-//    XCTAssert([[self.converter stringFromNumber:BILLION] isEqualToString:@"eine Milliarde"]);
-//    XCTAssert([[self.converter stringFromNumber:TRILLION] isEqualToString:@"eine Billion"]);
-//    XCTAssert([[self.converter stringFromNumber:1001001001000] isEqualToString:@"eine Billion eine Milliarde eine Million eintausend"]);
-
 }
 
 @end
