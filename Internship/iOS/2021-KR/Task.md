@@ -19,7 +19,7 @@ Solutions would be assessed based on the following criteria:
 * DRY and KISS;
 * polish.
 
-Applicants should provide the solution asap. The assessment is performed on a first come, first served basis and there are 5 internship slots in total. To ship the solution, create the pull request to this repo with your solution placed into: Internship/iOS/2021-KR/<Your Surname>. Please, make sure, that your GitHub profile has your contacts accessible and public.
+Applicants should provide the solution asap. To ship the solution, create the pull request to this repo with your solution placed into: Internship/iOS/2021-KR/<Your Surname>. Please, make sure, that your GitHub profile has your contacts accessible and public.
 
 Partial solutions are allowed, but would be ranked lower, than complete solutions.
 
