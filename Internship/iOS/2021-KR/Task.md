@@ -1,4 +1,4 @@
-# iOS intern
+# IDAP intern
 
 Internship for Kryvy Rih IDAP office. Please, note, that you should live in Kryvy Rih or its vicinity to apply for internship.
 
