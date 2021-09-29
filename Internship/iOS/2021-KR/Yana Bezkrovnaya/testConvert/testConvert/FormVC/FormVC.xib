@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FormVC" customModule="testConvert" customModuleProvider="target">
+            <connections>
+                <outlet property="convertButton" destination="wTJ-yw-BG3" id="xlU-D2-6S8"/>
+                <outlet property="outputLabel" destination="7sm-xl-gnN" id="DT6-nR-eIo"/>
+                <outlet property="pickerView" destination="rAt-4g-kTn" id="2FP-ht-XVR"/>
+                <outlet property="textField" destination="oaf-Pt-K9i" id="dka-Hj-LP7"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rAt-4g-kTn">
+                    <rect key="frame" x="0.0" y="44" width="414" height="216"/>
+                </pickerView>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oaf-Pt-K9i">
+                    <rect key="frame" x="24" y="436" width="366" height="34"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                </textField>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7sm-xl-gnN">
+                    <rect key="frame" x="24" y="505" width="366" height="357"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wTJ-yw-BG3">
+                    <rect key="frame" x="24" y="395" width="366" height="33"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <state key="normal" title="Convert"/>
+                    <connections>
+                        <action selector="didPressedConvertButton:" destination="-1" eventType="touchUpInside" id="SDO-oQ-nsh"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="wTJ-yw-BG3" firstAttribute="top" relation="lessThanOrEqual" secondItem="rAt-4g-kTn" secondAttribute="bottom" constant="135" id="05X-Js-DfN"/>
+                <constraint firstItem="7sm-xl-gnN" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="8gM-J6-iSr"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="oaf-Pt-K9i" secondAttribute="trailing" constant="24" id="A6L-C8-Nzp"/>
+                <constraint firstItem="wTJ-yw-BG3" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="24" id="Bva-dE-khe"/>
+                <constraint firstItem="oaf-Pt-K9i" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="EZW-sv-Zy2"/>
+                <constraint firstItem="rAt-4g-kTn" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="II8-ZL-Qn4"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="wTJ-yw-BG3" secondAttribute="trailing" constant="24" id="KAv-yO-p3R"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="7sm-xl-gnN" secondAttribute="trailing" constant="24" id="KJn-z9-ifY"/>
+                <constraint firstItem="oaf-Pt-K9i" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="24" id="QZf-Fg-WWt"/>
+                <constraint firstItem="7sm-xl-gnN" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="24" id="RgZ-ZM-a5e"/>
+                <constraint firstItem="rAt-4g-kTn" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="ZLC-kc-NVL"/>
+                <constraint firstItem="7sm-xl-gnN" firstAttribute="top" secondItem="oaf-Pt-K9i" secondAttribute="bottom" constant="35" id="cWS-Uv-Zi7"/>
+                <constraint firstItem="oaf-Pt-K9i" firstAttribute="top" secondItem="wTJ-yw-BG3" secondAttribute="bottom" constant="8" symbolic="YES" id="ocC-M8-IIb"/>
+                <constraint firstItem="rAt-4g-kTn" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="upe-7E-QkG"/>
+            </constraints>
+            <point key="canvasLocation" x="92.753623188405811" y="103.79464285714285"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
