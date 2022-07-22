@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="cb4c042d-14b9-488b-9db4-efe009f3c4d8" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2BZ0mgkGVdTHx7jBm9jYH5eH1eZ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/Учёба/Программирование/Internship-iOS-2021-KR/Internship/iOS/2021-KR/NumToStringTestLib",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "File.Encoding"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="NumToStringTestLib" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="cb4c042d-14b9-488b-9db4-efe009f3c4d8" name="Changes" comment="" />
+      <created>1657098461578</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1657098461578</updated>
+      <workItem from="1657098463186" duration="13268000" />
+      <workItem from="1657196964509" duration="9228000" />
+      <workItem from="1657295720903" duration="17531000" />
+      <workItem from="1657358890405" duration="12037000" />
+      <workItem from="1657449039057" duration="4934000" />
+      <workItem from="1657530268834" duration="17101000" />
+      <workItem from="1657566160205" duration="750000" />
+      <workItem from="1657619812572" duration="19263000" />
+      <workItem from="1657702751796" duration="10168000" />
+      <workItem from="1657735994535" duration="3286000" />
+      <workItem from="1657785912582" duration="16684000" />
+      <workItem from="1657899717577" duration="2870000" />
+      <workItem from="1657966438231" duration="14880000" />
+      <workItem from="1658052344329" duration="9855000" />
+      <workItem from="1658135349720" duration="14858000" />
+      <workItem from="1658215560512" duration="29584000" />
+      <workItem from="1658294785361" duration="7774000" />
+      <workItem from="1658482572763" duration="2456000" />
+      <workItem from="1658494224774" duration="109000" />
+    </task>
+    <task id="LOCAL-00001" summary="First version">
+      <created>1657706169862</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1657706169862</updated>
+    </task>
+    <task id="LOCAL-00002" summary="+ filling hashmaps&#10;+ improving logics&#10;- ending handling">
+      <created>1657813498013</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1657813498014</updated>
+    </task>
+    <task id="LOCAL-00003" summary="+ improving logics&#10;+ supplemented lang classes&#10;+ English and ukrainian are ready">
+      <created>1658065032780</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1658065032780</updated>
+    </task>
+    <task id="LOCAL-00004" summary="+ improving logics&#10;+ console call decomposed&#10;+ German is ready">
+      <created>1658232356135</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1658232356135</updated>
+    </task>
+    <task id="LOCAL-00005" summary="+ improving logics&#10;+ console call decomposed&#10;+ German is ready">
+      <created>1658232367875</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1658232367875</updated>
+    </task>
+    <task id="LOCAL-00006" summary="+ improving logics&#10;+ decomposed main class">
+      <created>1658265837161</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1658265837161</updated>
+    </task>
+    <task id="LOCAL-00007" summary="+ comments added&#10;+ decomposed main class">
+      <created>1658300138438</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1658300138438</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="First version" />
+    <MESSAGE value="+ articles, conjuctions, endings in language classes" />
+    <MESSAGE value="+ filling hashmaps&#10;+ improving logics&#10;- ending handling" />
+    <MESSAGE value="+ improving logics&#10;+ supplemented lang classes&#10;+ English and ukrainian are ready" />
+    <MESSAGE value="+ improving logics&#10;+ console call decomposed&#10;+ German is ready" />
+    <MESSAGE value="+ improving logics&#10;+ decomposed main class" />
+    <MESSAGE value="+ comments added&#10;+ decomposed main class" />
+    <option name="LAST_COMMIT_MESSAGE" value="+ comments added&#10;+ decomposed main class" />
+  </component>
+</project>
