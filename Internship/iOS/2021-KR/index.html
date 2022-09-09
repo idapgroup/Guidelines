@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Number into String</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div class="page">
+      <main class="content">
+        <div class="card">
+          <div class="input-section">
+            <select id="lang-options" name="lang-options">
+              <option value="EN">English</option>
+              <option value="UK">Українська</option>
+              <option value="DE">Deutsch</option>
+            </select>
+            <input
+              type="text"
+              id="user-input"
+              name="user-input"
+              required
+              minlength="1"
+              maxlength="15"
+              size="15"
+              placeholder="your number"
+            />
+            <button type="button" id="enter-btn">Enter</button>
+          </div>
+          <div class="output-section">
+            <span id="output-number" class="unselectable"></span><span id="output-result"></span>
+          </div>
+        </div>
+      </main>
+      <footer class="footer">
+        <span class="info-string">Hryhorii Demydovych</span>
+        <span class="info-string">096 247 75 32</span>
+        <span class="info-string">hryh.demydovych@gmail.com</span>
+      </footer>
+    </div>
+    <script defer type="module" src="./main.js"></script>
+  </body>
+</html>

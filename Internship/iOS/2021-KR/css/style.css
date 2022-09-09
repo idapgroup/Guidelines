@@ -1,0 +1,100 @@
+html {
+  box-sizing: border-box;
+  height: 100%; /* sticky footer */
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  outline: none;
+}
+
+body {
+  margin: 0;
+  background: #f5f4fa;
+}
+
+img {
+  display: block; /* margin-bottom disappears */
+  max-width: 100%; /* width isn't larger then parent */
+  height: auto; /* correct scaling */
+}
+
+.page {
+  display: flex; /* sticky footer */
+  flex-direction: column; /* sticky footer */
+  min-height: 100vh; /* sticky footer */
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.content {
+  margin: 0 auto;
+}
+
+.card {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 20px;
+  border-radius: 2px;
+  background-color: #fff;
+  box-shadow: 0 3px 14px rgb(0 0 0 / 40%);
+}
+
+.input-section {
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.output-section {
+  height: 40px;
+  padding: 10px; 
+  background-color: #ddd;
+  border-radius: 4px;
+  color: #212121;
+  font-size: 16px;
+  font-weight: 400;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer {
+  height: 80px;
+  margin-top: auto; /* sticky footer */
+  background-color: #888;
+  color: #efefef;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Roboto Mono', monospace;
+}
+
+.info-string {
+  display: block;
+}
+
+select {
+  height: 21px;
+}
+
+#user-input {
+  width: 125px;
+  text-align: center;
+}
+
+.unselectable {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  margin-right: 8px;
+  color: #888;
+  font-weight: 400;
+}
+
+
