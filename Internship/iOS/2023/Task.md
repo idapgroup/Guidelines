@@ -1,6 +1,6 @@
 # IDAP intern
 
-Internship for trainee position in IDAP company. We don't have any specific requriement for trainees, it will be a plus if you have a Macbook and/or Apple devices. 
+Internship for trainee position in IDAP company. We don't have any specific requirements for trainees, it will be a plus if you have a Macbook and/or Apple devices. 
 
 ## General
 
