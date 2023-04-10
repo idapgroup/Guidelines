@@ -9,7 +9,7 @@ Below is the first stage task, that you need to implement in order to be assesse
 1. coding solution;
 2. on-site interview.
 
-There are no requirements to the OS or programming language used for task implementation. First- and third-party libraries that implement the whole task are not permitted.
+There are no requirements for the OS or programming language used for task implementation. First- and third-party libraries that implement the whole task are not permitted. But is allowed to use them for a partial solution. 
 
 Solutions would be assessed based on the following criteria:
 
