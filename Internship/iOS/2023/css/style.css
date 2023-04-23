@@ -31,10 +31,11 @@ img {
 .content {
   margin: 0 auto;
   background-color: rgb(0 255 255 / 0%);
-  /* background-color: plum; */
 }
 
 .interface-card {
+  position: fixed;
+  left: calc(50% - 310px);
   width: 620px;
   margin: 10px auto 20px auto;
   display: flex;
@@ -49,21 +50,25 @@ img {
 .input-section {
   display: flex;
   flex-direction: column;
-  /* margin-bottom: 20px; */
   align-items: center;
-  /* background-color: yellow; */
 }
 
 .footer {
-  height: 80px;
-  margin-top: auto; /* sticky footer */
-  background-color: #888;
-  color: #efefef;
+  position: fixed;
+  bottom: 0;
+  left: calc(50% - 310px);
+  height: 64px;
+  width: 620px;
+  background-color: #fff;
+  color: #444;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   font-family: 'Roboto Mono', monospace;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  box-shadow: 0 -3px 14px rgb(0 0 0 / 40%);
 }
 
 .info-string {
@@ -103,7 +108,7 @@ img {
 .output-container {
   display: flex;
   justify-content: center;
-  margin: 0 0 20px 0;
+  margin: 164px 0 100px 0;
 }
 
 pre {
@@ -111,6 +116,9 @@ pre {
 }
 
 .spinner {
+  position: fixed;
+  top: 164px;
+  left: calc(50% - 48px);
   margin: 0 auto;
   border: 12px solid #cfcfcf;
   border-top: 12px solid #4a89dc;
@@ -137,5 +145,5 @@ pre {
 }
 
 .disabled {
-  color: #AAA;
+  color: #aaa;
 }
