@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QR to ASCII</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"
+      integrity="sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSQX0FslNhTDadL4O5SAGapGt4FodqL8My0mA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jsbarcode/3.11.5/JsBarcode.all.min.js"
+      integrity="sha512-QEAheCz+x/VkKtxeGoDq6nsGyzTx/0LMINTgQjqZ0h3+NjP+bCsPYz3hn0HnBkGmkIFSr7QcEZT+KyEM7lbLPQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </head>
+  <body>
+    <div class="page">
+      <main class="content">
+        <div class="interface-card">
+          <div class="input-section">
+            <div class="selection-bar">
+              <select id="type-options" name="type-options">
+                <option value="QR">QR code</option>
+                <option value="BAR">Barcode</option>
+              </select>
+              <span>symbol:</span>
+              <select id="symbol-options" name="symbol-options">
+                <option value="10">@</option>
+                <option value="9">%</option>
+                <option value="8">#</option>
+                <option value="7">*</option>
+                <option value="6">\</option>
+                <option value="5">+</option>
+                <option value="4">=</option>
+                <option value="3">-</option>
+                <option value="2">:</option>
+                <option value="1">.</option>
+                <option value="0">all</option>
+              </select>
+              <span>size:</span>
+              <input
+                type="number"
+                id="size-options"
+                name="size-options"
+                value="32"
+                min="2"
+                max="200"
+              />
+              <span id="line-label" class="disabled">line:</span>
+              <input
+                type="number"
+                id="line-options"
+                name="line-options"
+                value="2"
+                min="1"
+                max="4"
+                disabled
+              />
+            </div>
+            <input
+              type="text"
+              id="user-input"
+              name="user-input"
+              required
+              minlength="1"
+              placeholder="type your text here"
+            />
+            <button type="button" id="generate-btn">Generate</button>
+          </div>
+        </div>
+
+        <!-- qrcode deploy section -->
+        <div id="qrcode"></div>
+
+        <!-- barcode deploy section -->
+        <canvas id="barcode"></canvas>
+
+        <!-- spinner -->
+        <div class="spinner"></div>
+
+        <!-- output section -->
+        <div class="output-container">
+          <pre id="output"></pre>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <span class="info-string">Hryhorii Demydovych</span>
+        <span class="info-string">096 247 75 32</span>
+        <span class="info-string">hryh.demydovych@gmail.com</span>
+      </footer>
+    </div>
+
+    <script defer type="module" src="./main.js"></script>
+  </body>
+</html>

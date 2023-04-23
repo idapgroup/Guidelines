@@ -1,0 +1,141 @@
+html {
+  box-sizing: border-box;
+  height: 100%; /* sticky footer */
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  outline: none;
+}
+
+body {
+  margin: 0;
+  background: #f5f4fa;
+}
+
+img {
+  display: block; /* margin-bottom disappears */
+  max-width: 100%; /* width isn't larger then parent */
+  height: auto; /* correct scaling */
+}
+
+.page {
+  display: flex; /* sticky footer */
+  flex-direction: column; /* sticky footer */
+  min-height: 100vh; /* sticky footer */
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.content {
+  margin: 0 auto;
+  background-color: rgb(0 255 255 / 0%);
+  /* background-color: plum; */
+}
+
+.interface-card {
+  width: 620px;
+  margin: 10px auto 20px auto;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 20px;
+  border-radius: 2px;
+  background-color: #fff;
+  box-shadow: 0 3px 14px rgb(0 0 0 / 40%);
+}
+
+.input-section {
+  display: flex;
+  flex-direction: column;
+  /* margin-bottom: 20px; */
+  align-items: center;
+  /* background-color: yellow; */
+}
+
+.footer {
+  height: 80px;
+  margin-top: auto; /* sticky footer */
+  background-color: #888;
+  color: #efefef;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Roboto Mono', monospace;
+}
+
+.info-string {
+  display: block;
+}
+
+#type-options {
+  margin-right: 12px;
+  width: 80px;
+  height: 21px;
+}
+
+#symbol-options {
+  margin-right: 8px;
+  width: 40px;
+  height: 21px;
+}
+
+#size-options {
+  margin-right: 8px;
+  width: 56px;
+  height: 21px;
+}
+
+#line-options {
+  width: 40px;
+  height: 21px;
+}
+
+#user-input {
+  margin: 10px 0;
+  height: 32px;
+  width: 580px;
+  text-align: center;
+}
+
+.output-container {
+  display: flex;
+  justify-content: center;
+  margin: 0 0 20px 0;
+}
+
+pre {
+  margin: 0;
+}
+
+.spinner {
+  margin: 0 auto;
+  border: 12px solid #cfcfcf;
+  border-top: 12px solid #4a89dc;
+  border-bottom: 12px solid #4a89dc;
+  border-radius: 50%;
+  width: 96px;
+  height: 96px;
+  animation: spin 1s linear infinite;
+  display: none;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+#qrcode,
+#barcode {
+  display: none;
+}
+
+.disabled {
+  color: #AAA;
+}
